@@ -6,7 +6,7 @@ const SFX_BUS := &"SFX"
 const MUSIC_PLAYER_COUNT := 2
 const SFX_PLAYER_COUNT := 8
 
-var music_fade_duration := 0.8
+var music_fade_duration := 0.8 #音乐淡出淡入时长
 var _music_players: Array[AudioStreamPlayer] = []
 var _sfx_players: Array[AudioStreamPlayer] = []
 var _current_music_player := 0
@@ -16,8 +16,8 @@ func _ready() -> void:
 	_create_players()
 	_load_volumes()
 
-
-func play_music(stream: AudioStream) -> void:
+# 音乐调用函数
+func play_music(stream: AudioStream) -> void: 
 	if stream == null:
 		return
 	var current := _music_players[_current_music_player]
@@ -35,7 +35,7 @@ func play_music(stream: AudioStream) -> void:
 		fade.tween_callback(current.stop)
 	_current_music_player = next_index
 
-
+# 音效调用函数
 func play_sfx(stream: AudioStream, volume := 1.0) -> void:
 	if stream == null:
 		return

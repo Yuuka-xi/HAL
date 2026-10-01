@@ -18,13 +18,13 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GameState="*res://core/autoload/game_state.gd"
-AudioManager="*res://core/autoload/audio_manager.gd"
-SaveManager="*res://core/autoload/save_manager.gd"
+GameState="*res://autoload/game_state.gd"
+AudioManager="*res://autoload/audio_manager.gd"
+SaveManager="*res://autoload/save_manager.gd"
 SceneChanger="*res://Global/scene_changer.gd"
 DialogueManager="*uid://c3rodes2l3gxb"
 LanguageManager="*res://core/autoload/language_manager.gd"
-SceneTransition="*res://core/scene_transition/scene_transition.tscn"
+SceneTransition="*res://Scene/Tool/scene_transition/scene_transition.tscn"
 SettingsMenu="*res://ui/settings/settings_menu.tscn"
 
 [dialogue_manager]

@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://by8f7qfpsun45"]
 
-[ext_resource type="Script" uid="uid://d1ttsgtvqscn" path="res://core/scene_transition/scene_transition.gd" id="1"]
+[ext_resource type="Script" uid="uid://d1ttsgtvqscn" path="res://Scene/Tool/scene_transition/scene_transition.gd" id="1_jckci"]
 
 [node name="SceneTransition" type="CanvasLayer" unique_id=520209744]
 process_mode = 3
 layer = 100
-script = ExtResource("1")
+script = ExtResource("1_jckci")
 
 [node name="Overlay" type="ColorRect" parent="." unique_id=677490065]
 anchors_preset = 15
