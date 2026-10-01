@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://dse0cvemfsrcq"]
+
+[ext_resource type="Script" uid="uid://2hqs577hq43j" path="res://ui/settings/settings_menu.gd" id="1_jwxja"]
+
+[node name="SettingsMenu" type="CanvasLayer" unique_id=1661374043]
+process_mode = 3
+layer = 90
+script = ExtResource("1_jwxja")
+
+[node name="Backdrop" type="ColorRect" parent="." unique_id=871670399]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.7)
+
+[node name="Panel" type="PanelContainer" parent="Backdrop" unique_id=1296272198]
+custom_minimum_size = Vector2(620, 0)
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -310.0
+offset_top = -360.0
+offset_right = 310.0
+offset_bottom = 360.0
+focus_mode = 1
+
+[node name="Layout" type="VBoxContainer" parent="Backdrop/Panel" unique_id=1451342182]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="Backdrop/Panel/Layout" unique_id=2029894452]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "设置"
+horizontal_alignment = 1
+
+[node name="MasterLabel" type="Label" parent="Backdrop/Panel/Layout" unique_id=657300393]
+layout_mode = 2
+text = "主音量"
+
+[node name="Master" type="HSlider" parent="Backdrop/Panel/Layout" unique_id=1074610818]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+
+[node name="MusicLabel" type="Label" parent="Backdrop/Panel/Layout" unique_id=710951]
+layout_mode = 2
+text = "音乐音量"
+
+[node name="Music" type="HSlider" parent="Backdrop/Panel/Layout" unique_id=15395020]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+
+[node name="SFXLabel" type="Label" parent="Backdrop/Panel/Layout" unique_id=890958833]
+layout_mode = 2
+text = "音效音量"
+
+[node name="SFX" type="HSlider" parent="Backdrop/Panel/Layout" unique_id=2114424328]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+
+[node name="Close" type="Button" parent="Backdrop/Panel/Layout" unique_id=587391862]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+text = "关闭"
+
+[connection signal="value_changed" from="Backdrop/Panel/Layout/Master" to="." method="_on_master_changed"]
+[connection signal="value_changed" from="Backdrop/Panel/Layout/Music" to="." method="_on_music_changed"]
+[connection signal="value_changed" from="Backdrop/Panel/Layout/SFX" to="." method="_on_sfx_changed"]
+[connection signal="pressed" from="Backdrop/Panel/Layout/Close" to="." method="close"]

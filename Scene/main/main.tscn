@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://dmrxdsjy4g0vo"]
+
+[ext_resource type="Script" uid="uid://r7xboaulri34" path="res://Scene/main/main.gd" id="1_up8sa"]
+
+[node name="Main" type="Control" unique_id=1469735951]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_up8sa")
+
+[node name="Background" type="ColorRect" parent="." unique_id=666177691]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.055, 0.067, 0.09, 1)
+
+[node name="Center" type="CenterContainer" parent="." unique_id=296491136]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Content" type="VBoxContainer" parent="Center" unique_id=201844183]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Title" type="Label" parent="Center/Content" unique_id=1009154200]
+layout_mode = 2
+theme_override_font_sizes/font_size = 72
+text = "Bones"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="Center/Content" unique_id=67821775]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.65, 0.7, 0.78, 1)
+theme_override_font_sizes/font_size = 24
+text = "没有题目就用我现在在听的歌吧（"
+horizontal_alignment = 1
+
+[node name="Settings" type="Button" parent="." unique_id=1439974091]
+custom_minimum_size = Vector2(320, 64)
+layout_mode = 1
+offset_right = 320.0
+offset_bottom = 64.0
+text = "设置"
+
+[connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
