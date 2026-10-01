@@ -1,0 +1,7 @@
+~ label2
+if GameState.campaign.get("variable1", false):
+	do GameState.set_campaign_value("variable2", true)
+	已查看 item2
+else:
+	请先查看 item1
+=> END

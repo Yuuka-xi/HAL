@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bjr0m8aw4483x"]
+
+[ext_resource type="Script" uid="uid://84hrx01f6beg" path="res://Scene/Tool/perception_hover/perception_hover.gd" id="1_script"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_23k4q"]
+size = Vector2(187, 197)
+
+[node name="PerceptionHover" type="Area2D" unique_id=114626689]
+script = ExtResource("1_script")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2032786626]
+position = Vector2(2, -3)
+shape = SubResource("RectangleShape2D_23k4q")
+
+[node name="Label" type="Label" parent="." unique_id=880873155]
+offset_left = 149.0
+offset_top = -30.0
+offset_right = 309.0
+offset_bottom = 14.0
+theme_override_font_sizes/font_size = 40
+text = "弹出文本"
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

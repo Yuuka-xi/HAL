@@ -1,0 +1,4 @@
+~ label1
+do GameState.set_campaign_value("variable1", true)
+已查看 item1
+=> END

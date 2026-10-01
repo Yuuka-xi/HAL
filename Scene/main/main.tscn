@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://dmrxdsjy4g0vo"]
 
 [ext_resource type="Script" uid="uid://r7xboaulri34" path="res://Scene/main/main.gd" id="1_up8sa"]
+[ext_resource type="Texture2D" uid="uid://duq3dn5xl6yp6" path="res://icon.svg" id="2_yhpoe"]
+[ext_resource type="PackedScene" uid="uid://bjr0m8aw4483x" path="res://Scene/Tool/perception_hover/perception_hover.tscn" id="3_xybua"]
+[ext_resource type="Resource" uid="uid://bil6q8e4wn3ky" path="res://Dialogue/Test1.dialogue" id="4_i4lwv"]
+[ext_resource type="Resource" uid="uid://cc7ovhtbcrt7d" path="res://Dialogue/Test2.dialogue" id="5_test2"]
+[ext_resource type="PackedScene" uid="uid://dt8emhc87cbhp" path="res://ui/tasks/task_ui.tscn" id="6_tasks"]
 
 [node name="Main" type="Control" unique_id=1469735951]
 layout_mode = 3
@@ -9,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_up8sa")
 
 [node name="Background" type="ColorRect" parent="." unique_id=666177691]
@@ -18,9 +24,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.055, 0.067, 0.09, 1)
 
 [node name="Center" type="CenterContainer" parent="." unique_id=296491136]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -51,5 +59,42 @@ layout_mode = 1
 offset_right = 320.0
 offset_bottom = 64.0
 text = "设置"
+
+[node name="BaseItem1" type="Sprite2D" parent="." unique_id=463099332]
+position = Vector2(734, 284)
+texture = ExtResource("2_yhpoe")
+
+[node name="PerceptionHover" parent="BaseItem1" unique_id=1958938157 instance=ExtResource("3_xybua")]
+dialogue = ExtResource("4_i4lwv")
+label_title = "label1"
+
+[node name="Label1" type="Label" parent="BaseItem1" unique_id=1206538385]
+offset_left = -26.0
+offset_top = 147.0
+offset_right = 14.0
+offset_bottom = 165.0
+theme_override_font_sizes/font_size = 40
+text = "item1"
+metadata/_edit_use_anchors_ = true
+
+[node name="BaseItem2" type="Sprite2D" parent="." unique_id=1110224309]
+position = Vector2(739, 760)
+texture = ExtResource("2_yhpoe")
+
+[node name="PerceptionHover" parent="BaseItem2" unique_id=1025078055 instance=ExtResource("3_xybua")]
+dialogue = ExtResource("5_test2")
+label_title = "label2"
+
+[node name="Label2" type="Label" parent="BaseItem2" unique_id=1291996752]
+offset_left = -26.0
+offset_top = 147.0
+offset_right = 51.0
+offset_bottom = 191.0
+theme_override_font_sizes/font_size = 40
+text = "item2
+"
+
+[node name="TaskUI" parent="." unique_id=375750230 instance=ExtResource("6_tasks")]
+layout_mode = 1
 
 [connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
