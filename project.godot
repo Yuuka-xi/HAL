@@ -29,7 +29,7 @@ SettingsMenu="*res://ui/settings/settings_menu.tscn"
 
 [dialogue_manager]
 
-runtime/balloon_path="res://addons/dialogue_manager/example_balloon/example_balloon.tscn"
+runtime/balloon_path="res://Dialogue/DialogueBallon/balloon.tscn"
 
 [display]
 
@@ -57,7 +57,7 @@ toggle_settings={
 [internationalization]
 
 locale/translations=PackedStringArray("res://localization/ui.en.translation", "res://localization/ui.zh_CN.translation")
-locale/translations_pot_files=PackedStringArray("res://Dialogue/Test1.dialogue", "res://Dialogue/Test2.dialogue", "res://Dialogue/base_item.dialogue", "res://Test1.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Dialogue/Test1.dialogue", "res://Dialogue/Test2.dialogue", "res://Dialogue/BeginnersGuide.dialogue")
 
 [physics]
 

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bhcvrfvjsbw8r"
+path="res://.godot/imported/BeginnersGuide.dialogue-077663c59bc2a5fb922f7d4e62c11116.tres"
+
+[deps]
+
+source_file="res://Dialogue/BeginnersGuide.dialogue"
+dest_files=["res://.godot/imported/BeginnersGuide.dialogue-077663c59bc2a5fb922f7d4e62c11116.tres"]
+
+[params]
+
+defaults=true

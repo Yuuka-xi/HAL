@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dglcwk0tpkqrs"]
+
+[ext_resource type="Script" uid="uid://dansymnsy3lys" path="res://Scene/BeginnersGuide/beginners_guide.gd" id="1"]
+[ext_resource type="Resource" uid="uid://bhcvrfvjsbw8r" path="res://Dialogue/BeginnersGuide.dialogue" id="2"]
+
+[node name="BeginnersGuide" type="Node2D" unique_id=1729049049]
+script = ExtResource("1")
+dialogue = ExtResource("2")
