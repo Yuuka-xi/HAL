@@ -1,8 +1,8 @@
 ~ start
 do GameState.unlock_keyword("elliot")
-[color=#ffd479]Elliot[/color]: 你是谁？
+[kw=elliot]: 你是谁？
 do GameState.unlock_keyword("hal")
-思考: [color=#ffd479]hal[/color] 正在思考中……
+思考: [kw=hal]正在思考中……
 => thought
 
 ~ thought
@@ -28,7 +28,7 @@ do GameState.set_choice("tutorial_thought", "social")
 
 ~ local_search
 do GameState.unlock_keyword("keyword")
-思考: 按照预设工作流程，优先从本地数据回答，应先获取[color=#ffd479]关键词[/color]。请在工作日志中调取记录，再填入回答。
+思考: 按照预设工作流程，优先从本地数据回答，应先获取[kw=keyword]。请在工作日志中调取记录，再填入回答。
 => answer
 
 ~ answer

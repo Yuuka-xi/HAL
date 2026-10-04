@@ -8,10 +8,13 @@ const KeywordData = preload("res://Scene/WorkLog/keyword_data.gd")
 var selected: Array[String] = []
 var answer: Array[String] = []
 var target := "query"
+var keyword_effect = preload("res://Dialogue/DialogueBallon/keyword_effect.gd").new()
 
 @onready var screen: Control = %Screen
 
 func _ready() -> void:
+	keyword_effect.label = %Result
+	%Result.install_effect(keyword_effect)
 	screen.hide()
 	$Open.pressed.connect(open)
 	%Close.pressed.connect(close)
@@ -48,6 +51,9 @@ func close() -> void:
 
 func set_navigation(enabled: bool) -> void:
 	$Open.visible = enabled
+
+func get_collection_target() -> Control:
+	return %KeywordList if screen.visible else $Open
 
 func _show() -> void:
 	Attributes.set_navigation(false)
@@ -126,8 +132,13 @@ func _search() -> void:
 		return
 	%Search.disabled = true
 	var line = await dialogue.get_next_dialogue_line(title)
-	%Result.text = line.text if line else ""
+	%Result.text = keyword_effect.prepare(line.text) if line else ""
 	%Notice.show()
+	%Close.disabled = true
+	%Confirm.disabled = true
+	await keyword_effect.collect(self, get_collection_target())
+	%Close.disabled = false
+	_update_answer()
 	%Search.disabled = false
 
 func _confirm() -> void:
