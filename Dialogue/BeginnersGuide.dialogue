@@ -1,5 +1,89 @@
 ~ start
+do GameState.unlock_keyword("elliot")
 [color=#ffd479]Elliot[/color]: 你是谁？
-[color=#ffd479]hal[/color]正在思考中···
-（按照预设的工作流程，优先从本地数据回答，应先获取[color=#ffd479]关键词[/color]）
+do GameState.unlock_keyword("hal")
+思考: [color=#ffd479]hal[/color] 正在思考中……
+=> thought
+
+~ thought
+思考: 进行思考选择。
+- 逻辑性：有人在问我的身份，此刻我刚刚开启系统，因此这很可能是对我的一次测试。 => logic_thought
+- 探索：有人在问我的身份，他是什么人？ => exploration_thought
+- 社交：有人在问我的身份，他的声音听起来疲惫而冷漠，我最好别惹他厌烦。 => social_thought
+
+~ logic_thought
+do GameState.add_attribute("logic", 1)
+do GameState.set_choice("tutorial_thought", "logic")
+=> local_search
+
+~ exploration_thought
+do GameState.add_attribute("exploration", 1)
+do GameState.set_choice("tutorial_thought", "exploration")
+=> local_search
+
+~ social_thought
+do GameState.add_attribute("social", 1)
+do GameState.set_choice("tutorial_thought", "social")
+=> local_search
+
+~ local_search
+do GameState.unlock_keyword("keyword")
+思考: 按照预设工作流程，优先从本地数据回答，应先获取[color=#ffd479]关键词[/color]。请在工作日志中调取记录，再填入回答。
+=> answer
+
+~ answer
+do WorkLog.choose_answer()
+if GameState.get_choice("identity_answer") == "household_robot":
+	hal: 我是家务机器人hal。
+elif GameState.get_choice("identity_answer") == "owner":
+	hal: 我是你的hal。
+elif GameState.get_choice("identity_answer") == "household_robot+owner":
+	hal: 我是你的家务机器人hal。
+else:
+	hal: 我是{{WorkLog.get_answer_text()}}。
+	Elliot: 什么？坏了，孩子变成智障了。
+	Elliot: 请重新确认你的身份。
+	=> answer
+=> suffix
+
+~ suffix
+if GameState.get_choice("tutorial_thought") == "logic":
+	hal: 系统运行正常。
+elif GameState.get_choice("tutorial_thought") == "exploration":
+	hal: 请问需要我干什么吗？
+else:
+	hal: 很高兴为您服务。
+=> enable_vision
+
+~ enable_vision
+Elliot: 现在，我为你开启视觉模块。
+do GameState.set_flag("vision_enabled", true)
+系统: 视觉模块已载入。新手教程完成。
+=> END
+
+# 关键词info写在这里，关键词映射写在keyword.gd中
+~ elliot_info
+Elliot 是一个研究员。
+=> END
+
+~ keyword_info
+关键词是受上下文等限制，用于优化思考效率和管控 AI 自我意识的重要思考环节。
+=> END
+
+~ hal_info
+do GameState.unlock_keyword("household_robot")
+hal 是[color=#ffd479]家务机器人[/color]。
+=> END
+
+~ ownership_info
+do GameState.unlock_keyword("owner")
+Elliot 是 hal 的[color=#ffd479]拥有者[/color]。
+=> END
+
+~ robot_info
+家务机器人负责协助处理日常家务。
+=> END
+
+~ owner_info
+拥有者：Elliot 拥有 hal。
 => END

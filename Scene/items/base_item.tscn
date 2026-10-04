@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://duq3dn5xl6yp6" path="res://icon.svg" id="1_qlf8k"]
 [ext_resource type="PackedScene" uid="uid://bjr0m8aw4483x" path="res://Scene/Tool/perception_hover/perception_hover.tscn" id="2_hover"]
-[ext_resource type="Resource" uid="uid://bil6q8e4wn3ky" path="res://Dialogue/Test1.dialogue" id="3_dialogue"]
+[ext_resource type="Resource" uid="uid://bil6q8e4wn3ky" path="res://Dialogue/Test/Test1.dialogue" id="3_dialogue"]
 
 [node name="BaseItem" type="Sprite2D" unique_id=463099332]
 texture = ExtResource("1_qlf8k")

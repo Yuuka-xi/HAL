@@ -3,6 +3,13 @@
 [ext_resource type="Script" uid="uid://dansymnsy3lys" path="res://Scene/BeginnersGuide/beginners_guide.gd" id="1"]
 [ext_resource type="Resource" uid="uid://bhcvrfvjsbw8r" path="res://Dialogue/BeginnersGuide.dialogue" id="2"]
 
-[node name="BeginnersGuide" type="Node2D" unique_id=1729049049]
+[node name="BeginnersGuide" type="Node2D" unique_id=1836906271]
 script = ExtResource("1")
 dialogue = ExtResource("2")
+
+[node name="Background" type="ColorRect" parent="." unique_id=357032343]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.035, 0.045, 0.06, 1)

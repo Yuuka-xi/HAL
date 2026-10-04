@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Bones"
-run/main_scene="res://Scene/main/main.tscn"
+run/main_scene="uid://dglcwk0tpkqrs"
 config/features=PackedStringArray("4.7", "Forward Plus")
 run/max_fps=120
 config/icon="res://icon.svg"
@@ -26,6 +26,8 @@ DialogueManager="*uid://c3rodes2l3gxb"
 LanguageManager="*res://core/autoload/language_manager.gd"
 SceneTransition="*res://Scene/Tool/scene_transition/scene_transition.tscn"
 SettingsMenu="*res://ui/settings/settings_menu.tscn"
+WorkLog="*res://Scene/WorkLog/work_log.tscn"
+Attributes="*res://Scene/Attributes/attributes_ui.tscn"
 
 [dialogue_manager]
 
@@ -57,7 +59,7 @@ toggle_settings={
 [internationalization]
 
 locale/translations=PackedStringArray("res://localization/ui.en.translation", "res://localization/ui.zh_CN.translation")
-locale/translations_pot_files=PackedStringArray("res://Dialogue/Test1.dialogue", "res://Dialogue/Test2.dialogue", "res://Dialogue/BeginnersGuide.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Dialogue/BeginnersGuide.dialogue", "res://Dialogue/Test/Test1.dialogue", "res://Dialogue/Test/Test2.dialogue", "res://Dialogue/WorkLog.dialogue")
 
 [physics]
 

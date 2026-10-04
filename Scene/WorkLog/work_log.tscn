@@ -1,0 +1,183 @@
+[gd_scene format=3 uid="uid://daqjqfeccgxib"]
+
+[ext_resource type="Script" path="res://Scene/WorkLog/work_log.gd" id="1"]
+[ext_resource type="DialogueResource" path="res://Dialogue/BeginnersGuide.dialogue" id="2"]
+
+[sub_resource type="Theme" id="Theme"]
+default_font_size = 26
+
+[node name="WorkLog" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1")
+dialogue = ExtResource("2")
+
+[node name="Open" type="Button" parent="."]
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 220.0
+offset_bottom = 80.0
+text = "工作日志"
+
+[node name="Screen" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme")
+color = Color(0.035, 0.045, 0.06, 1)
+
+[node name="Margin" type="MarginContainer" parent="Screen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_bottom = 180
+
+[node name="Layout" type="VBoxContainer" parent="Screen/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Header" type="HBoxContainer" parent="Screen/Margin/Layout"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Screen/Margin/Layout/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 38
+text = "工作日志 / 本地记忆"
+
+[node name="Close" type="Button" parent="Screen/Margin/Layout/Header"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "返回"
+
+[node name="Columns" type="HBoxContainer" parent="Screen/Margin/Layout"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 48
+
+[node name="Keywords" type="VBoxContainer" parent="Screen/Margin/Layout/Columns"]
+custom_minimum_size = Vector2(380, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Title" type="Label" parent="Screen/Margin/Layout/Columns/Keywords"]
+layout_mode = 2
+text = "已收录关键词"
+
+[node name="Scroll" type="ScrollContainer" parent="Screen/Margin/Layout/Columns/Keywords"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="KeywordList" type="VBoxContainer" parent="Screen/Margin/Layout/Columns/Keywords/Scroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="Right" type="VBoxContainer" parent="Screen/Margin/Layout/Columns"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 32
+
+[node name="QueryPanel" type="PanelContainer" parent="Screen/Margin/Layout/Columns/Right"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="Margin" type="MarginContainer" parent="Screen/Margin/Layout/Columns/Right/QueryPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Layout" type="VBoxContainer" parent="Screen/Margin/Layout/Columns/Right/QueryPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="Screen/Margin/Layout/Columns/Right/QueryPanel/Margin/Layout"]
+layout_mode = 2
+text = "调取本地记录 / 最多两个关键词"
+
+[node name="Row" type="HBoxContainer" parent="Screen/Margin/Layout/Columns/Right/QueryPanel/Margin/Layout"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Query" type="Button" parent="Screen/Margin/Layout/Columns/Right/QueryPanel/Margin/Layout/Row"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "点击这里，再选左侧关键词"
+
+[node name="ClearQuery" type="Button" parent="Screen/Margin/Layout/Columns/Right/QueryPanel/Margin/Layout/Row"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "×"
+
+[node name="Search" type="Button" parent="Screen/Margin/Layout/Columns/Right/QueryPanel/Margin/Layout/Row"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "调取"
+
+[node name="Result" type="RichTextLabel" parent="Screen/Margin/Layout/Columns/Right/QueryPanel/Margin/Layout"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+
+[node name="Notice" type="Label" parent="Screen/Margin/Layout/Columns/Right/QueryPanel/Margin/Layout"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "本信息调取已经过压缩，压缩逻辑由价值评估模块决定。"
+autowrap_mode = 2
+
+[node name="AnswerPanel" type="PanelContainer" parent="Screen/Margin/Layout/Columns/Right"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Margin" type="MarginContainer" parent="Screen/Margin/Layout/Columns/Right/AnswerPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Layout" type="VBoxContainer" parent="Screen/Margin/Layout/Columns/Right/AnswerPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="Screen/Margin/Layout/Columns/Right/AnswerPanel/Margin/Layout"]
+layout_mode = 2
+text = "填入回答 / 你是谁？"
+
+[node name="AnswerInput" type="Button" parent="Screen/Margin/Layout/Columns/Right/AnswerPanel/Margin/Layout"]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+text = "点击这里，再选左侧关键词"
+
+[node name="Row" type="HBoxContainer" parent="Screen/Margin/Layout/Columns/Right/AnswerPanel/Margin/Layout"]
+layout_mode = 2
+alignment = 2
+theme_override_constants/separation = 12
+
+[node name="ClearAnswer" type="Button" parent="Screen/Margin/Layout/Columns/Right/AnswerPanel/Margin/Layout/Row"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "清空"
+
+[node name="Confirm" type="Button" parent="Screen/Margin/Layout/Columns/Right/AnswerPanel/Margin/Layout/Row"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "确认回答"

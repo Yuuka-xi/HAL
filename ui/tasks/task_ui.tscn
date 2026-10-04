@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://1isy8k8cqq2l" path="res://ui/tasks/task_ui.gd" id="1"]
 
 [node name="TaskUI" type="Control" unique_id=1220973474]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

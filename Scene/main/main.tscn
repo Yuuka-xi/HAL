@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://r7xboaulri34" path="res://Scene/main/main.gd" id="1_up8sa"]
 [ext_resource type="Texture2D" uid="uid://duq3dn5xl6yp6" path="res://icon.svg" id="2_yhpoe"]
 [ext_resource type="PackedScene" uid="uid://bjr0m8aw4483x" path="res://Scene/Tool/perception_hover/perception_hover.tscn" id="3_xybua"]
-[ext_resource type="Resource" uid="uid://bil6q8e4wn3ky" path="res://Dialogue/Test1.dialogue" id="4_i4lwv"]
-[ext_resource type="Resource" uid="uid://cc7ovhtbcrt7d" path="res://Dialogue/Test2.dialogue" id="5_test2"]
+[ext_resource type="Resource" uid="uid://bil6q8e4wn3ky" path="res://Dialogue/Test/Test1.dialogue" id="4_i4lwv"]
+[ext_resource type="Resource" uid="uid://cc7ovhtbcrt7d" path="res://Dialogue/Test/Test2.dialogue" id="5_test2"]
 [ext_resource type="PackedScene" uid="uid://dt8emhc87cbhp" path="res://ui/tasks/task_ui.tscn" id="6_tasks"]
 
 [node name="Main" type="Control" unique_id=1469735951]
