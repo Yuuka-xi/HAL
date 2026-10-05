@@ -9,6 +9,7 @@ const KeywordData = preload("res://Scene/WorkLog/keyword_data.gd")
 @export var submit_title := ""
 var dialogue_states: Array = []
 var querying := false
+var searching := false
 var selected: Array[String] = []
 var answer: Array[String] = []
 var target := "query"
@@ -58,6 +59,20 @@ func close() -> void:
 
 func set_navigation(enabled: bool) -> void:
 	$Open.visible = enabled
+
+func reset() -> void:
+	screen.hide()
+	selected.clear()
+	answer.clear()
+	querying = false
+	searching = false
+	%Search.disabled = false
+	%Close.disabled = false
+	_update_query()
+	_update_answer()
+	for pending_signal in [closed, answer_confirmed]:
+		for connection in pending_signal.get_connections():
+			pending_signal.disconnect(connection.callable)
 
 func get_collection_target() -> Control:
 	return %KeywordList if screen.visible else $Open
@@ -130,6 +145,7 @@ func _clear_answer() -> void:
 
 # 查询说明一次显示；不启动对话气泡，不执行提交入口。
 func _search() -> void:
+	var session := SaveManager.session_id
 	var ids := selected.duplicate()
 	ids.sort()
 	var title: String = KeywordData.ENTRIES.get("+".join(ids), "")
@@ -138,19 +154,27 @@ func _search() -> void:
 		%Notice.hide()
 		return
 	%Search.disabled = true
+	searching = true
 	var texts: PackedStringArray = []
 	var line = await keyword_dialogue.get_next_dialogue_line(title)
 	while line != null:
+		if session != SaveManager.session_id:
+			return
 		texts.append(line.text)
 		line = await keyword_dialogue.get_next_dialogue_line(line.next_id)
+	if session != SaveManager.session_id:
+		return
 	%Result.text = keyword_effect.prepare("\n".join(texts))
 	%Notice.show()
 	%Close.disabled = true
 	%Confirm.disabled = true
 	await keyword_effect.collect(self, get_collection_target())
+	if session != SaveManager.session_id:
+		return
 	%Close.disabled = false
 	_update_answer()
 	%Search.disabled = false
+	searching = false
 
 func _confirm() -> void:
 	var ids := answer.duplicate()

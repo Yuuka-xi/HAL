@@ -45,9 +45,12 @@ func _process_custom_fx(fx: CharFXTransform) -> bool:
 
 # 飞入期间由调用方锁住推进；动画结束才写入 GameState 并取消高亮。
 func collect(host: Node, target: Control) -> void:
+	var session := SaveManager.session_id
 	if words.is_empty():
 		return
 	await RenderingServer.frame_post_draw
+	if session != SaveManager.session_id:
+		return
 	for word in words:
 		var copy := FlyingWord.new()
 		copy.glyphs = word.glyphs.values()
@@ -62,6 +65,8 @@ func collect(host: Node, target: Control) -> void:
 		tween.tween_property(copy, "modulate:a", 0.0, 0.2).set_delay(0.4)
 		await tween.finished
 		copy.queue_free()
+		if session != SaveManager.session_id:
+			return
 		word.collected = true
 		GameState.unlock_keyword(word.id)
 		label.queue_redraw()

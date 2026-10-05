@@ -1,6 +1,3 @@
-~ start
-=> END
-
 ~ observe_mobile_module
 思考: hal的[kw=mobile_module]。
 => END
@@ -73,5 +70,6 @@ do GameState.set_flag("large_cart_moved", true)
 ~ hal_get_mobile_module
 do StudyRoom1.hal_get_mobile_module()
 do GameState.set_flag("hal_get_mobile_module", true)
+do GameState.set_flag("chapter1_completed", true)
 系统: 移动模块已连接，力量限制已解除。移动功能已恢复。
 => END

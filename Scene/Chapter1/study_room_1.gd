@@ -6,6 +6,8 @@ func _ready() -> void:
 	WorkLog.dialogue = dialogue
 	WorkLog.dialogue_states = [{"StudyRoom1": self}]
 	WorkLog.submit_title = "submit"
+	WorkLog.set_navigation(true)
+	Attributes.set_navigation(true)
 	# 单独运行这一关时也能使用 hal 组合，方便测试
 	GameState.unlock_keyword("hal")
 

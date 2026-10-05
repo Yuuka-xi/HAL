@@ -26,6 +26,11 @@ func close() -> void:
 func set_navigation(enabled: bool) -> void:
 	$Open.visible = enabled
 
+func reset() -> void:
+	screen.hide()
+	for connection in response_selected.get_connections():
+		response_selected.disconnect(connection.callable)
+
 # 普通查看与剧情选择共用页面；选项由 Dialogue Manager 提供，效果留在 .dialogue。
 func choose(responses: Array) -> DialogueResponse:
 	for child in options.get_children():

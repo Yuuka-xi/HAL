@@ -280,10 +280,10 @@ scale = Vector2(1.9843751, 0.42187458)
 texture = ExtResource("1_vesnj")
 
 [node name="Label4" type="Label" parent="fallen_book" unique_id=1111238918]
-offset_left = -12.094481
-offset_top = -54.518623
-offset_right = 147.90552
-offset_bottom = -10.518623
+offset_left = 13.102368
+offset_top = -52.14825
+offset_right = 173.10237
+offset_bottom = -8.148251
 scale = Vector2(0.50393695, 2.3703728)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40

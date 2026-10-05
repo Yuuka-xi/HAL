@@ -53,4 +53,5 @@ else:
 Elliot: 现在，我为你开启视觉模块。
 do GameState.set_flag("vision_enabled", true)
 系统: 视觉模块已载入。新手教程完成。
+do GameState.set_flag("beginnerguide_completed", true)
 => END

@@ -12,6 +12,7 @@ var keyword_effect = preload("res://Dialogue/DialogueBallon/keyword_effect.gd").
 @onready var subtitle: DialogueLabel = %Subtitle
 
 func _ready() -> void:
+	add_to_group("dialogue_balloon")
 	keyword_effect.label = subtitle
 	subtitle.install_effect(keyword_effect)
 
@@ -67,7 +68,7 @@ func next(title: String) -> void:
 		waiting = true
 
 func _unhandled_input(event: InputEvent) -> void:
-	if WorkLog.screen.visible or Attributes.screen.visible:
+	if SettingsMenu.visible or WorkLog.screen.visible or Attributes.screen.visible:
 		return
 	var clicked: bool = event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed
 	if clicked or event.is_action_pressed(next_action) and not event.is_echo():
@@ -88,5 +89,7 @@ func _collect_keywords() -> void:
 	collecting = false
 
 func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("toggle_settings"):
+		return
 	if collecting:
 		get_viewport().set_input_as_handled()
