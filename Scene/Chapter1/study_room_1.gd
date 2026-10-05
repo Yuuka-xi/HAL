@@ -16,6 +16,18 @@ func first_collision() -> void:
 func second_collision() -> void:
 	$AnimationPlayer.play("second_collision")
 	await $AnimationPlayer.animation_finished
+	
+func open_window() -> void:
+	$AnimationPlayer.play("open_window")
+	await $AnimationPlayer.animation_finished
+	
+func large_cart_move() -> void:
+	$AnimationPlayer.play("large_cart_move")
+	await $AnimationPlayer.animation_finished
+
+func hal_get_mobile_module() -> void:
+	$AnimationPlayer.play("hal_get_mobile_module")
+	await $AnimationPlayer.animation_finished
 
 func _exit_tree() -> void:
 	WorkLog.dialogue_states.clear()

@@ -5,9 +5,6 @@
 [ext_resource type="Resource" uid="uid://da66s0r8y51fm" path="res://Dialogue/Chapter1.dialogue" id="3_dialogue"]
 [ext_resource type="Script" uid="uid://dwo4rtkee6e6v" path="res://Scene/Tool/perception_click/perception_click.gd" id="4_click"]
 
-[sub_resource type="RectangleShape2D" id="Rectangle_click"]
-size = Vector2(128, 128)
-
 [sub_resource type="Animation" id="Animation_wmy5e"]
 length = 0.001
 tracks/0/type = "value"
@@ -25,7 +22,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Book:position")
+tracks/1/path = NodePath("fallen_book:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -37,7 +34,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Book:rotation")
+tracks/2/path = NodePath("fallen_book:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -45,6 +42,54 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DeliveryBox:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("LargeCart:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(684, 1016)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Hal:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(216, 862.00006)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("DeliveryBox:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(688, 940)]
 }
 
 [sub_resource type="Animation" id="Animation_6ufl6"]
@@ -65,7 +110,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Book:position")
+tracks/1/path = NodePath("fallen_book:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -77,7 +122,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Book:rotation")
+tracks/2/path = NodePath("fallen_book:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -85,6 +130,89 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 3.1415927]
+}
+
+[sub_resource type="Animation" id="Animation_633ni"]
+resource_name = "hal_get_mobile_module"
+length = 3.0000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MobileModule:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1259, 1042), Vector2(374, 1042)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hal:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.2, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(216, 862.00006), Vector2(372.00003, 972.00006)]
+}
+
+[sub_resource type="Animation" id="Animation_imjk1"]
+resource_name = "large_cart_move"
+length = 3.0000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MobileModule:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1259, 1042), Vector2(994, 1042)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LargeCart:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.2, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(684, 1016), Vector2(-79, 1016)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DeliveryBox:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.2, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(688, 940), Vector2(-78, 940)]
+}
+
+[sub_resource type="Animation" id="Animation_1l5jp"]
+resource_name = "open_window"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DeliveryBox:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.5752778]
 }
 
 [sub_resource type="Animation" id="Animation_f8pu5"]
@@ -106,12 +234,21 @@ tracks/0/keys = {
 _data = {
 &"RESET": SubResource("Animation_wmy5e"),
 &"first_collision": SubResource("Animation_6ufl6"),
+&"hal_get_mobile_module": SubResource("Animation_633ni"),
+&"large_cart_move": SubResource("Animation_imjk1"),
+&"open_window": SubResource("Animation_1l5jp"),
 &"second_collision": SubResource("Animation_f8pu5")
 }
+
+[sub_resource type="RectangleShape2D" id="Rectangle_click"]
+size = Vector2(128, 128)
 
 [node name="StudyRoom1" type="Node2D" unique_id=83279335]
 script = ExtResource("2_room")
 dialogue = ExtResource("3_dialogue")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1857526838]
+libraries/ = SubResource("AnimationLibrary_f8pu5")
 
 [node name="LargeCart" type="Sprite2D" parent="." unique_id=57633421]
 position = Vector2(684, 1016)
@@ -122,6 +259,7 @@ texture = ExtResource("1_vesnj")
 script = ExtResource("4_click")
 dialogue = ExtResource("3_dialogue")
 start_title = "observe_large_cart"
+one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LargeCart/PerceptionClick" unique_id=591189643]
 shape = SubResource("Rectangle_click")
@@ -136,6 +274,32 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "大推车"
 
+[node name="fallen_book" type="Sprite2D" parent="." unique_id=362350114]
+position = Vector2(585, 779)
+scale = Vector2(1.9843751, 0.42187458)
+texture = ExtResource("1_vesnj")
+
+[node name="Label4" type="Label" parent="fallen_book" unique_id=1111238918]
+offset_left = -12.094481
+offset_top = -54.518623
+offset_right = 147.90552
+offset_bottom = -10.518623
+scale = Vector2(0.50393695, 2.3703728)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "书"
+
+[node name="PerceptionClick" type="Area2D" parent="fallen_book" unique_id=71200286]
+position = Vector2(0, -7.176399e-05)
+script = ExtResource("4_click")
+dialogue = ExtResource("3_dialogue")
+start_title = "observe_fallen_book"
+one_shot = true
+required_flag = "chapter1_book_fallen"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fallen_book/PerceptionClick" unique_id=421640213]
+shape = SubResource("Rectangle_click")
+
 [node name="MobileModule" type="Sprite2D" parent="." unique_id=2011305248]
 position = Vector2(1259, 1042)
 scale = Vector2(1.8046875, 0.5390625)
@@ -146,6 +310,7 @@ position = Vector2(0, -3.710145)
 script = ExtResource("4_click")
 dialogue = ExtResource("3_dialogue")
 start_title = "observe_mobile_module"
+one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MobileModule/PerceptionClick" unique_id=1283859195]
 shape = SubResource("Rectangle_click")
@@ -161,32 +326,29 @@ theme_override_font_sizes/font_size = 40
 text = "移动模块"
 
 [node name="DeliveryBox" type="Sprite2D" parent="." unique_id=2014646789]
-position = Vector2(586, 879)
+position = Vector2(688, 940)
 texture = ExtResource("1_vesnj")
+centered = false
+offset = Vector2(-120, -120)
 
 [node name="Label3" type="Label" parent="DeliveryBox" unique_id=1778553683]
-offset_left = -61.0
-offset_top = -19.0
-offset_right = 99.0
-offset_bottom = 25.0
+offset_left = -112.0
+offset_top = -79.0
+offset_right = 48.0
+offset_bottom = -35.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "快递箱"
 
-[node name="Book" type="Sprite2D" parent="." unique_id=362350114]
-position = Vector2(585, 779)
-scale = Vector2(1.9843751, 0.42187458)
-texture = ExtResource("1_vesnj")
+[node name="PerceptionClick" type="Area2D" parent="DeliveryBox" unique_id=1486317127]
+position = Vector2(-56, -56)
+script = ExtResource("4_click")
+dialogue = ExtResource("3_dialogue")
+start_title = "obeserve_delivery_box"
+one_shot = true
 
-[node name="Label4" type="Label" parent="Book" unique_id=1111238918]
-offset_left = -12.094481
-offset_top = -54.518623
-offset_right = 147.90552
-offset_bottom = -10.518623
-scale = Vector2(0.50393695, 2.3703728)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 40
-text = "书"
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeliveryBox/PerceptionClick" unique_id=788991332]
+shape = SubResource("Rectangle_click")
 
 [node name="AutoBookcase" type="Sprite2D" parent="." unique_id=69206045]
 position = Vector2(1793, 665)
@@ -199,6 +361,7 @@ scale = Vector2(0.99999994, 0.99999994)
 script = ExtResource("4_click")
 dialogue = ExtResource("3_dialogue")
 start_title = "observe_auto_bookcase"
+one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AutoBookcase/PerceptionClick" unique_id=1674059672]
 position = Vector2(0, 3.5551798)
@@ -215,5 +378,31 @@ theme_override_font_sizes/font_size = 40
 text = "自动
 书柜"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1857526838]
-libraries/ = SubResource("AnimationLibrary_f8pu5")
+[node name="Desk" type="Sprite2D" parent="." unique_id=2043983522]
+position = Vector2(127, 992)
+scale = Vector2(2.015625, 1.421875)
+texture = ExtResource("1_vesnj")
+
+[node name="Label4" type="Label" parent="Desk" unique_id=936374780]
+offset_left = -30.75969
+offset_top = -18.285734
+offset_right = 49.24031
+offset_bottom = 25.714266
+scale = Vector2(0.8, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "桌子"
+
+[node name="Hal" type="Sprite2D" parent="." unique_id=335944765]
+position = Vector2(216, 862.00006)
+scale = Vector2(0.59375006, 0.4843754)
+texture = ExtResource("1_vesnj")
+
+[node name="Label4" type="Label" parent="Hal" unique_id=727350373]
+offset_left = -30.75969
+offset_top = -18.285734
+offset_right = 23.24031
+offset_bottom = 25.714266
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Hal"

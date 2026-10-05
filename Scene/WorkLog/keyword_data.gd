@@ -14,7 +14,14 @@ const NAMES = {
 	"eve": "Eve",
 	"impact": "撞击",
 	"auto_bookcase": "自动书柜",
-	"switch": "开关"
+	"switch": "开关",
+	"fallen_book": "掉落的书本",
+	"secure": "牢固",
+	"wind": "风",
+	"window": "窗户",
+	"delivery_box": "快递箱",
+	"open_window": "打开窗户",
+	"weight": "重量"
 }
 
 # 双词组合按编号排序，用 + 连接；值是 .dialogue 中的入口标题。
@@ -33,5 +40,14 @@ const ENTRIES = {
 	"eve": "eve_info",
 	"impact": "impact_info",
 	"auto_bookcase": "auto_bookcase_info",
-	"switch": "switch_info"
+	"switch": "switch_info",
+	"fallen_book": "fallen_book_info",
+	"secure": "secure_info",
+	"wind": "wind_info",
+	"window": "window_info",
+	"delivery_box": "delivery_box_info",
+	"open_window": "open_window_info",
+	"weight": "weight_info",
+	"delivery_box+secure": "delivery_box_secure_info",
+	"large_cart+weight": "large_cart_weight_info"
 }

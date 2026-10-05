@@ -13,17 +13,38 @@
 思考: 一架[kw=auto_bookcase]
 => END
 
+~ observe_fallen_book
+思考: [kw=fallen_book]
+=> END
+
+~ obeserve_delivery_box
+思考: 大推车上的[kw=delivery_box]
+=> END
+
+
 ~ submit
 if GameState.get_choice("keyword_submission") == "hal+mobile_module":
-	=> move_to_hal
+	if GameState.get_flag("large_cart_moved"):
+		=> hal_get_mobile_module
+	else:
+		=> move_to_hal
 elif GameState.get_choice("keyword_submission") == "auto_bookcase+mobile_module":
 	=> move_to_auto_bookcase
+elif GameState.get_choice("keyword_submission") == "open_window":
+	=> open_window
+elif GameState.get_choice("keyword_submission") == "impact+large_cart":
+	if GameState.get_flag("switch_can_open"):
+		=> large_cart_move
+	else:
+		思考: 大推车仍挡住移动模块靠近hal的路线。
 else:
 	思考: 暂时不知道怎样用这个组合行动。
 => END
 
 ~ move_to_hal
-if GameState.get_flag("chapter1_book_fallen"):
+if GameState.get_flag("large_cart_moved"):
+	=> hal_get_mobile_module
+elif GameState.get_flag("chapter1_book_fallen"):
 	思考: 大推车仍挡住移动模块靠近hal的路线。
 else:
 	do StudyRoom1.first_collision()
@@ -33,4 +54,24 @@ else:
 
 ~ move_to_auto_bookcase
 do StudyRoom1.second_collision()
+思考: 自动书柜的同等高度右侧有用力撞击可以触发的[kw=switch]
+do GameState.set_flag("auto_bookcase_switch", true)
+if GameState.get_flag("large_cart_switch") and GameState.get_flag("auto_bookcase_switch"):
+	提示: [kw=switch]的压缩内容发生改变
+=> END
+
+~ open_window
+do StudyRoom1.open_window()
+思考: 快递箱基本没什么东西，[kw=weight]不是导致无法移动的原因
+=> END
+
+~ large_cart_move
+do StudyRoom1.large_cart_move()
+do GameState.set_flag("large_cart_moved", true)
+=> END
+
+~ hal_get_mobile_module
+do StudyRoom1.hal_get_mobile_module()
+do GameState.set_flag("hal_get_mobile_module", true)
+系统: 移动模块已连接，力量限制已解除。移动功能已恢复。
 => END
