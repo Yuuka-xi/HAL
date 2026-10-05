@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cgip8sxcerqjt"
+path="res://.godot/imported/KeywordInfo.dialogue-add09e79b5a4a91538dca1086e92b990.tres"
+
+[deps]
+
+source_file="res://Dialogue/KeywordInfo.dialogue"
+dest_files=["res://.godot/imported/KeywordInfo.dialogue-add09e79b5a4a91538dca1086e92b990.tres"]
+
+[params]
+
+defaults=true

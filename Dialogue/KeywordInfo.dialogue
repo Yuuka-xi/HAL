@@ -1,0 +1,56 @@
+# 统一关键词说明；名称和组合入口在 Scene/WorkLog/keyword_data.gd 中。
+# Beginnersguide
+~ elliot_info
+Elliot 是一个研究员。
+=> END
+
+~ keyword_info
+关键词是受上下文等限制，用于优化思考效率和管控 AI 自我意识的重要思考环节。
+=> END
+
+~ hal_info
+hal 是[kw=household_robot]。
+=> END
+
+~ ownership_info
+Elliot 是 hal 的[kw=owner]。
+=> END
+
+~ robot_info
+家务机器人负责协助处理日常家务。
+=> END
+
+~ owner_info
+拥有者：Elliot 拥有 hal。
+=> END
+
+# Chapter1
+~ mobile_module_info
+足够靠近hal时会解除hal的[kw=strength_limit]。
+=> END
+
+~ strength_limit_info
+hal的移动模块拥有解除力量限制功能。
+=> END
+
+~ large_cart_info
+是手推车的一种。
+if GameState.get_attribute("social") >= 1:
+	由[kw=eve]命名。
+=> END
+
+~ eve_info
+女主人。
+=> END
+
+~ impact_info
+移动模块与大推车碰撞时发生的撞击。
+=> END
+
+~ auto_bookcase_info
+自动书柜的同等高度右侧有用力撞击可以触发的[kw=switch]
+=> END
+
+~ switch_info
+自动书柜的开关
+=> END

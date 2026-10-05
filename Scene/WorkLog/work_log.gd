@@ -5,6 +5,10 @@ signal answer_confirmed
 
 const KeywordData = preload("res://Scene/WorkLog/keyword_data.gd")
 @export var dialogue: DialogueResource
+@export var keyword_dialogue: DialogueResource
+@export var submit_title := ""
+var dialogue_states: Array = []
+var querying := false
 var selected: Array[String] = []
 var answer: Array[String] = []
 var target := "query"
@@ -29,9 +33,12 @@ func _ready() -> void:
 
 # 普通浏览等待关闭；剧情回答等待确认，当前选词不写入存档。
 func open() -> void:
-	%AnswerPanel.hide()
+	if querying:
+		return
+	%AnswerPanel.visible = not submit_title.is_empty()
 	%Close.show()
 	_show()
+	_update_answer()
 	await closed
 
 func choose_answer() -> void:
@@ -121,7 +128,7 @@ func _clear_answer() -> void:
 	_set_target("answer")
 	_update_answer()
 
-# 排序后的组合定位当前关卡的文本入口；取得第一条说明，不启动第二个对话气泡。
+# 查询说明一次显示；不启动对话气泡，不执行提交入口。
 func _search() -> void:
 	var ids := selected.duplicate()
 	ids.sort()
@@ -131,8 +138,12 @@ func _search() -> void:
 		%Notice.hide()
 		return
 	%Search.disabled = true
-	var line = await dialogue.get_next_dialogue_line(title)
-	%Result.text = keyword_effect.prepare(line.text) if line else ""
+	var texts: PackedStringArray = []
+	var line = await keyword_dialogue.get_next_dialogue_line(title)
+	while line != null:
+		texts.append(line.text)
+		line = await keyword_dialogue.get_next_dialogue_line(line.next_id)
+	%Result.text = keyword_effect.prepare("\n".join(texts))
 	%Notice.show()
 	%Close.disabled = true
 	%Confirm.disabled = true
@@ -144,5 +155,12 @@ func _search() -> void:
 func _confirm() -> void:
 	var ids := answer.duplicate()
 	ids.sort()
-	GameState.set_choice("identity_answer", "+".join(ids))
+	GameState.set_choice("keyword_submission", "+".join(ids))
+	if not submit_title.is_empty():
+		close()
+		querying = true
+		var balloon = DialogueManager.show_dialogue_balloon(dialogue, submit_title, dialogue_states)
+		await balloon.tree_exited
+		querying = false
+		return
 	answer_confirmed.emit()

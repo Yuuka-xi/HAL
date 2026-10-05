@@ -1,0 +1,36 @@
+~ start
+=> END
+
+~ observe_mobile_module
+思考: hal的[kw=mobile_module]。
+=> END
+
+~ observe_large_cart
+思考: 一辆[kw=large_cart]。
+=> END
+
+~ observe_auto_bookcase
+思考: 一架[kw=auto_bookcase]
+=> END
+
+~ submit
+if GameState.get_choice("keyword_submission") == "hal+mobile_module":
+	=> move_to_hal
+elif GameState.get_choice("keyword_submission") == "auto_bookcase+mobile_module":
+	=> move_to_auto_bookcase
+else:
+	思考: 暂时不知道怎样用这个组合行动。
+=> END
+
+~ move_to_hal
+if GameState.get_flag("chapter1_book_fallen"):
+	思考: 大推车仍挡住移动模块靠近hal的路线。
+else:
+	do StudyRoom1.first_collision()
+	do GameState.set_flag("chapter1_book_fallen", true)
+	思考: 移动模块停在大推车右边。发生了[kw=impact]，压住快递箱的书掉落了。
+=> END
+
+~ move_to_auto_bookcase
+do StudyRoom1.second_collision()
+=> END
