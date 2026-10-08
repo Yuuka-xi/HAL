@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 @export var next_action: StringName = &"ui_accept"
+@export var show_system_prefix := true # 自动添加听觉传感器输入、输出等前缀。
 
 var resource: DialogueResource
 var temporary_game_states: Array = []
@@ -28,22 +29,14 @@ func next(title: String) -> void:
 	if dialogue_line == null:
 		queue_free()
 		return
-	var prefix := ""
 	var character := dialogue_line.character
-	if character == "[kw=elliot]":
-		prefix = "听觉传感器输入：[kw=elliot]："
-	match character:
-		"Elliot":
-			prefix = "听觉传感器输入：Elliot："
-		"hal":
-			prefix = "输出："
-		"思考":
-			prefix = "思考："
-		"系统":
-			prefix = "系统："
-		_:
-			if not dialogue_line.character.is_empty() and prefix.is_empty():
-				prefix = dialogue_line.character + "："
+	var prefix := character + "：" if not character.is_empty() else ""
+	if show_system_prefix:
+		match character:
+			"Elliot", "[kw=elliot]":
+				prefix = "听觉传感器输入：" + character + "："
+			"hal":
+				prefix = "输出："
 	var display_line := DialogueLine.new()
 	display_line.text = keyword_effect.prepare(prefix + dialogue_line.text)
 	display_line.extra_game_states = dialogue_line.extra_game_states

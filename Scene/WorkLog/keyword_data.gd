@@ -2,6 +2,7 @@ extends RefCounted
 
 const NAMES = {
 	# 新手教程
+	"unknown_audio_source": "未知声音来源",
 	"elliot": "Elliot",
 	"hal": "hal",
 	"keyword": "关键词",
@@ -18,12 +19,14 @@ const NAMES = {
 # 双词组合按编号排序，用 + 连接；值是 .dialogue 中的入口标题。
 const ENTRIES = {
 	# 新手教程
+	"unknown_audio_source": "unknown_audio_source_info",
 	"elliot": "elliot_info",
 	"hal": "hal_info",
 	"keyword": "keyword_info",
-	"elliot+hal": "ownership_info",
-	"household_robot": "robot_info",
+	"elliot+hal": "elliot_hal_info",
+	"household_robot": "household_robot_info",
 	"owner": "owner_info",
+	"hal+household_robot": "household_robot_hal_info",
 	# 关卡1
 	"memory_storage_drive": "memory_storage_drive_info",
 	"storage_box": "storage_box_info",

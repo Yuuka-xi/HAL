@@ -136,7 +136,7 @@ func _update_query() -> void:
 
 func _update_answer() -> void:
 	%AnswerInput.text = _names(answer) if not answer.is_empty() else "点击这里，再选左侧关键词"
-	%Confirm.disabled = answer.is_empty()
+	%Confirm.disabled = answer.is_empty() or searching
 
 func _clear_query() -> void:
 	selected.clear()
@@ -160,6 +160,7 @@ func _search() -> void:
 		return
 	%Search.disabled = true
 	searching = true
+	_update_answer()
 	var texts: PackedStringArray = []
 	var notices: PackedStringArray = []
 	var line = await keyword_dialogue.get_next_dialogue_line(title)
@@ -177,14 +178,13 @@ func _search() -> void:
 	%Notice.text = _format_notice("\n".join(notices) if not notices.is_empty() else default_notice)
 	%Notice.show()
 	%Close.disabled = true
-	%Confirm.disabled = true
 	await keyword_effect.collect(self, get_collection_target())
 	if session != SaveManager.session_id:
 		return
 	%Close.disabled = false
+	searching = false
 	_update_answer()
 	%Search.disabled = false
-	searching = false
 
 # 查询中带 [#notice] 的文字显示在提示区；关键词只高亮，不重复收录。
 func _format_notice(text: String) -> String:

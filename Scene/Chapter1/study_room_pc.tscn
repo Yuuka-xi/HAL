@@ -28,7 +28,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.7565155, 18.70935)]
+"values": [Vector2(146.85953, 144.6428)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -40,19 +40,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.85579205, 0.07750622)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("PC/MemoryStorageDrive:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"values": [Vector2(0.85579205, 0.122999035)]
 }
 
 [sub_resource type="Animation" id="Animation_37jyc"]
@@ -64,10 +52,10 @@ tracks/0/path = NodePath("PC/MemoryStorageDrive:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.9),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0.7565155, 33.914066), Vector2(367.96228, -10.783485)]
+"values": [Vector2(146.85953, 194.51968), Vector2(-98.64537, 59.852177), Vector2(-98.64537, 59.852173)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -76,22 +64,10 @@ tracks/1/path = NodePath("PC/MemoryStorageDrive:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.9, 1),
+"times": PackedFloat32Array(0, 0.8, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0.85579205, 0.122999035), Vector2(3.1205676, 0.61331105), Vector2(3.1205676, 0.61331105)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("PC/MemoryStorageDrive:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.99, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, true, false]
+"values": [Vector2(0.85579205, 0.5680612), Vector2(4.320195, 2.867677), Vector2(4.320195, 2.867677)]
 }
 
 [sub_resource type="Animation" id="Animation_wrof7"]
@@ -106,7 +82,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0.7565155, 18.70935), Vector2(0.7565155, 33.914066)]
+"values": [Vector2(146.85953, 144.6428), Vector2(146.85953, 194.51968)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -118,19 +94,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0.85579205, 0.07750622), Vector2(0.85579205, 0.122999035)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("PC/MemoryStorageDrive:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, true]
+"values": [Vector2(0.85579205, 0.122999035), Vector2(0.85579205, 0.5680612)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_37jyc"]
@@ -160,9 +124,8 @@ position = Vector2(141.31767, 77.586174)
 texture = ExtResource("5_vilrr")
 
 [node name="MemoryStorageDrive" type="Sprite2D" parent="PC" unique_id=796784738]
-visible = false
-position = Vector2(0.7565155, 18.70935)
-scale = Vector2(0.85579205, 0.07750622)
+position = Vector2(146.85953, 144.6428)
+scale = Vector2(0.85579205, 0.122999035)
 texture = ExtResource("1_hsdq5")
 
 [node name="PerceptionClick" type="Area2D" parent="PC/MemoryStorageDrive" unique_id=2027972199 node_paths=PackedStringArray("dialogue_state")]

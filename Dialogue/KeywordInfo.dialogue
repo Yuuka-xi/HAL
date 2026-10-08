@@ -1,27 +1,36 @@
 # 统一关键词说明；名称和组合入口在 Scene/WorkLog/keyword_data.gd 中。
 # Beginnersguide
-~ elliot_info
-Elliot 是一个研究员。
+
+~ hal_info
+系统日志>设备信息：本设备初始登记名称为hal。备注：该机初始设计为[kw=household_robot]。
 => END
 
 ~ keyword_info
-关键词是受上下文等限制，用于优化思考效率和管控 AI 自我意识的重要思考环节。
+系统备注：受处理器内存限制，进行深度思考时，本机仅能处理有限字符数。为优化思考效率，本机限制每次深度思考仅能输入限定数量的关键词，其余缓存信息将被删除。
 => END
 
-~ hal_info
-hal 是[kw=household_robot]。
+~ household_robot_info
+系统备注：家务机器人当然就是做家务的机器人啦～不过如果你非要问我什么是家务，什么是机器，什么是人的话……大概就是打扫房间，能够执行命令的装置，以及……某种独立的个体？
 => END
 
-~ ownership_info
-Elliot 是 hal 的[kw=owner]。
+~ unknown_audio_source_info
+已在历史记录中进行声纹匹配，该声音来源为：[kw=elliot]。
 => END
 
-~ robot_info
-家务机器人负责协助处理日常家务。
+~ elliot_info
+hal的主人，研究员。
+=> END
+
+~ elliot_hal_info
+综合分析系统日志信息，结论：Elliot是hal的[kw=owner]。
 => END
 
 ~ owner_info
-拥有者：Elliot 拥有 hal。
+Elliot。
+=> END
+
+~ household_robot_hal_info
+hal是家务机器人。
 => END
 
 # Chapter1

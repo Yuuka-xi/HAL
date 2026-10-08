@@ -3,6 +3,8 @@ extends Node2D
 
 @export var dialogue: DialogueResource
 
+@onready var memory_storage_drive: Sprite2D = $PC/MemoryStorageDrive
+
 func _ready() -> void:
 	$Back.pressed.connect(close)
 
@@ -12,7 +14,8 @@ func open() -> void:
 	for area in get_parent().find_children("*", "Area2D"):
 		if not is_ancestor_of(area):
 			area.input_pickable = false
-	$ComputerCase/MemoryStorageDrive.visible = GameState.get_flag("disc_reader_open") and not GameState.get_flag("memory_installed")
+	memory_storage_drive.visible = GameState.get_flag("disc_reader_open") and not GameState.get_flag("memory_installed")
+
 
 func close() -> void:
 	GameState.set_flag("pc_closeup", false)
@@ -22,7 +25,7 @@ func close() -> void:
 
 
 func open_disc_reader() -> void:
-	$ComputerCase/MemoryStorageDrive.show()
+	memory_storage_drive.show()
 	$AnimationPlayer.play("open_disc_reader")
 	await $AnimationPlayer.animation_finished
 

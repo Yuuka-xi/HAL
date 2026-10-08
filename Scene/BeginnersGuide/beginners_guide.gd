@@ -2,8 +2,16 @@ extends Node2D
 
 @export var dialogue: DialogueResource
 @export var start_title := "start"
+var missed_queries := 0
+var missed_query_counts: Dictionary = {}
+var identity_text := ""
+var answer_suffix := ""
+var correct_answer := false
 
 func _ready() -> void:
+	GameState.campaign_changed.connect(_update_background)
+	_update_background()
+	WorkLog.get_node("%Search").pressed.connect(_on_search_pressed)
 	WorkLog.dialogue = dialogue
 	WorkLog.submit_title = ""
 	WorkLog.dialogue_states.clear()
@@ -15,3 +23,18 @@ func _ready() -> void:
 	await balloon.tree_exited
 	if SaveManager.track_play_time and GameState.get_flag("beginnerguide_completed"):
 		await SceneTransition.change_scene(SaveManager.next_scene(), 0.5)
+
+func _update_background() -> void:
+	$background.visible = not GameState.get_flag("vision_enabled")
+
+# 每轮回答按组合独立计数；ID 排序后，同一组合的不同选词顺序共用次数。
+func _on_search_pressed() -> void:
+	var ids := WorkLog.selected.duplicate()
+	ids.sort()
+	var combination := "+".join(ids)
+	if ids.is_empty() or combination in WorkLog.KeywordData.ENTRIES:
+		return
+	missed_queries = missed_query_counts.get(combination, 0) + 1
+	missed_query_counts[combination] = missed_queries
+	var line = await dialogue.get_next_dialogue_line("missing_record", [self])
+	WorkLog.get_node("%Result").text = line.text

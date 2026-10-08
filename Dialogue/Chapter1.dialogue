@@ -58,7 +58,7 @@ else:
 if not GameState.get_flag("inventory_enabled"):
 	do Inventory.add_item("key_card")
 	do GameState.set_flag("inventory_enabled", true)
-	系统: 已回忆起系统搭载了物品栏，点击右侧打开物品栏。
+	系统: 已回忆起系统搭载了物品栏，点击右侧打开物品栏。 [next=auto]
 => END
 
 ~ use_key_card_on_door
