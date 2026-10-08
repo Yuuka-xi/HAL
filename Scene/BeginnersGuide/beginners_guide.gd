@@ -9,8 +9,7 @@ var answer_suffix := ""
 var correct_answer := false
 
 func _ready() -> void:
-	GameState.campaign_changed.connect(_update_background)
-	_update_background()
+	WorkLog.start_level("beginnersguide", [])
 	WorkLog.get_node("%Search").pressed.connect(_on_search_pressed)
 	WorkLog.dialogue = dialogue
 	WorkLog.submit_title = ""
@@ -22,10 +21,13 @@ func _ready() -> void:
 	var balloon = DialogueManager.show_dialogue_balloon(dialogue, start_title)
 	await balloon.tree_exited
 	if SaveManager.track_play_time and GameState.get_flag("beginnerguide_completed"):
-		await SceneTransition.change_scene(SaveManager.next_scene(), 0.5)
-
-func _update_background() -> void:
-	$background.visible = not GameState.get_flag("vision_enabled")
+		# 场景替换期间保留同一张背景，新场景就绪后由视觉启动动画接手。
+		var cover := CanvasLayer.new()
+		cover.layer = 31
+		cover.add_child($background.duplicate())
+		get_tree().root.add_child(cover)
+		get_tree().scene_changed.connect(cover.queue_free, CONNECT_ONE_SHOT)
+		get_tree().change_scene_to_file(SaveManager.next_scene())
 
 # 每轮回答按组合独立计数；ID 排序后，同一组合的不同选词顺序共用次数。
 func _on_search_pressed() -> void:

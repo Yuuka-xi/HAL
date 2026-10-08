@@ -5,8 +5,8 @@ do GameState.set_flag("elliot_close_door", true)
 => local_search
 
 ~ local_search
-do! WorkLog.open()
 系统: 各模块正常，但是记忆模块缺失了[kw=memory_storage_drive] [next=auto]
+do! WorkLog.open()
 => END
 
 ~ submit

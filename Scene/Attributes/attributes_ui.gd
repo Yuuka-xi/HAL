@@ -3,23 +3,27 @@ extends CanvasLayer
 signal response_selected(response: DialogueResponse)
 
 @onready var screen: Control = %Screen
-@onready var options: VBoxContainer = %Options
+var choices: Dictionary = {}
 
 func _ready() -> void:
 	screen.hide()
-	%ChoicePanel.hide()
 	$Open.pressed.connect(open)
 	%Close.pressed.connect(close)
+	%Chart.dimension_hovered.connect(_hover_dimension)
+	%Chart.dimension_selected.connect(_select_dimension)
 	GameState.campaign_changed.connect(_refresh)
 	_refresh()
 
 func open() -> void:
-	%ChoicePanel.hide()
+	choices.clear()
+	%Thought.text = ""
 	%Close.show()
 	_show()
 
 func close() -> void:
 	screen.hide()
+	choices.clear()
+	%Thought.text = ""
 	$Open.show()
 	WorkLog.set_navigation(true)
 	Memory.set_navigation(true)
@@ -30,28 +34,34 @@ func set_navigation(enabled: bool) -> void:
 
 func reset() -> void:
 	screen.hide()
+	choices.clear()
+	%Thought.text = ""
 	for connection in response_selected.get_connections():
 		response_selected.disconnect(connection.callable)
 
-# 普通查看与剧情选择共用页面；选项由 Dialogue Manager 提供，效果留在 .dialogue。
+# 选项前缀对应维度；思考与分支效果仍由 .dialogue 提供。
 func choose(responses: Array) -> DialogueResponse:
-	for child in options.get_children():
-		options.remove_child(child)
-		child.queue_free()
+	choices.clear()
 	for response in responses:
-		var button := Button.new()
-		button.text = response.text
-		button.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-		button.custom_minimum_size.y = 100
-		button.disabled = not response.is_allowed
-		button.pressed.connect(func(): response_selected.emit(response))
-		options.add_child(button)
-	%ChoicePanel.show()
+		for id in %Chart.dimensions:
+			if response.text.begins_with(%Chart.dimensions[id] + "：") or response.text.begins_with(%Chart.dimensions[id] + ":"):
+				choices[id] = response
+	%Thought.text = ""
 	%Close.hide()
 	_show()
 	var response: DialogueResponse = await response_selected
 	close()
 	return response
+
+func _hover_dimension(id: String) -> void:
+	%Thought.text = ""
+	if choices.has(id):
+		var text: String = choices[id].text
+		%Thought.text = "思考：" + text.substr(%Chart.dimensions[id].length() + 1).strip_edges()
+
+func _select_dimension(id: String) -> void:
+	if choices.has(id) and choices[id].is_allowed:
+		response_selected.emit(choices[id])
 
 func _show() -> void:
 	Inventory.set_navigation(false)
@@ -62,8 +72,4 @@ func _show() -> void:
 	_refresh()
 
 func _refresh() -> void:
-	%Social.text = "社交：%d" % GameState.get_attribute("social")
-	%Exploration.text = "探索：%d" % GameState.get_attribute("exploration")
-	%Logic.text = "逻辑：%d" % GameState.get_attribute("logic")
-	%Emotion.text = "情感：%d" % GameState.get_attribute("emotion")
-	%Emotion.visible = GameState.get_flag("emotion_visible")
+	%Chart.refresh()

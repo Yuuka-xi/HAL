@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://bdoiafjgq4y46"]
+
+[ext_resource type="Texture2D" uid="uid://b1g0ghqb130mo" path="res://Asset/background.jpg" id="1_ceiqe"]
+[ext_resource type="Script" uid="uid://bxapwg6ux0x43" path="res://Scene/Tool/scene_transition/vision_startup.gd" id="2"]
+[ext_resource type="Shader" uid="uid://cs2emkwojxxmp" path="res://Scene/Tool/scene_transition/noise_dissolve.gdshader" id="3"]
+[ext_resource type="Shader" uid="uid://bbn44gdtdknpc" path="res://Scene/Tool/scene_transition/vision_blur.gdshader" id="4"]
+
+[sub_resource type="ShaderMaterial" id="BlurMaterial"]
+resource_local_to_scene = true
+shader = ExtResource("4")
+shader_parameter/blur_amount = 5.0
+
+[sub_resource type="ShaderMaterial" id="NoiseMaterial"]
+resource_local_to_scene = true
+shader = ExtResource("3")
+shader_parameter/progress = 0.0
+shader_parameter/noise_scale = 360.0
+shader_parameter/edge_softness = 0.035
+
+[sub_resource type="Animation" id="Reset"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("beginnersguide:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("chapter1:material:shader_parameter/blur_amount")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [5.0]
+}
+
+[sub_resource type="Animation" id="Startup"]
+resource_name = "vision_startup"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("beginnersguide:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 2.6, 6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("chapter1:material:shader_parameter/blur_amount")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.6, 2.5, 3.3, 4.366667, 5.5333333, 6.4666667, 7.2, 8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [5.0, 5.0, 0.6, 4.0, 0.3, 2.5, 0.2, 0.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="Library"]
+_data = {
+&"RESET": SubResource("Reset"),
+&"vision_startup": SubResource("Startup")
+}
+
+[node name="0_1transition" type="CanvasLayer" unique_id=656647040]
+layer = 30
+script = ExtResource("2")
+
+[node name="chapter1" type="ColorRect" parent="." unique_id=922193600]
+material = SubResource("BlurMaterial")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="beginnersguide" type="Sprite2D" parent="." unique_id=277087100]
+material = SubResource("NoiseMaterial")
+position = Vector2(960, 540.00006)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_ceiqe")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=852870504]
+libraries/ = SubResource("Library")

@@ -63,6 +63,14 @@ func close() -> void:
 func set_navigation(enabled: bool) -> void:
 	$Open.visible = enabled
 
+func start_level(level: String, initial_keywords: Array) -> void:
+	selected.clear()
+	answer.clear()
+	_update_query()
+	_update_answer()
+	GameState.set_choice("keyword_submission", "")
+	GameState.start_keyword_list(level, initial_keywords)
+
 func reset() -> void:
 	screen.hide()
 	selected.clear()
@@ -92,7 +100,7 @@ func _refresh_keywords() -> void:
 	for child in %KeywordList.get_children():
 		%KeywordList.remove_child(child)
 		child.queue_free()
-	var unlocked: Dictionary = GameState.campaign.get("keywords", {})
+	var unlocked: Dictionary = GameState.get_available_keywords()
 	for id in KeywordData.NAMES:
 		if unlocked.get(id, false):
 			var button := Button.new()

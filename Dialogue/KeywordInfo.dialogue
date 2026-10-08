@@ -2,7 +2,10 @@
 # Beginnersguide
 
 ~ hal_info
-系统日志>设备信息：本设备初始登记名称为hal。备注：该机初始设计为[kw=household_robot]。
+if GameState.campaign.get("current_level", "") == "chapter1":
+	系统日志>设备信息：本设备初始登记名称为hal。备注：该机初始设计为家务机器人。
+else:
+	系统日志>设备信息：本设备初始登记名称为hal。备注：该机初始设计为[kw=household_robot]。
 => END
 
 ~ keyword_info

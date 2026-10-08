@@ -26,11 +26,25 @@ func set_campaign_value(key: String, value: Variant) -> void:
 	campaign_changed.emit()
 
 ## 工作日志模块（关键词）
+# 每关重新设置可用列表，历史收录仍保留在 keywords 中。
+func start_keyword_list(level: String, initial_keywords: Array) -> void:
+	campaign["current_level"] = level
+	campaign["level_keywords"] = {}
+	for id in initial_keywords:
+		campaign["level_keywords"][id] = true
+		campaign["keywords"][id] = true
+	campaign_changed.emit()
+
+func get_available_keywords() -> Dictionary:
+	return campaign.get("level_keywords", campaign.get("keywords", {}))
+
 # 收录关键词；说明文字不存入存档，只保存编号对应的解锁状态。
 func unlock_keyword(id: String) -> void:
 	var keywords: Dictionary = campaign.get("keywords", {})
 	keywords[id] = true
 	campaign["keywords"] = keywords
+	if campaign.has("level_keywords"):
+		campaign["level_keywords"][id] = true
 	campaign_changed.emit()
 
 ## 价值评估模块（属性）
