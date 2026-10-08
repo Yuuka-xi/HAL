@@ -22,6 +22,8 @@ func close() -> void:
 	screen.hide()
 	$Open.show()
 	WorkLog.set_navigation(true)
+	Memory.set_navigation(true)
+	Inventory.set_navigation(true)
 
 func set_navigation(enabled: bool) -> void:
 	$Open.visible = enabled
@@ -52,6 +54,8 @@ func choose(responses: Array) -> DialogueResponse:
 	return response
 
 func _show() -> void:
+	Inventory.set_navigation(false)
+	Memory.set_navigation(false)
 	WorkLog.set_navigation(false)
 	$Open.hide()
 	screen.show()

@@ -1,75 +1,68 @@
-~ observe_mobile_module
-思考: hal的[kw=mobile_module]。
-=> END
+~ start
+Elliot: Hal, 完成自检。
+do StudyRoom2.elliot_close_door()
+do GameState.set_flag("elliot_close_door", true)
+=> local_search
 
-~ observe_large_cart
-思考: 一辆[kw=large_cart]。
+~ local_search
+do! WorkLog.open()
+系统: 各模块正常，但是记忆模块缺失了[kw=memory_storage_drive] [next=auto]
 => END
-
-~ observe_auto_bookcase
-思考: 一架[kw=auto_bookcase]
-=> END
-
-~ observe_fallen_book
-思考: [kw=fallen_book]
-=> END
-
-~ obeserve_delivery_box
-思考: 大推车上的[kw=delivery_box]
-=> END
-
 
 ~ submit
-if GameState.get_choice("keyword_submission") == "hal+mobile_module":
-	if GameState.get_flag("large_cart_moved"):
-		=> hal_get_mobile_module
-	else:
-		=> move_to_hal
-elif GameState.get_choice("keyword_submission") == "auto_bookcase+mobile_module":
-	=> move_to_auto_bookcase
-elif GameState.get_choice("keyword_submission") == "open_window":
-	=> open_window
-elif GameState.get_choice("keyword_submission") == "impact+large_cart":
-	if GameState.get_flag("switch_can_open"):
-		=> large_cart_move
-	else:
-		思考: 大推车仍挡住移动模块靠近hal的路线。
+if GameState.get_choice("keyword_submission") == "pc":
+	do! StudyRoomPC.open()
 else:
 	思考: 暂时不知道怎样用这个组合行动。
 => END
 
-~ move_to_hal
-if GameState.get_flag("large_cart_moved"):
-	=> hal_get_mobile_module
-elif GameState.get_flag("chapter1_book_fallen"):
-	思考: 大推车仍挡住移动模块靠近hal的路线。
+~ observe_storage_box
+思考: [kw=storage_box]是空的。
+=> END
+
+~ observe_pc
+思考: Elliot的[kw=pc]。
+=> END
+
+~ observe_disc_reader
+思考: 台式机的[kw=disc_reader]中似乎有东西。
+if not GameState.get_flag("disc_reader_open"):
+	do StudyRoomPC.open_disc_reader()
+	do GameState.set_flag("disc_reader_open", true)
+=> END
+
+~ take_memory_storage_drive
+if not GameState.get_flag("memory_installed"):
+	do StudyRoomPC.hal_get_memory_storage_drive()
+	do GameState.set_flag("memory_installed", true)
+	系统: 编号42的记忆存储盘已装入，记忆录像模块已启用，可随时查看。
+	Elliot: hal，出来！
+=> END
+
+~ observe_door
+if GameState.get_flag("door_open"):
+	思考: 书房的门已经打开。
+elif GameState.get_flag("memory_installed"):
+	思考: 书房的门关着，暂时出不去。但是可以查阅记忆录像，寻找出门方法。
+	do Memory.add_animation("open_door", "开门")
+	do! Memory.open()
 else:
-	do StudyRoom1.first_collision()
-	do GameState.set_flag("chapter1_book_fallen", true)
-	思考: 移动模块停在大推车右边。发生了[kw=impact]，压住快递箱的书掉落了。
+	思考: 书房的门关着。
 => END
 
-~ move_to_auto_bookcase
-do StudyRoom1.second_collision()
-思考: 自动书柜的同等高度右侧有用力撞击可以触发的[kw=switch]
-do GameState.set_flag("auto_bookcase_switch", true)
-if GameState.get_flag("large_cart_switch") and GameState.get_flag("auto_bookcase_switch"):
-	提示: [kw=switch]的压缩内容发生改变
+~ observe_other_drive
+思考: 这张盘片的规格与缺失的记忆存储盘型号不符。
 => END
 
-~ open_window
-do StudyRoom1.open_window()
-思考: 快递箱基本没什么东西，[kw=weight]不是导致无法移动的原因
+~ open_door_finished
+if not GameState.get_flag("inventory_enabled"):
+	do Inventory.add_item("key_card")
+	do GameState.set_flag("inventory_enabled", true)
+	系统: 已回忆起系统搭载了物品栏，点击右侧打开物品栏。
 => END
 
-~ large_cart_move
-do StudyRoom1.large_cart_move()
-do GameState.set_flag("large_cart_moved", true)
-=> END
-
-~ hal_get_mobile_module
-do StudyRoom1.hal_get_mobile_module()
-do GameState.set_flag("hal_get_mobile_module", true)
-do GameState.set_flag("chapter1_completed", true)
-系统: 移动模块已连接，力量限制已解除。移动功能已恢复。
+~ use_key_card_on_door
+if not GameState.get_flag("door_open"):
+	do StudyRoom2.hal_open_door()
+	do GameState.set_flag("door_open", true)
 => END

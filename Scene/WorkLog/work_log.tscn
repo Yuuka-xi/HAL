@@ -135,11 +135,14 @@ layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true
 
-[node name="Notice" type="Label" parent="Screen/Margin/Layout/Columns/Right/QueryPanel/Margin/Layout" unique_id=426315920]
+[node name="Notice" type="RichTextLabel" parent="Screen/Margin/Layout/Columns/Right/QueryPanel/Margin/Layout" unique_id=426315920]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
 text = "本信息调取已经过压缩，压缩逻辑由价值评估模块决定。"
 autowrap_mode = 2
 

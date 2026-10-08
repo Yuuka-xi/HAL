@@ -1,0 +1,129 @@
+[gd_scene format=3 uid="uid://b4k7g6trtgg2o"]
+
+[ext_resource type="Script" uid="uid://74fb0hosybgv" path="res://Scene/Inventory/inventory.gd" id="1"]
+
+[sub_resource type="Theme" id="Theme"]
+default_font_size = 24
+
+[sub_resource type="StyleBoxFlat" id="PanelStyle"]
+bg_color = Color(0.035, 0.045, 0.06, 1)
+border_width_left = 2
+border_color = Color(0.35, 0.38, 0.42, 1)
+
+[sub_resource type="StyleBoxFlat" id="SlotStyle"]
+bg_color = Color(0.02, 0.025, 0.03, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.35, 0.38, 0.42, 1)
+
+[sub_resource type="StyleBoxFlat" id="SelectedStyle"]
+bg_color = Color(0.12, 0.1, 0.06, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 0.83, 0.47, 1)
+
+[sub_resource type="Theme" id="SlotTheme"]
+default_font_size = 24
+Button/styles/disabled = SubResource("SlotStyle")
+Button/styles/hover = SubResource("SlotStyle")
+Button/styles/hover_pressed = SubResource("SelectedStyle")
+Button/styles/normal = SubResource("SlotStyle")
+Button/styles/pressed = SubResource("SelectedStyle")
+
+[node name="Inventory" type="CanvasLayer" unique_id=128616207]
+layer = 15
+script = ExtResource("1")
+
+[node name="Dock" type="Control" parent="." unique_id=1798021066]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -360.0
+offset_bottom = 360.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme")
+
+[node name="Drawer" type="Control" parent="Dock" unique_id=525830320]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 180.0
+offset_bottom = 720.0
+mouse_filter = 2
+
+[node name="Background" type="Panel" parent="Dock/Drawer" unique_id=1704128144]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_styles/panel = SubResource("PanelStyle")
+
+[node name="Slots" type="VBoxContainer" parent="Dock/Drawer" unique_id=1865343314]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 16.0
+offset_top = 20.0
+offset_right = 164.0
+offset_bottom = 700.0
+theme = SubResource("SlotTheme")
+theme_override_constants/separation = 12
+
+[node name="Slot1" type="Button" parent="Dock/Drawer/Slots" unique_id=1442873715]
+layout_mode = 2
+size_flags_vertical = 3
+toggle_mode = true
+expand_icon = true
+
+[node name="Slot2" type="Button" parent="Dock/Drawer/Slots" unique_id=856454396]
+layout_mode = 2
+size_flags_vertical = 3
+toggle_mode = true
+expand_icon = true
+
+[node name="Slot3" type="Button" parent="Dock/Drawer/Slots" unique_id=1008701147]
+layout_mode = 2
+size_flags_vertical = 3
+toggle_mode = true
+expand_icon = true
+
+[node name="Slot4" type="Button" parent="Dock/Drawer/Slots" unique_id=1050782001]
+layout_mode = 2
+size_flags_vertical = 3
+toggle_mode = true
+expand_icon = true
+
+[node name="Slot5" type="Button" parent="Dock/Drawer/Slots" unique_id=937440868]
+layout_mode = 2
+size_flags_vertical = 3
+toggle_mode = true
+expand_icon = true
+
+[node name="Slot6" type="Button" parent="Dock/Drawer/Slots" unique_id=1296659287]
+layout_mode = 2
+size_flags_vertical = 3
+toggle_mode = true
+expand_icon = true
+
+[node name="Toggle" type="Button" parent="Dock/Drawer" unique_id=873815660]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -44.0
+offset_top = 328.0
+offset_bottom = 392.0
+text = "◀"
+
+[node name="DragItem" type="Button" parent="." unique_id=1568429076]
+unique_name_in_owner = true
+visible = false
+mouse_filter = 2
+theme = SubResource("SlotTheme")
+expand_icon = true

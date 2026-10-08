@@ -1,0 +1,193 @@
+[gd_scene format=3 uid="uid://kwxmjaixmmtw"]
+
+[ext_resource type="Script" uid="uid://cp6n7urpxkict" path="res://Scene/Memory/memory.gd" id="1"]
+[ext_resource type="Resource" path="res://Dialogue/Chapter1.dialogue" id="4_finished"]
+[ext_resource type="Texture2D" uid="uid://crkeje15uc0um" path="res://Asset/WhiteBlock.png" id="2_7rwvc"]
+[ext_resource type="Texture2D" uid="uid://ca5idgyqvk611" path="res://Asset/YellowBlock.png" id="3_jpdbn"]
+
+[sub_resource type="Theme" id="Theme"]
+default_font_size = 26
+
+[sub_resource type="Animation" id="Animation_54cvm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MemoryOpenDoor/KeyCard:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1804, 180.99998)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MemoryOpenDoor/Door:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1048, 613)]
+}
+
+[sub_resource type="Animation" id="Animation_jpdbn"]
+resource_name = "open_door"
+length = 3.0000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MemoryOpenDoor/KeyCard:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 1, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1804, 180.99998), Vector2(1090, 653.00006), Vector2(1090, 653.00006), Vector2(1804, 180.99998)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MemoryOpenDoor/Door:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2, 2.2, 2.21, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1048, 613), Vector2(1048, 613), Vector2(887, 613), Vector2(887, 613)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ornpi"]
+_data = {
+&"RESET": SubResource("Animation_54cvm"),
+&"open_door": SubResource("Animation_jpdbn")
+}
+
+[node name="Memory" type="CanvasLayer" unique_id=1961420886 node_paths=PackedStringArray("animation_content")]
+layer = 10
+script = ExtResource("1")
+animation_content = NodePath("MemoryOpenDoor")
+finished_dialogue = ExtResource("4_finished")
+finished_titles = {"open_door": "open_door_finished"}
+
+[node name="Open" type="Button" parent="." unique_id=1868608034]
+visible = false
+offset_left = 464.0
+offset_top = 24.0
+offset_right = 660.0
+offset_bottom = 80.0
+text = "记忆录像"
+
+[node name="Screen" type="ColorRect" parent="." unique_id=311324673]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource("Theme")
+color = Color(0.035, 0.045, 0.06, 1)
+
+[node name="Margin" type="MarginContainer" parent="Screen" unique_id=113392687]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 180
+
+[node name="Layout" type="VBoxContainer" parent="Screen/Margin" unique_id=1307025470]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Header" type="HBoxContainer" parent="Screen/Margin/Layout" unique_id=1073792030]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Screen/Margin/Layout/Header" unique_id=1122965107]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 38
+text = "记忆录像"
+
+[node name="Close" type="Button" parent="Screen/Margin/Layout/Header" unique_id=1171648381]
+unique_name_in_owner = true
+layout_mode = 2
+text = "返回"
+
+[node name="Columns" type="HBoxContainer" parent="Screen/Margin/Layout" unique_id=1194253702]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 40
+
+[node name="List" type="ScrollContainer" parent="Screen/Margin/Layout/Columns" unique_id=374104706]
+custom_minimum_size = Vector2(380, 0)
+layout_mode = 2
+
+[node name="Recordings" type="VBoxContainer" parent="Screen/Margin/Layout/Columns/List" unique_id=141333045]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Empty" type="Label" parent="Screen/Margin/Layout/Columns/List/Recordings" unique_id=821684263]
+unique_name_in_owner = true
+layout_mode = 2
+text = "暂无记忆录像"
+
+[node name="Video" type="SubViewportContainer" parent="Screen/Margin/Layout/Columns" unique_id=635248088]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+stretch = true
+
+[node name="Playback" type="SubViewport" parent="Screen/Margin/Layout/Columns/Video" unique_id=788391523]
+unique_name_in_owner = true
+handle_input_locally = false
+size = Vector2i(2, 2)
+render_target_update_mode = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1413286960]
+libraries/ = SubResource("AnimationLibrary_ornpi")
+
+[node name="MemoryOpenDoor" type="Control" parent="." unique_id=2090132346]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Door" type="Sprite2D" parent="MemoryOpenDoor" unique_id=231510657]
+position = Vector2(1048, 613)
+scale = Vector2(1.2109374, 4.484375)
+texture = ExtResource("2_7rwvc")
+
+[node name="Label" type="Label" parent="MemoryOpenDoor/Door" unique_id=1760794066]
+offset_left = -18.087
+offset_top = -13.425507
+offset_right = 21.913
+offset_bottom = 30.574493
+scale = Vector2(1, 0.3)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "门"
+
+[node name="KeyCard" type="Sprite2D" parent="MemoryOpenDoor" unique_id=715176091]
+position = Vector2(1804, 180.99998)
+scale = Vector2(0.41406262, 0.546875)
+texture = ExtResource("3_jpdbn")
+
+[node name="Label" type="Label" parent="MemoryOpenDoor/KeyCard" unique_id=18562575]
+offset_left = -48.301876
+offset_top = -18.285688
+offset_right = 31.698124
+offset_bottom = 25.714312
+scale = Vector2(1.3, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "门卡"

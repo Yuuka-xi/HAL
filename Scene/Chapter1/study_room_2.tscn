@@ -1,0 +1,290 @@
+[gd_scene format=3 uid="uid://dsldqq20jm680"]
+
+[ext_resource type="Script" uid="uid://du0ik4en35bog" path="res://Scene/Chapter1/study_room_2.gd" id="1_1njdv"]
+[ext_resource type="Resource" uid="uid://da66s0r8y51fm" path="res://Dialogue/Chapter1.dialogue" id="2_32efi"]
+[ext_resource type="Texture2D" uid="uid://crkeje15uc0um" path="res://Asset/WhiteBlock.png" id="3_qxrix"]
+[ext_resource type="Script" uid="uid://dwo4rtkee6e6v" path="res://Scene/Tool/perception_click/perception_click.gd" id="4_tptwy"]
+[ext_resource type="Texture2D" uid="uid://ca5idgyqvk611" path="res://Asset/YellowBlock.png" id="5_tptwy"]
+[ext_resource type="PackedScene" uid="uid://dmyuybmikxcc7" path="res://Scene/Chapter1/study_room_pc.tscn" id="6_pc"]
+[ext_resource type="Texture2D" uid="uid://7454mv4u3g4i" path="res://Asset/Pinkblock.png" id="7_pdgv6"]
+[ext_resource type="PackedScene" path="res://Scene/Tool/item_drop_target/item_drop_target.tscn" id="8_drop"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m4wl0"]
+size = Vector2(128, 128)
+
+[sub_resource type="Animation" id="Animation_tptwy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(184.50002, 719.5625)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Elliot:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_m4wl0"]
+resource_name = "elliot_close_door"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.1666666, 1.2666667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(184.50002, 719.5625), Vector2(184.50002, 719.5625), Vector2(397, 719.5625), Vector2(397, 719.5625)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Elliot:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6666667, 0.73333335, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, true, false, false]
+}
+
+[sub_resource type="Animation" id="Animation_pdgv6"]
+resource_name = "hal_open_door"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(397, 719.5625), Vector2(397, 719.5625), Vector2(192.00002, 719.5625)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pdgv6"]
+_data = {
+&"RESET": SubResource("Animation_tptwy"),
+&"elliot_close_door": SubResource("Animation_m4wl0"),
+&"hal_open_door": SubResource("Animation_pdgv6")
+}
+
+[node name="StudyRoom2" type="Node2D" unique_id=939539833]
+script = ExtResource("1_1njdv")
+dialogue = ExtResource("2_32efi")
+
+[node name="Door" type="Sprite2D" parent="." unique_id=1511944432]
+position = Vector2(184.50002, 719.5625)
+scale = Vector2(1.6328121, 5.727539)
+texture = ExtResource("3_qxrix")
+
+[node name="ItemDropTarget" parent="Door" unique_id=247481949 node_paths=PackedStringArray("dialogue_state") instance=ExtResource("8_drop")]
+dialogue = ExtResource("2_32efi")
+start_title = "use_key_card_on_door"
+dialogue_state = NodePath("../..")
+dialogue_state_name = "StudyRoom2"
+
+[node name="PerceptionClick" type="Area2D" parent="Door" unique_id=1036347835]
+scale = Vector2(0.99999994, 1)
+script = ExtResource("4_tptwy")
+dialogue = ExtResource("2_32efi")
+start_title = "observe_door"
+required_flag = "elliot_close_door"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/PerceptionClick" unique_id=1458723354]
+shape = SubResource("RectangleShape2D_m4wl0")
+
+[node name="Label" type="Label" parent="Door" unique_id=1015955440]
+offset_left = -18.087
+offset_top = -13.425507
+offset_right = 21.913
+offset_bottom = 30.574493
+scale = Vector2(1, 0.3)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "门"
+
+[node name="Elliot" type="Sprite2D" parent="." unique_id=1630145726]
+position = Vector2(388.00003, 850)
+scale = Vector2(0.60546887, 3.7070315)
+texture = ExtResource("5_tptwy")
+
+[node name="Label" type="Label" parent="Elliot" unique_id=1800977280]
+offset_left = -47.279285
+offset_top = -13.310228
+offset_right = 36.720715
+offset_bottom = 30.689772
+scale = Vector2(1.2, 0.24)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Elliot"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1656242460]
+libraries/ = SubResource("AnimationLibrary_pdgv6")
+
+[node name="BookShelf" type="Sprite2D" parent="." unique_id=1545835636]
+position = Vector2(1745, 641.5)
+scale = Vector2(2.734375, 6.9140625)
+texture = ExtResource("3_qxrix")
+
+[node name="Label" type="Label" parent="BookShelf" unique_id=702991033]
+offset_left = -36.937134
+offset_top = -55.611305
+offset_right = 43.062866
+offset_bottom = -11.611305
+scale = Vector2(1, 0.4)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "书架"
+
+[node name="StorageBox" type="Sprite2D" parent="." unique_id=1557082183]
+position = Vector2(1715, 952)
+scale = Vector2(1.5546875, 1.3359375)
+texture = ExtResource("5_tptwy")
+
+[node name="PerceptionClick" type="Area2D" parent="StorageBox" unique_id=1355604274]
+scale = Vector2(0.99999994, 1)
+script = ExtResource("4_tptwy")
+dialogue = ExtResource("2_32efi")
+start_title = "observe_storage_box"
+one_shot = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StorageBox/PerceptionClick" unique_id=524448135]
+shape = SubResource("RectangleShape2D_m4wl0")
+
+[node name="Label" type="Label" parent="StorageBox" unique_id=745167080]
+offset_left = -57.889473
+offset_top = -53.89475
+offset_right = 62.110527
+offset_bottom = 37.10525
+scale = Vector2(1, 1.2)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "储存盘
+收纳盒"
+
+[node name="Desk" type="Sprite2D" parent="." unique_id=818718368]
+position = Vector2(1178, 975.00006)
+scale = Vector2(4.2656245, 1.7578125)
+texture = ExtResource("3_qxrix")
+
+[node name="Label" type="Label" parent="Desk" unique_id=904271593]
+offset_left = -23.760483
+offset_top = -30.719992
+offset_right = 96.23952
+offset_bottom = 60.280006
+scale = Vector2(0.5, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "桌子"
+
+[node name="PC" type="Sprite2D" parent="." unique_id=2092021270]
+position = Vector2(1069, 773)
+scale = Vector2(1.484375, 0.87499976)
+texture = ExtResource("3_qxrix")
+
+[node name="PerceptionClick" type="Area2D" parent="PC" unique_id=1933836004 node_paths=PackedStringArray("dialogue_state")]
+scale = Vector2(0.99999994, 1)
+script = ExtResource("4_tptwy")
+dialogue = ExtResource("2_32efi")
+start_title = "observe_pc"
+dialogue_state = NodePath("../..")
+dialogue_state_name = "StudyRoom2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PC/PerceptionClick" unique_id=1633577734]
+shape = SubResource("RectangleShape2D_m4wl0")
+
+[node name="Label" type="Label" parent="PC" unique_id=575918545]
+offset_left = -30.476131
+offset_top = -24.115881
+offset_right = 89.523865
+offset_bottom = 66.88412
+scale = Vector2(0.5, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "台式机"
+
+[node name="StudyRoomPC" parent="." unique_id=1369670481 instance=ExtResource("6_pc")]
+visible = false
+
+[node name="Tulip" type="Sprite2D" parent="." unique_id=1630688574]
+position = Vector2(1346.75, 746)
+scale = Vector2(0.6445316, 1.6562499)
+texture = ExtResource("7_pdgv6")
+
+[node name="Label" type="Label" parent="Tulip" unique_id=632527619]
+offset_left = -55.46664
+offset_top = -4.8301888
+offset_right = 64.533356
+offset_bottom = 39.16981
+scale = Vector2(1, 0.5)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "郁金香"
+
+[node name="eve1" type="Sprite2D" parent="." unique_id=2094362646]
+position = Vector2(1713.3749, 757.5)
+scale = Vector2(1.5253916, 1.2109377)
+texture = ExtResource("7_pdgv6")
+
+[node name="Label" type="Label" parent="eve1" unique_id=264686564]
+offset_left = -50.068996
+offset_top = -39.2258
+offset_right = 126.931
+offset_bottom = 51.7742
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Eve的
+东西"
+
+[node name="eve3" type="Sprite2D" parent="." unique_id=659815291]
+position = Vector2(646.5, 1045)
+scale = Vector2(1.3828127, 0.48437545)
+texture = ExtResource("7_pdgv6")
+
+[node name="Label" type="Label" parent="eve3" unique_id=778298681]
+offset_left = -50.068996
+offset_top = -39.2258
+offset_right = 126.931
+offset_bottom = 51.7742
+scale = Vector2(0.5, 1.25)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "hal的充电桩"
+
+[node name="eve2" type="Sprite2D" parent="." unique_id=30220602]
+position = Vector2(980.6875, 375.75)
+scale = Vector2(4.9580083, 2.7382815)
+texture = ExtResource("7_pdgv6")
+
+[node name="Label" type="Label" parent="eve2" unique_id=1939066447]
+offset_left = -44.30963
+offset_top = -25.47218
+offset_right = 289.69037
+offset_bottom = 65.52782
+scale = Vector2(0.3, 0.6)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "窗户/eve选的窗帘/
+eve的装饰画"

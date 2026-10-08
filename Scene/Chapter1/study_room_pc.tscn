@@ -1,0 +1,268 @@
+[gd_scene format=3 uid="uid://dmyuybmikxcc7"]
+
+[ext_resource type="Script" uid="uid://b5uq44uld6hko" path="res://Scene/Chapter1/study_room_pc.gd" id="1_3vqkb"]
+[ext_resource type="Texture2D" uid="uid://crkeje15uc0um" path="res://Asset/WhiteBlock.png" id="1_hsdq5"]
+[ext_resource type="Texture2D" uid="uid://ca5idgyqvk611" path="res://Asset/YellowBlock.png" id="2_xcp1h"]
+[ext_resource type="Script" uid="uid://dwo4rtkee6e6v" path="res://Scene/Tool/perception_click/perception_click.gd" id="3_3vqkb"]
+[ext_resource type="Resource" uid="uid://da66s0r8y51fm" path="res://Dialogue/Chapter1.dialogue" id="4_wrof7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_37jyc"]
+size = Vector2(128, 128)
+
+[sub_resource type="Animation" id="Animation_3vqkb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ComputerCase/MemoryStorageDrive:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.7565155, 18.70935)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ComputerCase/MemoryStorageDrive:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.85579205, 0.07750622)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ComputerCase/MemoryStorageDrive:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_37jyc"]
+resource_name = "hal_get_memory_storage_drive"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ComputerCase/MemoryStorageDrive:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.7565155, 33.914066), Vector2(367.96228, -10.783485)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ComputerCase/MemoryStorageDrive:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.85579205, 0.122999035), Vector2(3.1205676, 0.61331105), Vector2(3.1205676, 0.61331105)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ComputerCase/MemoryStorageDrive:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.99, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_wrof7"]
+resource_name = "open_disc_reader"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ComputerCase/MemoryStorageDrive:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.7565155, 18.70935), Vector2(0.7565155, 33.914066)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ComputerCase/MemoryStorageDrive:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.85579205, 0.07750622), Vector2(0.85579205, 0.122999035)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ComputerCase/MemoryStorageDrive:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_37jyc"]
+_data = {
+&"RESET": SubResource("Animation_3vqkb"),
+&"hal_get_memory_storage_drive": SubResource("Animation_37jyc"),
+&"open_disc_reader": SubResource("Animation_wrof7")
+}
+
+[node name="StudyRoomPC" type="Node2D" unique_id=1545881416]
+z_index = 10
+script = ExtResource("1_3vqkb")
+dialogue = ExtResource("4_wrof7")
+
+[node name="Background" type="Polygon2D" parent="." unique_id=1685663404]
+color = Color(0.035, 0.045, 0.06, 1)
+polygon = PackedVector2Array(0, 0, 1920, 0, 1920, 1080, 0, 1080)
+
+[node name="PCScreen" type="Sprite2D" parent="." unique_id=1137778741]
+position = Vector2(1024, 552)
+scale = Vector2(6.7734385, 3.9765627)
+texture = ExtResource("1_hsdq5")
+
+[node name="Label" type="Label" parent="PCScreen" unique_id=46140053]
+offset_left = -20.816626
+offset_top = -24.141466
+offset_right = 139.18338
+offset_bottom = 66.858536
+scale = Vector2(0.3, 0.6)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "电脑屏幕"
+
+[node name="ComputerCase" type="Sprite2D" parent="." unique_id=1009494296]
+position = Vector2(405.99976, 588)
+scale = Vector2(1.6523438, 4.6367188)
+texture = ExtResource("1_hsdq5")
+
+[node name="Label" type="Label" parent="ComputerCase" unique_id=922185756]
+offset_left = -49.17257
+offset_top = -46.422913
+offset_right = 110.82743
+offset_bottom = 44.577087
+scale = Vector2(1, 0.5)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "主机"
+
+[node name="NetworkCard" type="Sprite2D" parent="ComputerCase" unique_id=1689452974]
+position = Vector2(1.059113, -11.2687435)
+scale = Vector2(0.8593382, 0.092249356)
+texture = ExtResource("2_xcp1h")
+
+[node name="Label" type="Label" parent="ComputerCase/NetworkCard" unique_id=732628630]
+offset_left = -33.100403
+offset_top = -46.758
+offset_right = 46.899597
+offset_bottom = -2.7579994
+scale = Vector2(1, 3)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "网卡"
+
+[node name="MemoryStorageDrive" type="Sprite2D" parent="ComputerCase" unique_id=796784738]
+visible = false
+position = Vector2(0.7565155, 18.70935)
+scale = Vector2(0.85579205, 0.07750622)
+texture = ExtResource("2_xcp1h")
+
+[node name="Label" type="Label" parent="ComputerCase/MemoryStorageDrive" unique_id=1237785816]
+offset_left = -49.85636
+offset_top = -28.93152
+offset_right = 150.14365
+offset_bottom = 15.06848
+scale = Vector2(0.5, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "记忆储存盘"
+
+[node name="PerceptionClick" type="Area2D" parent="ComputerCase/MemoryStorageDrive" unique_id=2027972199 node_paths=PackedStringArray("dialogue_state")]
+script = ExtResource("3_3vqkb")
+dialogue = ExtResource("4_wrof7")
+start_title = "take_memory_storage_drive"
+one_shot = true
+required_flag = "disc_reader_open"
+dialogue_state = NodePath("../../..")
+dialogue_state_name = "StudyRoomPC"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ComputerCase/MemoryStorageDrive/PerceptionClick" unique_id=157460709]
+shape = SubResource("RectangleShape2D_37jyc")
+
+[node name="DiscReader" type="Sprite2D" parent="ComputerCase" unique_id=723283770]
+position = Vector2(0.45391208, 18.925024)
+scale = Vector2(0.8593382, 0.092249356)
+texture = ExtResource("1_hsdq5")
+
+[node name="PerceptionClick" type="Area2D" parent="ComputerCase/DiscReader" unique_id=232473488 node_paths=PackedStringArray("dialogue_state")]
+scale = Vector2(0.99999994, 1)
+script = ExtResource("3_3vqkb")
+dialogue = ExtResource("4_wrof7")
+start_title = "observe_disc_reader"
+one_shot = true
+dialogue_state = NodePath("../../..")
+dialogue_state_name = "StudyRoomPC"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ComputerCase/DiscReader/PerceptionClick" unique_id=1254248160]
+shape = SubResource("RectangleShape2D_37jyc")
+
+[node name="Label" type="Label" parent="ComputerCase/DiscReader" unique_id=172077346]
+offset_left = -54.932587
+offset_top = -58.4475
+offset_right = 65.06741
+offset_bottom = -14.447498
+scale = Vector2(1, 3)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "读盘器"
+
+[node name="Desk" type="Sprite2D" parent="." unique_id=877590408]
+position = Vector2(962.9999, 1003.99994)
+scale = Vector2(15.0625, 1.359375)
+texture = ExtResource("1_hsdq5")
+
+[node name="Label" type="Label" parent="Desk" unique_id=1448155547]
+offset_left = -2.522812
+offset_top = -14.712584
+offset_right = 117.47719
+offset_bottom = 76.287415
+scale = Vector2(0.1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "桌子"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1082565069]
+libraries/ = SubResource("AnimationLibrary_37jyc")
+
+[node name="Back" type="Button" parent="." unique_id=1301203317]
+offset_left = 1650.0
+offset_top = 24.0
+offset_right = 1880.0
+offset_bottom = 80.0
+text = "返回书房"

@@ -7,7 +7,7 @@ const MENU_SCENE := "res://Scene/main/main_menu.tscn"
 # 按关卡顺序添加完成标记和场景；读档进入第一个未完成的关卡。
 const LEVELS := {
 	"beginnerguide_completed": "res://Scene/BeginnersGuide/beginners_guide.tscn",
-	"chapter1_completed": "res://Scene/Chapter1/study_room_1.tscn",
+	"chapter1_completed": "res://Scene/Chapter1/study_room_2.tscn",
 }
 const SAVE_DIRECTORY := "user://saves/"
 var current_slot := 1
@@ -59,6 +59,8 @@ func return_to_menu() -> void:
 	await get_tree().process_frame
 	WorkLog.reset()
 	Attributes.reset()
+	Memory.reset()
+	Inventory.reset()
 	get_tree().change_scene_to_file(MENU_SCENE)
 
 func save_game(slot: int = current_slot) -> Error:

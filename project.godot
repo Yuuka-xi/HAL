@@ -28,6 +28,8 @@ SceneTransition="*res://Scene/Tool/scene_transition/scene_transition.tscn"
 SettingsMenu="*res://ui/settings/settings_menu.tscn"
 WorkLog="*res://Scene/WorkLog/work_log.tscn"
 Attributes="*res://Scene/Attributes/attributes_ui.tscn"
+Memory="*res://Scene/Memory/memory.tscn"
+Inventory="*res://Scene/Inventory/inventory.tscn"
 
 [dialogue_manager]
 
@@ -37,11 +39,10 @@ runtime/balloon_path="res://Dialogue/DialogueBallon/balloon.tscn"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/resizable=false
 window/size/window_width_override=1280
 window/size/window_height_override=720
-window/size/resizable=false
 window/stretch/mode="canvas_items"
-window/stretch/aspect="keep"
 
 [editor_plugins]
 

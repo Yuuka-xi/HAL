@@ -16,6 +16,7 @@ var target := "query"
 var keyword_effect = preload("res://Dialogue/DialogueBallon/keyword_effect.gd").new()
 
 @onready var screen: Control = %Screen
+@onready var default_notice: String = %Notice.text
 
 func _ready() -> void:
 	keyword_effect.label = %Result
@@ -55,6 +56,8 @@ func close() -> void:
 	screen.hide()
 	$Open.show()
 	Attributes.set_navigation(true)
+	Memory.set_navigation(true)
+	Inventory.set_navigation(true)
 	closed.emit()
 
 func set_navigation(enabled: bool) -> void:
@@ -78,6 +81,8 @@ func get_collection_target() -> Control:
 	return %KeywordList if screen.visible else $Open
 
 func _show() -> void:
+	Inventory.set_navigation(false)
+	Memory.set_navigation(false)
 	Attributes.set_navigation(false)
 	$Open.hide()
 	screen.show()
@@ -156,15 +161,20 @@ func _search() -> void:
 	%Search.disabled = true
 	searching = true
 	var texts: PackedStringArray = []
+	var notices: PackedStringArray = []
 	var line = await keyword_dialogue.get_next_dialogue_line(title)
 	while line != null:
 		if session != SaveManager.session_id:
 			return
-		texts.append(line.text)
+		if "notice" in line.tags:
+			notices.append(line.text)
+		else:
+			texts.append(line.text)
 		line = await keyword_dialogue.get_next_dialogue_line(line.next_id)
 	if session != SaveManager.session_id:
 		return
 	%Result.text = keyword_effect.prepare("\n".join(texts))
+	%Notice.text = _format_notice("\n".join(notices) if not notices.is_empty() else default_notice)
 	%Notice.show()
 	%Close.disabled = true
 	%Confirm.disabled = true
@@ -175,6 +185,13 @@ func _search() -> void:
 	_update_answer()
 	%Search.disabled = false
 	searching = false
+
+# 查询中带 [#notice] 的文字显示在提示区；关键词只高亮，不重复收录。
+func _format_notice(text: String) -> String:
+	var pattern := RegEx.create_from_string("\\[kw=([^\\]]+)\\]")
+	for token in pattern.search_all(text):
+		text = text.replace(token.get_string(), "[color=#ffd479]%s[/color]" % KeywordData.NAMES[token.get_string(1)])
+	return text
 
 func _confirm() -> void:
 	var ids := answer.duplicate()

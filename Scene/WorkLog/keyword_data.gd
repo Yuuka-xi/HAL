@@ -8,20 +8,11 @@ const NAMES = {
 	"household_robot": "家务机器人",
 	"owner": "拥有者",
 	# 关卡1
-	"mobile_module": "移动模块",
-	"large_cart": "大推车",
-	"strength_limit": "力量限制",
-	"eve": "Eve",
-	"impact": "撞击",
-	"auto_bookcase": "自动书柜",
-	"switch": "开关",
-	"fallen_book": "掉落的书本",
-	"secure": "牢固",
-	"wind": "风",
-	"window": "窗户",
-	"delivery_box": "快递箱",
-	"open_window": "打开窗户",
-	"weight": "重量"
+	"memory_storage_drive": "记忆储存盘",
+	"storage_box": "储存盘收纳盒",
+	"model": "42",
+	"pc": "台式机",
+	"disc_reader": "读盘器"
 }
 
 # 双词组合按编号排序，用 + 连接；值是 .dialogue 中的入口标题。
@@ -34,20 +25,12 @@ const ENTRIES = {
 	"household_robot": "robot_info",
 	"owner": "owner_info",
 	# 关卡1
-	"mobile_module": "mobile_module_info",
-	"large_cart": "large_cart_info",
-	"strength_limit": "strength_limit_info",
-	"eve": "eve_info",
-	"impact": "impact_info",
-	"auto_bookcase": "auto_bookcase_info",
-	"switch": "switch_info",
-	"fallen_book": "fallen_book_info",
-	"secure": "secure_info",
-	"wind": "wind_info",
-	"window": "window_info",
-	"delivery_box": "delivery_box_info",
-	"open_window": "open_window_info",
-	"weight": "weight_info",
-	"delivery_box+secure": "delivery_box_secure_info",
-	"large_cart+weight": "large_cart_weight_info"
+	"memory_storage_drive": "memory_storage_drive_info",
+	"storage_box": "storage_box_info",
+	"model": "model_info",
+	"pc": "pc_info",
+	"disc_reader": "disc_reader_info",
+	"memory_storage_drive+storage_box": "memory_storage_drive_storage_box_info",
+	"model+pc": "model_pc_info",
+	"hal+memory_storage_drive": "hal_memory_storage_drive_info"
 }

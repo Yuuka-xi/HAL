@@ -25,78 +25,39 @@ Elliot 是 hal 的[kw=owner]。
 => END
 
 # Chapter1
-~ mobile_module_info
-足够靠近hal时会解除hal的[kw=strength_limit]。
-=> END
-
-~ strength_limit_info
-hal的移动模块拥有解除力量限制功能。
-=> END
-
-~ large_cart_info
-是手推车的一种。
-if GameState.get_attribute("social") >= 1:
-	由[kw=eve]命名。
-=> END
-
-~ eve_info
-女主人。
-=> END
-
-~ impact_info
-移动模块与大推车碰撞时发生的撞击。
-=> END
-
-~ auto_bookcase_info
-自动书柜的同等高度右侧有用力撞击可以触发的[kw=switch]
-=> END
-
-~ switch_info
-if GameState.get_flag("large_cart_switch") and GameState.get_flag("auto_bookcase_switch"):
-	思考: 经过回忆，开关一般位于右侧。用力撞击大推车右侧的开关，就能解锁。
-	do GameState.set_flag("switch_can_open", true)
-elif GameState.get_flag("large_cart_switch"):
-	思考: 问题是，大推车的开关要怎么解锁呢
+~ memory_storage_drive_info
+if GameState.get_flag("memory_storage_drive_content_changed"):
+	记忆储存盘的型号为[kw=model]
 else:
-	自动书柜的开关
+	记忆存储盘的盘片外形为……用途为……
 => END
 
-~ fallen_book_info
-掉落的书不是很[kw=secure]
+~ hal_memory_storage_drive_info
+记忆储存盘的最后读写记录就在书房
+=> END!
+
+~ storage_box_info
+收纳盒中没有东西，真奇怪，Elliot一直是一个井井有条的人。回忆一下Elliot会把储存盘放在哪里吧。
 => END
 
-~ secure_info
-牢固的意思就是牢固
+~ pc_info
+Elliot的台式机。
 => END
 
-~ delivery_box_secure_info
-快递箱的开口看着并不牢固，[kw=wind]一吹就会打开的样子
+~ memory_storage_drive_storage_box_info
+如果收纳盒中没有，那么只有可能在别的机器中使用。
+do GameState.set_flag("memory_storage_drive_content_changed", true)
+[kw=memory_storage_drive]的调用内容发生改变。 [#notice]
 => END
 
-~ wind_info
-Elliot不喜欢书房[kw=window]，风总是很大
+~ model_pc_info
+台式机的系统正好兼容记忆储存器，或许应该去台式机的中看看。
 => END
 
-~ window_info
-身后就是窗户，我可以[kw=open_window]
+~ disc_reader_info
+关于读盘器的信息
 => END
 
-~ delivery_box_info
-快递箱里似乎有什么东西
+~ model_info
+记忆存储盘的型号为42
 => END
-
-~ open_window_info
-窗户在我的视野盲区，但是我可以打开它
-=> END
-
-~ weight_info
-重量不是导致无法移动的原因
-=> END
-
-~ large_cart_weight_info
-思考: 大推车拥有自动上锁功能，问题是，锁的[kw=switch]在哪里？
-do GameState.set_flag("large_cart_switch", true)
-if GameState.get_flag("large_cart_switch") and GameState.get_flag("auto_bookcase_switch"):
-	提示: [kw=switch]的压缩内容发生改变
-=> END
-
