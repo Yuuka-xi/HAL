@@ -6,6 +6,8 @@ extends Area2D
 @export var required_flag := ""
 @export var dialogue_state: Node
 @export var dialogue_state_name := ""
+@export var click_animation_player: AnimationPlayer
+@export var click_animation: StringName = &""
 
 var busy := false
 var used := false
@@ -20,6 +22,8 @@ func _input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		get_viewport().set_input_as_handled()
 		busy = true
+		if click_animation_player != null and not click_animation.is_empty():
+			click_animation_player.play(click_animation)
 		var states: Array = []
 		if dialogue_state != null:
 			states.append({dialogue_state_name: dialogue_state})

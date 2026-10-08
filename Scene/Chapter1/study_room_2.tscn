@@ -5,11 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://8p5nmmhfel37" path="res://Asset/studyroom/background.png" id="3_an3b1"]
 [ext_resource type="Texture2D" uid="uid://ce85b32v36g7s" path="res://Asset/studyroom/wall.png" id="4_h1g4l"]
 [ext_resource type="Script" uid="uid://dwo4rtkee6e6v" path="res://Scene/Tool/perception_click/perception_click.gd" id="4_tptwy"]
-[ext_resource type="Texture2D" uid="uid://bjlj3a6codv4o" path="res://Asset/studyroom/door.png" id="5_lxdqs"]
+[ext_resource type="Texture2D" uid="uid://chc5gm0cvanq" path="res://Asset/studyroom/door.png" id="5_lxdqs"]
 [ext_resource type="PackedScene" uid="uid://dmyuybmikxcc7" path="res://Scene/Chapter1/study_room_pc.tscn" id="6_pc"]
 [ext_resource type="Texture2D" uid="uid://cn30vjdjhexx0" path="res://Asset/studyroom/elliot.png" id="8_7fidx"]
 [ext_resource type="PackedScene" path="res://Scene/Tool/item_drop_target/item_drop_target.tscn" id="8_drop"]
 [ext_resource type="Texture2D" uid="uid://cwhwk73nr72rd" path="res://Asset/studyroom/bookshelf.png" id="9_7fidx"]
+[ext_resource type="Texture2D" uid="uid://brjj5po4vy5dr" path="res://Asset/studyroom/DoorHandle.png" id="9_q63yh"]
 [ext_resource type="Texture2D" uid="uid://b5f1efusho52d" path="res://Asset/studyroom/curtain.png" id="9_qmr0i"]
 [ext_resource type="Texture2D" uid="uid://ckfkvb8cptwqu" path="res://Asset/studyroom/PC.png" id="12_q63yh"]
 [ext_resource type="Texture2D" uid="uid://rjkoxe47o3v3" path="res://Asset/studyroom/tulip.png" id="13_nj0vu"]
@@ -20,6 +21,43 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pimtm"]
 size = Vector2(711.98914, 1642.4517)
+
+[sub_resource type="Animation" id="Animation_nj0vu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DoorHandle:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_rl1os"]
+resource_name = "click_door"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DoorHandle:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 1.0666667, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.74368334, 0.66675854, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ucsqa"]
+_data = {
+&"RESET": SubResource("Animation_nj0vu"),
+&"click_door": SubResource("Animation_rl1os")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k45oy"]
 size = Vector2(131.21619, 93.56739)
@@ -139,6 +177,7 @@ scale = Vector2(0.47756916, 0.49984264)
 texture = ExtResource("5_lxdqs")
 
 [node name="ItemDropTarget" parent="Door" unique_id=247481949 node_paths=PackedStringArray("dialogue_state") instance=ExtResource("8_drop")]
+visible = false
 position = Vector2(129.23093, -38.350185)
 scale = Vector2(-5.573367, 12.823303)
 dialogue = ExtResource("2_32efi")
@@ -147,6 +186,7 @@ dialogue_state = NodePath("../..")
 dialogue_state_name = "StudyRoom2"
 
 [node name="PerceptionClick" type="Area2D" parent="Door" unique_id=1036347835]
+visible = false
 scale = Vector2(0.99999994, 1)
 script = ExtResource("4_tptwy")
 dialogue = ExtResource("2_32efi")
@@ -156,6 +196,14 @@ required_flag = "elliot_close_door"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door/PerceptionClick" unique_id=443087293]
 position = Vector2(128.25568, -38.35022)
 shape = SubResource("RectangleShape2D_pimtm")
+
+[node name="DoorHandle" type="Sprite2D" parent="Door" unique_id=1163537994]
+position = Vector2(366.4391, 190.05984)
+scale = Vector2(0.99180675, 0.9918066)
+texture = ExtResource("9_q63yh")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Door" unique_id=732269686]
+libraries/ = SubResource("AnimationLibrary_ucsqa")
 
 [node name="Elliot" type="Sprite2D" parent="." unique_id=1630145726]
 visible = false
