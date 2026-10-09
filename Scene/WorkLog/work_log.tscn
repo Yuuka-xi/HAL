@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://daqjqfeccgxib"]
 
+[ext_resource type="PackedScene" path="res://Scene/Tool/hover_scale/hover_scale.tscn" id="90_hover"]
+
 [ext_resource type="Script" uid="uid://blqm7ykq1hoyu" path="res://Scene/WorkLog/work_log.gd" id="1"]
 [ext_resource type="Resource" uid="uid://bhcvrfvjsbw8r" path="res://Dialogue/BeginnersGuide.dialogue" id="2"]
 [ext_resource type="Resource" uid="uid://cgip8sxcerqjt" path="res://Dialogue/KeywordInfo.dialogue" id="3_keywords"]
@@ -190,3 +192,5 @@ unique_name_in_owner = true
 layout_mode = 2
 disabled = true
 text = "确认回答"
+
+[node name="HoverScale" parent="Open" instance=ExtResource("90_hover")]

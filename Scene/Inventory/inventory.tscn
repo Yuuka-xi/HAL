@@ -1,129 +1,148 @@
 [gd_scene format=3 uid="uid://b4k7g6trtgg2o"]
 
 [ext_resource type="Script" uid="uid://74fb0hosybgv" path="res://Scene/Inventory/inventory.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://t6ysuoe3m65h" path="res://Asset/UI/inventory.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://dmqrnhwhv8b2" path="res://Asset/Items/keycard.png" id="2_ai68l"]
+[ext_resource type="Texture2D" uid="uid://bslsst3hmi66c" path="res://Asset/UI/invertory2.png" id="3"]
+[ext_resource type="PackedScene" path="res://Scene/Tool/hover_scale/hover_scale.tscn" id="90_hover"]
 
-[sub_resource type="Theme" id="Theme"]
-default_font_size = 24
+[sub_resource type="StyleBoxEmpty" id="Empty"]
 
-[sub_resource type="StyleBoxFlat" id="PanelStyle"]
-bg_color = Color(0.035, 0.045, 0.06, 1)
-border_width_left = 2
-border_color = Color(0.35, 0.38, 0.42, 1)
-
-[sub_resource type="StyleBoxFlat" id="SlotStyle"]
-bg_color = Color(0.02, 0.025, 0.03, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.35, 0.38, 0.42, 1)
-
-[sub_resource type="StyleBoxFlat" id="SelectedStyle"]
-bg_color = Color(0.12, 0.1, 0.06, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(1, 0.83, 0.47, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ai68l"]
 
 [sub_resource type="Theme" id="SlotTheme"]
 default_font_size = 24
-Button/styles/disabled = SubResource("SlotStyle")
-Button/styles/hover = SubResource("SlotStyle")
-Button/styles/hover_pressed = SubResource("SelectedStyle")
-Button/styles/normal = SubResource("SlotStyle")
-Button/styles/pressed = SubResource("SelectedStyle")
+Button/colors/font_color = Color(1, 0.94, 0.8, 1)
+Button/styles/disabled = SubResource("Empty")
+Button/styles/focus = SubResource("Empty")
+Button/styles/hover = SubResource("Empty")
+Button/styles/hover_pressed = SubResource("Empty")
+Button/styles/normal = SubResource("StyleBoxEmpty_ai68l")
+Button/styles/pressed = SubResource("Empty")
 
 [node name="Inventory" type="CanvasLayer" unique_id=128616207]
-layer = 15
+layer = 40
 script = ExtResource("1")
+item_icons = Dictionary[String, Texture2D]({
+"key_card": ExtResource("2_ai68l")
+})
 
 [node name="Dock" type="Control" parent="." unique_id=1798021066]
 unique_name_in_owner = true
-visible = false
 layout_mode = 3
-anchors_preset = 6
+anchors_preset = 1
 anchor_left = 1.0
-anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -360.0
-offset_bottom = 360.0
+offset_left = -200.0
+offset_top = 16.0
+offset_right = -20.0
+offset_bottom = 861.0
 grow_horizontal = 0
-grow_vertical = 2
 mouse_filter = 2
-theme = SubResource("Theme")
 
-[node name="Drawer" type="Control" parent="Dock" unique_id=525830320]
+[node name="DrawerClip" type="Control" parent="Dock" unique_id=675432308]
+clip_contents = true
+anchors_preset = 0
+offset_left = 61.0
+offset_top = 110.0
+offset_right = 180.0
+offset_bottom = 821.0
+mouse_filter = 2
+
+[node name="Drawer" type="Control" parent="Dock/DrawerClip" unique_id=525830320]
 unique_name_in_owner = true
 anchors_preset = 0
-offset_right = 180.0
-offset_bottom = 720.0
+offset_top = -494.0
+offset_right = 120.0
 mouse_filter = 2
 
-[node name="Background" type="Panel" parent="Dock/Drawer" unique_id=1704128144]
-layout_mode = 0
+[node name="Background" type="TextureRect" parent="Dock/DrawerClip/Drawer" unique_id=1704128144]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_styles/panel = SubResource("PanelStyle")
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3")
+expand_mode = 1
 
-[node name="Slots" type="VBoxContainer" parent="Dock/Drawer" unique_id=1865343314]
+[node name="Slots" type="VBoxContainer" parent="Dock/DrawerClip/Drawer" unique_id=1865343314]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 16.0
-offset_top = 20.0
-offset_right = 164.0
-offset_bottom = 700.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 22.0
+offset_right = -16.0
+offset_bottom = -95.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = SubResource("SlotTheme")
-theme_override_constants/separation = 12
+theme_override_constants/separation = 8
 
-[node name="Slot1" type="Button" parent="Dock/Drawer/Slots" unique_id=1442873715]
+[node name="Slot1" type="Button" parent="Dock/DrawerClip/Drawer/Slots" unique_id=1442873715]
 layout_mode = 2
 size_flags_vertical = 3
 toggle_mode = true
+icon_alignment = 1
 expand_icon = true
 
-[node name="Slot2" type="Button" parent="Dock/Drawer/Slots" unique_id=856454396]
+[node name="Slot2" type="Button" parent="Dock/DrawerClip/Drawer/Slots" unique_id=856454396]
 layout_mode = 2
 size_flags_vertical = 3
 toggle_mode = true
+icon_alignment = 1
 expand_icon = true
 
-[node name="Slot3" type="Button" parent="Dock/Drawer/Slots" unique_id=1008701147]
+[node name="Slot3" type="Button" parent="Dock/DrawerClip/Drawer/Slots" unique_id=1008701147]
 layout_mode = 2
 size_flags_vertical = 3
 toggle_mode = true
+icon_alignment = 1
 expand_icon = true
 
-[node name="Slot4" type="Button" parent="Dock/Drawer/Slots" unique_id=1050782001]
+[node name="Slot4" type="Button" parent="Dock/DrawerClip/Drawer/Slots" unique_id=1050782001]
 layout_mode = 2
 size_flags_vertical = 3
 toggle_mode = true
+icon_alignment = 1
 expand_icon = true
 
-[node name="Slot5" type="Button" parent="Dock/Drawer/Slots" unique_id=937440868]
+[node name="Slot5" type="Button" parent="Dock/DrawerClip/Drawer/Slots" unique_id=937440868]
 layout_mode = 2
 size_flags_vertical = 3
 toggle_mode = true
+icon_alignment = 1
 expand_icon = true
 
-[node name="Slot6" type="Button" parent="Dock/Drawer/Slots" unique_id=1296659287]
-layout_mode = 2
-size_flags_vertical = 3
-toggle_mode = true
-expand_icon = true
-
-[node name="Toggle" type="Button" parent="Dock/Drawer" unique_id=873815660]
+[node name="Toggle" type="TextureButton" parent="Dock" unique_id=873815660]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = -44.0
-offset_top = 328.0
-offset_bottom = 392.0
-text = "◀"
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -108.00006
+offset_right = -11.157959
+offset_bottom = 92.0
+grow_horizontal = 0
+texture_normal = ExtResource("2")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="HoverScale" parent="Dock/Toggle" unique_id=451605928 instance=ExtResource("90_hover")]
 
 [node name="DragItem" type="Button" parent="." unique_id=1568429076]
 unique_name_in_owner = true
-visible = false
 mouse_filter = 2
 theme = SubResource("SlotTheme")
+icon_alignment = 1
 expand_icon = true
+
+[node name="ItemName" type="Label" parent="." unique_id=1842646565]
+unique_name_in_owner = true
+visible = false
+theme_override_colors/font_color = Color(1, 0.94, 0.8, 1)
+theme_override_font_sizes/font_size = 30
+text = "门卡"

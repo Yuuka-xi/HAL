@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://2hqs577hq43j" path="res://ui/settings/settings_menu.gd" id="1_jwxja"]
 [ext_resource type="Texture2D" uid="uid://c1qwy5ihl5vsd" path="res://Asset/UI/setting.png" id="2_a66ha"]
+[ext_resource type="PackedScene" path="res://Scene/Tool/hover_scale/hover_scale.tscn" id="3_5fsn8"]
 
 [node name="SettingsMenu" type="CanvasLayer" unique_id=1661374043]
 process_mode = 3
@@ -16,6 +17,8 @@ offset_right = 246.0
 offset_bottom = 235.0
 scale = Vector2(0.37, 0.37)
 texture_normal = ExtResource("2_a66ha")
+
+[node name="HoverScale" parent="Open" unique_id=1210683562 instance=ExtResource("3_5fsn8")]
 
 [node name="Backdrop" type="ColorRect" parent="." unique_id=871670399]
 anchors_preset = 15

@@ -31,6 +31,7 @@ func refresh_navigation() -> void:
 	WorkLog.get_node("Open").visible = not page_open and GameState.get_flag("worklog_enabled")
 	Attributes.get_node("Open").visible = not page_open and GameState.get_flag("attributes_enabled")
 	Memory.get_node("Open").visible = not page_open and GameState.get_flag("memory_installed")
+	Inventory.set_navigation(not page_open)
 
 
 func _input(event: InputEvent) -> void:

@@ -1,0 +1,131 @@
+[gd_scene format=3 uid="uid://cpftkw2i54dsd"]
+
+[ext_resource type="Texture2D" uid="uid://crkeje15uc0um" path="res://Asset/WhiteBlock.png" id="1_qfro3"]
+[ext_resource type="Texture2D" uid="uid://ca5idgyqvk611" path="res://Asset/YellowBlock.png" id="2_dw4lw"]
+[ext_resource type="Texture2D" uid="uid://7454mv4u3g4i" path="res://Asset/Pinkblock.png" id="3_j3xre"]
+
+[node name="LivingRoom" type="Node2D" unique_id=809928177]
+
+[node name="door_graden" type="Node2D" parent="." unique_id=1075070305]
+position = Vector2(-19, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="door_graden" unique_id=1792074770]
+position = Vector2(175.00002, 672)
+scale = Vector2(1.7031248, 6.34375)
+texture = ExtResource("1_qfro3")
+
+[node name="Label" type="Label" parent="door_graden" unique_id=1683681076]
+offset_left = 132.0
+offset_top = 588.0
+offset_right = 212.0
+offset_bottom = 726.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "通往
+花园
+的门"
+
+[node name="door_studyroom" type="Node2D" parent="." unique_id=2062693594]
+position = Vector2(932, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="door_studyroom" unique_id=1125164149]
+position = Vector2(176.49998, 672)
+scale = Vector2(1.7265618, 6.34375)
+texture = ExtResource("1_qfro3")
+
+[node name="Label" type="Label" parent="door_studyroom" unique_id=1097327214]
+offset_left = 143.0
+offset_top = 590.0
+offset_right = 223.0
+offset_bottom = 728.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "通往
+书房
+的门"
+
+[node name="door_wc" type="Node2D" parent="." unique_id=1316803149]
+position = Vector2(1248, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="door_wc" unique_id=1756809411]
+position = Vector2(176.49998, 672)
+scale = Vector2(1.7265618, 6.34375)
+texture = ExtResource("1_qfro3")
+
+[node name="Label" type="Label" parent="door_wc" unique_id=606831225]
+offset_left = 131.0
+offset_top = 590.0
+offset_right = 251.0
+offset_bottom = 728.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "通往
+卫生间
+的门"
+
+[node name="door_bedroom" type="Node2D" parent="." unique_id=707816966]
+position = Vector2(1557, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="door_bedroom" unique_id=2070037028]
+position = Vector2(176.49998, 672)
+scale = Vector2(1.7265618, 6.34375)
+texture = ExtResource("1_qfro3")
+
+[node name="Label" type="Label" parent="door_bedroom" unique_id=1915147895]
+offset_left = 131.0
+offset_top = 590.0
+offset_right = 251.0
+offset_bottom = 728.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "通往
+卧室
+的门"
+
+[node name="sofa" type="Node2D" parent="." unique_id=2130628676]
+
+[node name="Sprite2D" type="Sprite2D" parent="sofa" unique_id=130465500]
+position = Vector2(618, 954)
+scale = Vector2(3.046875, 1.8593752)
+texture = ExtResource("1_qfro3")
+
+[node name="Label" type="Label" parent="sofa" unique_id=267882811]
+offset_left = 458.0
+offset_top = 898.0
+offset_right = 609.0
+offset_bottom = 942.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "沙发"
+
+[node name="elliot" type="Node2D" parent="." unique_id=719867742]
+
+[node name="Sprite2D" type="Sprite2D" parent="elliot" unique_id=1970815999]
+position = Vector2(623, 811.5)
+scale = Vector2(0.97656274, 3.0390627)
+texture = ExtResource("2_dw4lw")
+
+[node name="Label" type="Label" parent="elliot" unique_id=876486505]
+offset_left = 587.0
+offset_top = 749.0
+offset_right = 738.0
+offset_bottom = 793.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Elliot"
+
+[node name="table" type="Node2D" parent="." unique_id=230901218]
+
+[node name="Sprite2D" type="Sprite2D" parent="table" unique_id=1706988592]
+position = Vector2(728.5625, 976.5)
+scale = Vector2(3.006836, 0.5859371)
+texture = ExtResource("3_j3xre")
+
+[node name="Label" type="Label" parent="table" unique_id=1651236511]
+offset_left = 688.0
+offset_top = 958.0
+offset_right = 839.0
+offset_bottom = 1002.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "茶几"

@@ -20,6 +20,8 @@ func _ready() -> void:
 	for index in slots.size():
 		slots[index].pressed.connect(_select.bind(index))
 		slots[index].gui_input.connect(_slot_input.bind(index))
+		slots[index].mouse_entered.connect(_show_item_name.bind(index))
+		slots[index].mouse_exited.connect(%ItemName.hide)
 	GameState.campaign_changed.connect(_refresh)
 	_refresh()
 
@@ -52,21 +54,21 @@ func reset() -> void:
 	dragging = false
 	busy = false
 	%DragItem.hide()
+	%ItemName.hide()
 	expanded = false
 	selected_item = ""
-	%Drawer.position.x = 0
-	%Toggle.text = "◀"
+	%Drawer.position.y = -%Drawer.size.y
 	_refresh()
 
 func _toggle() -> void:
 	if busy:
 		return
 	expanded = not expanded
-	%Toggle.text = "▶" if expanded else "◀"
+	%ItemName.hide()
 	if slide != null:
 		slide.kill()
 	slide = create_tween()
-	slide.tween_property(%Drawer, "position:x", -180.0 if expanded else 0.0, 0.25).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	slide.tween_property(%Drawer, "position:y", 0.0 if expanded else -%Drawer.size.y, 0.25).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 
 func _select(index: int) -> void:
 	if busy:
@@ -77,16 +79,28 @@ func _select(index: int) -> void:
 
 func _refresh() -> void:
 	%Dock.visible = navigation_enabled and GameState.get_flag("inventory_enabled")
+	%ItemName.hide()
 	var items: Array = GameState.campaign.get("items", [])
 	if selected_item not in items:
 		selected_item = ""
 	for index in slots.size():
 		var occupied := index < items.size()
 		var show_item := occupied and index != drag_slot
-		slots[index].text = item_names[items[index]] if show_item else ""
 		slots[index].icon = item_icons.get(items[index]) if show_item else null
+		slots[index].text = item_names[items[index]] if show_item and slots[index].icon == null else ""
 		slots[index].disabled = busy or not occupied
 		slots[index].set_pressed_no_signal(occupied and items[index] == selected_item)
+
+func _show_item_name(index: int) -> void:
+	if busy or not expanded or slots[index].disabled:
+		return
+	var id: String = GameState.campaign.get("items", [])[index]
+	%ItemName.text = item_names[id]
+	%ItemName.reset_size()
+	var slot_rect: Rect2 = slots[index].get_global_rect()
+	%ItemName.position = Vector2(slot_rect.position.x - %ItemName.size.x - 16.0,
+		slot_rect.get_center().y - %ItemName.size.y / 2)
+	%ItemName.show()
 
 func _slot_input(event: InputEvent, index: int) -> void:
 	if slots[index].disabled or busy or get_tree().get_first_node_in_group("dialogue_balloon") != null:
@@ -117,8 +131,8 @@ func _start_drag(index: int, position: Vector2) -> void:
 	selected_item = dragged_item
 	busy = true
 	dragging = true
-	%DragItem.text = item_names[dragged_item]
 	%DragItem.icon = item_icons.get(dragged_item)
+	%DragItem.text = item_names[dragged_item] if %DragItem.icon == null else ""
 	%DragItem.size = slots[index].size
 	%DragItem.scale = Vector2.ONE
 	%DragItem.position = position - %DragItem.size / 2

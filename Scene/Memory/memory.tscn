@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://kwxmjaixmmtw"]
 
+[ext_resource type="PackedScene" path="res://Scene/Tool/hover_scale/hover_scale.tscn" id="90_hover"]
+
 [ext_resource type="Script" uid="uid://cp6n7urpxkict" path="res://Scene/Memory/memory.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://crkeje15uc0um" path="res://Asset/WhiteBlock.png" id="2_7rwvc"]
 [ext_resource type="Texture2D" uid="uid://ca5idgyqvk611" path="res://Asset/YellowBlock.png" id="3_jpdbn"]
@@ -194,3 +196,5 @@ scale = Vector2(1.3, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "门卡"
+
+[node name="HoverScale" parent="Open" instance=ExtResource("90_hover")]
