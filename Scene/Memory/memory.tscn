@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://kwxmjaixmmtw"]
 
-[ext_resource type="PackedScene" path="res://Scene/Tool/hover_scale/hover_scale.tscn" id="90_hover"]
-
 [ext_resource type="Script" uid="uid://cp6n7urpxkict" path="res://Scene/Memory/memory.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://crkeje15uc0um" path="res://Asset/WhiteBlock.png" id="2_7rwvc"]
 [ext_resource type="Texture2D" uid="uid://ca5idgyqvk611" path="res://Asset/YellowBlock.png" id="3_jpdbn"]
 [ext_resource type="Texture2D" uid="uid://cvre6mpbyf1r4" path="res://Asset/UI/Memory.png" id="3_ornpi"]
 [ext_resource type="Resource" uid="uid://da66s0r8y51fm" path="res://Dialogue/Chapter1.dialogue" id="4_finished"]
+[ext_resource type="Texture2D" uid="uid://iqpxettfjqvs" path="res://Asset/livingroom.png" id="7_kmwpi"]
+[ext_resource type="Texture2D" uid="uid://cn651wgejhbp4" path="res://Asset/wc.png" id="8_mr4yh"]
+[ext_resource type="PackedScene" path="res://Scene/Tool/hover_scale/hover_scale.tscn" id="90_hover"]
 
 [sub_resource type="Theme" id="Theme"]
 default_font_size = 26
@@ -16,7 +17,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MemoryOpenDoor/KeyCard:position")
+tracks/0/path = NodePath("OpenDoor/KeyCard:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -28,7 +29,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MemoryOpenDoor/Door:position")
+tracks/1/path = NodePath("OpenDoor/Door:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -37,6 +38,82 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(1048, 613)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CleanWC/livingroom:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CleanWC/WC:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CleanWC/hal:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ps65c"]
+resource_name = "clean_wc"
+length = 2.5000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CleanWC/livingroom:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CleanWC/WC:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CleanWC/hal:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="Animation" id="Animation_jpdbn"]
 resource_name = "open_door"
@@ -44,7 +121,7 @@ length = 3.0000000000000004
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MemoryOpenDoor/KeyCard:position")
+tracks/0/path = NodePath("OpenDoor/KeyCard:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -56,7 +133,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MemoryOpenDoor/Door:position")
+tracks/1/path = NodePath("OpenDoor/Door:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -69,13 +146,17 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ornpi"]
 _data = {
 &"RESET": SubResource("Animation_54cvm"),
+&"clean_wc": SubResource("Animation_ps65c"),
 &"open_door": SubResource("Animation_jpdbn")
 }
 
 [node name="Memory" type="CanvasLayer" unique_id=1961420886 node_paths=PackedStringArray("animation_content")]
 layer = 40
 script = ExtResource("1")
-animation_content = NodePath("MemoryOpenDoor")
+animation_content = NodePath("OpenDoor")
+animation_contents = Dictionary[String, NodePath]({
+"clean_wc": NodePath("CleanWC")
+})
 finished_dialogue = ExtResource("4_finished")
 finished_titles = Dictionary[String, String]({
 "open_door": "open_door_finished"
@@ -89,9 +170,10 @@ offset_bottom = 319.0
 scale = Vector2(0.29, 0.29)
 texture_normal = ExtResource("3_ornpi")
 
+[node name="HoverScale" parent="Open" unique_id=2012466094 instance=ExtResource("90_hover")]
+
 [node name="Screen" type="ColorRect" parent="." unique_id=311324673]
 unique_name_in_owner = true
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -154,25 +236,25 @@ stretch = true
 [node name="Playback" type="SubViewport" parent="Screen/Margin/Layout/Columns/Video" unique_id=788391523]
 unique_name_in_owner = true
 handle_input_locally = false
-size = Vector2i(2, 2)
-render_target_update_mode = 0
+size = Vector2i(1372, 778)
+render_target_update_mode = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1413286960]
 libraries/ = SubResource("AnimationLibrary_ornpi")
 
-[node name="MemoryOpenDoor" type="Control" parent="." unique_id=2090132346]
+[node name="OpenDoor" type="Control" parent="." unique_id=2090132346]
 visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Door" type="Sprite2D" parent="MemoryOpenDoor" unique_id=231510657]
+[node name="Door" type="Sprite2D" parent="OpenDoor" unique_id=231510657]
 position = Vector2(1048, 613)
 scale = Vector2(1.2109374, 4.484375)
 texture = ExtResource("2_7rwvc")
 
-[node name="Label" type="Label" parent="MemoryOpenDoor/Door" unique_id=1760794066]
+[node name="Label" type="Label" parent="OpenDoor/Door" unique_id=1760794066]
 offset_left = -18.087
 offset_top = -13.425507
 offset_right = 21.913
@@ -182,12 +264,12 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "门"
 
-[node name="KeyCard" type="Sprite2D" parent="MemoryOpenDoor" unique_id=715176091]
+[node name="KeyCard" type="Sprite2D" parent="OpenDoor" unique_id=715176091]
 position = Vector2(1804, 180.99998)
 scale = Vector2(0.41406262, 0.546875)
 texture = ExtResource("3_jpdbn")
 
-[node name="Label" type="Label" parent="MemoryOpenDoor/KeyCard" unique_id=18562575]
+[node name="Label" type="Label" parent="OpenDoor/KeyCard" unique_id=18562575]
 offset_left = -48.301876
 offset_top = -18.285688
 offset_right = 31.698124
@@ -197,4 +279,26 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "门卡"
 
-[node name="HoverScale" parent="Open" instance=ExtResource("90_hover")]
+[node name="CleanWC" type="Control" parent="." unique_id=833731901]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="livingroom" type="Sprite2D" parent="CleanWC" unique_id=1951705291]
+position = Vector2(1171.6534, 510)
+scale = Vector2(0.55064195, 0.55064195)
+texture = ExtResource("7_kmwpi")
+
+[node name="WC" type="Sprite2D" parent="CleanWC" unique_id=506732029]
+visible = false
+position = Vector2(1176.5, 510.99997)
+scale = Vector2(0.92697763, 0.9288297)
+texture = ExtResource("8_mr4yh")
+
+[node name="hal" type="Sprite2D" parent="CleanWC" unique_id=1947879325]
+visible = false
+position = Vector2(1071.5, 758.5)
+scale = Vector2(0.78906274, 2.2578125)
+texture = ExtResource("3_jpdbn")

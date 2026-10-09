@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://bi7mon2e5aukh"]
+
+[ext_resource type="Texture2D" uid="uid://crkeje15uc0um" path="res://Asset/WhiteBlock.png" id="1_qycs7"]
+[ext_resource type="Texture2D" uid="uid://7454mv4u3g4i" path="res://Asset/Pinkblock.png" id="2_31hf5"]
+[ext_resource type="Texture2D" uid="uid://ca5idgyqvk611" path="res://Asset/YellowBlock.png" id="3_31hf5"]
+
+[node name="Garden" type="Node2D" unique_id=123748347]
+
+[node name="house" type="Node2D" parent="." unique_id=1278395792]
+position = Vector2(-19, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="house" unique_id=1190252173]
+position = Vector2(1009, 590.99994)
+scale = Vector2(11.53125, 5.5)
+texture = ExtResource("1_qycs7")
+
+[node name="Label" type="Label" parent="house" unique_id=994278838]
+offset_left = 942.0
+offset_top = 327.0
+offset_right = 1022.0
+offset_bottom = 465.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "房子"
+
+[node name="door_graden" type="Node2D" parent="." unique_id=1400778037]
+position = Vector2(770, -2)
+
+[node name="Sprite2D" type="Sprite2D" parent="door_graden" unique_id=247675813]
+position = Vector2(185.99997, 736.5)
+scale = Vector2(1.5156249, 3.0546877)
+texture = ExtResource("2_31hf5")
+
+[node name="Label" type="Label" parent="door_graden" unique_id=2103504790]
+offset_left = 146.0
+offset_top = 726.0
+offset_right = 226.0
+offset_bottom = 864.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "房子
+的门"
+
+[node name="flower" type="Node2D" parent="." unique_id=468008280]
+position = Vector2(770, -2)
+
+[node name="Sprite2D" type="Sprite2D" parent="flower" unique_id=1151622480]
+modulate = Color(1, 1, 1, 0.53333336)
+position = Vector2(207.49997, 967.5)
+scale = Vector2(14.1484375, 1.8828125)
+texture = ExtResource("3_31hf5")
+
+[node name="Label" type="Label" parent="flower" unique_id=1866467843]
+offset_left = 100.0
+offset_top = 988.0
+offset_right = 300.0
+offset_bottom = 1126.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "郁金香花丛"
+
+[node name="chair" type="Node2D" parent="." unique_id=500494438]
+position = Vector2(320, -5)
+
+[node name="Sprite2D" type="Sprite2D" parent="chair" unique_id=2020557333]
+modulate = Color(1, 1, 1, 0.63529414)
+position = Vector2(105, 929.99994)
+scale = Vector2(1.4687499, 1.8906244)
+texture = ExtResource("2_31hf5")
+
+[node name="Label" type="Label" parent="chair" unique_id=479760528]
+offset_left = 70.0
+offset_top = 907.0
+offset_right = 270.0
+offset_bottom = 1045.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "椅子"
+
+[node name="chair2" type="Node2D" parent="." unique_id=503703497]
+position = Vector2(1387, -3)
+
+[node name="Sprite2D" type="Sprite2D" parent="chair2" unique_id=32943395]
+modulate = Color(1, 1, 1, 0.63529414)
+position = Vector2(112.99998, 955)
+scale = Vector2(0.85156244, 2.0781245)
+texture = ExtResource("1_qycs7")
+
+[node name="Label" type="Label" parent="chair2" unique_id=1643841609]
+offset_left = 70.0
+offset_top = 836.0
+offset_right = 270.0
+offset_bottom = 1068.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "缺口
+摆放
+郁金
+香的
+位置"

@@ -73,3 +73,8 @@ do GameState.set_flag("memory_storage_drive_content_changed", true)
 ~ model_info
 记忆存储盘的型号为42
 => END
+
+# Chapter2
+~ WC_info
+Elliot家的卫生间
+=> END

@@ -13,6 +13,8 @@ var searching := false
 var selected: Array[String] = []
 var answer: Array[String] = []
 var target := "query"
+var required_action := ""
+var required_keywords: Array = []
 var keyword_effect = preload("res://Dialogue/DialogueBallon/keyword_effect.gd").new()
 
 @onready var screen: Control = %Screen
@@ -35,7 +37,7 @@ func _ready() -> void:
 
 # 普通浏览等待关闭；剧情回答等待确认，当前选词不写入存档。
 func open() -> void:
-	if querying:
+	if querying or not required_action.is_empty():
 		return
 	%AnswerPanel.visible = not submit_title.is_empty()
 	%Close.show()
@@ -44,15 +46,42 @@ func open() -> void:
 	await closed
 
 func choose_answer() -> void:
+	required_action = "answer"
 	answer.clear()
 	%AnswerPanel.show()
 	%Close.hide()
 	_show()
 	_update_answer()
 	await answer_confirmed
-	close()
+	close(true)
 
-func close() -> void:
+func require_query(keywords: Array) -> void:
+	_begin_required("query", keywords)
+	await closed
+
+func require_submission(keywords: Array) -> void:
+	_begin_required("submission", keywords)
+	await closed
+
+func _begin_required(action: String, keywords: Array) -> void:
+	required_action = action
+	required_keywords = keywords.duplicate()
+	required_keywords.sort()
+	selected.clear()
+	answer.clear()
+	_update_query()
+	_update_answer()
+	%AnswerPanel.visible = action == "submission"
+	%Close.hide()
+	_show()
+	_set_target("answer" if action == "submission" else "query")
+
+func close(completed := false) -> void:
+	if not required_action.is_empty() and not completed:
+		return
+	required_action = ""
+	required_keywords.clear()
+	%Close.show()
 	screen.hide()
 	Attributes.set_navigation(true)
 	Memory.set_navigation(true)
@@ -72,6 +101,9 @@ func start_level(level: String, initial_keywords: Array) -> void:
 	GameState.start_keyword_list(level, initial_keywords)
 
 func reset() -> void:
+	required_action = ""
+	required_keywords.clear()
+	%Close.show()
 	screen.hide()
 	selected.clear()
 	answer.clear()
@@ -192,6 +224,8 @@ func _search() -> void:
 	searching = false
 	_update_answer()
 	%Search.disabled = false
+	if required_action == "query" and ids == required_keywords:
+		close(true)
 
 # 查询中带 [#notice] 的文字显示在提示区；关键词只高亮，不重复收录。
 func _format_notice(text: String) -> String:
@@ -204,6 +238,15 @@ func _confirm() -> void:
 	var ids := answer.duplicate()
 	ids.sort()
 	GameState.set_choice("keyword_submission", "+".join(ids))
+	if required_action == "submission":
+		if ids == required_keywords:
+			close(true)
+		return
+	if required_action == "query":
+		return
+	if required_action == "answer":
+		answer_confirmed.emit()
+		return
 	if not submit_title.is_empty():
 		close()
 		querying = true

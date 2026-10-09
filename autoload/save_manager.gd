@@ -8,6 +8,7 @@ const MENU_SCENE := "res://Scene/main/main_menu.tscn"
 const LEVELS := {
 	"beginnerguide_completed": "res://Scene/BeginnersGuide/beginners_guide.tscn",
 	"chapter1_completed": "res://Scene/Chapter1/study_room_2.tscn",
+	"chapter2_completed": "res://Scene/Chapter2/living_room.tscn",
 }
 const SAVE_DIRECTORY := "user://saves/"
 var current_slot := 1

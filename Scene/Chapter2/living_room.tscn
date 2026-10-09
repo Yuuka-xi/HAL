@@ -1,10 +1,14 @@
 [gd_scene format=3 uid="uid://cpftkw2i54dsd"]
 
 [ext_resource type="Texture2D" uid="uid://crkeje15uc0um" path="res://Asset/WhiteBlock.png" id="1_qfro3"]
+[ext_resource type="Script" uid="uid://bgxf0ai6lrcy8" path="res://Scene/Chapter2/living_room.gd" id="1_qgoad"]
 [ext_resource type="Texture2D" uid="uid://ca5idgyqvk611" path="res://Asset/YellowBlock.png" id="2_dw4lw"]
 [ext_resource type="Texture2D" uid="uid://7454mv4u3g4i" path="res://Asset/Pinkblock.png" id="3_j3xre"]
+[ext_resource type="Resource" path="res://Dialogue/Chapter2.dialogue" id="5_dialogue"]
 
 [node name="LivingRoom" type="Node2D" unique_id=809928177]
+script = ExtResource("1_qgoad")
+dialogue = ExtResource("5_dialogue")
 
 [node name="door_graden" type="Node2D" parent="." unique_id=1075070305]
 position = Vector2(-19, 0)
@@ -101,8 +105,8 @@ text = "沙发"
 [node name="elliot" type="Node2D" parent="." unique_id=719867742]
 
 [node name="Sprite2D" type="Sprite2D" parent="elliot" unique_id=1970815999]
-position = Vector2(623, 811.5)
-scale = Vector2(0.97656274, 3.0390627)
+position = Vector2(623, 838)
+scale = Vector2(0.97656274, 3.4531257)
 texture = ExtResource("2_dw4lw")
 
 [node name="Label" type="Label" parent="elliot" unique_id=876486505]

@@ -4,6 +4,7 @@ signal response_selected(response: DialogueResponse)
 
 @onready var screen: Control = %Screen
 var choices: Dictionary = {}
+var choosing := false
 
 func _ready() -> void:
 	screen.hide()
@@ -15,12 +16,16 @@ func _ready() -> void:
 	_refresh()
 
 func open() -> void:
+	if choosing:
+		return
 	choices.clear()
 	%Thought.text = ""
 	%Close.show()
 	_show()
 
 func close() -> void:
+	if choosing:
+		return
 	screen.hide()
 	choices.clear()
 	%Thought.text = ""
@@ -33,6 +38,8 @@ func set_navigation(enabled: bool) -> void:
 		GameState.set_flag("attributes_enabled", true)
 
 func reset() -> void:
+	choosing = false
+	%Close.show()
 	screen.hide()
 	choices.clear()
 	%Thought.text = ""
@@ -41,6 +48,7 @@ func reset() -> void:
 
 # 选项前缀对应维度；思考与分支效果仍由 .dialogue 提供。
 func choose(responses: Array) -> DialogueResponse:
+	choosing = true
 	choices.clear()
 	for response in responses:
 		for id in %Chart.dimensions:
@@ -50,6 +58,7 @@ func choose(responses: Array) -> DialogueResponse:
 	%Close.hide()
 	_show()
 	var response: DialogueResponse = await response_selected
+	choosing = false
 	close()
 	return response
 

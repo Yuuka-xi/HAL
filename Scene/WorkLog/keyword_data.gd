@@ -13,7 +13,10 @@ const NAMES = {
 	"storage_box": "储存盘收纳盒",
 	"model": "42",
 	"pc": "台式机",
-	"disc_reader": "读盘器"
+	"disc_reader": "读盘器",
+	# 关卡2
+	"WC": "卫生间"
+	
 }
 
 # 双词组合按编号排序，用 + 连接；值是 .dialogue 中的入口标题。
@@ -35,5 +38,8 @@ const ENTRIES = {
 	"disc_reader": "disc_reader_info",
 	"memory_storage_drive+storage_box": "memory_storage_drive_storage_box_info",
 	"model+pc": "model_pc_info",
-	"hal+memory_storage_drive": "hal_memory_storage_drive_info"
+	"hal+memory_storage_drive": "hal_memory_storage_drive_info",
+	# 关卡2
+	"WC": "WC_info"
+	
 }
