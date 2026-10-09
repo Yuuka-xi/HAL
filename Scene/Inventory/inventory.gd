@@ -139,7 +139,7 @@ func _find_target(position: Vector2) -> Area2D:
 func _drop(position: Vector2) -> void:
 	var session := SaveManager.session_id
 	var target = _find_target(position)
-	if target != null and not SettingsMenu.visible:
+	if target != null and not SettingsMenu.is_open():
 		await target.use_item()
 		if session != SaveManager.session_id:
 			return

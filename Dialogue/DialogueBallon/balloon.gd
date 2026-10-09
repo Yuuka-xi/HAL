@@ -61,7 +61,7 @@ func next(title: String) -> void:
 		waiting = true
 
 func _unhandled_input(event: InputEvent) -> void:
-	if SettingsMenu.visible or WorkLog.screen.visible or Attributes.screen.visible or Memory.screen.visible:
+	if SettingsMenu.is_open() or WorkLog.screen.visible or Attributes.screen.visible or Memory.screen.visible:
 		return
 	var clicked: bool = event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed
 	if clicked or event.is_action_pressed(next_action) and not event.is_echo():

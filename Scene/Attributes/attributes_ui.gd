@@ -24,13 +24,13 @@ func close() -> void:
 	screen.hide()
 	choices.clear()
 	%Thought.text = ""
-	$Open.show()
 	WorkLog.set_navigation(true)
 	Memory.set_navigation(true)
 	Inventory.set_navigation(true)
 
 func set_navigation(enabled: bool) -> void:
-	$Open.visible = enabled
+	if enabled:
+		GameState.set_flag("attributes_enabled", true)
 
 func reset() -> void:
 	screen.hide()
@@ -67,7 +67,6 @@ func _show() -> void:
 	Inventory.set_navigation(false)
 	Memory.set_navigation(false)
 	WorkLog.set_navigation(false)
-	$Open.hide()
 	screen.show()
 	_refresh()
 

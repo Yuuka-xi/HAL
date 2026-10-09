@@ -54,14 +54,14 @@ func choose_answer() -> void:
 
 func close() -> void:
 	screen.hide()
-	$Open.show()
 	Attributes.set_navigation(true)
 	Memory.set_navigation(true)
 	Inventory.set_navigation(true)
 	closed.emit()
 
 func set_navigation(enabled: bool) -> void:
-	$Open.visible = enabled
+	if enabled:
+		GameState.set_flag("worklog_enabled", true)
 
 func start_level(level: String, initial_keywords: Array) -> void:
 	selected.clear()
@@ -92,7 +92,6 @@ func _show() -> void:
 	Inventory.set_navigation(false)
 	Memory.set_navigation(false)
 	Attributes.set_navigation(false)
-	$Open.hide()
 	screen.show()
 	_set_target("query")
 

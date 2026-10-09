@@ -4,7 +4,6 @@ extends CanvasLayer
 @export var finished_dialogue: DialogueResource
 @export var finished_titles: Dictionary[String, String] = {}
 @onready var screen: Control = %Screen
-var navigation_enabled := true
 
 func _ready() -> void:
 	screen.hide()
@@ -21,13 +20,11 @@ func add_animation(animation: String, title: String = "") -> void:
 	memories[animation] = title if not title.is_empty() else animation
 	GameState.set_campaign_value("memories", memories)
 
-func set_navigation(enabled: bool) -> void:
-	navigation_enabled = enabled
-	_refresh()
+func set_navigation(_enabled: bool) -> void:
+	pass
 
 func open() -> void:
 	screen.show()
-	$Open.hide()
 	WorkLog.set_navigation(false)
 	Attributes.set_navigation(false)
 	Inventory.set_navigation(false)
@@ -46,7 +43,6 @@ func reset() -> void:
 	_refresh()
 
 func _refresh() -> void:
-	$Open.visible = navigation_enabled and GameState.get_flag("memory_installed") and not screen.visible
 	for child in %Recordings.get_children():
 		if child != %Empty:
 			%Recordings.remove_child(child)

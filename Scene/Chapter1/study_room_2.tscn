@@ -39,7 +39,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_rl1os"]
 resource_name = "click_door"
-length = 1.5
+length = 1.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -47,7 +47,7 @@ tracks/0/path = NodePath("DoorHandle:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4, 1.0666667, 1.5),
+"times": PackedFloat32Array(0, 0.3, 0.8333333, 1.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [0.0, -0.74368334, 0.66675854, 0.0]
@@ -185,13 +185,15 @@ start_title = "use_key_card_on_door"
 dialogue_state = NodePath("../..")
 dialogue_state_name = "StudyRoom2"
 
-[node name="PerceptionClick" type="Area2D" parent="Door" unique_id=1036347835]
+[node name="PerceptionClick" type="Area2D" parent="Door" unique_id=1036347835 node_paths=PackedStringArray("click_animation_player")]
 visible = false
 scale = Vector2(0.99999994, 1)
 script = ExtResource("4_tptwy")
 dialogue = ExtResource("2_32efi")
 start_title = "observe_door"
 required_flag = "elliot_close_door"
+click_animation_player = NodePath("../AnimationPlayer")
+click_animation = &"click_door"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door/PerceptionClick" unique_id=443087293]
 position = Vector2(128.25568, -38.35022)

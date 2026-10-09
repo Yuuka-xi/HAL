@@ -1,11 +1,21 @@
 [gd_scene format=3 uid="uid://dse0cvemfsrcq"]
 
 [ext_resource type="Script" uid="uid://2hqs577hq43j" path="res://ui/settings/settings_menu.gd" id="1_jwxja"]
+[ext_resource type="Texture2D" uid="uid://c1qwy5ihl5vsd" path="res://Asset/UI/setting.png" id="2_a66ha"]
 
 [node name="SettingsMenu" type="CanvasLayer" unique_id=1661374043]
 process_mode = 3
 layer = 90
 script = ExtResource("1_jwxja")
+
+[node name="Open" type="TextureButton" parent="." unique_id=290584753]
+z_index = 1
+offset_left = 20.000002
+offset_top = 14.999999
+offset_right = 246.0
+offset_bottom = 235.0
+scale = Vector2(0.37, 0.37)
+texture_normal = ExtResource("2_a66ha")
 
 [node name="Backdrop" type="ColorRect" parent="." unique_id=871670399]
 anchors_preset = 15
@@ -83,6 +93,7 @@ custom_minimum_size = Vector2(0, 56)
 layout_mode = 2
 text = "关闭"
 
+[connection signal="pressed" from="Open" to="." method="_on_open_pressed"]
 [connection signal="value_changed" from="Backdrop/Panel/Layout/Master" to="." method="_on_master_changed"]
 [connection signal="value_changed" from="Backdrop/Panel/Layout/Music" to="." method="_on_music_changed"]
 [connection signal="value_changed" from="Backdrop/Panel/Layout/SFX" to="." method="_on_sfx_changed"]

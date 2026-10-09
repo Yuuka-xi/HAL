@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://kwxmjaixmmtw"]
 
 [ext_resource type="Script" uid="uid://cp6n7urpxkict" path="res://Scene/Memory/memory.gd" id="1"]
-[ext_resource type="Resource" path="res://Dialogue/Chapter1.dialogue" id="4_finished"]
 [ext_resource type="Texture2D" uid="uid://crkeje15uc0um" path="res://Asset/WhiteBlock.png" id="2_7rwvc"]
 [ext_resource type="Texture2D" uid="uid://ca5idgyqvk611" path="res://Asset/YellowBlock.png" id="3_jpdbn"]
+[ext_resource type="Texture2D" uid="uid://cvre6mpbyf1r4" path="res://Asset/UI/Memory.png" id="3_ornpi"]
+[ext_resource type="Resource" uid="uid://da66s0r8y51fm" path="res://Dialogue/Chapter1.dialogue" id="4_finished"]
 
 [sub_resource type="Theme" id="Theme"]
 default_font_size = 26
@@ -70,19 +71,21 @@ _data = {
 }
 
 [node name="Memory" type="CanvasLayer" unique_id=1961420886 node_paths=PackedStringArray("animation_content")]
-layer = 10
+layer = 40
 script = ExtResource("1")
 animation_content = NodePath("MemoryOpenDoor")
 finished_dialogue = ExtResource("4_finished")
-finished_titles = {"open_door": "open_door_finished"}
+finished_titles = Dictionary[String, String]({
+"open_door": "open_door_finished"
+})
 
-[node name="Open" type="Button" parent="." unique_id=1868608034]
-visible = false
-offset_left = 464.0
-offset_top = 24.0
-offset_right = 660.0
-offset_bottom = 80.0
-text = "记忆录像"
+[node name="Open" type="TextureButton" parent="." unique_id=1868321191]
+offset_left = 420.00003
+offset_top = 14.0
+offset_right = 642.0
+offset_bottom = 319.0
+scale = Vector2(0.29, 0.29)
+texture_normal = ExtResource("3_ornpi")
 
 [node name="Screen" type="ColorRect" parent="." unique_id=311324673]
 unique_name_in_owner = true
