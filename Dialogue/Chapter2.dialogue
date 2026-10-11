@@ -2,7 +2,7 @@
 Elliot: hal，去打扫[kw=WC]。
 系统: 卫生间在哪？
 do WorkLog.require_query(["WC"])
-do Memory.add_animation("clean_wc", "清理卫生间")
+do Memory.add_animation("clean_bedroom", "清理卧室")
 系统: 找到了一段他前去卫生间打扫的录像。
-do Memory.require_watch("clean_wc")
+do Memory.require_watch("clean_bedroom")
 => END

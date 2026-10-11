@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bgxf0ai6lrcy8" path="res://Scene/Chapter2/living_room.gd" id="1_qgoad"]
 [ext_resource type="Texture2D" uid="uid://ca5idgyqvk611" path="res://Asset/YellowBlock.png" id="2_dw4lw"]
 [ext_resource type="Texture2D" uid="uid://7454mv4u3g4i" path="res://Asset/Pinkblock.png" id="3_j3xre"]
-[ext_resource type="Resource" path="res://Dialogue/Chapter2.dialogue" id="5_dialogue"]
+[ext_resource type="Resource" uid="uid://bqr4jmfm8rea7" path="res://Dialogue/Chapter2.dialogue" id="5_dialogue"]
 
 [node name="LivingRoom" type="Node2D" unique_id=809928177]
 script = ExtResource("1_qgoad")
@@ -30,7 +30,7 @@ text = "通往
 的门"
 
 [node name="door_studyroom" type="Node2D" parent="." unique_id=2062693594]
-position = Vector2(932, 0)
+position = Vector2(1226, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="door_studyroom" unique_id=1125164149]
 position = Vector2(176.49998, 672)
@@ -46,25 +46,6 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "通往
 书房
-的门"
-
-[node name="door_wc" type="Node2D" parent="." unique_id=1316803149]
-position = Vector2(1248, 1)
-
-[node name="Sprite2D" type="Sprite2D" parent="door_wc" unique_id=1756809411]
-position = Vector2(176.49998, 672)
-scale = Vector2(1.7265618, 6.34375)
-texture = ExtResource("1_qfro3")
-
-[node name="Label" type="Label" parent="door_wc" unique_id=606831225]
-offset_left = 131.0
-offset_top = 590.0
-offset_right = 251.0
-offset_bottom = 728.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 40
-text = "通往
-卫生间
 的门"
 
 [node name="door_bedroom" type="Node2D" parent="." unique_id=707816966]

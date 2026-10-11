@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cvre6mpbyf1r4" path="res://Asset/UI/Memory.png" id="3_ornpi"]
 [ext_resource type="Resource" uid="uid://da66s0r8y51fm" path="res://Dialogue/Chapter1.dialogue" id="4_finished"]
 [ext_resource type="Texture2D" uid="uid://iqpxettfjqvs" path="res://Asset/livingroom.png" id="7_kmwpi"]
-[ext_resource type="Texture2D" uid="uid://cn651wgejhbp4" path="res://Asset/wc.png" id="8_mr4yh"]
+[ext_resource type="Texture2D" uid="uid://dsnrohk5j16w" path="res://Asset/bedroom.png" id="8_kmwpi"]
 [ext_resource type="PackedScene" path="res://Scene/Tool/hover_scale/hover_scale.tscn" id="90_hover"]
 
 [sub_resource type="Theme" id="Theme"]
@@ -41,7 +41,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CleanWC/livingroom:visible")
+tracks/2/path = NodePath("CleanBedroom/livingroom:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -53,7 +53,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CleanWC/WC:visible")
+tracks/3/path = NodePath("CleanBedroom/hal:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -65,7 +65,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CleanWC/hal:visible")
+tracks/4/path = NodePath("CleanBedroom/bedroom:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -81,7 +81,7 @@ length = 2.5000000000000004
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CleanWC/livingroom:visible")
+tracks/0/path = NodePath("CleanBedroom/livingroom:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -93,11 +93,11 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CleanWC/WC:visible")
+tracks/1/path = NodePath("CleanBedroom/hal:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 1.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -105,11 +105,11 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CleanWC/hal:visible")
+tracks/2/path = NodePath("CleanBedroom/bedroom:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.3),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -146,7 +146,7 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ornpi"]
 _data = {
 &"RESET": SubResource("Animation_54cvm"),
-&"clean_wc": SubResource("Animation_ps65c"),
+&"clean_bedroom": SubResource("Animation_ps65c"),
 &"open_door": SubResource("Animation_jpdbn")
 }
 
@@ -155,7 +155,7 @@ layer = 40
 script = ExtResource("1")
 animation_content = NodePath("OpenDoor")
 animation_contents = Dictionary[String, NodePath]({
-"clean_wc": NodePath("CleanWC")
+"clean_wc": NodePath("CleanBedroom")
 })
 finished_dialogue = ExtResource("4_finished")
 finished_titles = Dictionary[String, String]({
@@ -279,26 +279,25 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "门卡"
 
-[node name="CleanWC" type="Control" parent="." unique_id=833731901]
-visible = false
+[node name="CleanBedroom" type="Control" parent="." unique_id=833731901]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="livingroom" type="Sprite2D" parent="CleanWC" unique_id=1951705291]
-position = Vector2(1171.6534, 510)
-scale = Vector2(0.55064195, 0.55064195)
+[node name="livingroom" type="Sprite2D" parent="CleanBedroom" unique_id=1951705291]
+position = Vector2(1170.5, 522.5)
+scale = Vector2(1.071034, 1.0708332)
 texture = ExtResource("7_kmwpi")
 
-[node name="WC" type="Sprite2D" parent="CleanWC" unique_id=506732029]
+[node name="bedroom" type="Sprite2D" parent="CleanBedroom" unique_id=124506871]
 visible = false
-position = Vector2(1176.5, 510.99997)
-scale = Vector2(0.92697763, 0.9288297)
-texture = ExtResource("8_mr4yh")
+position = Vector2(1170, 511)
+scale = Vector2(1.0680219, 1.0788381)
+texture = ExtResource("8_kmwpi")
 
-[node name="hal" type="Sprite2D" parent="CleanWC" unique_id=1947879325]
+[node name="hal" type="Sprite2D" parent="CleanBedroom" unique_id=1947879325]
 visible = false
-position = Vector2(1071.5, 758.5)
+position = Vector2(1051, 757)
 scale = Vector2(0.78906274, 2.2578125)
 texture = ExtResource("3_jpdbn")

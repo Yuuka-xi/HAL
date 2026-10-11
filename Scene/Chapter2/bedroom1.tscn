@@ -1,0 +1,188 @@
+[gd_scene format=3 uid="uid://ckwkf1hvxb56i"]
+
+[ext_resource type="Texture2D" uid="uid://crkeje15uc0um" path="res://Asset/WhiteBlock.png" id="1_gekc3"]
+[ext_resource type="Texture2D" uid="uid://ca5idgyqvk611" path="res://Asset/YellowBlock.png" id="2_1h5cn"]
+[ext_resource type="Texture2D" uid="uid://7454mv4u3g4i" path="res://Asset/Pinkblock.png" id="2_uto38"]
+
+[node name="bedroom" type="Node2D" unique_id=1934651834]
+position = Vector2(0, -2)
+
+[node name="door_bedroom" type="Node2D" parent="." unique_id=1260318434]
+position = Vector2(37, -10)
+
+[node name="Sprite2D" type="Sprite2D" parent="door_bedroom" unique_id=403207438]
+position = Vector2(176.49998, 679.00006)
+scale = Vector2(1.7265618, 6.4531255)
+texture = ExtResource("1_gekc3")
+
+[node name="Label" type="Label" parent="door_bedroom" unique_id=1736069852]
+offset_left = 131.0
+offset_top = 590.0
+offset_right = 251.0
+offset_bottom = 728.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "通往
+卧室
+的门"
+
+[node name="Sensor" type="Node2D" parent="." unique_id=1107173247]
+position = Vector2(33, 33)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sensor" unique_id=1821186902]
+position = Vector2(369.25003, 691.25)
+scale = Vector2(0.7148433, 0.4335938)
+texture = ExtResource("1_gekc3")
+
+[node name="Label" type="Label" parent="Sensor" unique_id=1130364006]
+offset_left = 326.0
+offset_top = 673.0
+offset_right = 446.0
+offset_bottom = 811.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "感应器"
+
+[node name="Switch" type="Node2D" parent="." unique_id=1276782769]
+position = Vector2(34, 113)
+
+[node name="Sprite2D" type="Sprite2D" parent="Switch" unique_id=46659137]
+position = Vector2(369.25003, 691.25)
+scale = Vector2(0.7148433, 0.4335938)
+texture = ExtResource("1_gekc3")
+
+[node name="Label" type="Label" parent="Switch" unique_id=2082507944]
+offset_left = 332.0
+offset_top = 680.0
+offset_right = 452.0
+offset_bottom = 818.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "灯控开关"
+
+[node name="Wardrobe" type="Node2D" parent="." unique_id=1899435700]
+visible = false
+position = Vector2(1444, 952)
+
+[node name="Sprite2D" type="Sprite2D" parent="Wardrobe" unique_id=749711159]
+position = Vector2(197.00006, -331.5)
+scale = Vector2(4.4999995, 7.2578125)
+texture = ExtResource("2_uto38")
+
+[node name="Label" type="Label" parent="Wardrobe" unique_id=1710931156]
+offset_left = 156.0
+offset_top = -290.0
+offset_right = 644.0
+offset_bottom = -152.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "衣柜"
+
+[node name="Mirror" type="Node2D" parent="." unique_id=163275830]
+position = Vector2(817, 283)
+
+[node name="Sprite2D" type="Sprite2D" parent="Mirror" unique_id=1581201971]
+position = Vector2(-20.499975, 337.75006)
+scale = Vector2(2.8671875, 7.2382813)
+texture = ExtResource("1_gekc3")
+
+[node name="Label" type="Label" parent="Mirror" unique_id=1386622504]
+offset_left = -45.0
+offset_top = -14.0
+offset_right = 75.0
+offset_bottom = 124.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "镜子"
+
+[node name="CleaningAgent" type="Node2D" parent="." unique_id=488140437]
+position = Vector2(1114, 1009)
+
+[node name="Sprite2D" type="Sprite2D" parent="CleaningAgent" unique_id=264663544]
+position = Vector2(-3.49998, -0.49999475)
+scale = Vector2(0.6640616, 1.1328129)
+texture = ExtResource("1_gekc3")
+
+[node name="Label" type="Label" parent="CleaningAgent" unique_id=1067187758]
+offset_left = -30.0
+offset_top = -69.0
+offset_right = 90.0
+offset_bottom = 69.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "清
+洁
+剂"
+
+[node name="CleaningAgent2" type="Node2D" parent="." unique_id=1394438380]
+position = Vector2(1526, 679)
+
+[node name="Sprite2D" type="Sprite2D" parent="CleaningAgent2" unique_id=748053622]
+position = Vector2(1416, 333.25)
+scale = Vector2(1.2812502, 1.0507815)
+texture = ExtResource("2_1h5cn")
+
+[node name="Label" type="Label" parent="CleaningAgent2" unique_id=809828195]
+offset_left = 1352.0
+offset_top = 287.0
+offset_right = 1472.0
+offset_bottom = 425.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "床下的
+自动柜"
+
+[node name="rag" type="Node2D" parent="." unique_id=889440866]
+position = Vector2(1114, 791)
+
+[node name="Sprite2D" type="Sprite2D" parent="rag" unique_id=1172582347]
+position = Vector2(-3.49998, -0.49999475)
+scale = Vector2(0.6640616, 1.1328129)
+texture = ExtResource("1_gekc3")
+
+[node name="Label" type="Label" parent="rag" unique_id=3169628]
+offset_left = -24.0
+offset_top = -44.0
+offset_right = 96.0
+offset_bottom = 94.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "抹
+布"
+
+[node name="table" type="Node2D" parent="." unique_id=2042398687]
+position = Vector2(2083, 904)
+
+[node name="Sprite2D" type="Sprite2D" parent="table" unique_id=995087129]
+position = Vector2(246.00006, 31.000015)
+scale = Vector2(3.7343745, 2.457031)
+texture = ExtResource("1_gekc3")
+
+[node name="Label" type="Label" parent="table" unique_id=367356578]
+offset_left = 126.0
+offset_top = 37.0
+offset_right = 246.0
+offset_bottom = 175.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "桌子"
+
+[node name="bed" type="Node2D" parent="." unique_id=460123393]
+position = Vector2(3501, 904)
+
+[node name="Sprite2D" type="Sprite2D" parent="bed" unique_id=1175319659]
+position = Vector2(-2.4998627, 66.24999)
+scale = Vector2(7.4140615, 1.7226564)
+texture = ExtResource("1_gekc3")
+
+[node name="Label" type="Label" parent="bed" unique_id=977076582]
+offset_left = 126.0
+offset_top = 37.0
+offset_right = 246.0
+offset_bottom = 175.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "床"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=124135654]
+position = Vector2(960, 542)
