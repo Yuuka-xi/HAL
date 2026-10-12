@@ -1,12 +1,21 @@
 ~ start
-Elliot: Hal, 完成自检。
+Elliot: hal，继续完成自检。
+hal: 指令确认。
 do StudyRoom2.elliot_close_door()
 do GameState.set_flag("elliot_close_door", true)
 => local_search
 
 ~ local_search
-系统: 各模块正常，但是记忆模块缺失了[kw=memory_storage_drive] [next=auto]
-do! WorkLog.open()
+系统自检报告：
+视觉模块：正常
+听觉模块：正常
+运动模块：正常
+语音模块：正常
+价值评估模块：正常
+记忆存储模块：异常
+记忆存储模块：未检测到编号 M-07 [kw=memory_storage_drive]。
+hal: 自检完成。异常：记忆模块缺失 M-07 [kw=memory_storage_drive]。[next=auto]
+do WorkLog.require_query(["hal", "memory_storage_drive"])
 => END
 
 ~ submit
@@ -17,11 +26,11 @@ else:
 => END
 
 ~ observe_storage_box
-思考: [kw=storage_box]是空的。
+hal: 检测到[kw=storage_box]。M-07 位置为空。
 => END
 
 ~ observe_pc
-思考: Elliot的[kw=pc]。
+hal: 检测到[kw=pc]。当前状态：休眠。
 => END
 
 ~ observe_disc_reader
@@ -47,7 +56,7 @@ elif GameState.get_flag("memory_installed"):
 	do Memory.add_animation("open_door", "开门")
 	do! Memory.open()
 else:
-	思考: 书房的门关着。
+	hal: 检测到[kw=door]。尺寸：1.2m×2m，可供本机通过。
 => END
 
 ~ observe_other_drive

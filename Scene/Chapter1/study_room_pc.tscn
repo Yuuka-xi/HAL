@@ -1,19 +1,19 @@
 [gd_scene format=3 uid="uid://dmyuybmikxcc7"]
 
 [ext_resource type="Script" uid="uid://b5uq44uld6hko" path="res://Scene/Chapter1/study_room_pc.gd" id="1_3vqkb"]
-[ext_resource type="Texture2D" uid="uid://crkeje15uc0um" path="res://Asset/WhiteBlock.png" id="1_hsdq5"]
 [ext_resource type="Script" uid="uid://dwo4rtkee6e6v" path="res://Scene/Tool/perception_click/perception_click.gd" id="3_3vqkb"]
 [ext_resource type="Texture2D" uid="uid://b5f1efusho52d" path="res://Asset/studyroom/curtain.png" id="3_l686q"]
 [ext_resource type="Texture2D" uid="uid://ckfkvb8cptwqu" path="res://Asset/studyroom/PC.png" id="4_vilrr"]
 [ext_resource type="Resource" uid="uid://da66s0r8y51fm" path="res://Dialogue/Chapter1.dialogue" id="4_wrof7"]
 [ext_resource type="Texture2D" uid="uid://b8716axf8nqek" path="res://Asset/studyroom/networkcard.png" id="5_vilrr"]
 [ext_resource type="Texture2D" uid="uid://dgxfoc1fu368u" path="res://Asset/studyroom/DiscReader.png" id="6_7as41"]
+[ext_resource type="Texture2D" uid="uid://cy22r2phkgfc" path="res://Asset/studyroom/MemoryStorageDrive.png" id="6_rnhah"]
 [ext_resource type="Texture2D" uid="uid://c4keu3f2jicb4" path="res://Asset/studyroom/desk.png" id="8_7as41"]
 [ext_resource type="Texture2D" uid="uid://yvv2rbs15sq" path="res://Asset/UI/back.png" id="10_7as41"]
 [ext_resource type="PackedScene" path="res://Scene/Tool/hover_scale/hover_scale.tscn" id="11_rnhah"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vilrr"]
-size = Vector2(128.9998, 128.59471)
+[sub_resource type="CircleShape2D" id="CircleShape2D_nj0vu"]
+radius = 479.39578
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_37jyc"]
 size = Vector2(88.80853, 22.721687)
@@ -30,19 +30,31 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(146.85953, 144.6428)]
+"values": [Vector2(1439, 787.99994)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PC/MemoryStorageDrive:scale")
+tracks/1/path = NodePath("PC/MemoryStorageDrive:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.85579205, 0.122999035)]
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PC/MemoryStorageDrive:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.1710788, 0.17107879)]
 }
 
 [sub_resource type="Animation" id="Animation_37jyc"]
@@ -54,22 +66,34 @@ tracks/0/path = NodePath("PC/MemoryStorageDrive:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(146.85953, 194.51968), Vector2(-98.64537, 59.852177), Vector2(-98.64537, 59.852173)]
+"values": [Vector2(1591, 787.99994)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PC/MemoryStorageDrive:scale")
+tracks/1/path = NodePath("PC/MemoryStorageDrive:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.85579205, 0.5680612), Vector2(4.320195, 2.867677), Vector2(4.320195, 2.867677)]
+"values": [-3.1415927]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PC/MemoryStorageDrive:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.1710788, 0.17107879)]
 }
 
 [sub_resource type="Animation" id="Animation_wrof7"]
@@ -84,19 +108,19 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(146.85953, 144.6428), Vector2(146.85953, 194.51968)]
+"values": [Vector2(1439, 787.99994), Vector2(1591, 787.99994)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PC/MemoryStorageDrive:scale")
+tracks/1/path = NodePath("PC/MemoryStorageDrive:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0.85579205, 0.122999035), Vector2(0.85579205, 0.5680612)]
+"values": [0.0, -3.1415927]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_37jyc"]
@@ -122,15 +146,16 @@ scale = Vector2(1.8044444, 1.8044444)
 texture = ExtResource("4_vilrr")
 
 [node name="NetworkCard" type="Sprite2D" parent="PC" unique_id=1689452974]
-position = Vector2(141.31767, 77.586174)
+position = Vector2(141.31767, -35.46801)
 texture = ExtResource("5_vilrr")
 
 [node name="MemoryStorageDrive" type="Sprite2D" parent="PC" unique_id=796784738]
-position = Vector2(146.85953, 144.6428)
-scale = Vector2(0.85579205, 0.122999035)
-texture = ExtResource("1_hsdq5")
+position = Vector2(1439, 787.99994)
+scale = Vector2(0.1710788, 0.17107879)
+texture = ExtResource("6_rnhah")
 
 [node name="PerceptionClick" type="Area2D" parent="PC/MemoryStorageDrive" unique_id=2027972199 node_paths=PackedStringArray("dialogue_state")]
+position = Vector2(4.942486, -133.20078)
 script = ExtResource("3_3vqkb")
 dialogue = ExtResource("4_wrof7")
 start_title = "take_memory_storage_drive"
@@ -140,12 +165,12 @@ dialogue_state = NodePath("../../..")
 dialogue_state_name = "StudyRoomPC"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PC/MemoryStorageDrive/PerceptionClick" unique_id=157460709]
-position = Vector2(0, 0.36740112)
+position = Vector2(6.655711, 119.803)
 scale = Vector2(0.99999976, 0.9999997)
-shape = SubResource("RectangleShape2D_vilrr")
+shape = SubResource("CircleShape2D_nj0vu")
 
 [node name="DiscReader" type="Sprite2D" parent="PC" unique_id=723283770]
-position = Vector2(145.83124, 137.33864)
+position = Vector2(145.83124, 105.29553)
 scale = Vector2(1.0250199, 1.1157633)
 texture = ExtResource("6_7as41")
 

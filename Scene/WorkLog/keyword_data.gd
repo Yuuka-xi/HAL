@@ -14,6 +14,7 @@ const NAMES = {
 	"model": "42",
 	"pc": "台式机",
 	"disc_reader": "读盘器",
+	"door": "门",
 	# 关卡2
 	"bedroom": "卧室",
 	"sensor": "感应器",
@@ -40,6 +41,7 @@ const ENTRIES = {
 	"model": "model_info",
 	"pc": "pc_info",
 	"disc_reader": "disc_reader_info",
+	"door": "door_info",
 	"memory_storage_drive+storage_box": "memory_storage_drive_storage_box_info",
 	"model+pc": "model_pc_info",
 	"hal+memory_storage_drive": "hal_memory_storage_drive_info",

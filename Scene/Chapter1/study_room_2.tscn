@@ -28,7 +28,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("DoorHandle:rotation")
+tracks/0/path = NodePath("../DoorHandle:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -44,7 +44,7 @@ length = 1.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("DoorHandle:rotation")
+tracks/0/path = NodePath("../DoorHandle:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -57,8 +57,11 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ucsqa"]
 _data = {
 &"RESET": SubResource("Animation_nj0vu"),
-&"click_door": SubResource("Animation_rl1os")
+&"click_doorhandle": SubResource("Animation_rl1os")
 }
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nj0vu"]
+radius = 41.899563
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k45oy"]
 size = Vector2(131.21619, 93.56739)
@@ -71,7 +74,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:skew")
+tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -87,20 +90,141 @@ length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:skew")
+tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.6, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [0.0, 0.05235987755982989, -0.05235987755982989, 0.0]
+"values": [0.0, -0.034906585, 0.034906585, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_buoml"]
 _data = {
 &"RESET": SubResource("Animation_q63yh"),
 &"click_pc": SubResource("Animation_ucsqa")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nj0vu"]
+size = Vector2(106.66713, 526.93335)
+
+[sub_resource type="Animation" id="Animation_hkotj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ihnpm"]
+resource_name = "click_tulip"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.034906585, 0.034906585, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ye2jl"]
+_data = {
+&"RESET": SubResource("Animation_hkotj"),
+&"click_tulip": SubResource("Animation_ihnpm")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ac6rm"]
+radius = 293.63843
+height = 953.4614
+
+[sub_resource type="Animation" id="Animation_ye2jl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ac6rm"]
+resource_name = "click_sofa"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.034906585, 0.034906585, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5y8j8"]
+_data = {
+&"RESET": SubResource("Animation_ye2jl"),
+&"click_sofa": SubResource("Animation_ac6rm")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_23k4q"]
+size = Vector2(401.9378, 307.91724)
+
+[sub_resource type="Animation" id="Animation_buoml"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_lb5uw"]
+resource_name = "click_toybox"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.034906585, 0.034906585, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hkotj"]
+_data = {
+&"RESET": SubResource("Animation_buoml"),
+&"click_toybox": SubResource("Animation_lb5uw")
 }
 
 [sub_resource type="Animation" id="Animation_tptwy"]
@@ -228,20 +352,34 @@ script = ExtResource("4_tptwy")
 dialogue = ExtResource("2_32efi")
 start_title = "observe_door"
 required_flag = "elliot_close_door"
-click_animation_player = NodePath("../AnimationPlayer")
+click_animation_player = NodePath("../../DoorHandle/AnimationPlayer")
 click_animation = &"click_door"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door/PerceptionClick" unique_id=443087293]
 position = Vector2(128.25568, -38.35022)
 shape = SubResource("RectangleShape2D_pimtm")
 
-[node name="DoorHandle" type="Sprite2D" parent="Door" unique_id=1163537994]
-position = Vector2(366.4391, 190.05984)
-scale = Vector2(0.99180675, 0.9918066)
+[node name="DoorHandle" type="Sprite2D" parent="." unique_id=1163537994]
+position = Vector2(431, 672)
+scale = Vector2(0.47365633, 0.49574724)
 texture = ExtResource("9_q63yh")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Door" unique_id=732269686]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DoorHandle" unique_id=732269686]
+root_node = NodePath("../../Door")
 libraries/ = SubResource("AnimationLibrary_ucsqa")
+
+[node name="PerceptionClick" type="Area2D" parent="DoorHandle" unique_id=817910944 node_paths=PackedStringArray("click_animation_player")]
+scale = Vector2(0.99999994, 1)
+script = ExtResource("4_tptwy")
+dialogue = ExtResource("2_32efi")
+start_title = "observe_doorhandle"
+required_flag = "elliot_close_door"
+click_animation_player = NodePath("../AnimationPlayer")
+click_animation = &"click_doorhandle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorHandle/PerceptionClick" unique_id=910574378]
+position = Vector2(-1.5258789e-05, 4.0343323)
+shape = SubResource("CircleShape2D_nj0vu")
 
 [node name="Elliot" type="Sprite2D" parent="." unique_id=1630145726]
 position = Vector2(341.78616, 671.00006)
@@ -302,6 +440,21 @@ position = Vector2(1035, 619)
 scale = Vector2(0.4687499, 0.46874997)
 texture = ExtResource("13_nj0vu")
 
+[node name="Click" type="Area2D" parent="Tulip" unique_id=694824529 node_paths=PackedStringArray("dialogue_state", "click_animation_player")]
+script = ExtResource("4_tptwy")
+dialogue = ExtResource("2_32efi")
+start_title = "observe_tulip"
+dialogue_state = NodePath("../..")
+click_animation_player = NodePath("../../Toybox/AnimationPlayer")
+click_animation = &"click_tulip"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tulip/Click" unique_id=7438129]
+position = Vector2(-8.532959, 7.466675)
+shape = SubResource("RectangleShape2D_nj0vu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Tulip" unique_id=265893723]
+libraries/ = SubResource("AnimationLibrary_ye2jl")
+
 [node name="Desk" type="Sprite2D" parent="." unique_id=818718368]
 position = Vector2(872, 817.4095)
 scale = Vector2(0.5346342, 0.4585361)
@@ -311,6 +464,41 @@ texture = ExtResource("14_rl1os")
 position = Vector2(1380.6067, 866.6327)
 scale = Vector2(0.4342074, 0.43420738)
 texture = ExtResource("15_ucsqa")
+
+[node name="Click" type="Area2D" parent="Sofa" unique_id=48514165 node_paths=PackedStringArray("dialogue_state", "click_animation_player")]
+script = ExtResource("4_tptwy")
+dialogue = ExtResource("2_32efi")
+start_title = "observe_sofa"
+dialogue_state = NodePath("../..")
+click_animation_player = NodePath("../../Toybox/AnimationPlayer")
+click_animation = &"click_sofa"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sofa/Click" unique_id=1328249928]
+position = Vector2(-24.427654, 5.452035)
+shape = SubResource("CapsuleShape2D_ac6rm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sofa" unique_id=20514630]
+libraries/ = SubResource("AnimationLibrary_5y8j8")
+
+[node name="Toybox" type="Sprite2D" parent="." unique_id=496859004]
+position = Vector2(783.00006, 1011.75)
+scale = Vector2(0.42543888, 0.42543876)
+texture = ExtResource("19_nj0vu")
+
+[node name="Click" type="Area2D" parent="Toybox" unique_id=1827765703 node_paths=PackedStringArray("dialogue_state", "click_animation_player")]
+script = ExtResource("4_tptwy")
+dialogue = ExtResource("2_32efi")
+start_title = "observe_toybox"
+dialogue_state = NodePath("../..")
+click_animation_player = NodePath("../AnimationPlayer")
+click_animation = &"click_toybox"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Toybox/Click" unique_id=1606522975]
+position = Vector2(1.1751709, 15.8654785)
+shape = SubResource("RectangleShape2D_23k4q")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Toybox" unique_id=1700453696]
+libraries/ = SubResource("AnimationLibrary_hkotj")
 
 [node name="StudyRoomPC" parent="." unique_id=1369670481 instance=ExtResource("6_pc")]
 visible = false
@@ -322,8 +510,3 @@ texture = ExtResource("15_k45oy")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1656242460]
 libraries/ = SubResource("AnimationLibrary_pdgv6")
-
-[node name="toybox" type="Sprite2D" parent="." unique_id=496859004]
-position = Vector2(783.00006, 1011.75)
-scale = Vector2(0.42543888, 0.42543876)
-texture = ExtResource("19_nj0vu")

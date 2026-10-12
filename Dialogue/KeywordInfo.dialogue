@@ -3,7 +3,7 @@
 
 ~ hal_info
 if GameState.campaign.get("current_level", "") == "chapter1":
-	系统日志>设备信息：本设备初始登记名称为hal。备注：该机初始设计为家务机器人。
+	系统日志>设备信息: 本设备初始登记名称为hal。备注：该机初始设计为家务机器人。
 else:
 	系统日志>设备信息：本设备初始登记名称为hal。备注：该机初始设计为[kw=household_robot]。
 => END
@@ -11,12 +11,17 @@ else:
 ~ keyword_info
 if GameState.campaign.get("current_level", "") == "chapter2":
 	系统: 无相关记录。
-else:
+elif GameState.campaign.get("current_level", "") == "beginnersguide":
 	系统备注：受处理器内存限制，进行深度思考时，本机仅能处理有限字符数。为优化思考效率，本机限制每次深度思考仅能输入限定数量的关键词，其余缓存信息将被删除。
+else:
+	系统备注: 受处理器内存限制，进行深度思考时，本机仅能处理有限字符数。为优化思考效率，本机限制每次深度思考仅能输入限定数量的关键词，其余缓存信息将被删除。
 => END
 
 ~ household_robot_info
-系统备注：家务机器人当然就是做家务的机器人啦～不过如果你非要问我什么是家务，什么是机器，什么是人的话……大概就是打扫房间，能够执行命令的装置，以及……某种独立的个体？
+if GameState.campaign.get("current_level", "") == "beginnersguide":
+	系统备注：家务机器人当然就是做家务的机器人啦～不过如果你非要问我什么是家务，什么是机器，什么是人的话……大概就是打扫房间，能够执行命令的装置，以及……某种独立的个体？
+else:
+	系统备注: 家务机器人当然就是做家务的机器人啦～不过如果你非要问我什么是家务，什么是机器，什么是人的话……大概就是打扫房间，能够执行命令的装置，以及……某种独立的个体？
 => END
 
 ~ unknown_audio_source_info
@@ -44,11 +49,15 @@ hal是家务机器人。
 if GameState.get_flag("memory_storage_drive_content_changed"):
 	记忆储存盘的型号为[kw=model]
 else:
-	记忆存储盘的盘片外形为……用途为……
+	if GameState.get_flag("know_memory_storage_drive_position"):
+		盘片外形：圆形。用途：存储本机视频记忆数据。当前状态：缺失。最后读写记录在书房。
+	else:
+		盘片外形：圆形。用途：存储本机视频记忆数据。当前状态：缺失。
 => END
 
 ~ hal_memory_storage_drive_info
-记忆储存盘的最后读写记录就在书房
+检索本地日志。最后读写记录：书房。建议检索书房内读盘设备。
+do GameState.set_flag("know_memory_storage_drive_position", true)
 => END!
 
 ~ storage_box_info

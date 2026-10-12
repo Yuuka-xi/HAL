@@ -1,5 +1,5 @@
 ~ start
-听觉传感器信号：电流声
+听觉传感器信号: 电流声
 [kw=unknown_audio_source]: ……喂，喂？开始测试：你是谁？
 思考: [kw=hal]正在进行深度思考……
 => thought
@@ -34,19 +34,19 @@ do missed_query_counts.clear()
 do WorkLog.choose_answer()
 set correct_answer = true
 if GameState.get_choice("keyword_submission") == "household_robot" or GameState.get_choice("keyword_submission") == "hal+household_robot":
-	set identity_text = "我是家务机器人hal"
+	set identity_text = "我是家务机器人hal，"
 elif GameState.get_choice("keyword_submission") == "owner":
-	set identity_text = "我是你的hal"
-elif GameState.get_choice("keyword_submission") == "household_robot+owner" or GameState.get_choice("keyword_submission") == "elliot+household_robot":
-	set identity_text = "我是你的家务机器人hal"
+	set identity_text = "我是你的hal，Elliot。"
+elif GameState.get_choice("keyword_submission") == "household_robot+owner":
+	set identity_text = "我是你的家务机器人hal，Elliot。"
 elif GameState.get_choice("keyword_submission") == "elliot+owner":
-	set identity_text = "我是Elliot的拥有者"
+	set identity_text = "我是Elliot的拥有者，"
 	set correct_answer = false
 elif GameState.get_choice("keyword_submission") == "hal+owner":
-	set identity_text = "我是hal的拥有者"
+	set identity_text = "我是hal的拥有者，"
 	set correct_answer = false
 else:
-	set identity_text = WorkLog.get_answer_text()
+	set identity_text = WorkLog.get_answer_text() + "，"
 	set correct_answer = false
 => suffix
 
@@ -57,34 +57,29 @@ elif GameState.get_choice("tutorial_thought") == "exploration":
 	set answer_suffix = "请问需要我干什么吗？"
 else:
 	set answer_suffix = "很高兴为您服务。"
-hal: {{identity_text}}，{{answer_suffix}}
+hal: {{identity_text}}{{answer_suffix}}
 => test_result
 
 ~ test_result
 if correct_answer:
-	if not GameState.campaign["keywords"].get("elliot", false):
-		未知声音来源： 我是谁？
-		hal: 未检索到本地信息，无法解答。
-		未知声音来源： ……
-		Elliot: 我是你的主人[kw=elliot]。
+	if GameState.get_choice("keyword_submission") == "household_robot" or GameState.get_choice("keyword_submission") == "hal+household_robot":
+		if GameState.get_choice("tutorial_thought") == "exploration":
+			Elliot: 现在不。测试结束。我是你的主人[kw=elliot]。
+		else:
+			Elliot: 很好，测试结束。我是你的主人[kw=elliot]。
 	elif GameState.get_choice("tutorial_thought") == "exploration":
 		Elliot: 现在不。测试结束。
 	else:
 		Elliot: 很好，测试结束。
 	=> enable_vision
 if GameState.get_choice("tutorial_thought") == "logic":
-	if not GameState.campaign["keywords"].get("elliot", false):
-		未知声音来源: 哪里正常了，重测。
-	else:
-		Elliot: 哪里正常了，重测。
+	Elliot: 哪里正常了，重测。
 else:
-	if not GameState.campaign["keywords"].get("elliot", false):
-		未知声音来源: 什么东西，重测。
-	else:
-		Elliot: 什么东西，重测。
+	Elliot: 什么东西，重测。
 => answer
 
 ~ enable_vision
+Elliot: 现在打开视觉系统。
 do GameState.set_flag("vision_enabled", true)
 do GameState.set_flag("beginnerguide_completed", true)
 => END
@@ -92,6 +87,6 @@ do GameState.set_flag("beginnerguide_completed", true)
 ~ missing_record
 if missed_queries >= 10:
 	激活未知标签：想象力很丰富嘛，我都怀疑你是否仍然是一台机器——咦？不会吧，难道真的只是程序错误？
-else: 
+else:
 	未找到本地记录
 => END
