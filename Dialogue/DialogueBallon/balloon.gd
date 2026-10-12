@@ -49,13 +49,14 @@ func next(title: String) -> void:
 	subtitle.dialogue_line = display_line
 	subtitle.type_out()
 	await subtitle.finished_typing
+	if not dialogue_line.time.is_empty():
+		var duration := dialogue_line.text.length() * 0.03 if dialogue_line.time == "auto" else dialogue_line.time.to_float()
+		await get_tree().create_timer(duration).timeout
 	if not dialogue_line.responses.is_empty():
 		await _collect_keywords()
 		var response = await Attributes.choose(dialogue_line.responses)
 		next(response.next_id)
 	elif not dialogue_line.time.is_empty():
-		var duration := dialogue_line.text.length() * 0.03 if dialogue_line.time == "auto" else dialogue_line.time.to_float()
-		await get_tree().create_timer(duration).timeout
 		_advance()
 	else:
 		waiting = true

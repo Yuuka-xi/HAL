@@ -3,8 +3,34 @@
 [ext_resource type="Texture2D" uid="uid://crkeje15uc0um" path="res://Asset/WhiteBlock.png" id="1_qycs7"]
 [ext_resource type="Texture2D" uid="uid://7454mv4u3g4i" path="res://Asset/Pinkblock.png" id="2_31hf5"]
 [ext_resource type="Texture2D" uid="uid://ca5idgyqvk611" path="res://Asset/YellowBlock.png" id="3_31hf5"]
+[ext_resource type="Script" uid="uid://dwo4rtkee6e6v" path="res://Scene/Tool/perception_click/perception_click.gd" id="c2_click"]
+[ext_resource type="Resource" uid="uid://bqr4jmfm8rea7" path="res://Dialogue/Chapter2.dialogue" id="c2_dialogue"]
+[ext_resource type="Script" uid="uid://sueen46n1aoo" path="res://Scene/Tool/item_drop_target/item_drop_target.gd" id="c2_drop"]
+[ext_resource type="Shader" uid="uid://cxr4hlcg0naud" path="res://Scene/Chapter2/rain.gdshader" id="c2_rain"]
+[ext_resource type="Script" uid="uid://krd00232kny3" path="res://Scene/Chapter2/garden.gd" id="c2_script"]
+[ext_resource type="Texture2D" uid="uid://rjkoxe47o3v3" path="res://Asset/studyroom/tulip.png" id="c2_tulip"]
+
+[sub_resource type="RectangleShape2D" id="C2Door"]
+size = Vector2(194, 391)
+
+[sub_resource type="RectangleShape2D" id="C2Place"]
+size = Vector2(160, 270)
+
+[sub_resource type="ShaderMaterial" id="C2Rain"]
+shader = ExtResource("c2_rain")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/speed = 0.25
+shader_parameter/density = 355.0
+shader_parameter/compression = 0.14
+shader_parameter/trail_size = 9.5
+shader_parameter/brightness = 0.5
+shader_parameter/global_scale = Vector2(0.001, 0.001)
+shader_parameter/rain_length = 0.3
+shader_parameter/camera_pos = Vector2(0, 0)
 
 [node name="Garden" type="Node2D" unique_id=123748347]
+script = ExtResource("c2_script")
+dialogue = ExtResource("c2_dialogue")
 
 [node name="house" type="Node2D" parent="." unique_id=1278395792]
 position = Vector2(-19, 0)
@@ -40,6 +66,15 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "房子
 的门"
+
+[node name="Return" type="Area2D" parent="door_graden" unique_id=1720737341]
+position = Vector2(186, 736.5)
+script = ExtResource("c2_click")
+dialogue = ExtResource("c2_dialogue")
+start_title = "return_living_room"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="door_graden/Return" unique_id=1096607849]
+shape = SubResource("C2Door")
 
 [node name="flower" type="Node2D" parent="." unique_id=468008280]
 position = Vector2(770, -2)
@@ -98,3 +133,31 @@ text = "缺口
 郁金
 香的
 位置"
+
+[node name="PlaceTarget" type="Area2D" parent="chair2" unique_id=1235866273]
+position = Vector2(113, 955)
+script = ExtResource("c2_drop")
+accepted_item = "tulip"
+dialogue = ExtResource("c2_dialogue")
+start_title = "place_tulip"
+release_before_dialogue = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chair2/PlaceTarget" unique_id=479911495]
+shape = SubResource("C2Place")
+
+[node name="PlacedTulip" type="Sprite2D" parent="." unique_id=1354927021]
+position = Vector2(1500, 900)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("c2_tulip")
+
+[node name="Rain" type="CanvasLayer" parent="." unique_id=2097910281]
+layer = 5
+
+[node name="Overlay" type="ColorRect" parent="Rain" unique_id=2008237758]
+material = SubResource("C2Rain")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

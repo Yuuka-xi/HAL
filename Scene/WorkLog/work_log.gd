@@ -2,6 +2,7 @@ extends CanvasLayer
 
 signal closed
 signal answer_confirmed
+signal query_completed(keywords: Array)
 
 const KeywordData = preload("res://Scene/WorkLog/keyword_data.gd")
 @export var dialogue: DialogueResource
@@ -226,6 +227,7 @@ func _search() -> void:
 	%Search.disabled = false
 	if required_action == "query" and ids == required_keywords:
 		close(true)
+	query_completed.emit(ids)
 
 # 查询中带 [#notice] 的文字显示在提示区；关键词只高亮，不重复收录。
 func _format_notice(text: String) -> String:

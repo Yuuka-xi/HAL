@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @onready var panel: Control = $Backdrop/Panel
 @onready var display_size: OptionButton = $Backdrop/Panel/Layout/DisplaySize
+var interaction_locked := false
 
 
 func _ready() -> void:
@@ -26,7 +27,7 @@ func _connect_navigation() -> void:
 
 # 页面打开时统一遮住入口；关卡临时禁用不再影响已经解锁的图标。
 func refresh_navigation() -> void:
-	var page_open: bool = is_open() or WorkLog.get_node("Screen").visible or Attributes.get_node("Screen").visible or Memory.get_node("Screen").visible
+	var page_open: bool = interaction_locked or is_open() or WorkLog.get_node("Screen").visible or Attributes.get_node("Screen").visible or Memory.get_node("Screen").visible
 	$Open.visible = not page_open
 	WorkLog.get_node("Open").visible = not page_open and GameState.get_flag("worklog_enabled")
 	Attributes.get_node("Open").visible = not page_open and GameState.get_flag("attributes_enabled")
@@ -35,12 +36,16 @@ func refresh_navigation() -> void:
 
 
 func _input(event: InputEvent) -> void:
+	if interaction_locked:
+		return
 	if event.is_action_pressed("toggle_settings"):
 		_on_open_pressed()
 		get_viewport().set_input_as_handled()
 
 
 func open() -> void:
+	if interaction_locked:
+		return
 	$Backdrop/Panel/Layout/ReturnToTitle.visible = SaveManager.track_play_time
 	$Backdrop.show()
 	panel.grab_focus()
@@ -55,6 +60,10 @@ func close() -> void:
 
 func is_open() -> bool:
 	return $Backdrop.visible
+
+func set_interaction_locked(locked: bool) -> void:
+	interaction_locked = locked
+	refresh_navigation()
 
 
 func _on_master_changed(value: float) -> void:

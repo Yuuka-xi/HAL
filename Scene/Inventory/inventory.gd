@@ -2,6 +2,8 @@ extends CanvasLayer
 
 @export var item_names: Dictionary[String, String] = {"key_card": "门卡"}
 @export var item_icons: Dictionary[String, Texture2D] = {}
+@export var combination_dialogue: DialogueResource
+@export var combinations: Dictionary[String, String] = {}
 var selected_item := ""
 var expanded := false
 var navigation_enabled := true
@@ -38,6 +40,34 @@ func remove_item(id: String) -> void:
 
 func has_item(id: String) -> bool:
 	return id in GameState.campaign.get("items", [])
+
+# 从场景中的屏幕坐标飞入背包；动画结束后才入库。
+func collect_item(id: String, screen_position: Vector2) -> void:
+	var session := SaveManager.session_id
+	busy = true
+	_refresh()
+	var copy := TextureRect.new()
+	copy.texture = item_icons[id]
+	copy.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	copy.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	copy.size = Vector2(80, 80)
+	copy.position = screen_position - copy.size / 2
+	copy.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(copy)
+	var tween := create_tween().set_parallel(true)
+	tween.tween_property(copy, "position", %Toggle.get_global_rect().get_center() - Vector2(10, 10), 0.5)
+	tween.tween_property(copy, "scale", Vector2(0.25, 0.25), 0.5)
+	await tween.finished
+	copy.queue_free()
+	if session != SaveManager.session_id:
+		return
+	busy = false
+	add_item(id)
+
+func get_item_name(id: String) -> String:
+	if id == "key_card" and GameState.get_flag("card_understood"):
+		return "感应卡"
+	return item_names[id]
 
 func set_navigation(enabled: bool) -> void:
 	navigation_enabled = enabled
@@ -87,7 +117,7 @@ func _refresh() -> void:
 		var occupied := index < items.size()
 		var show_item := occupied and index != drag_slot
 		slots[index].icon = item_icons.get(items[index]) if show_item else null
-		slots[index].text = item_names[items[index]] if show_item and slots[index].icon == null else ""
+		slots[index].text = get_item_name(items[index]) if show_item and slots[index].icon == null else ""
 		slots[index].disabled = busy or not occupied
 		slots[index].set_pressed_no_signal(occupied and items[index] == selected_item)
 
@@ -95,7 +125,7 @@ func _show_item_name(index: int) -> void:
 	if busy or not expanded or slots[index].disabled:
 		return
 	var id: String = GameState.campaign.get("items", [])[index]
-	%ItemName.text = item_names[id]
+	%ItemName.text = get_item_name(id)
 	%ItemName.reset_size()
 	var slot_rect: Rect2 = slots[index].get_global_rect()
 	%ItemName.position = Vector2(slot_rect.position.x - %ItemName.size.x - 16.0,
@@ -132,7 +162,7 @@ func _start_drag(index: int, position: Vector2) -> void:
 	busy = true
 	dragging = true
 	%DragItem.icon = item_icons.get(dragged_item)
-	%DragItem.text = item_names[dragged_item] if %DragItem.icon == null else ""
+	%DragItem.text = get_item_name(dragged_item) if %DragItem.icon == null else ""
 	%DragItem.size = slots[index].size
 	%DragItem.scale = Vector2.ONE
 	%DragItem.position = position - %DragItem.size / 2
@@ -152,8 +182,23 @@ func _find_target(position: Vector2) -> Area2D:
 
 func _drop(position: Vector2) -> void:
 	var session := SaveManager.session_id
+	var items: Array = GameState.campaign.get("items", [])
+	for index in items.size():
+		if index == drag_slot or not slots[index].get_global_rect().has_point(position):
+			continue
+		var ids: Array = [dragged_item, items[index]]
+		ids.sort()
+		var title: String = combinations.get("+".join(ids), "")
+		if not title.is_empty():
+			_finish_drag()
+			DialogueManager.show_dialogue_balloon(combination_dialogue, title)
+			return
 	var target = _find_target(position)
 	if target != null and not SettingsMenu.is_open():
+		if target.release_before_dialogue:
+			_finish_drag()
+			await target.use_item()
+			return
 		await target.use_item()
 		if session != SaveManager.session_id:
 			return

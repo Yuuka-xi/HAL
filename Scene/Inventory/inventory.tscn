@@ -5,6 +5,14 @@
 [ext_resource type="Texture2D" uid="uid://dmqrnhwhv8b2" path="res://Asset/Items/keycard.png" id="2_ai68l"]
 [ext_resource type="Texture2D" uid="uid://bslsst3hmi66c" path="res://Asset/UI/invertory2.png" id="3"]
 [ext_resource type="PackedScene" path="res://Scene/Tool/hover_scale/hover_scale.tscn" id="90_hover"]
+[ext_resource type="Texture2D" path="res://Asset/BrownBlock.png" id="c2_bucket"]
+[ext_resource type="Texture2D" path="res://Asset/WhiteBlock.png" id="c2_rag"]
+[ext_resource type="Texture2D" path="res://Asset/Pinkblock.png" id="c2_empty"]
+[ext_resource type="Texture2D" path="res://Asset/YellowBlock.png" id="c2_cleaner"]
+[ext_resource type="Resource" path="res://Dialogue/Chapter2.dialogue" id="c2_dialogue"]
+
+
+[ext_resource type="Texture2D" path="res://Asset/studyroom/tulip.png" id="c2_tulip"]
 
 [sub_resource type="StyleBoxEmpty" id="Empty"]
 
@@ -20,11 +28,35 @@ Button/styles/hover_pressed = SubResource("Empty")
 Button/styles/normal = SubResource("StyleBoxEmpty_ai68l")
 Button/styles/pressed = SubResource("Empty")
 
+
 [node name="Inventory" type="CanvasLayer" unique_id=128616207]
 layer = 40
 script = ExtResource("1")
+item_names = Dictionary[String, String]({
+"key_card": "门卡",
+"tool_bucket": "清洁工具桶",
+"rag": "抹布",
+"empty_bottle": "空清洁剂瓶",
+"cleaner_bag": "袋装清洁剂",
+"cleaner_bottle": "瓶装清洁剂",
+"wet_rag": "浸了清洁剂的抹布",
+"tulip": "郁金香"
+})
+combination_dialogue = ExtResource("c2_dialogue")
+combinations = Dictionary[String, String]({
+"cleaner_bag+empty_bottle": "fill_bottle",
+"cleaner_bag+rag": "soak_rag_bag",
+"cleaner_bottle+rag": "soak_rag_bottle"
+})
 item_icons = Dictionary[String, Texture2D]({
-"key_card": ExtResource("2_ai68l")
+"key_card": ExtResource("2_ai68l"),
+"tool_bucket": ExtResource("c2_bucket"),
+"rag": ExtResource("c2_rag"),
+"empty_bottle": ExtResource("c2_empty"),
+"cleaner_bag": ExtResource("c2_cleaner"),
+"cleaner_bottle": ExtResource("c2_empty"),
+"wet_rag": ExtResource("c2_bucket"),
+"tulip": ExtResource("c2_tulip")
 })
 
 [node name="Dock" type="Control" parent="." unique_id=1798021066]

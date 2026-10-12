@@ -3,9 +3,80 @@
 [ext_resource type="Texture2D" uid="uid://crkeje15uc0um" path="res://Asset/WhiteBlock.png" id="1_gekc3"]
 [ext_resource type="Texture2D" uid="uid://ca5idgyqvk611" path="res://Asset/YellowBlock.png" id="2_1h5cn"]
 [ext_resource type="Texture2D" uid="uid://7454mv4u3g4i" path="res://Asset/Pinkblock.png" id="2_uto38"]
+[ext_resource type="Script" uid="uid://bcf07y3bedfju" path="res://Scene/Chapter2/bedroom.gd" id="4_camera"]
+[ext_resource type="Texture2D" uid="uid://c30t6mgb6gkbf" path="res://Asset/BrownBlock.png" id="c2_bucket"]
+[ext_resource type="Script" uid="uid://dwo4rtkee6e6v" path="res://Scene/Tool/perception_click/perception_click.gd" id="c2_click"]
+[ext_resource type="Resource" uid="uid://bqr4jmfm8rea7" path="res://Dialogue/Chapter2.dialogue" id="c2_dialogue"]
+[ext_resource type="Script" uid="uid://sueen46n1aoo" path="res://Scene/Tool/item_drop_target/item_drop_target.gd" id="c2_drop"]
+[ext_resource type="PackedScene" uid="uid://u7ewst1c1n2a" path="res://Scene/Tool/mirror_wipe/mirror_wipe.tscn" id="c2_mirror"]
+
+[sub_resource type="RectangleShape2D" id="C2Shape_0"]
+size = Vector2(221, 826)
+
+[sub_resource type="RectangleShape2D" id="C2Shape_4"]
+size = Vector2(100, 70)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4n7dc"]
+size = Vector2(99.375, 70)
+
+[sub_resource type="RectangleShape2D" id="C2Shape_1"]
+size = Vector2(367, 926)
+
+[sub_resource type="RectangleShape2D" id="C2Shape_2"]
+size = Vector2(367, 926)
+
+[sub_resource type="RectangleShape2D" id="C2Shape_3"]
+size = Vector2(260, 253)
+
+[sub_resource type="RectangleShape2D" id="C2Shape_6"]
+size = Vector2(110, 90)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7d5r1"]
+size = Vector2(949, 221)
+
+[sub_resource type="RectangleShape2D" id="C2Shape_5"]
+size = Vector2(110, 130)
+
+[sub_resource type="Animation" id="Animation_4n7dc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CleaningAgent2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1696, 679)]
+}
+
+[sub_resource type="Animation" id="Animation_7d5r1"]
+resource_name = "auto_cabinet_open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CleaningAgent2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1696, 679), Vector2(1529, 679)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5sesh"]
+_data = {
+&"RESET": SubResource("Animation_4n7dc"),
+&"auto_cabinet_open": SubResource("Animation_7d5r1")
+}
 
 [node name="bedroom" type="Node2D" unique_id=1934651834]
 position = Vector2(0, -2)
+script = ExtResource("4_camera")
+dialogue = ExtResource("c2_dialogue")
 
 [node name="door_bedroom" type="Node2D" parent="." unique_id=1260318434]
 position = Vector2(37, -10)
@@ -23,8 +94,17 @@ offset_bottom = 728.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "通往
-卧室
+客厅
 的门"
+
+[node name="ReturnDoor" type="Area2D" parent="door_bedroom" unique_id=458696918]
+position = Vector2(176.5, 679)
+script = ExtResource("c2_click")
+dialogue = ExtResource("c2_dialogue")
+start_title = "return_living_room"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="door_bedroom/ReturnDoor" unique_id=2007375924]
+shape = SubResource("C2Shape_0")
 
 [node name="Sensor" type="Node2D" parent="." unique_id=1107173247]
 position = Vector2(33, 33)
@@ -42,6 +122,28 @@ offset_bottom = 811.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 text = "感应器"
+
+[node name="CardTarget" type="Area2D" parent="Sensor" unique_id=28962217 node_paths=PackedStringArray("dialogue_state")]
+position = Vector2(369.25, 691.25)
+script = ExtResource("c2_drop")
+dialogue = ExtResource("c2_dialogue")
+start_title = "use_card"
+dialogue_state = NodePath("../..")
+dialogue_state_name = "Bedroom"
+release_before_dialogue = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sensor/CardTarget" unique_id=637118676]
+shape = SubResource("C2Shape_4")
+
+[node name="Observe" type="Area2D" parent="Sensor" unique_id=1011377502]
+position = Vector2(-20.5, 337.75)
+script = ExtResource("c2_click")
+dialogue = ExtResource("c2_dialogue")
+start_title = "observe_sensor"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sensor/Observe" unique_id=852498632]
+position = Vector2(389.8125, 353.25)
+shape = SubResource("RectangleShape2D_4n7dc")
 
 [node name="Switch" type="Node2D" parent="." unique_id=1276782769]
 position = Vector2(34, 113)
@@ -81,41 +183,65 @@ text = "衣柜"
 [node name="Mirror" type="Node2D" parent="." unique_id=163275830]
 position = Vector2(817, 283)
 
-[node name="Sprite2D" type="Sprite2D" parent="Mirror" unique_id=1581201971]
-position = Vector2(-20.499975, 337.75006)
-scale = Vector2(2.8671875, 7.2382813)
-texture = ExtResource("1_gekc3")
+[node name="MirrorWipe" parent="Mirror" unique_id=1268227235 instance=ExtResource("c2_mirror")]
+position = Vector2(-204, -125.25)
 
-[node name="Label" type="Label" parent="Mirror" unique_id=1386622504]
-offset_left = -45.0
-offset_top = -14.0
-offset_right = 75.0
-offset_bottom = 124.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 40
-text = "镜子"
+[node name="Observe" type="Area2D" parent="Mirror" unique_id=2080386710]
+position = Vector2(-20.5, 337.75)
+script = ExtResource("c2_click")
+dialogue = ExtResource("c2_dialogue")
+start_title = "observe_mirror"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mirror/Observe" unique_id=1167985613]
+shape = SubResource("C2Shape_1")
+
+[node name="WipeTarget" type="Area2D" parent="Mirror" unique_id=213378525 node_paths=PackedStringArray("dialogue_state")]
+position = Vector2(-20.5, 337.75)
+script = ExtResource("c2_drop")
+accepted_item = "wet_rag"
+dialogue = ExtResource("c2_dialogue")
+start_title = "clean_mirror"
+dialogue_state = NodePath("../..")
+dialogue_state_name = "Bedroom"
+release_before_dialogue = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mirror/WipeTarget" unique_id=1291567857]
+shape = SubResource("C2Shape_2")
 
 [node name="CleaningAgent" type="Node2D" parent="." unique_id=488140437]
 position = Vector2(1114, 1009)
 
 [node name="Sprite2D" type="Sprite2D" parent="CleaningAgent" unique_id=264663544]
-position = Vector2(-3.49998, -0.49999475)
-scale = Vector2(0.6640616, 1.1328129)
+position = Vector2(83.50004, 48.500004)
+scale = Vector2(2.0234368, 0.3671879)
 texture = ExtResource("1_gekc3")
 
 [node name="Label" type="Label" parent="CleaningAgent" unique_id=1067187758]
-offset_left = -30.0
-offset_top = -69.0
-offset_right = 90.0
-offset_bottom = 69.0
+offset_left = -14.0
+offset_top = 28.0
+offset_right = 186.0
+offset_bottom = 166.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
-text = "清
-洁
-剂"
+text = "工具桶区域"
+
+[node name="BucketTarget" type="Area2D" parent="CleaningAgent" unique_id=864543332 node_paths=PackedStringArray("dialogue_state")]
+position = Vector2(83.5, -20)
+script = ExtResource("c2_drop")
+accepted_item = "tool_bucket"
+dialogue = ExtResource("c2_dialogue")
+start_title = "place_bucket"
+dialogue_state = NodePath("../..")
+dialogue_state_name = "Bedroom"
+release_before_dialogue = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CleaningAgent/BucketTarget" unique_id=1768700000]
+position = Vector2(0.5, -33.5)
+shape = SubResource("C2Shape_3")
 
 [node name="CleaningAgent2" type="Node2D" parent="." unique_id=1394438380]
-position = Vector2(1526, 679)
+visible = false
+position = Vector2(1696, 679)
 
 [node name="Sprite2D" type="Sprite2D" parent="CleaningAgent2" unique_id=748053622]
 position = Vector2(1416, 333.25)
@@ -132,23 +258,31 @@ theme_override_font_sizes/font_size = 40
 text = "床下的
 自动柜"
 
-[node name="rag" type="Node2D" parent="." unique_id=889440866]
-position = Vector2(1114, 791)
+[node name="Bag" type="Sprite2D" parent="CleaningAgent2" unique_id=1347323593]
+visible = false
+position = Vector2(1416, 333.25)
+scale = Vector2(0.65, 0.55)
+texture = ExtResource("2_uto38")
 
-[node name="Sprite2D" type="Sprite2D" parent="rag" unique_id=1172582347]
-position = Vector2(-3.49998, -0.49999475)
-scale = Vector2(0.6640616, 1.1328129)
-texture = ExtResource("1_gekc3")
+[node name="Label" type="Label" parent="CleaningAgent2/Bag" unique_id=1961736339]
+offset_left = -60.0
+offset_top = -35.0
+offset_right = 60.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 25
+text = "袋装
+清洁剂"
+horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="rag" unique_id=3169628]
-offset_left = -24.0
-offset_top = -44.0
-offset_right = 96.0
-offset_bottom = 94.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 40
-text = "抹
-布"
+[node name="TakeCleaner" type="Area2D" parent="CleaningAgent2/Bag" unique_id=1398644375 node_paths=PackedStringArray("dialogue_state")]
+script = ExtResource("c2_click")
+dialogue = ExtResource("c2_dialogue")
+start_title = "take_cleaner"
+dialogue_state = NodePath("../../..")
+dialogue_state_name = "Bedroom"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CleaningAgent2/Bag/TakeCleaner" unique_id=878797463]
+shape = SubResource("C2Shape_6")
 
 [node name="table" type="Node2D" parent="." unique_id=2042398687]
 position = Vector2(2083, 904)
@@ -184,5 +318,74 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "床"
 
+[node name="Observe" type="Area2D" parent="bed" unique_id=660574877]
+position = Vector2(-20.5, 337.75)
+script = ExtResource("c2_click")
+dialogue = ExtResource("c2_dialogue")
+start_title = "observe_bed"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bed/Observe" unique_id=456022091]
+position = Vector2(18, -271.25)
+shape = SubResource("RectangleShape2D_7d5r1")
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=124135654]
 position = Vector2(960, 542)
+
+[node name="Navigation" type="CanvasLayer" parent="." unique_id=891826564]
+layer = 30
+
+[node name="Left" type="Button" parent="Navigation" unique_id=988856915]
+visible = false
+offset_left = 24.0
+offset_top = 880.0
+offset_right = 88.0
+offset_bottom = 944.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+text = "‹"
+flat = true
+
+[node name="Right" type="Button" parent="Navigation" unique_id=471759003]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -88.0
+offset_top = 880.0
+offset_right = -24.0
+offset_bottom = 944.0
+grow_horizontal = 0
+focus_mode = 0
+theme_override_font_sizes/font_size = 40
+text = "›"
+flat = true
+
+[node name="ToolBucket" type="Node2D" parent="." unique_id=709787213]
+visible = false
+position = Vector2(1197.5, 930)
+
+[node name="Sprite2D" type="Sprite2D" parent="ToolBucket" unique_id=1586005107]
+scale = Vector2(0.75, 0.9)
+texture = ExtResource("c2_bucket")
+
+[node name="Label" type="Label" parent="ToolBucket" unique_id=606182899]
+offset_left = -55.0
+offset_top = -35.0
+offset_right = 55.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 22
+text = "清洁
+工具桶"
+horizontal_alignment = 1
+
+[node name="TakeTool" type="Area2D" parent="ToolBucket" unique_id=1495025108 node_paths=PackedStringArray("dialogue_state")]
+script = ExtResource("c2_click")
+dialogue = ExtResource("c2_dialogue")
+start_title = "take_bucket_tool"
+dialogue_state = NodePath("../..")
+dialogue_state_name = "Bedroom"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ToolBucket/TakeTool" unique_id=1197253287]
+shape = SubResource("C2Shape_5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=346020804]
+libraries/ = SubResource("AnimationLibrary_5sesh")

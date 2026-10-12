@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://c4keu3f2jicb4" path="res://Asset/studyroom/desk.png" id="14_rl1os"]
 [ext_resource type="Texture2D" uid="uid://4h314655l78u" path="res://Asset/studyroom/chargingpile.png" id="15_k45oy"]
 [ext_resource type="Texture2D" uid="uid://cki1r7sam6nb1" path="res://Asset/studyroom/sofa.png" id="15_ucsqa"]
+[ext_resource type="Texture2D" uid="uid://bk10s73lct40a" path="res://Asset/studyroom/toybox.png" id="19_nj0vu"]
 [ext_resource type="PackedScene" uid="uid://bdoiafjgq4y46" path="res://Scene/Tool/scene_transition/0_1_transition.tscn" id="20_vision"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pimtm"]
@@ -321,3 +322,8 @@ texture = ExtResource("15_k45oy")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1656242460]
 libraries/ = SubResource("AnimationLibrary_pdgv6")
+
+[node name="toybox" type="Sprite2D" parent="." unique_id=496859004]
+position = Vector2(783.00006, 1011.75)
+scale = Vector2(0.42543888, 0.42543876)
+texture = ExtResource("19_nj0vu")

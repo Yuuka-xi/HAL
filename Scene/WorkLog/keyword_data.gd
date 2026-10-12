@@ -15,7 +15,11 @@ const NAMES = {
 	"pc": "台式机",
 	"disc_reader": "读盘器",
 	# 关卡2
-	"WC": "卫生间"
+	"bedroom": "卧室",
+	"sensor": "感应器",
+	"bed": "床",
+	"cleaner": "清洁剂",
+	"coffee": "咖啡"
 	
 }
 
@@ -40,6 +44,11 @@ const ENTRIES = {
 	"model+pc": "model_pc_info",
 	"hal+memory_storage_drive": "hal_memory_storage_drive_info",
 	# 关卡2
-	"WC": "WC_info"
+	"bedroom": "bedroom_info",
+	"sensor":"sensor_info",
+	"bed": "bed_info",
+	"bed+sensor": "bed_sensor_info",
+	"cleaner": "cleaner_info",
+	"coffee": "coffee_info"
 	
 }

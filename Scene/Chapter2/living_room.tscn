@@ -4,11 +4,24 @@
 [ext_resource type="Script" uid="uid://bgxf0ai6lrcy8" path="res://Scene/Chapter2/living_room.gd" id="1_qgoad"]
 [ext_resource type="Texture2D" uid="uid://ca5idgyqvk611" path="res://Asset/YellowBlock.png" id="2_dw4lw"]
 [ext_resource type="Texture2D" uid="uid://7454mv4u3g4i" path="res://Asset/Pinkblock.png" id="3_j3xre"]
-[ext_resource type="Resource" uid="uid://bqr4jmfm8rea7" path="res://Dialogue/Chapter2.dialogue" id="5_dialogue"]
+[ext_resource type="Script" uid="uid://dwo4rtkee6e6v" path="res://Scene/Tool/perception_click/perception_click.gd" id="c2_click"]
+[ext_resource type="Resource" uid="uid://bqr4jmfm8rea7" path="res://Dialogue/Chapter2.dialogue" id="c2_dialogue"]
+
+[sub_resource type="RectangleShape2D" id="C2Shape_2"]
+size = Vector2(218, 812)
+
+[sub_resource type="RectangleShape2D" id="C2Shape_1"]
+size = Vector2(221, 812)
+
+[sub_resource type="RectangleShape2D" id="C2Shape_0"]
+size = Vector2(221, 812)
+
+[sub_resource type="RectangleShape2D" id="C2Shape_3"]
+size = Vector2(170, 442)
 
 [node name="LivingRoom" type="Node2D" unique_id=809928177]
 script = ExtResource("1_qgoad")
-dialogue = ExtResource("5_dialogue")
+dialogue = ExtResource("c2_dialogue")
 
 [node name="door_graden" type="Node2D" parent="." unique_id=1075070305]
 position = Vector2(-19, 0)
@@ -29,6 +42,15 @@ text = "通往
 花园
 的门"
 
+[node name="EnterDoor" type="Area2D" parent="door_graden" unique_id=1032810187]
+position = Vector2(175, 672)
+script = ExtResource("c2_click")
+dialogue = ExtResource("c2_dialogue")
+start_title = "enter_garden"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="door_graden/EnterDoor" unique_id=260985660]
+shape = SubResource("C2Shape_2")
+
 [node name="door_studyroom" type="Node2D" parent="." unique_id=2062693594]
 position = Vector2(1226, 0)
 
@@ -48,6 +70,15 @@ text = "通往
 书房
 的门"
 
+[node name="EnterDoor" type="Area2D" parent="door_studyroom" unique_id=1368113998]
+position = Vector2(176.5, 672)
+script = ExtResource("c2_click")
+dialogue = ExtResource("c2_dialogue")
+start_title = "enter_study"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="door_studyroom/EnterDoor" unique_id=704865070]
+shape = SubResource("C2Shape_1")
+
 [node name="door_bedroom" type="Node2D" parent="." unique_id=707816966]
 position = Vector2(1557, 0)
 
@@ -66,6 +97,15 @@ theme_override_font_sizes/font_size = 40
 text = "通往
 卧室
 的门"
+
+[node name="EnterDoor" type="Area2D" parent="door_bedroom" unique_id=651672020]
+position = Vector2(176.5, 672)
+script = ExtResource("c2_click")
+dialogue = ExtResource("c2_dialogue")
+start_title = "enter_bedroom"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="door_bedroom/EnterDoor" unique_id=863058436]
+shape = SubResource("C2Shape_0")
 
 [node name="sofa" type="Node2D" parent="." unique_id=2130628676]
 
@@ -98,6 +138,15 @@ offset_bottom = 793.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "Elliot"
+
+[node name="Talk" type="Area2D" parent="elliot" unique_id=435198497]
+position = Vector2(623, 838)
+script = ExtResource("c2_click")
+dialogue = ExtResource("c2_dialogue")
+start_title = "talk_elliot"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="elliot/Talk" unique_id=482770259]
+shape = SubResource("C2Shape_3")
 
 [node name="table" type="Node2D" parent="." unique_id=230901218]
 

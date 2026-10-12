@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://u7ewst1c1n2a"]
+
+[ext_resource type="Script" uid="uid://ku1sdx3fjptl" path="res://Scene/Tool/mirror_wipe/mirror_wipe.gd" id="1"]
+[ext_resource type="Shader" uid="uid://mctydfj6sq2o" path="res://Scene/Tool/mirror_wipe/dirt.gdshader" id="2"]
+[ext_resource type="Texture2D" uid="uid://crkeje15uc0um" path="res://Asset/WhiteBlock.png" id="4_88au2"]
+[ext_resource type="Texture2D" uid="uid://c30t6mgb6gkbf" path="res://Asset/BrownBlock.png" id="6_10v0b"]
+
+[sub_resource type="ShaderMaterial" id="Dirt"]
+resource_local_to_scene = true
+shader = ExtResource("2")
+
+[node name="MirrorWipe" type="Node2D" unique_id=1725197572]
+script = ExtResource("1")
+clean_texture = ExtResource("4_88au2")
+dirty_texture = ExtResource("6_10v0b")
+
+[node name="Clean" type="TextureRect" parent="." unique_id=1950299989]
+offset_right = 367.0
+offset_bottom = 926.0
+mouse_filter = 2
+texture = ExtResource("4_88au2")
+expand_mode = 1
+
+[node name="Dirty" type="TextureRect" parent="." unique_id=1220077843]
+material = SubResource("Dirt")
+offset_right = 367.0
+offset_bottom = 926.0
+mouse_filter = 2
+texture = ExtResource("6_10v0b")
+expand_mode = 1
+
+[node name="Hint" type="Label" parent="." unique_id=1187596567]
+visible = false
+offset_top = 8.0
+offset_right = 367.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 22
+text = "按住左键，来回擦拭镜子"
+horizontal_alignment = 1

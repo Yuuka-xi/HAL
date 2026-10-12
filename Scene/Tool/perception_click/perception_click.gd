@@ -13,6 +13,8 @@ var busy := false
 var used := false
 
 func _input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if SettingsMenu.is_open() or SettingsMenu.interaction_locked:
+		return
 	if one_shot and used:
 		return
 	if not required_flag.is_empty() and not GameState.get_flag(required_flag):

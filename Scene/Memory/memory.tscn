@@ -76,7 +76,7 @@ tracks/4/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_ps65c"]
-resource_name = "clean_wc"
+resource_name = "clean_bedroom"
 length = 2.5000000000000004
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -155,7 +155,7 @@ layer = 40
 script = ExtResource("1")
 animation_content = NodePath("OpenDoor")
 animation_contents = Dictionary[String, NodePath]({
-"clean_wc": NodePath("CleanBedroom")
+"clean_bedroom": NodePath("CleanBedroom")
 })
 finished_dialogue = ExtResource("4_finished")
 finished_titles = Dictionary[String, String]({

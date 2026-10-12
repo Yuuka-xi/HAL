@@ -9,7 +9,10 @@ else:
 => END
 
 ~ keyword_info
-系统备注：受处理器内存限制，进行深度思考时，本机仅能处理有限字符数。为优化思考效率，本机限制每次深度思考仅能输入限定数量的关键词，其余缓存信息将被删除。
+if GameState.campaign.get("current_level", "") == "chapter2":
+	系统: 无相关记录。
+else:
+	系统备注：受处理器内存限制，进行深度思考时，本机仅能处理有限字符数。为优化思考效率，本机限制每次深度思考仅能输入限定数量的关键词，其余缓存信息将被删除。
 => END
 
 ~ household_robot_info
@@ -75,6 +78,30 @@ do GameState.set_flag("memory_storage_drive_content_changed", true)
 => END
 
 # Chapter2
-~ WC_info
-Elliot家的卫生间
+~ bedroom_info
+Elliot家的卧室
+=> END
+
+~ sensor_info
+卧室中的感应器，不知道有什么用途
+=> END
+
+~ bed_info
+床下似乎有什么东西
+=> END
+
+~ bed_sensor_info
+系统：（通过一番研究后发现在感应器刷门卡可以打开床下的自动柜）
+if not GameState.get_flag("card_understood"):
+	系统：（逻辑属性+1）
+	do GameState.set_flag("card_understood", true)
+	do GameState.add_attribute("logic", 1)
+=> END
+
+~ cleaner_info
+清洁剂存放在卧室床底的自动柜中，hal的移动模块不适合钻入床底，也不方便直接拉开柜子。
+=> END
+
+~ coffee_info
+系统: 无相关记录。
 => END

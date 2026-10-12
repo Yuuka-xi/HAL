@@ -1,0 +1,119 @@
+[gd_scene format=3 uid="uid://bcbesmlmvt1uq"]
+
+[ext_resource type="Script" uid="uid://b6tn1bl37pfal" path="res://Scene/Chapter2/study_room.gd" id="1_1njdv"]
+[ext_resource type="Resource" uid="uid://bqr4jmfm8rea7" path="res://Dialogue/Chapter2.dialogue" id="2_32efi"]
+[ext_resource type="Texture2D" uid="uid://8p5nmmhfel37" path="res://Asset/studyroom/background.png" id="3_an3b1"]
+[ext_resource type="Texture2D" uid="uid://ce85b32v36g7s" path="res://Asset/studyroom/wall.png" id="4_h1g4l"]
+[ext_resource type="Script" uid="uid://dwo4rtkee6e6v" path="res://Scene/Tool/perception_click/perception_click.gd" id="4_tptwy"]
+[ext_resource type="Texture2D" uid="uid://chc5gm0cvanq" path="res://Asset/studyroom/door.png" id="5_lxdqs"]
+[ext_resource type="Texture2D" uid="uid://cn30vjdjhexx0" path="res://Asset/studyroom/elliot.png" id="8_7fidx"]
+[ext_resource type="Texture2D" uid="uid://cwhwk73nr72rd" path="res://Asset/studyroom/bookshelf.png" id="9_7fidx"]
+[ext_resource type="Texture2D" uid="uid://brjj5po4vy5dr" path="res://Asset/studyroom/DoorHandle.png" id="9_q63yh"]
+[ext_resource type="Texture2D" uid="uid://b5f1efusho52d" path="res://Asset/studyroom/curtain.png" id="9_qmr0i"]
+[ext_resource type="Texture2D" uid="uid://ckfkvb8cptwqu" path="res://Asset/studyroom/PC.png" id="12_q63yh"]
+[ext_resource type="Texture2D" uid="uid://rjkoxe47o3v3" path="res://Asset/studyroom/tulip.png" id="13_nj0vu"]
+[ext_resource type="Texture2D" uid="uid://c4keu3f2jicb4" path="res://Asset/studyroom/desk.png" id="14_rl1os"]
+[ext_resource type="Texture2D" uid="uid://4h314655l78u" path="res://Asset/studyroom/chargingpile.png" id="15_k45oy"]
+[ext_resource type="Texture2D" uid="uid://cki1r7sam6nb1" path="res://Asset/studyroom/sofa.png" id="15_ucsqa"]
+[ext_resource type="Texture2D" uid="uid://bk10s73lct40a" path="res://Asset/studyroom/toybox.png" id="16_1o5ci"]
+
+[sub_resource type="RectangleShape2D" id="C2Exit"]
+size = Vector2(674.68756, 1653.2764)
+
+[sub_resource type="RectangleShape2D" id="C2Tulip"]
+size = Vector2(124.83313, 546.2001)
+
+[node name="StudyRoom2" type="Node2D" unique_id=939539833]
+script = ExtResource("1_1njdv")
+dialogue = ExtResource("2_32efi")
+
+[node name="background1" type="Sprite2D" parent="." unique_id=1344781212]
+position = Vector2(960.00006, 539.99994)
+scale = Vector2(0.3880356, 0.49999994)
+texture = ExtResource("3_an3b1")
+
+[node name="wall" type="Sprite2D" parent="." unique_id=368570682]
+position = Vector2(1134.7863, 539.75)
+scale = Vector2(0.48010764, 0.50023144)
+texture = ExtResource("4_h1g4l")
+
+[node name="Door" type="Sprite2D" parent="." unique_id=1511944432]
+position = Vector2(250, 540)
+scale = Vector2(0.47756916, 0.49984264)
+texture = ExtResource("5_lxdqs")
+
+[node name="DoorHandle" type="Sprite2D" parent="Door" unique_id=1163537994]
+position = Vector2(366.4391, 190.05984)
+scale = Vector2(0.99180675, 0.9918066)
+texture = ExtResource("9_q63yh")
+
+[node name="Return" type="Area2D" parent="Door" unique_id=1096556923]
+script = ExtResource("4_tptwy")
+dialogue = ExtResource("2_32efi")
+start_title = "return_living_room"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/Return" unique_id=1094001656]
+position = Vector2(119.13458, -26.386353)
+scale = Vector2(0.99999994, 0.9999999)
+shape = SubResource("C2Exit")
+
+[node name="Elliot" type="Sprite2D" parent="." unique_id=1630145726]
+visible = false
+position = Vector2(341.78616, 671.00006)
+scale = Vector2(0.4862043, 0.48620427)
+texture = ExtResource("8_7fidx")
+
+[node name="curtain" type="Sprite2D" parent="." unique_id=30220602]
+position = Vector2(1011, 522.00006)
+scale = Vector2(0.4334941, 0.49758264)
+texture = ExtResource("9_qmr0i")
+
+[node name="BookShelf" type="Sprite2D" parent="." unique_id=1545835636]
+position = Vector2(1735.1875, 579)
+scale = Vector2(0.47842923, 0.48783195)
+texture = ExtResource("9_7fidx")
+
+[node name="StorageBox" type="Sprite2D" parent="." unique_id=1557082183]
+position = Vector2(1715, 952)
+scale = Vector2(1.5546875, 1.3359375)
+
+[node name="PC" type="Sprite2D" parent="." unique_id=2092021270]
+position = Vector2(848.37836, 656.6719)
+scale = Vector2(0.4366668, 0.4366668)
+texture = ExtResource("12_q63yh")
+
+[node name="Tulip" type="Sprite2D" parent="." unique_id=1630688574]
+position = Vector2(1035, 619)
+scale = Vector2(0.4687499, 0.46874997)
+texture = ExtResource("13_nj0vu")
+
+[node name="Take" type="Area2D" parent="Tulip" unique_id=12694393 node_paths=PackedStringArray("dialogue_state")]
+script = ExtResource("4_tptwy")
+dialogue = ExtResource("2_32efi")
+start_title = "take_tulip"
+dialogue_state = NodePath("../..")
+dialogue_state_name = "Study"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tulip/Take" unique_id=370107498]
+position = Vector2(-3.7165527, 6.366455)
+shape = SubResource("C2Tulip")
+
+[node name="Desk" type="Sprite2D" parent="." unique_id=818718368]
+position = Vector2(872, 817.4095)
+scale = Vector2(0.5346342, 0.4585361)
+texture = ExtResource("14_rl1os")
+
+[node name="Sofa" type="Sprite2D" parent="." unique_id=868732786]
+position = Vector2(1380.6067, 866.6327)
+scale = Vector2(0.4342074, 0.43420738)
+texture = ExtResource("15_ucsqa")
+
+[node name="chargingpile" type="Sprite2D" parent="." unique_id=659815291]
+position = Vector2(433, 1035.25)
+scale = Vector2(0.54042506, 0.5196632)
+texture = ExtResource("15_k45oy")
+
+[node name="toybox" type="Sprite2D" parent="." unique_id=1691311717]
+position = Vector2(783.00006, 1011.75)
+scale = Vector2(0.42543888, 0.42543876)
+texture = ExtResource("16_1o5ci")

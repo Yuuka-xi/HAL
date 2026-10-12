@@ -5,6 +5,7 @@ extends Area2D
 @export var start_title := "use_item"
 @export var dialogue_state: Node
 @export var dialogue_state_name := ""
+@export var release_before_dialogue := false
 
 func _ready() -> void:
 	add_to_group("item_drop_target")

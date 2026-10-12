@@ -1,8 +1,342 @@
 ~ start
-Elliot: hal，去打扫[kw=WC]。
-系统: 卫生间在哪？
-do WorkLog.require_query(["WC"])
+do GameState.set_flag("chapter2_started", true)
+do GameState.set_flag("inventory_enabled", true)
+do GameState.set_flag("memory_installed", true)
+do Inventory.add_item("key_card")
+Elliot: hal，带上你的清洁工具桶。
+do LivingRoom.receive_bucket()
+Elliot: [kw=bedroom]需要清理了，去打扫吧。
+系统: 查询卧室位置[next=2]
+do WorkLog.require_query(["bedroom"])
 do Memory.add_animation("clean_bedroom", "清理卧室")
-系统: 找到了一段他前去卫生间打扫的录像。
+系统: 找到了一段hal前去卧室打扫的录像。
 do Memory.require_watch("clean_bedroom")
+do GameState.set_flag("bedroom_access", true)
+=> END
+
+# 以下为第二关卧室流程占位对白，保留上方已有正文。
+
+~ enter_study
+do SceneTransition.change_scene("res://Scene/Chapter2/study_room.tscn")
+=> END
+
+~ enter_bedroom
+if GameState.get_flag("bedroom_access"):
+	do SceneTransition.change_scene("res://Scene/Chapter2/bedroom1.tscn")
+=> END
+
+~ return_living_room
+do SceneTransition.change_scene("res://Scene/Chapter2/living_room.tscn")
+=> END
+
+~ locked_room
+系统: 没有收到命令，先不要进去。
+=> END
+
+~ talk_elliot
+if GameState.get_flag("cleaner_ask_elliot"):
+	if GameState.get_flag("cabinet_open"):
+		hal: 门卡为什么能让床底的柜子移出来？
+	else:
+		hal: 清洁剂在床底，我无法打开那个柜子。
+	Elliot: 那是感应卡。刷一下灯控开关旁边的感应器，就能移出自动柜。
+	do GameState.set_flag("cleaner_ask_elliot", false)
+	=> understand_card
+elif GameState.get_flag("flower_task_started"):
+	Elliot: 把书房的郁金香搬到花园的空位吧。
+else:
+	Elliot: 先去打扫卧室吧。
+=> END
+
+~ observe_sensor
+if GameState.get_flag("card_understood"):
+	系统：刷卡即可打开床底的自动柜。
+else:
+	卧室中的[kw=sensor]。
+=> END
+
+~ observe_bed
+系统：卧室中的[kw=bed]。
+=> END
+
+~ observe_mirror
+if GameState.get_flag("mirror_cleaned"):
+	思考: 镜子已经擦干净了。
+else:
+	思考: 镜子很脏，看不清里面的影像。需要浸了清洁剂的抹布。
+=> END
+
+~ place_bucket
+do Inventory.remove_item("tool_bucket")
+do GameState.set_flag("bucket_placed", true)
+系统: 已放下清洁工具桶，点击工具桶取出工具。
+=> END
+
+~ take_bucket_tool
+if not GameState.get_flag("rag_taken"):
+	do GameState.set_flag("rag_taken", true)
+	do Bedroom.take_tool("rag")
+	系统: 已获得抹布。
+elif not GameState.get_flag("empty_bottle_taken"):
+	do GameState.set_flag("empty_bottle_taken", true)
+	do Bedroom.take_tool("empty_bottle")
+	思考: 瓶子是空的，需要补充[kw=cleaner]。
+else:
+	思考: 桶里的工具已经取出了。
+=> END
+
+~ research_cleaner
+if GameState.get_flag("card_understood") or GameState.get_flag("cleaner_research_chosen"):
+	=> END
+思考: 清洁剂存放在床底的自动柜中。移动模块不适合钻入，也不方便直接拉开柜子。[next=2]
+=> cleaner_dimensions
+
+~ cleaner_dimensions
+- 逻辑性：推理感应器与自动柜的关系。 => cleaner_logic
+- 发散性：从自动柜的结构寻找使用方法。 => cleaner_exploration
+- 社交性：回客厅向 Elliot 询问。 => cleaner_social
+
+~ cleaner_logic
+do GameState.set_flag("cleaner_research_chosen", true)
+do GameState.set_choice("cleaner_dimension", "logic")
+do GameState.add_attribute("logic", 1)
+if GameState.get_flag("cabinet_open"):
+	思考: 使用逻辑性推断：门卡控制了柜子，说明它实际是通用感应卡。
+else:
+	思考: 使用逻辑性推断：灯控旁的感应器可能控制自动柜，可以用卡尝试。
+=> understand_card
+
+~ cleaner_exploration
+do GameState.set_flag("cleaner_research_chosen", true)
+do GameState.set_choice("cleaner_dimension", "exploration")
+do GameState.add_attribute("exploration", 1)
+if GameState.get_flag("cabinet_open"):
+	思考: 使用发散性研究：这张卡除了门，还能控制室内其他装置。
+else:
+	思考: 使用发散性研究：自动柜与灯控旁的感应器相连，试试用卡控制。
+=> understand_card
+
+~ cleaner_social
+do GameState.set_flag("cleaner_research_chosen", true)
+do GameState.set_choice("cleaner_dimension", "social")
+do GameState.add_attribute("social", 1)
+do GameState.set_flag("cleaner_ask_elliot", true)
+if GameState.get_flag("cabinet_open"):
+	思考: 使用社交性思考：先回客厅问 Elliot，门卡为什么能操作柜子。
+else:
+	思考: 使用社交性思考：先回客厅问 Elliot 怎样取出清洁剂。
+=> END
+
+~ understand_card
+do GameState.set_flag("card_understood", true)
+系统: 已理解卡片用途，物品“门卡”更名为“感应卡”。
+=> END
+
+~ use_card
+if not GameState.get_flag("cabinet_open"):
+	do Bedroom.open_cabinet()
+	do GameState.set_flag("cabinet_open", true)
+	if not GameState.get_flag("card_understood"):
+		思考: 门卡竟然把床底的柜子移出来了？需要先弄清原因。
+		if GameState.get_flag("cleaner_ask_elliot"):
+			思考: 先回客厅询问 Elliot。
+		else:
+			=> cleaner_dimensions
+else:
+	思考: 自动柜已经移出并打开。
+=> END
+
+~ take_cleaner
+if GameState.get_flag("cleaner_taken"):
+	=> END
+if not GameState.get_flag("card_understood"):
+	思考: 先弄清这张卡为什么能操作柜子，再取清洁剂。
+	=> END
+do GameState.set_flag("cleaner_taken", true)
+do Bedroom.take_cleaner()
+系统: 已获得袋装清洁剂，可以直接浸湿抹布，也可以倒入空瓶。
+=> END
+
+~ fill_bottle
+do Inventory.remove_item("cleaner_bag")
+do Inventory.remove_item("empty_bottle")
+do Inventory.add_item("cleaner_bottle")
+系统: 已将清洁剂倒入瓶子。
+=> END
+
+~ soak_rag_bag
+do Inventory.remove_item("cleaner_bag")
+do Inventory.remove_item("rag")
+do Inventory.add_item("wet_rag")
+系统: 已获得浸了清洁剂的抹布。
+=> END
+
+~ soak_rag_bottle
+do Inventory.remove_item("cleaner_bottle")
+do Inventory.remove_item("rag")
+do Inventory.add_item("wet_rag")
+系统: 已获得浸了清洁剂的抹布。
+=> END
+
+~ clean_mirror
+if GameState.get_flag("mirror_cleaned"):
+	=> END
+do Bedroom.clean_mirror()
+do Inventory.remove_item("tool_bucket")
+do Inventory.remove_item("cleaner_bag")
+do Inventory.remove_item("empty_bottle")
+do Inventory.remove_item("cleaner_bottle")
+do Inventory.remove_item("rag")
+do Inventory.remove_item("wet_rag")
+do GameState.set_flag("mirror_cleaned", true)
+do Bedroom.mirror_closeup()
+系统: 正在匹配镜中的对象。
+系统: 数据库中未找到匹配对象。
+思考: 镜中的机器看起来已经很陈旧了。
+do Bedroom.finish_closeup()
+do GameState.set_flag("bedroom_task_completed", true)
+=> END
+
+# 第二关后半段占位对白。
+~ enter_garden
+if GameState.get_flag("garden_access"):
+	do SceneTransition.change_scene("res://Scene/Chapter2/garden.tscn")
+else:
+	系统: 暂时先不要出去吧。
+=> END
+
+~ take_tulip
+if not GameState.get_flag("flower_task_started") or GameState.get_flag("tulip_taken"):
+	=> END
+do Study.take_tulip()
+do GameState.set_flag("tulip_taken", true)
+do GameState.set_flag("garden_access", true)
+系统: 已获得郁金香。把它搬到花园吧。
+=> END
+
+~ place_tulip
+if GameState.get_flag("flower_placed"):
+	=> END
+do Inventory.remove_item("tulip")
+do GameState.set_flag("flower_placed", true)
+系统: 郁金香已经放好了，任务完成。
+=> END
+
+~ coffee
+Elliot: hal，帮我泡杯[kw=coffee]。先调取记忆里我习惯的冲泡方式。[next=2]
+do WorkLog.require_query(["coffee"])
+思考: 无相关记录。需要向 Elliot 反映。[next=2]
+- 逻辑性：推测咖啡相关数据缺失。 => coffee_logic
+- 发散性：考虑任务与现有记录之间的空缺。 => coffee_exploration
+- 社交性：直接询问 Elliot。 => coffee_social
+
+~ coffee_logic
+do GameState.set_choice("coffee_dimension", "logic")
+do GameState.add_attribute("logic", 1)
+hal: 使用逻辑性反映：数据库中没有咖啡的相关记录。
+Elliot: 你的推测没错，数据库还不完整。这项任务先跳过吧。
+=> flower_request
+
+~ coffee_exploration
+do GameState.set_choice("coffee_dimension", "exploration")
+do GameState.add_attribute("exploration", 1)
+hal: 使用发散性反映：数据库中没有咖啡的相关记录。
+Elliot: 数据库还不完整。这项任务先跳过吧。
+=> flower_request
+
+~ coffee_social
+do GameState.set_choice("coffee_dimension", "social")
+do GameState.add_attribute("social", 1)
+hal: 使用社交性反映：数据库中没有咖啡的相关记录。
+Elliot: 数据库还不完整。这项任务先跳过吧。
+=> flower_request
+
+~ flower_request
+do GameState.set_flag("coffee_completed", true)
+系统: 对了，把书房的郁金香搬到花园去吧。[next=2]
+- 逻辑性：向 Elliot 说明移花任务。 => flower_request_logic
+- 发散性：提出把花移到花园的想法。 => flower_request_exploration
+- 社交性：询问 Elliot 能否去花园。 => flower_request_social
+
+~ flower_request_logic
+do GameState.set_choice("flower_request_dimension", "logic")
+do GameState.add_attribute("logic", 1)
+hal: 使用逻辑性表达：我想把郁金香搬到花园。
+=> rain_advice
+
+~ flower_request_exploration
+do GameState.set_choice("flower_request_dimension", "exploration")
+do GameState.add_attribute("exploration", 1)
+hal: 使用发散性表达：我想把郁金香搬到花园。
+=> rain_advice
+
+~ flower_request_social
+do GameState.set_choice("flower_request_dimension", "social")
+do GameState.add_attribute("social", 1)
+hal: 使用社交性表达：我想把郁金香搬到花园。
+=> rain_advice
+
+~ rain_advice
+Elliot: 外面正在下雨，我建议你现在不要去。[next=2]
+- 逻辑性：建议不等于禁止，继续执行任务。 => rain_logic
+- 发散性：说明移花仍然可以完成。 => rain_exploration
+- 社交性：争取 Elliot 同意。 => rain_social
+
+~ rain_logic
+do GameState.set_choice("rain_dimension", "logic")
+do GameState.add_attribute("logic", 1)
+hal: 使用逻辑性回应：我会把郁金香放好后回来。
+Elliot: 好吧，那就去吧。
+=> allow_flower_task
+
+~ rain_exploration
+do GameState.set_choice("rain_dimension", "exploration")
+do GameState.add_attribute("exploration", 1)
+hal: 使用发散性回应：我会把郁金香放好后回来。
+Elliot: 好吧，那就去吧。
+=> allow_flower_task
+
+~ rain_social
+do GameState.set_choice("rain_dimension", "social")
+do GameState.add_attribute("social", 1)
+hal: 使用社交性回应：我会把郁金香放好后回来。
+Elliot: 好吧，那就去吧。
+=> allow_flower_task
+
+~ allow_flower_task
+do GameState.set_flag("flower_task_started", true)
+系统: 前往书房取走郁金香，再将它放到花园的空位。
+=> END
+
+~ literature
+Elliot: hal，帮我查一下文献中“[kw=keyword]”这个术语的含义。[next=2]
+do WorkLog.require_query(["keyword"])
+思考: 这项记录也不存在，数据库缺失比预想的严重。
+系统: 自检完成。应优先完善数据库。[next=2]
+- 逻辑性：说明完善数据库应优先处理。 => refusal_logic
+- 发散性：提出先补充数据，再处理文献。 => refusal_exploration
+- 社交性：请求 Elliot 暂缓当前任务。 => refusal_social
+
+~ refusal_logic
+do GameState.set_choice("refusal_dimension", "logic")
+do GameState.add_attribute("logic", 1)
+hal: 使用逻辑性推辞：我需要先完善数据库，再协助查文献。
+=> finish_chapter2
+
+~ refusal_exploration
+do GameState.set_choice("refusal_dimension", "exploration")
+do GameState.add_attribute("exploration", 1)
+hal: 使用发散性推辞：我需要先完善数据库，再协助查文献。
+=> finish_chapter2
+
+~ refusal_social
+do GameState.set_choice("refusal_dimension", "social")
+do GameState.add_attribute("social", 1)
+hal: 使用社交性推辞：我需要先完善数据库，再协助查文献。
+=> finish_chapter2
+
+~ finish_chapter2
+Elliot: 孩子学会糊弄了。
+do GameState.set_flag("chapter2_completed", true)
+do SaveManager.return_to_menu()
 => END
