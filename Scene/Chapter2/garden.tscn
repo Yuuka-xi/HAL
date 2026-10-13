@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bi7mon2e5aukh"]
 
-[ext_resource type="Texture2D" uid="uid://crkeje15uc0um" path="res://Asset/WhiteBlock.png" id="1_qycs7"]
-[ext_resource type="Texture2D" uid="uid://7454mv4u3g4i" path="res://Asset/Pinkblock.png" id="2_31hf5"]
-[ext_resource type="Texture2D" uid="uid://ca5idgyqvk611" path="res://Asset/YellowBlock.png" id="3_31hf5"]
+[ext_resource type="Texture2D" uid="uid://psikufmy40xy" path="res://Asset/Garden/background.png" id="3_0i1vr"]
+[ext_resource type="Texture2D" uid="uid://ch4j4dpldprgt" path="res://Asset/Garden/flower.png" id="5_wo43w"]
+[ext_resource type="Texture2D" uid="uid://6qbvg2x7oala" path="res://Asset/Garden/chair.png" id="6_pdk0p"]
 [ext_resource type="Script" uid="uid://dwo4rtkee6e6v" path="res://Scene/Tool/perception_click/perception_click.gd" id="c2_click"]
 [ext_resource type="Resource" uid="uid://bqr4jmfm8rea7" path="res://Dialogue/Chapter2.dialogue" id="c2_dialogue"]
 [ext_resource type="Script" uid="uid://sueen46n1aoo" path="res://Scene/Tool/item_drop_target/item_drop_target.gd" id="c2_drop"]
@@ -11,10 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://rjkoxe47o3v3" path="res://Asset/studyroom/tulip.png" id="c2_tulip"]
 
 [sub_resource type="RectangleShape2D" id="C2Door"]
-size = Vector2(194, 391)
+size = Vector2(227, 316)
 
 [sub_resource type="RectangleShape2D" id="C2Place"]
-size = Vector2(160, 270)
+size = Vector2(162, 111)
 
 [sub_resource type="ShaderMaterial" id="C2Rain"]
 shader = ExtResource("c2_rain")
@@ -32,121 +32,57 @@ shader_parameter/camera_pos = Vector2(0, 0)
 script = ExtResource("c2_script")
 dialogue = ExtResource("c2_dialogue")
 
-[node name="house" type="Node2D" parent="." unique_id=1278395792]
-position = Vector2(-19, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="house" unique_id=1190252173]
-position = Vector2(1009, 590.99994)
-scale = Vector2(11.53125, 5.5)
-texture = ExtResource("1_qycs7")
-
-[node name="Label" type="Label" parent="house" unique_id=994278838]
-offset_left = 942.0
-offset_top = 327.0
-offset_right = 1022.0
-offset_bottom = 465.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 40
-text = "房子"
+[node name="background" type="Sprite2D" parent="." unique_id=1618019525]
+position = Vector2(959.75, 540)
+scale = Vector2(0.5, 0.49999997)
+texture = ExtResource("3_0i1vr")
 
 [node name="door_graden" type="Node2D" parent="." unique_id=1400778037]
 position = Vector2(770, -2)
 
-[node name="Sprite2D" type="Sprite2D" parent="door_graden" unique_id=247675813]
-position = Vector2(185.99997, 736.5)
-scale = Vector2(1.5156249, 3.0546877)
-texture = ExtResource("2_31hf5")
-
-[node name="Label" type="Label" parent="door_graden" unique_id=2103504790]
-offset_left = 146.0
-offset_top = 726.0
-offset_right = 226.0
-offset_bottom = 864.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 40
-text = "房子
-的门"
-
 [node name="Return" type="Area2D" parent="door_graden" unique_id=1720737341]
-position = Vector2(186, 736.5)
+position = Vector2(592, 840)
 script = ExtResource("c2_click")
 dialogue = ExtResource("c2_dialogue")
 start_title = "return_living_room"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="door_graden/Return" unique_id=1096607849]
+position = Vector2(-1.5, -34)
 shape = SubResource("C2Door")
 
 [node name="flower" type="Node2D" parent="." unique_id=468008280]
 position = Vector2(770, -2)
 
 [node name="Sprite2D" type="Sprite2D" parent="flower" unique_id=1151622480]
-modulate = Color(1, 1, 1, 0.53333336)
-position = Vector2(207.49997, 967.5)
-scale = Vector2(14.1484375, 1.8828125)
-texture = ExtResource("3_31hf5")
-
-[node name="Label" type="Label" parent="flower" unique_id=1866467843]
-offset_left = 100.0
-offset_top = 988.0
-offset_right = 300.0
-offset_bottom = 1126.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 40
-text = "郁金香花丛"
+position = Vector2(188, 932.99994)
+scale = Vector2(0.49790612, 0.49790615)
+texture = ExtResource("5_wo43w")
 
 [node name="chair" type="Node2D" parent="." unique_id=500494438]
-position = Vector2(320, -5)
+position = Vector2(550, 899)
 
 [node name="Sprite2D" type="Sprite2D" parent="chair" unique_id=2020557333]
-modulate = Color(1, 1, 1, 0.63529414)
-position = Vector2(105, 929.99994)
-scale = Vector2(1.4687499, 1.8906244)
-texture = ExtResource("2_31hf5")
+position = Vector2(4.999996, -3.0000305)
+scale = Vector2(0.4912281, 0.49122813)
+texture = ExtResource("6_pdk0p")
 
-[node name="Label" type="Label" parent="chair" unique_id=479760528]
-offset_left = 70.0
-offset_top = 907.0
-offset_right = 270.0
-offset_bottom = 1045.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 40
-text = "椅子"
-
-[node name="chair2" type="Node2D" parent="." unique_id=503703497]
+[node name="gap" type="Node2D" parent="." unique_id=503703497]
 position = Vector2(1387, -3)
 
-[node name="Sprite2D" type="Sprite2D" parent="chair2" unique_id=32943395]
-modulate = Color(1, 1, 1, 0.63529414)
-position = Vector2(112.99998, 955)
-scale = Vector2(0.85156244, 2.0781245)
-texture = ExtResource("1_qycs7")
-
-[node name="Label" type="Label" parent="chair2" unique_id=1643841609]
-offset_left = 70.0
-offset_top = 836.0
-offset_right = 270.0
-offset_bottom = 1068.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 40
-text = "缺口
-摆放
-郁金
-香的
-位置"
-
-[node name="PlaceTarget" type="Area2D" parent="chair2" unique_id=1235866273]
-position = Vector2(113, 955)
+[node name="PlaceTarget" type="Area2D" parent="gap" unique_id=1235866273]
+position = Vector2(46, 1003)
 script = ExtResource("c2_drop")
 accepted_item = "tulip"
 dialogue = ExtResource("c2_dialogue")
 start_title = "place_tulip"
 release_before_dialogue = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="chair2/PlaceTarget" unique_id=479911495]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="gap/PlaceTarget" unique_id=479911495]
+position = Vector2(-10, 23.5)
 shape = SubResource("C2Place")
 
 [node name="PlacedTulip" type="Sprite2D" parent="." unique_id=1354927021]
-position = Vector2(1500, 900)
+position = Vector2(1425, 934.00006)
 scale = Vector2(0.45, 0.45)
 texture = ExtResource("c2_tulip")
 

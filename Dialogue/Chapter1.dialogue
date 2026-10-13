@@ -1,4 +1,5 @@
 ~ start
+（书房外突然响起电话铃声。）（需要换成音效）
 Elliot: hal，继续完成自检。
 hal: 指令确认。
 do StudyRoom2.elliot_close_door()
@@ -15,7 +16,7 @@ do GameState.set_flag("elliot_close_door", true)
 记忆存储模块：异常
 记忆存储模块：未检测到编号 M-07 [kw=memory_storage_drive]。
 hal: 自检完成。异常：记忆模块缺失 M-07 [kw=memory_storage_drive]。[next=auto]
-do WorkLog.require_query(["hal", "memory_storage_drive"])
+do! WorkLog.open()
 => END
 
 ~ submit
@@ -26,6 +27,7 @@ else:
 => END
 
 ~ observe_storage_box
+do StudyRoom2.show_storage_box()
 hal: 检测到[kw=storage_box]。M-07 位置为空。
 => END
 
@@ -44,19 +46,23 @@ if not GameState.get_flag("disc_reader_open"):
 if not GameState.get_flag("memory_installed"):
 	do StudyRoomPC.hal_get_memory_storage_drive()
 	do GameState.set_flag("memory_installed", true)
-	系统: 编号42的记忆存储盘已装入，记忆录像模块已启用，可随时查看。
-	Elliot: hal，出来！
+	hal: 记忆模块接入。编号 M-07。记忆录像调用功能已启用。
+	Elliot: hal，出来吧。
+	hal: 收到。
+	do! StudyRoomPC.close()
 => END
 
 ~ observe_door
 if GameState.get_flag("door_open"):
 	思考: 书房的门已经打开。
 elif GameState.get_flag("memory_installed"):
-	思考: 书房的门关着，暂时出不去。但是可以查阅记忆录像，寻找出门方法。
-	do Memory.add_animation("open_door", "开门")
-	do! Memory.open()
+	do StudyRoom2.watch_open_door()
 else:
 	hal: 检测到[kw=door]。尺寸：1.2m×2m，可供本机通过。
+=> END
+
+~ observe_doorhandle
+hal: 检测到[kw=door_lock]。分析：该门锁位置较低，人类使用稍不方便，应为考虑本机高度的设计。
 => END
 
 ~ observe_other_drive
@@ -67,11 +73,42 @@ else:
 if not GameState.get_flag("inventory_enabled"):
 	do Inventory.add_item("key_card")
 	do GameState.set_flag("inventory_enabled", true)
-	系统: 已回忆起系统搭载了物品栏，点击右侧打开物品栏。 [next=auto]
+	hal: 检测到未调用模块：物品栏。功能可用。
+	hal: 物品栏中存在 门卡。
 => END
 
 ~ use_key_card_on_door
 if not GameState.get_flag("door_open"):
+	hal: 读取 门卡。权限确认。门锁解除。[next=auto]
 	do StudyRoom2.hal_open_door()
 	do GameState.set_flag("door_open", true)
+	do! StudyRoom2.finish_level()
 => END
+
+~ hover_disc_reader
+dsk插口
+=> END
+
+~ hover_network_card
+ntw插口
+=> END
+~ observe_toybox
+hal: 检测到[kw=toy]。
+=> END
+
+~ observe_tulip
+hal: 检测到植物。品种：[kw=tulip]。
+=> END
+
+~ observe_sofa
+hal: 检测到[kw=sofa]。分析：目前该沙发较为陈旧，估计已使用十年以上。
+=> END
+
+~ drive_updated
+hal: 更新本地信息：记忆存储盘 状态：使用中。位置：其他机器。[next=1.5]
+=> END
+
+~ pc_dsk_found
+hal: 推论：M-07存储盘可能正在台式机上使用，应检查台式机读盘器。[next=auto]
+=> END
+

@@ -5,7 +5,7 @@
 if GameState.campaign.get("current_level", "") == "chapter1":
 	系统日志>设备信息: 本设备初始登记名称为hal。备注：该机初始设计为家务机器人。
 else:
-	系统日志>设备信息：本设备初始登记名称为hal。备注：该机初始设计为[kw=household_robot]。
+	系统日志>设备信息: 本设备初始登记名称为hal。备注：该机初始设计为[kw=household_robot]。
 => END
 
 ~ keyword_info
@@ -33,7 +33,10 @@ hal的主人，研究员。
 => END
 
 ~ elliot_hal_info
-综合分析系统日志信息，结论：Elliot是hal的[kw=owner]。
+if GameState.campaign.get("current_level", "") == "chapter1":
+	综合分析系统日志信息，结论：Elliot是hal的拥有者。
+else:
+	综合分析系统日志信息，结论：Elliot是hal的[kw=owner]。
 => END
 
 ~ owner_info
@@ -47,7 +50,7 @@ hal是家务机器人。
 # Chapter1
 ~ memory_storage_drive_info
 if GameState.get_flag("memory_storage_drive_content_changed"):
-	记忆储存盘的型号为[kw=model]
+	盘片外形：圆形。用途：存储本机视频记忆数据。当前状态：正在其他设备使用。设备传输协议：[kw=dsk]。
 else:
 	if GameState.get_flag("know_memory_storage_drive_position"):
 		盘片外形：圆形。用途：存储本机视频记忆数据。当前状态：缺失。最后读写记录在书房。
@@ -58,32 +61,70 @@ else:
 ~ hal_memory_storage_drive_info
 检索本地日志。最后读写记录：书房。建议检索书房内读盘设备。
 do GameState.set_flag("know_memory_storage_drive_position", true)
-=> END!
-
-~ storage_box_info
-收纳盒中没有东西，真奇怪，Elliot一直是一个井井有条的人。回忆一下Elliot会把储存盘放在哪里吧。
-=> END
-
-~ pc_info
-Elliot的台式机。
 => END
 
 ~ memory_storage_drive_storage_box_info
-如果收纳盒中没有，那么只有可能在别的机器中使用。
+应用>书房整理：要点21：记忆存储盘应按编号放在对应收纳盒中。若对应收纳盒为空，则物品只可能正在其他机器中使用。
 do GameState.set_flag("memory_storage_drive_content_changed", true)
-[kw=memory_storage_drive]的调用内容发生改变。 [#notice]
+系统提示：记忆存储盘调用内容已更新。 [#notice]
 => END
 
-~ model_pc_info
-台式机的系统正好兼容记忆储存器，或许应该去台式机的中看看。
+~ dsk_pc_info
+检索当前台式机兼容列表。结果：当前台式机支持dsk协议设备。
+=> END
+
+~ tulip_info
+应用>书房整理：要点1：在整理房间时切记不能伤害那盆郁金香，必须按照系统设定的时间浇水、施肥并将其搬入花园通风。如果出现病虫害必须立刻上报。
+=> END
+
+~ elliot_tulip_info
+系统备注：还有还有，hal，要照顾好书房里的那盆郁金香哦。Elliot可不懂得爱惜花草，所以只能拜托你啦～可能只有这样才能让他的书房看起来有一点生命的气息。
+=> END
+
+~ storage_box_info
+关于收纳盒的关键词描述
+=> END
+
+~ pc_info
+关于台式机的关键词描述
+=> END
+
+~ dsk_info
+关于dsk的关键词描述
+=> END
+
+~ toy_info
+关于玩具的关键词描述
+=> END
+
+~ sofa_info
+关于单人沙发的关键词描述
 => END
 
 ~ disc_reader_info
-关于读盘器的信息
+关于读盘器的关键词描述
 => END
 
-~ model_info
-记忆存储盘的型号为42
+~ elliot_toy_info
+检测到玩具购买记录，但记录中未出现Elliot。推论：玩具并非Elliot购买。
+=> END
+
+~ elliot_sofa_info
+检测到单人沙发购买记录，但记录中未出现Elliot。推论：单人沙发并非Elliot购买。
+=> END
+
+~ door_info
+if GameState.get_flag("memory_installed"):
+	未生成文本描述。正在调用记忆录像……
+else:
+	本地未找到相关记录。
+=> END
+
+~ door_lock_info
+if GameState.get_flag("memory_installed"):
+	未生成文本描述。正在调用记忆录像……
+else:
+	本地未找到相关记录。
 => END
 
 # Chapter2

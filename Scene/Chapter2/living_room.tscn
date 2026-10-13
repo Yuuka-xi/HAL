@@ -1,46 +1,33 @@
 [gd_scene format=3 uid="uid://cpftkw2i54dsd"]
 
-[ext_resource type="Texture2D" uid="uid://crkeje15uc0um" path="res://Asset/WhiteBlock.png" id="1_qfro3"]
 [ext_resource type="Script" uid="uid://bgxf0ai6lrcy8" path="res://Scene/Chapter2/living_room.gd" id="1_qgoad"]
-[ext_resource type="Texture2D" uid="uid://ca5idgyqvk611" path="res://Asset/YellowBlock.png" id="2_dw4lw"]
-[ext_resource type="Texture2D" uid="uid://7454mv4u3g4i" path="res://Asset/Pinkblock.png" id="3_j3xre"]
+[ext_resource type="Texture2D" uid="uid://rhhvqw7cawss" path="res://Asset/livingroom/livingroom.png" id="3_q3x07"]
 [ext_resource type="Script" uid="uid://dwo4rtkee6e6v" path="res://Scene/Tool/perception_click/perception_click.gd" id="c2_click"]
 [ext_resource type="Resource" uid="uid://bqr4jmfm8rea7" path="res://Dialogue/Chapter2.dialogue" id="c2_dialogue"]
 
 [sub_resource type="RectangleShape2D" id="C2Shape_2"]
-size = Vector2(218, 812)
+size = Vector2(353, 823)
 
 [sub_resource type="RectangleShape2D" id="C2Shape_1"]
-size = Vector2(221, 812)
+size = Vector2(350, 830)
 
 [sub_resource type="RectangleShape2D" id="C2Shape_0"]
-size = Vector2(221, 812)
+size = Vector2(284, 808)
 
 [sub_resource type="RectangleShape2D" id="C2Shape_3"]
-size = Vector2(170, 442)
+size = Vector2(139, 528)
 
 [node name="LivingRoom" type="Node2D" unique_id=809928177]
 script = ExtResource("1_qgoad")
 dialogue = ExtResource("c2_dialogue")
 
+[node name="background" type="Sprite2D" parent="." unique_id=1626595918]
+position = Vector2(959.75, 540)
+scale = Vector2(0.50000006, 0.5)
+texture = ExtResource("3_q3x07")
+
 [node name="door_graden" type="Node2D" parent="." unique_id=1075070305]
 position = Vector2(-19, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="door_graden" unique_id=1792074770]
-position = Vector2(175.00002, 672)
-scale = Vector2(1.7031248, 6.34375)
-texture = ExtResource("1_qfro3")
-
-[node name="Label" type="Label" parent="door_graden" unique_id=1683681076]
-offset_left = 132.0
-offset_top = 588.0
-offset_right = 212.0
-offset_bottom = 726.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 40
-text = "通往
-花园
-的门"
 
 [node name="EnterDoor" type="Area2D" parent="door_graden" unique_id=1032810187]
 position = Vector2(175, 672)
@@ -49,26 +36,11 @@ dialogue = ExtResource("c2_dialogue")
 start_title = "enter_garden"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="door_graden/EnterDoor" unique_id=260985660]
+position = Vector2(52.5, -188.5)
 shape = SubResource("C2Shape_2")
 
 [node name="door_studyroom" type="Node2D" parent="." unique_id=2062693594]
-position = Vector2(1226, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="door_studyroom" unique_id=1125164149]
-position = Vector2(176.49998, 672)
-scale = Vector2(1.7265618, 6.34375)
-texture = ExtResource("1_qfro3")
-
-[node name="Label" type="Label" parent="door_studyroom" unique_id=1097327214]
-offset_left = 143.0
-offset_top = 590.0
-offset_right = 223.0
-offset_bottom = 728.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 40
-text = "通往
-书房
-的门"
+position = Vector2(1273, 494)
 
 [node name="EnterDoor" type="Area2D" parent="door_studyroom" unique_id=1368113998]
 position = Vector2(176.5, 672)
@@ -77,89 +49,31 @@ dialogue = ExtResource("c2_dialogue")
 start_title = "enter_study"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="door_studyroom/EnterDoor" unique_id=704865070]
+position = Vector2(-184.5, -678)
 shape = SubResource("C2Shape_1")
 
 [node name="door_bedroom" type="Node2D" parent="." unique_id=707816966]
-position = Vector2(1557, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="door_bedroom" unique_id=2070037028]
-position = Vector2(176.49998, 672)
-scale = Vector2(1.7265618, 6.34375)
-texture = ExtResource("1_qfro3")
-
-[node name="Label" type="Label" parent="door_bedroom" unique_id=1915147895]
-offset_left = 131.0
-offset_top = 590.0
-offset_right = 251.0
-offset_bottom = 728.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 40
-text = "通往
-卧室
-的门"
+position = Vector2(1705, 469)
 
 [node name="EnterDoor" type="Area2D" parent="door_bedroom" unique_id=651672020]
-position = Vector2(176.5, 672)
+position = Vector2(4, 26)
 script = ExtResource("c2_click")
 dialogue = ExtResource("c2_dialogue")
 start_title = "enter_bedroom"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="door_bedroom/EnterDoor" unique_id=863058436]
+position = Vector2(-3, 2)
 shape = SubResource("C2Shape_0")
 
-[node name="sofa" type="Node2D" parent="." unique_id=2130628676]
-
-[node name="Sprite2D" type="Sprite2D" parent="sofa" unique_id=130465500]
-position = Vector2(618, 954)
-scale = Vector2(3.046875, 1.8593752)
-texture = ExtResource("1_qfro3")
-
-[node name="Label" type="Label" parent="sofa" unique_id=267882811]
-offset_left = 458.0
-offset_top = 898.0
-offset_right = 609.0
-offset_bottom = 942.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 40
-text = "沙发"
-
 [node name="elliot" type="Node2D" parent="." unique_id=719867742]
-
-[node name="Sprite2D" type="Sprite2D" parent="elliot" unique_id=1970815999]
-position = Vector2(623, 838)
-scale = Vector2(0.97656274, 3.4531257)
-texture = ExtResource("2_dw4lw")
-
-[node name="Label" type="Label" parent="elliot" unique_id=876486505]
-offset_left = 587.0
-offset_top = 749.0
-offset_right = 738.0
-offset_bottom = 793.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 40
-text = "Elliot"
+position = Vector2(739, 671)
 
 [node name="Talk" type="Area2D" parent="elliot" unique_id=435198497]
-position = Vector2(623, 838)
+position = Vector2(5, 32)
 script = ExtResource("c2_click")
 dialogue = ExtResource("c2_dialogue")
 start_title = "talk_elliot"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="elliot/Talk" unique_id=482770259]
+position = Vector2(-17.5, -17)
 shape = SubResource("C2Shape_3")
-
-[node name="table" type="Node2D" parent="." unique_id=230901218]
-
-[node name="Sprite2D" type="Sprite2D" parent="table" unique_id=1706988592]
-position = Vector2(728.5625, 976.5)
-scale = Vector2(3.006836, 0.5859371)
-texture = ExtResource("3_j3xre")
-
-[node name="Label" type="Label" parent="table" unique_id=1651236511]
-offset_left = 688.0
-offset_top = 958.0
-offset_right = 839.0
-offset_bottom = 1002.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 40
-text = "茶几"

@@ -3,7 +3,7 @@ extends Node2D
 
 @export var dialogue: DialogueResource
 
-@onready var memory_storage_drive: Sprite2D = $PC/MemoryStorageDrive
+@onready var memory_storage_drive: Sprite2D = $MemoryStorageDrive
 
 func _ready() -> void:
 	$Back.pressed.connect(close)

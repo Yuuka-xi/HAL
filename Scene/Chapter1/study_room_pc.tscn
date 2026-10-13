@@ -9,11 +9,15 @@
 [ext_resource type="Texture2D" uid="uid://dgxfoc1fu368u" path="res://Asset/studyroom/DiscReader.png" id="6_7as41"]
 [ext_resource type="Texture2D" uid="uid://cy22r2phkgfc" path="res://Asset/studyroom/MemoryStorageDrive.png" id="6_rnhah"]
 [ext_resource type="Texture2D" uid="uid://c4keu3f2jicb4" path="res://Asset/studyroom/desk.png" id="8_7as41"]
+[ext_resource type="Script" uid="uid://84hrx01f6beg" path="res://Scene/Tool/perception_hover/perception_hover.gd" id="9_mkt6m"]
 [ext_resource type="Texture2D" uid="uid://yvv2rbs15sq" path="res://Asset/UI/back.png" id="10_7as41"]
 [ext_resource type="PackedScene" path="res://Scene/Tool/hover_scale/hover_scale.tscn" id="11_rnhah"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nj0vu"]
 radius = 479.39578
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3oq4n"]
+size = Vector2(956.59863, 265.16772)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_37jyc"]
 size = Vector2(88.80853, 22.721687)
@@ -23,7 +27,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PC/MemoryStorageDrive:position")
+tracks/0/path = NodePath("MemoryStorageDrive:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -35,7 +39,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PC/MemoryStorageDrive:rotation")
+tracks/1/path = NodePath("MemoryStorageDrive:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -47,7 +51,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("PC/MemoryStorageDrive:scale")
+tracks/2/path = NodePath("MemoryStorageDrive:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -55,45 +59,58 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0.1710788, 0.17107879)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MemoryStorageDrive:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_37jyc"]
 resource_name = "hal_get_memory_storage_drive"
+length = 2.5000000000000004
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PC/MemoryStorageDrive:position")
+tracks/0/path = NodePath("MemoryStorageDrive:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.5, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(1591, 787.99994)]
+"values": [Vector2(1591, 787.99994), Vector2(1728.0001, 787.99994), Vector2(1728.0001, 787.99994), Vector2(1801, 122.000015)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PC/MemoryStorageDrive:rotation")
+tracks/1/path = NodePath("MemoryStorageDrive:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.5, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [-3.1415927]
+"values": [Vector2(0.1710788, 0.17107879), Vector2(0.22, 0.22), Vector2(0.22, 0.22), Vector2(0.01, 0.01)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("PC/MemoryStorageDrive:scale")
+tracks/2/path = NodePath("MemoryStorageDrive:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.1710788, 0.17107879)]
+"times": PackedFloat32Array(0, 1.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_wrof7"]
@@ -101,7 +118,7 @@ resource_name = "open_disc_reader"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PC/MemoryStorageDrive:position")
+tracks/0/path = NodePath("MemoryStorageDrive:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -113,7 +130,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PC/MemoryStorageDrive:rotation")
+tracks/1/path = NodePath("MemoryStorageDrive:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -140,6 +157,26 @@ position = Vector2(2444, 659)
 scale = Vector2(2.8037531, 2.8037531)
 texture = ExtResource("3_l686q")
 
+[node name="MemoryStorageDrive" type="Sprite2D" parent="." unique_id=796784738]
+position = Vector2(1439, 787.99994)
+scale = Vector2(0.1710788, 0.17107879)
+texture = ExtResource("6_rnhah")
+
+[node name="PerceptionClick" type="Area2D" parent="MemoryStorageDrive" unique_id=2027972199 node_paths=PackedStringArray("dialogue_state")]
+position = Vector2(4.942486, -133.20078)
+script = ExtResource("3_3vqkb")
+dialogue = ExtResource("4_wrof7")
+start_title = "take_memory_storage_drive"
+one_shot = true
+required_flag = "disc_reader_open"
+dialogue_state = NodePath("../..")
+dialogue_state_name = "StudyRoomPC"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MemoryStorageDrive/PerceptionClick" unique_id=157460709]
+position = Vector2(6.655711, 119.803)
+scale = Vector2(0.99999976, 0.9999997)
+shape = SubResource("CircleShape2D_nj0vu")
+
 [node name="PC" type="Sprite2D" parent="." unique_id=1009494296]
 position = Vector2(1106.0001, 511.00006)
 scale = Vector2(1.8044444, 1.8044444)
@@ -149,25 +186,24 @@ texture = ExtResource("4_vilrr")
 position = Vector2(141.31767, -35.46801)
 texture = ExtResource("5_vilrr")
 
-[node name="MemoryStorageDrive" type="Sprite2D" parent="PC" unique_id=796784738]
-position = Vector2(1439, 787.99994)
-scale = Vector2(0.1710788, 0.17107879)
-texture = ExtResource("6_rnhah")
-
-[node name="PerceptionClick" type="Area2D" parent="PC/MemoryStorageDrive" unique_id=2027972199 node_paths=PackedStringArray("dialogue_state")]
-position = Vector2(4.942486, -133.20078)
-script = ExtResource("3_3vqkb")
+[node name="PerceptionHover" type="Area2D" parent="PC/NetworkCard" unique_id=633753483]
+position = Vector2(-36.302345, -0.99339294)
+scale = Vector2(0.09249546, 0.08497293)
+script = ExtResource("9_mkt6m")
 dialogue = ExtResource("4_wrof7")
-start_title = "take_memory_storage_drive"
-one_shot = true
-required_flag = "disc_reader_open"
-dialogue_state = NodePath("../../..")
-dialogue_state_name = "StudyRoomPC"
+label_title = "hover_network_card"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PC/MemoryStorageDrive/PerceptionClick" unique_id=157460709]
-position = Vector2(6.655711, 119.803)
-scale = Vector2(0.99999976, 0.9999997)
-shape = SubResource("CircleShape2D_nj0vu")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PC/NetworkCard/PerceptionHover" unique_id=1932304549]
+position = Vector2(386.79932, 31.08374)
+shape = SubResource("RectangleShape2D_3oq4n")
+
+[node name="Label" type="Label" parent="PC/NetworkCard/PerceptionHover" unique_id=1556479865]
+offset_left = 1033.5687
+offset_top = -86.138275
+offset_right = 1833.5687
+offset_bottom = 127.861725
+theme_override_font_sizes/font_size = 200
+text = "弹出文本"
 
 [node name="DiscReader" type="Sprite2D" parent="PC" unique_id=723283770]
 position = Vector2(145.83124, 105.29553)
@@ -188,6 +224,25 @@ position = Vector2(-0.6187919, 1.579482)
 scale = Vector2(0.99999976, 0.9999999)
 shape = SubResource("RectangleShape2D_37jyc")
 
+[node name="PerceptionHover" type="Area2D" parent="PC/DiscReader" unique_id=114626689]
+position = Vector2(-36.302345, -0.99339294)
+scale = Vector2(0.09249546, 0.08497293)
+script = ExtResource("9_mkt6m")
+dialogue = ExtResource("4_wrof7")
+label_title = "hover_disc_reader"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PC/DiscReader/PerceptionHover" unique_id=2032786626]
+position = Vector2(386.79932, 31.08374)
+shape = SubResource("RectangleShape2D_3oq4n")
+
+[node name="Label" type="Label" parent="PC/DiscReader/PerceptionHover" unique_id=880873155]
+offset_left = 1011.23004
+offset_top = -75.9879
+offset_right = 1811.23
+offset_bottom = 138.0121
+theme_override_font_sizes/font_size = 200
+text = "弹出文本"
+
 [node name="Desk" type="Sprite2D" parent="." unique_id=877590408]
 position = Vector2(954.00006, 1203)
 scale = Vector2(2.0416462, 2.041646)
@@ -205,3 +260,8 @@ scale = Vector2(0.35, 0.35)
 texture_normal = ExtResource("10_7as41")
 
 [node name="HoverScale" parent="Back" unique_id=2028472629 instance=ExtResource("11_rnhah")]
+
+[connection signal="mouse_entered" from="PC/NetworkCard/PerceptionHover" to="PC/NetworkCard/PerceptionHover" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PC/NetworkCard/PerceptionHover" to="PC/NetworkCard/PerceptionHover" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="PC/DiscReader/PerceptionHover" to="PC/DiscReader/PerceptionHover" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PC/DiscReader/PerceptionHover" to="PC/DiscReader/PerceptionHover" method="_on_mouse_exited"]

@@ -8,6 +8,7 @@ extends Area2D
 @export var dialogue_state_name := ""
 @export var click_animation_player: AnimationPlayer
 @export var click_animation: StringName = &""
+@export var priority_area: Area2D
 
 var busy := false
 var used := false
@@ -22,6 +23,16 @@ func _input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if busy or get_tree().get_first_node_in_group("dialogue_balloon") != null or WorkLog.screen.visible or WorkLog.querying or Attributes.screen.visible or Memory.screen.visible:
 		return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		# 重叠区域交给指定物体，避免依赖物理拾取顺序。
+		if priority_area != null and priority_area.input_pickable and priority_area.is_visible_in_tree():
+			var query := PhysicsPointQueryParameters2D.new()
+			query.position = get_global_mouse_position()
+			query.collide_with_areas = true
+			query.collide_with_bodies = false
+			query.collision_mask = priority_area.collision_layer
+			for hit in get_world_2d().direct_space_state.intersect_point(query):
+				if hit.collider == priority_area:
+					return
 		get_viewport().set_input_as_handled()
 		busy = true
 		if click_animation_player != null and not click_animation.is_empty():

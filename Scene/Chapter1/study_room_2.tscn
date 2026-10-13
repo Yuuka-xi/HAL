@@ -23,6 +23,43 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pimtm"]
 size = Vector2(711.98914, 1642.4517)
 
+[sub_resource type="Animation" id="Animation_5y8j8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(250, 540)]
+}
+
+[sub_resource type="Animation" id="Animation_xl30e"]
+resource_name = "click_door"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(250, 540), Vector2(250, 540)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ghsoh"]
+_data = {
+&"RESET": SubResource("Animation_5y8j8"),
+&"click_door": SubResource("Animation_xl30e")
+}
+
 [sub_resource type="Animation" id="Animation_nj0vu"]
 length = 0.001
 tracks/0/type = "value"
@@ -61,7 +98,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nj0vu"]
-radius = 41.899563
+radius = 99.50635
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k45oy"]
 size = Vector2(131.21619, 93.56739)
@@ -346,22 +383,28 @@ start_title = "use_key_card_on_door"
 dialogue_state = NodePath("../..")
 dialogue_state_name = "StudyRoom2"
 
-[node name="PerceptionClick" type="Area2D" parent="Door" unique_id=1036347835 node_paths=PackedStringArray("click_animation_player")]
+[node name="PerceptionClick" type="Area2D" parent="Door" unique_id=1036347835 node_paths=PackedStringArray("dialogue_state", "click_animation_player", "priority_area")]
 scale = Vector2(0.99999994, 1)
 script = ExtResource("4_tptwy")
 dialogue = ExtResource("2_32efi")
 start_title = "observe_door"
 required_flag = "elliot_close_door"
-click_animation_player = NodePath("../../DoorHandle/AnimationPlayer")
+dialogue_state = NodePath("../..")
+dialogue_state_name = "StudyRoom2"
+click_animation_player = NodePath("../AnimationPlayer")
 click_animation = &"click_door"
+priority_area = NodePath("../../DoorHandle/PerceptionClick")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door/PerceptionClick" unique_id=443087293]
 position = Vector2(128.25568, -38.35022)
 shape = SubResource("RectangleShape2D_pimtm")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Door" unique_id=1494042104]
+libraries/ = SubResource("AnimationLibrary_ghsoh")
+
 [node name="DoorHandle" type="Sprite2D" parent="." unique_id=1163537994]
-position = Vector2(431, 672)
-scale = Vector2(0.47365633, 0.49574724)
+position = Vector2(430.97064, 671.9696)
+scale = Vector2(0.47300407, 0.4950646)
 texture = ExtResource("9_q63yh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="DoorHandle" unique_id=732269686]
@@ -400,12 +443,13 @@ texture = ExtResource("9_7fidx")
 position = Vector2(1715, 952)
 scale = Vector2(1.5546875, 1.3359375)
 
-[node name="PerceptionClick" type="Area2D" parent="StorageBox" unique_id=1355604274]
+[node name="PerceptionClick" type="Area2D" parent="StorageBox" unique_id=1355604274 node_paths=PackedStringArray("dialogue_state")]
 scale = Vector2(0.99999994, 1)
 script = ExtResource("4_tptwy")
 dialogue = ExtResource("2_32efi")
 start_title = "observe_storage_box"
-one_shot = true
+dialogue_state = NodePath("../..")
+dialogue_state_name = "StudyRoom2"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StorageBox/PerceptionClick" unique_id=524448135]
 position = Vector2(4.5023193, 19.087585)
@@ -445,7 +489,7 @@ script = ExtResource("4_tptwy")
 dialogue = ExtResource("2_32efi")
 start_title = "observe_tulip"
 dialogue_state = NodePath("../..")
-click_animation_player = NodePath("../../Toybox/AnimationPlayer")
+click_animation_player = NodePath("../AnimationPlayer")
 click_animation = &"click_tulip"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tulip/Click" unique_id=7438129]
@@ -470,7 +514,7 @@ script = ExtResource("4_tptwy")
 dialogue = ExtResource("2_32efi")
 start_title = "observe_sofa"
 dialogue_state = NodePath("../..")
-click_animation_player = NodePath("../../Toybox/AnimationPlayer")
+click_animation_player = NodePath("../AnimationPlayer")
 click_animation = &"click_sofa"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sofa/Click" unique_id=1328249928]
