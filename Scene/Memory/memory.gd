@@ -72,7 +72,7 @@ func _refresh() -> void:
 	for animation in memories:
 		var button := Button.new()
 		button.text = memories[animation]
-		button.custom_minimum_size.y = 64
+		button.custom_minimum_size.y = 84
 		button.pressed.connect(_play.bind(animation))
 		%Recordings.add_child(button)
 

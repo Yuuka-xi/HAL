@@ -1,13 +1,37 @@
 [gd_scene format=3 uid="uid://dvqinuwnrht6y"]
 
-[ext_resource type="PackedScene" path="res://Scene/Tool/hover_scale/hover_scale.tscn" id="90_hover"]
-
 [ext_resource type="Script" uid="uid://4awkedv2ps7x" path="res://Scene/Attributes/attributes_ui.gd" id="1"]
 [ext_resource type="Script" uid="uid://k62lc1okcgpb" path="res://Scene/Attributes/dimension_chart.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://gq7imtd4gr1f" path="res://Asset/UI/attribute.png" id="2_vqx8s"]
+[ext_resource type="PackedScene" path="res://Scene/Tool/hover_scale/hover_scale.tscn" id="90_hover"]
+[ext_resource type="Texture2D" uid="uid://ckwlkypov7ul2" path="res://Asset/UI/Attribute/back.png" id="art_back"]
+[ext_resource type="Texture2D" uid="uid://cvqx1ss552ul3" path="res://Asset/UI/Attribute/background.png" id="art_background"]
+[ext_resource type="Texture2D" uid="uid://bm2noc7380kcp" path="res://Asset/UI/Attribute/button.png" id="art_button"]
+[ext_resource type="Texture2D" uid="uid://dxmmjs52q7f4v" path="res://Asset/UI/Attribute/round.png" id="art_round"]
 
-[sub_resource type="Theme" id="Theme"]
-default_font_size = 26
+[ext_resource type="PackedScene" path="res://Scene/Tool/hover_scale/return_hover_scale.tscn" id="return_hover"]
+
+[sub_resource type="StyleBoxEmpty" id="NoFocus"]
+
+[sub_resource type="StyleBoxTexture" id="DimensionStyle"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+texture = ExtResource("art_button")
+texture_margin_left = 18.0
+texture_margin_top = 12.0
+texture_margin_right = 18.0
+texture_margin_bottom = 12.0
+
+[sub_resource type="Theme" id="ChartTheme"]
+default_font_size = 36
+Button/colors/font_color = Color(0, 0.4, 0.49, 1)
+Button/colors/font_focus_color = Color(0, 0.5, 0.6, 1)
+Button/colors/font_hover_color = Color(0, 0.5, 0.6, 1)
+Button/colors/font_pressed_color = Color(0, 0.3, 0.38, 1)
+Button/styles/focus = SubResource("NoFocus")
+Button/styles/hover = SubResource("DimensionStyle")
+Button/styles/normal = SubResource("DimensionStyle")
+Button/styles/pressed = SubResource("DimensionStyle")
 
 [node name="Attributes" type="CanvasLayer" unique_id=955807174]
 layer = 40
@@ -21,58 +45,103 @@ offset_bottom = 210.0
 scale = Vector2(0.37, 0.37)
 texture_normal = ExtResource("2_vqx8s")
 
-[node name="Screen" type="ColorRect" parent="." unique_id=1092954360]
+[node name="HoverScale" parent="Open" unique_id=627905715 instance=ExtResource("90_hover")]
+
+[node name="Screen" type="ColorRect" parent="." unique_id=286463939]
 unique_name_in_owner = true
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = SubResource("Theme")
-color = Color(0.035, 0.045, 0.06, 1)
+color = Color(0.2, 0.22, 0.32, 1)
 
-[node name="Margin" type="MarginContainer" parent="Screen" unique_id=941139773]
+[node name="Background" type="TextureRect" parent="Screen" unique_id=723527996]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_constants/margin_left = 64
-theme_override_constants/margin_top = 40
-theme_override_constants/margin_right = 64
-theme_override_constants/margin_bottom = 180
+mouse_filter = 2
+texture = ExtResource("art_background")
+expand_mode = 1
 
-[node name="Layout" type="VBoxContainer" parent="Screen/Margin" unique_id=213535260]
-layout_mode = 2
-theme_override_constants/separation = 24
+[node name="Icon" type="TextureRect" parent="Screen" unique_id=1663625498]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 38.0
+offset_right = 173.0
+offset_bottom = 103.0
+mouse_filter = 2
+texture = ExtResource("2_vqx8s")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="Header" type="HBoxContainer" parent="Screen/Margin/Layout" unique_id=1544499167]
-layout_mode = 2
+[node name="Title" type="Label" parent="Screen" unique_id=1425459527]
+layout_mode = 0
+offset_left = 188.0
+offset_top = 54.0
+offset_right = 428.0
+offset_bottom = 119.0
+theme_override_colors/font_color = Color(0.7529412, 0.6745098, 0.53333336, 1)
+theme_override_font_sizes/font_size = 40
+text = "价值评估"
 
-[node name="Title" type="Label" parent="Screen/Margin/Layout/Header" unique_id=724095407]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 38
-text = "价值评估模块"
-
-[node name="Close" type="Button" parent="Screen/Margin/Layout/Header" unique_id=988790895]
+[node name="Close" type="TextureButton" parent="Screen" unique_id=981530644]
 unique_name_in_owner = true
-layout_mode = 2
-text = "返回"
+layout_mode = 0
+offset_left = 1747.0
+offset_top = 40.0
+offset_right = 1822.0
+offset_bottom = 115.0
+texture_normal = ExtResource("art_back")
+ignore_texture_size = true
+stretch_mode = 5
 
-[node name="Thought" type="Label" parent="Screen/Margin/Layout" unique_id=1827169737]
+[node name="HoverScale" parent="Screen/Close" unique_id=1783954822 instance=ExtResource("return_hover")]
+
+[node name="Chart" type="Control" parent="Screen" unique_id=1732136683]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 120)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.55, 0.85, 1, 1)
+anchors_preset = 0
+offset_left = 581.0
+offset_top = 210.0
+offset_right = 1341.0
+offset_bottom = 970.0
+mouse_filter = 2
+theme = SubResource("ChartTheme")
+script = ExtResource("2")
+ring_texture = ExtResource("art_round")
+
+[node name="Thought" type="Label" parent="Screen" unique_id=1519891193]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 592.0
+offset_top = 112.0
+offset_right = 1366.0
+offset_bottom = 202.0
+theme_override_colors/font_color = Color(0.7529412, 0.6745098, 0.5333334, 1)
+theme_override_font_sizes/font_size = 35
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Chart" type="Control" parent="Screen/Margin/Layout" unique_id=1055327683]
+[node name="SocialThought" type="Label" parent="Screen" unique_id=200418679]
 unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 3
-mouse_filter = 2
-script = ExtResource("2")
+layout_mode = 0
+offset_left = 124.0
+offset_top = 754.0
+offset_right = 638.0
+offset_bottom = 904.0
+theme_override_colors/font_color = Color(0.7529412, 0.6745098, 0.5333334, 1)
+theme_override_font_sizes/font_size = 35
+horizontal_alignment = 2
+vertical_alignment = 1
+autowrap_mode = 3
 
-[node name="HoverScale" parent="Open" instance=ExtResource("90_hover")]
+[node name="ExplorationThought" type="Label" parent="Screen" unique_id=119703113]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1328.0
+offset_top = 747.0
+offset_right = 1776.0
+offset_bottom = 917.0
+theme_override_colors/font_color = Color(0.7529412, 0.6745098, 0.5333334, 1)
+theme_override_font_sizes/font_size = 35
+vertical_alignment = 1
+autowrap_mode = 3

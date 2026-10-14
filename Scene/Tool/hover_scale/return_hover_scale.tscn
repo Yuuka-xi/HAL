@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bg0dhcmtonb5v"]
+
+[ext_resource type="Script" path="res://Scene/Tool/hover_scale/return_hover_scale.gd" id="1_bb4rn"]
+
+[node name="HoverScale" type="Node" unique_id=533082741]
+script = ExtResource("1_bb4rn")

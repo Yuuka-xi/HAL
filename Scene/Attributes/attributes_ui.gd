@@ -5,6 +5,7 @@ signal response_selected(response: DialogueResponse)
 @onready var screen: Control = %Screen
 var choices: Dictionary = {}
 var choosing := false
+@onready var thought_labels := {"logic": %Thought, "social": %SocialThought, "exploration": %ExplorationThought}
 
 func _ready() -> void:
 	screen.hide()
@@ -19,7 +20,7 @@ func open() -> void:
 	if choosing:
 		return
 	choices.clear()
-	%Thought.text = ""
+	_clear_thoughts()
 	%Close.show()
 	_show()
 
@@ -28,7 +29,7 @@ func close() -> void:
 		return
 	screen.hide()
 	choices.clear()
-	%Thought.text = ""
+	_clear_thoughts()
 	WorkLog.set_navigation(true)
 	Memory.set_navigation(true)
 	Inventory.set_navigation(true)
@@ -42,7 +43,7 @@ func reset() -> void:
 	%Close.show()
 	screen.hide()
 	choices.clear()
-	%Thought.text = ""
+	_clear_thoughts()
 	for connection in response_selected.get_connections():
 		response_selected.disconnect(connection.callable)
 
@@ -54,7 +55,7 @@ func choose(responses: Array) -> DialogueResponse:
 		for id in %Chart.dimensions:
 			if response.text.begins_with(%Chart.dimensions[id] + "：") or response.text.begins_with(%Chart.dimensions[id] + ":"):
 				choices[id] = response
-	%Thought.text = ""
+	_clear_thoughts()
 	%Close.hide()
 	_show()
 	var response: DialogueResponse = await response_selected
@@ -63,10 +64,14 @@ func choose(responses: Array) -> DialogueResponse:
 	return response
 
 func _hover_dimension(id: String) -> void:
-	%Thought.text = ""
+	_clear_thoughts()
 	if choices.has(id):
 		var text: String = choices[id].text
-		%Thought.text = "思考：" + text.substr(%Chart.dimensions[id].length() + 1).strip_edges()
+		thought_labels[id].text = "思考：" + text.substr(%Chart.dimensions[id].length() + 1).strip_edges()
+
+func _clear_thoughts() -> void:
+	for label in thought_labels.values():
+		label.text = ""
 
 func _select_dimension(id: String) -> void:
 	if choices.has(id) and choices[id].is_allowed:

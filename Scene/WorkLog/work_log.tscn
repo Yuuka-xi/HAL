@@ -1,14 +1,97 @@
 [gd_scene format=3 uid="uid://daqjqfeccgxib"]
 
-[ext_resource type="PackedScene" path="res://Scene/Tool/hover_scale/hover_scale.tscn" id="90_hover"]
-
 [ext_resource type="Script" uid="uid://blqm7ykq1hoyu" path="res://Scene/WorkLog/work_log.gd" id="1"]
 [ext_resource type="Resource" uid="uid://bhcvrfvjsbw8r" path="res://Dialogue/BeginnersGuide.dialogue" id="2"]
 [ext_resource type="Resource" uid="uid://cgip8sxcerqjt" path="res://Dialogue/KeywordInfo.dialogue" id="3_keywords"]
 [ext_resource type="Texture2D" uid="uid://byv5xlyhjpdvy" path="res://Asset/UI/worklog.png" id="4_fc2gw"]
+[ext_resource type="PackedScene" uid="uid://bg0dhcmtonb5v" path="res://Scene/Tool/hover_scale/return_hover_scale.tscn" id="12_rplc1"]
+[ext_resource type="PackedScene" uid="uid://sku1m53v5qqm" path="res://Scene/Tool/hover_scale/hover_scale.tscn" id="90_hover"]
+[ext_resource type="Texture2D" uid="uid://cgfyusgcpy836" path="res://Asset/UI/Worklog/back.png" id="art_back"]
+[ext_resource type="Texture2D" uid="uid://vuodk6q3f6lx" path="res://Asset/UI/Worklog/background.png" id="art_background"]
+[ext_resource type="Texture2D" uid="uid://cs5vlg65wcv2p" path="res://Asset/UI/Worklog/box.png" id="art_box"]
+[ext_resource type="Texture2D" uid="uid://b3mcmjtwpgr26" path="res://Asset/UI/Worklog/clear.png" id="art_clear"]
+[ext_resource type="Texture2D" uid="uid://gnggpmt5cy4n" path="res://Asset/UI/Worklog/keywordlistpanel.png" id="art_keywordlistpanel"]
+[ext_resource type="Texture2D" uid="uid://bxkdqls4wp7pd" path="res://Asset/UI/Worklog/search.png" id="art_search"]
+[ext_resource type="Texture2D" uid="uid://lim8omc0c81e" path="res://Asset/UI/Worklog/searchpanel.png" id="art_searchpanel"]
+[ext_resource type="Texture2D" uid="uid://5wxomavr3wjq" path="res://Asset/UI/Worklog/submit.png" id="art_submit"]
+[ext_resource type="Texture2D" uid="uid://bcqhf3hqkluas" path="res://Asset/UI/Worklog/submitpanel.png" id="art_submitpanel"]
+
+[sub_resource type="StyleBoxEmpty" id="Empty"]
+
+[sub_resource type="StyleBoxFlat" id="KeywordHover"]
+bg_color = Color(0.30588236, 0.17254902, 0.11764706, 0.08)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y5nxy"]
+content_margin_left = 5.0
+content_margin_top = 10.0
+content_margin_right = 5.0
+content_margin_bottom = 10.0
+bg_color = Color(0.72156864, 0.57254905, 0.5411765, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_odm8k"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+bg_color = Color(0.5294118, 0.3529412, 0.31764707, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="Theme" id="Theme"]
-default_font_size = 26
+default_font_size = 30
+Button/colors/font_color = Color(0.30588236, 0.17254902, 0.11764706, 1)
+Button/colors/font_disabled_color = Color(0.30588236, 0.17254902, 0.11764706, 1)
+Button/colors/font_focus_color = Color(0.30588236, 0.17254902, 0.11764706, 1)
+Button/colors/font_hover_color = Color(0.30588236, 0.17254902, 0.11764706, 1)
+Button/colors/font_hover_pressed_color = Color(0.30588236, 0.17254902, 0.11764706, 1)
+Button/colors/font_pressed_color = Color(0.30588236, 0.17254902, 0.11764706, 1)
+Button/styles/disabled = SubResource("Empty")
+Button/styles/focus = SubResource("Empty")
+Button/styles/hover = SubResource("KeywordHover")
+Button/styles/normal = SubResource("Empty")
+Button/styles/pressed = SubResource("Empty")
+Label/colors/font_color = Color(0.30588236, 0.17254902, 0.11764706, 1)
+RichTextLabel/colors/default_color = Color(0.30588236, 0.17254902, 0.11764706, 1)
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_y5nxy")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_y5nxy")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_y5nxy")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_odm8k")
+
+[sub_resource type="StyleBoxTexture" id="KeywordPanel"]
+content_margin_left = 40.0
+content_margin_top = 26.0
+content_margin_right = 40.0
+content_margin_bottom = 30.0
+texture = ExtResource("art_keywordlistpanel")
+
+[sub_resource type="StyleBoxTexture" id="QueryPaper"]
+content_margin_left = 40.0
+content_margin_top = 26.0
+content_margin_right = 40.0
+content_margin_bottom = 30.0
+texture = ExtResource("art_searchpanel")
+
+[sub_resource type="StyleBoxTexture" id="InputStyle"]
+content_margin_left = 26.0
+content_margin_right = 26.0
+texture = ExtResource("art_box")
+
+[sub_resource type="StyleBoxTexture" id="InputSelected"]
+content_margin_left = 26.0
+content_margin_right = 26.0
+texture = ExtResource("art_box")
+modulate_color = Color(0.82, 0.72, 0.62, 1)
+
+[sub_resource type="StyleBoxTexture" id="AnswerPaper"]
+content_margin_left = 40.0
+content_margin_top = 26.0
+content_margin_right = 40.0
+content_margin_bottom = 30.0
+texture = ExtResource("art_submitpanel")
 
 [node name="WorkLog" type="CanvasLayer" unique_id=1043755625]
 layer = 40
@@ -25,172 +108,241 @@ rotation = 0.05378632
 scale = Vector2(0.36, 0.36)
 texture_normal = ExtResource("4_fc2gw")
 
-[node name="Screen" type="ColorRect" parent="." unique_id=1525203217]
+[node name="HoverScale" parent="Open" unique_id=942945854 instance=ExtResource("90_hover")]
+
+[node name="Screen" type="ColorRect" parent="." unique_id=1251398365]
 unique_name_in_owner = true
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 theme = SubResource("Theme")
-color = Color(0.035, 0.045, 0.06, 1)
+color = Color(0.31, 0.34, 0.29, 1)
 
-[node name="Margin" type="MarginContainer" parent="Screen" unique_id=1970583697]
+[node name="Background" type="TextureRect" parent="Screen" unique_id=574772042]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_constants/margin_left = 64
-theme_override_constants/margin_top = 40
-theme_override_constants/margin_right = 64
-theme_override_constants/margin_bottom = 180
+mouse_filter = 2
+texture = ExtResource("art_background")
+expand_mode = 1
 
-[node name="Layout" type="VBoxContainer" parent="Screen/Margin" unique_id=898036371]
+[node name="Icon" type="TextureRect" parent="Screen" unique_id=1834865646]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 32.0
+offset_right = 105.0
+offset_bottom = 122.0
+mouse_filter = 2
+texture = ExtResource("4_fc2gw")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Title" type="Label" parent="Screen" unique_id=2103682984]
+layout_mode = 0
+offset_left = 133.0
+offset_top = 45.0
+offset_right = 413.0
+offset_bottom = 105.0
+theme_override_colors/font_color = Color(0.8980392, 0.7254902, 0.5176471, 1)
+theme_override_font_sizes/font_size = 38
+text = "工作日志"
+
+[node name="Close" type="TextureButton" parent="Screen" unique_id=1866878870]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1758.0
+offset_top = 38.0
+offset_right = 1837.0
+offset_bottom = 117.0
+texture_normal = ExtResource("art_back")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="HoverScale" parent="Screen/Close" unique_id=544965913 instance=ExtResource("12_rplc1")]
+
+[node name="Keywords" type="PanelContainer" parent="Screen" unique_id=1194100692]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 160.0
+offset_right = 470.0
+offset_bottom = 950.0
+theme_override_styles/panel = SubResource("KeywordPanel")
+
+[node name="Layout" type="VBoxContainer" parent="Screen/Keywords" unique_id=1262312276]
 layout_mode = 2
 theme_override_constants/separation = 24
 
-[node name="Header" type="HBoxContainer" parent="Screen/Margin/Layout" unique_id=836331417]
+[node name="Title" type="Label" parent="Screen/Keywords/Layout" unique_id=1587619872]
 layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "关键词列表"
+horizontal_alignment = 1
 
-[node name="Title" type="Label" parent="Screen/Margin/Layout/Header" unique_id=411650760]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 38
-text = "工作日志 / 本地记忆"
-
-[node name="Close" type="Button" parent="Screen/Margin/Layout/Header" unique_id=728993081]
-unique_name_in_owner = true
-layout_mode = 2
-text = "返回"
-
-[node name="Columns" type="HBoxContainer" parent="Screen/Margin/Layout" unique_id=1322932700]
+[node name="Scroll" type="ScrollContainer" parent="Screen/Keywords/Layout" unique_id=124664317]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/separation = 48
+horizontal_scroll_mode = 0
 
-[node name="Keywords" type="VBoxContainer" parent="Screen/Margin/Layout/Columns" unique_id=586973245]
-custom_minimum_size = Vector2(380, 0)
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="Title" type="Label" parent="Screen/Margin/Layout/Columns/Keywords" unique_id=1594427648]
-layout_mode = 2
-text = "已收录关键词"
-
-[node name="Scroll" type="ScrollContainer" parent="Screen/Margin/Layout/Columns/Keywords" unique_id=472863030]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="KeywordList" type="VBoxContainer" parent="Screen/Margin/Layout/Columns/Keywords/Scroll" unique_id=1366189661]
+[node name="KeywordList" type="VBoxContainer" parent="Screen/Keywords/Layout/Scroll" unique_id=634122091]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 16
+theme_override_constants/separation = 12
 
-[node name="Right" type="VBoxContainer" parent="Screen/Margin/Layout/Columns" unique_id=1705564166]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 32
+[node name="Right" type="VBoxContainer" parent="Screen" unique_id=1219524164]
+layout_mode = 0
+offset_left = 510.0
+offset_top = 160.0
+offset_right = 1820.0
+offset_bottom = 950.0
+theme_override_constants/separation = 50
 
-[node name="QueryPanel" type="PanelContainer" parent="Screen/Margin/Layout/Columns/Right" unique_id=1500540690]
+[node name="QueryPanel" type="PanelContainer" parent="Screen/Right" unique_id=1022320813]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
+theme_override_styles/panel = SubResource("QueryPaper")
 
-[node name="Margin" type="MarginContainer" parent="Screen/Margin/Layout/Columns/Right/QueryPanel" unique_id=69149370]
+[node name="Layout" type="VBoxContainer" parent="Screen/Right/QueryPanel" unique_id=2087116187]
 layout_mode = 2
-theme_override_constants/margin_left = 24
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 24
-theme_override_constants/margin_bottom = 20
+theme_override_constants/separation = 20
 
-[node name="Layout" type="VBoxContainer" parent="Screen/Margin/Layout/Columns/Right/QueryPanel/Margin" unique_id=240676921]
+[node name="Title" type="Label" parent="Screen/Right/QueryPanel/Layout" unique_id=1273086782]
 layout_mode = 2
-theme_override_constants/separation = 16
+theme_override_font_sizes/font_size = 36
+text = "调取结果"
 
-[node name="Title" type="Label" parent="Screen/Margin/Layout/Columns/Right/QueryPanel/Margin/Layout" unique_id=604656431]
+[node name="Margin" type="MarginContainer" parent="Screen/Right/QueryPanel/Layout" unique_id=255039885]
 layout_mode = 2
-text = "调取本地记录 / 最多两个关键词"
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_right = 80
 
-[node name="Row" type="HBoxContainer" parent="Screen/Margin/Layout/Columns/Right/QueryPanel/Margin/Layout" unique_id=1356623460]
+[node name="Row" type="HBoxContainer" parent="Screen/Right/QueryPanel/Layout/Margin" unique_id=1578576822]
 layout_mode = 2
-theme_override_constants/separation = 12
+theme_override_constants/separation = 45
 
-[node name="Query" type="Button" parent="Screen/Margin/Layout/Columns/Right/QueryPanel/Margin/Layout/Row" unique_id=612859618]
+[node name="Query" type="Button" parent="Screen/Right/QueryPanel/Layout/Margin/Row" unique_id=1407223193]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 95)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("InputStyle")
+theme_override_styles/pressed = SubResource("InputSelected")
+theme_override_styles/hover = SubResource("InputStyle")
+theme_override_styles/disabled = SubResource("InputStyle")
 toggle_mode = true
-text = "点击这里，再选左侧关键词"
+clip_text = true
 
-[node name="ClearQuery" type="Button" parent="Screen/Margin/Layout/Columns/Right/QueryPanel/Margin/Layout/Row" unique_id=1348851171]
+[node name="Search" type="TextureButton" parent="Screen/Right/QueryPanel/Layout/Margin/Row" unique_id=700913113]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
-text = "×"
+size_flags_vertical = 4
+tooltip_text = "调取信息"
+texture_normal = ExtResource("art_search")
+ignore_texture_size = true
+stretch_mode = 5
 
-[node name="Search" type="Button" parent="Screen/Margin/Layout/Columns/Right/QueryPanel/Margin/Layout/Row" unique_id=1312616512]
+[node name="HoverScale" parent="Screen/Right/QueryPanel/Layout/Margin/Row/Search" unique_id=533082741 instance=ExtResource("12_rplc1")]
+
+[node name="ClearQuery" type="TextureButton" parent="Screen/Right/QueryPanel/Layout/Margin/Row" unique_id=864921886]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
-text = "调取"
+size_flags_vertical = 4
+tooltip_text = "清空调取关键词"
+texture_normal = ExtResource("art_clear")
+ignore_texture_size = true
+stretch_mode = 5
 
-[node name="Result" type="RichTextLabel" parent="Screen/Margin/Layout/Columns/Right/QueryPanel/Margin/Layout" unique_id=121891311]
+[node name="HoverScale" parent="Screen/Right/QueryPanel/Layout/Margin/Row/ClearQuery" unique_id=1127671870 instance=ExtResource("12_rplc1")]
+
+[node name="ResultMargin" type="MarginContainer" parent="Screen/Right/QueryPanel/Layout" unique_id=1706152502]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 20
+
+[node name="Content" type="VBoxContainer" parent="Screen/Right/QueryPanel/Layout/ResultMargin" unique_id=1266124458]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Result" type="RichTextLabel" parent="Screen/Right/QueryPanel/Layout/ResultMargin/Content" unique_id=23838627]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 size_flags_vertical = 3
 bbcode_enabled = true
 
-[node name="Notice" type="RichTextLabel" parent="Screen/Margin/Layout/Columns/Right/QueryPanel/Margin/Layout" unique_id=426315920]
+[node name="Notice" type="RichTextLabel" parent="Screen/Right/QueryPanel/Layout/ResultMargin/Content" unique_id=1957565521]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-theme_override_font_sizes/normal_font_size = 18
+theme_override_font_sizes/normal_font_size = 22
 bbcode_enabled = true
 text = "本信息调取已经过压缩，压缩逻辑由价值评估模块决定。"
 fit_content = true
 scroll_active = false
 autowrap_mode = 2
 
-[node name="AnswerPanel" type="PanelContainer" parent="Screen/Margin/Layout/Columns/Right" unique_id=823290999]
+[node name="AnswerPanel" type="PanelContainer" parent="Screen/Right" unique_id=1369236466]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_styles/panel = SubResource("AnswerPaper")
 
-[node name="Margin" type="MarginContainer" parent="Screen/Margin/Layout/Columns/Right/AnswerPanel" unique_id=1525344656]
+[node name="Layout" type="VBoxContainer" parent="Screen/Right/AnswerPanel" unique_id=636344760]
 layout_mode = 2
-theme_override_constants/margin_left = 24
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 24
-theme_override_constants/margin_bottom = 20
+theme_override_constants/separation = 20
 
-[node name="Layout" type="VBoxContainer" parent="Screen/Margin/Layout/Columns/Right/AnswerPanel/Margin" unique_id=1282108966]
+[node name="Title" type="Label" parent="Screen/Right/AnswerPanel/Layout" unique_id=737490323]
 layout_mode = 2
-theme_override_constants/separation = 16
+theme_override_font_sizes/font_size = 36
+text = "提交结果"
 
-[node name="Title" type="Label" parent="Screen/Margin/Layout/Columns/Right/AnswerPanel/Margin/Layout" unique_id=1669681228]
+[node name="Margin" type="MarginContainer" parent="Screen/Right/AnswerPanel/Layout" unique_id=1884872387]
 layout_mode = 2
-text = "填入回答 / 最多两个关键词"
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_right = 80
 
-[node name="AnswerInput" type="Button" parent="Screen/Margin/Layout/Columns/Right/AnswerPanel/Margin/Layout" unique_id=211427201]
+[node name="Row" type="HBoxContainer" parent="Screen/Right/AnswerPanel/Layout/Margin" unique_id=1300500899]
+layout_mode = 2
+theme_override_constants/separation = 45
+
+[node name="AnswerInput" type="Button" parent="Screen/Right/AnswerPanel/Layout/Margin/Row" unique_id=416424702]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 95)
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("InputStyle")
+theme_override_styles/pressed = SubResource("InputSelected")
+theme_override_styles/hover = SubResource("InputStyle")
+theme_override_styles/disabled = SubResource("InputStyle")
 toggle_mode = true
-text = "点击这里，再选左侧关键词"
+clip_text = true
 
-[node name="Row" type="HBoxContainer" parent="Screen/Margin/Layout/Columns/Right/AnswerPanel/Margin/Layout" unique_id=243487849]
-layout_mode = 2
-theme_override_constants/separation = 12
-alignment = 2
-
-[node name="ClearAnswer" type="Button" parent="Screen/Margin/Layout/Columns/Right/AnswerPanel/Margin/Layout/Row" unique_id=916157337]
+[node name="Confirm" type="TextureButton" parent="Screen/Right/AnswerPanel/Layout/Margin/Row" unique_id=1188104960]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
-text = "清空"
+size_flags_vertical = 4
+tooltip_text = "确认提交"
+texture_normal = ExtResource("art_submit")
+ignore_texture_size = true
+stretch_mode = 5
 
-[node name="Confirm" type="Button" parent="Screen/Margin/Layout/Columns/Right/AnswerPanel/Margin/Layout/Row" unique_id=1797356770]
+[node name="HoverScale" parent="Screen/Right/AnswerPanel/Layout/Margin/Row/Confirm" unique_id=1687715791 instance=ExtResource("12_rplc1")]
+
+[node name="ClearAnswer" type="TextureButton" parent="Screen/Right/AnswerPanel/Layout/Margin/Row" unique_id=794191200]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 2
-disabled = true
-text = "确认回答"
+size_flags_vertical = 4
+tooltip_text = "清空提交关键词"
+texture_normal = ExtResource("art_clear")
+ignore_texture_size = true
+stretch_mode = 5
 
-[node name="HoverScale" parent="Open" instance=ExtResource("90_hover")]
+[node name="HoverScale" parent="Screen/Right/AnswerPanel/Layout/Margin/Row/ClearAnswer" unique_id=996472497 instance=ExtResource("12_rplc1")]

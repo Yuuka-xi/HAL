@@ -13,6 +13,7 @@ var querying := false
 var searching := false
 var selected: Array[String] = []
 var answer: Array[String] = []
+var submitted_answer_text := ""
 var target := "query"
 var required_action := ""
 var required_keywords: Array = []
@@ -22,6 +23,7 @@ var keyword_effect = preload("res://Dialogue/DialogueBallon/keyword_effect.gd").
 @onready var default_notice: String = %Notice.text
 
 func _ready() -> void:
+	keyword_effect.highlight_color = Color("53584c")
 	keyword_effect.label = %Result
 	%Result.install_effect(keyword_effect)
 	screen.hide()
@@ -35,6 +37,8 @@ func _ready() -> void:
 	%Confirm.pressed.connect(_confirm)
 	GameState.campaign_changed.connect(_refresh_keywords)
 	_refresh_keywords()
+	_update_query()
+	_update_answer()
 
 # 普通浏览等待关闭；剧情回答等待确认，当前选词不写入存档。
 func open() -> void:
@@ -84,6 +88,10 @@ func close(completed := false) -> void:
 	required_keywords.clear()
 	%Close.show()
 	screen.hide()
+	selected.clear()
+	answer.clear()
+	_update_query()
+	_update_answer()
 	Attributes.set_navigation(true)
 	Memory.set_navigation(true)
 	Inventory.set_navigation(true)
@@ -94,6 +102,7 @@ func set_navigation(enabled: bool) -> void:
 		GameState.set_flag("worklog_enabled", true)
 
 func start_level(level: String, initial_keywords: Array) -> void:
+	submitted_answer_text = ""
 	selected.clear()
 	answer.clear()
 	_update_query()
@@ -102,6 +111,7 @@ func start_level(level: String, initial_keywords: Array) -> void:
 	GameState.start_keyword_list(level, initial_keywords)
 
 func reset() -> void:
+	submitted_answer_text = ""
 	required_action = ""
 	required_keywords.clear()
 	%Close.show()
@@ -137,6 +147,8 @@ func _refresh_keywords() -> void:
 		if unlocked.get(id, false):
 			var button := Button.new()
 			button.text = KeywordData.NAMES[id]
+			button.clip_text = true
+			button.tooltip_text = KeywordData.NAMES[id]
 			button.custom_minimum_size.y = 54
 			button.pressed.connect(_select.bind(id))
 			%KeywordList.add_child(button)
@@ -167,15 +179,15 @@ func _names(words: Array[String]) -> String:
 	return " + ".join(names)
 
 func get_answer_text() -> String:
-	return _names(answer)
+	return submitted_answer_text
 
 func _update_query() -> void:
-	%Query.text = _names(selected) if not selected.is_empty() else "点击这里，再选左侧关键词"
+	%Query.text = _names(selected)
 	%Result.text = ""
 	%Notice.hide()
 
 func _update_answer() -> void:
-	%AnswerInput.text = _names(answer) if not answer.is_empty() else "点击这里，再选左侧关键词"
+	%AnswerInput.text = _names(answer)
 	%Confirm.disabled = answer.is_empty() or searching
 
 func _clear_query() -> void:
@@ -233,10 +245,11 @@ func _search() -> void:
 func _format_notice(text: String) -> String:
 	var pattern := RegEx.create_from_string("\\[kw=([^\\]]+)\\]")
 	for token in pattern.search_all(text):
-		text = text.replace(token.get_string(), "[color=#ffd479]%s[/color]" % KeywordData.NAMES[token.get_string(1)])
+		text = text.replace(token.get_string(), "[color=#%s]%s[/color]" % [keyword_effect.highlight_color.to_html(false), KeywordData.NAMES[token.get_string(1)]])
 	return text
 
 func _confirm() -> void:
+	submitted_answer_text = _names(answer)
 	var ids := answer.duplicate()
 	ids.sort()
 	GameState.set_choice("keyword_submission", "+".join(ids))

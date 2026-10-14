@@ -1,7 +1,7 @@
 extends RichTextEffect
 
 const KeywordData = preload("res://Scene/WorkLog/keyword_data.gd")
-const HIGHLIGHT = Color("ffd479")
+var highlight_color := Color("ffd479")
 var bbcode := "collect"
 var label: RichTextLabel
 var words: Array[Dictionary] = []
@@ -11,12 +11,13 @@ class FlyingWord extends Node2D:
 	var glyphs: Array = []
 	var font_size: int
 	var origin: Vector2
+	var color: Color
 
 	func _draw() -> void:
 		var server := TextServerManager.get_primary_interface()
 		for glyph in glyphs:
 			server.font_draw_glyph(glyph.font, get_canvas_item(), font_size,
-				glyph.position - origin, glyph.index, Color("ffd479"))
+				glyph.position - origin, glyph.index, color)
 
 # [kw=真实ID] 自动替换为显示名称和收录效果；每个标记独立播放，不检查解锁状态。
 func prepare(text: String) -> String:
@@ -35,7 +36,7 @@ func prepare(text: String) -> String:
 func _process_custom_fx(fx: CharFXTransform) -> bool:
 	var word: Dictionary = words[int(fx.env.index)]
 	if not word.collected:
-		fx.color = HIGHLIGHT
+		fx.color = highlight_color
 	if not fx.outline:
 		word.glyphs[Vector2i(fx.range.x, fx.glyph_index)] = {
 			"font": fx.font, "index": fx.glyph_index,
@@ -53,6 +54,7 @@ func collect(host: Node, target: Control) -> void:
 		return
 	for word in words:
 		var copy := FlyingWord.new()
+		copy.color = highlight_color
 		copy.glyphs = word.glyphs.values()
 		copy.font_size = label.get_theme_font_size("normal_font_size")
 		copy.origin = copy.glyphs[0].position if not copy.glyphs.is_empty() else Vector2.ZERO
@@ -71,7 +73,7 @@ func collect(host: Node, target: Control) -> void:
 		GameState.unlock_keyword(word.id)
 		label.queue_redraw()
 	var flash := host.create_tween()
-	flash.tween_property(target, "modulate", HIGHLIGHT, 0.1)
+	flash.tween_property(target, "modulate", highlight_color, 0.1)
 	flash.tween_property(target, "modulate", Color.WHITE, 0.15)
 	await flash.finished
 

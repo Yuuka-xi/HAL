@@ -4,24 +4,67 @@
 [ext_resource type="Texture2D" uid="uid://ca5idgyqvk611" path="res://Asset/YellowBlock.png" id="3_jpdbn"]
 [ext_resource type="Texture2D" uid="uid://cvre6mpbyf1r4" path="res://Asset/UI/Memory.png" id="3_ornpi"]
 [ext_resource type="Resource" uid="uid://da66s0r8y51fm" path="res://Dialogue/Chapter1.dialogue" id="4_finished"]
+[ext_resource type="Texture2D" uid="uid://3ku7w0fatc5v" path="res://Asset/UI/Memory/background.png" id="5_gcr31"]
+[ext_resource type="PackedScene" uid="uid://bg0dhcmtonb5v" path="res://Scene/Tool/hover_scale/return_hover_scale.tscn" id="7_5g3nx"]
 [ext_resource type="Texture2D" uid="uid://iqpxettfjqvs" path="res://Asset/livingroom.png" id="7_kmwpi"]
+[ext_resource type="FontFile" uid="uid://c1srlfkgjtsv1" path="res://Asset/Fonts/ZhanKuXiaoLOGOTi-2.otf" id="7_yi7n3"]
 [ext_resource type="Texture2D" uid="uid://dsnrohk5j16w" path="res://Asset/bedroom.png" id="8_kmwpi"]
-[ext_resource type="PackedScene" path="res://Scene/Tool/hover_scale/hover_scale.tscn" id="90_hover"]
+[ext_resource type="PackedScene" uid="uid://sku1m53v5qqm" path="res://Scene/Tool/hover_scale/hover_scale.tscn" id="90_hover"]
 [ext_resource type="Texture2D" uid="uid://djpvo5anf1qtc" path="res://Asset/Memory/OpenDoor/closed.png" id="91_closed"]
 [ext_resource type="Texture2D" uid="uid://c1b6jxbc35c2r" path="res://Asset/Memory/OpenDoor/open.png" id="92_open"]
 [ext_resource type="Texture2D" uid="uid://dmqrnhwhv8b2" path="res://Asset/Items/keycard.png" id="93_card"]
 [ext_resource type="Texture2D" uid="uid://t6ysuoe3m65h" path="res://Asset/UI/inventory.png" id="94_bag"]
 [ext_resource type="Texture2D" uid="uid://bslsst3hmi66c" path="res://Asset/UI/invertory2.png" id="95_drawer"]
+[ext_resource type="Texture2D" uid="uid://u77wmx36ts0j" path="res://Asset/UI/Memory/back.png" id="ui_back"]
+[ext_resource type="Texture2D" uid="uid://eveq8rj0adnv" path="res://Asset/UI/Memory/button.png" id="ui_button"]
+[ext_resource type="Texture2D" uid="uid://stxa40hs5vd2" path="res://Asset/UI/Memory/decoration.png" id="ui_decoration"]
 
 [sub_resource type="Theme" id="Theme"]
 default_font_size = 26
+
+[sub_resource type="StyleBoxTexture" id="RecordingStyle"]
+content_margin_left = 24.0
+content_margin_right = 24.0
+texture = ExtResource("ui_button")
+texture_margin_left = 20.0
+texture_margin_top = 16.0
+texture_margin_right = 20.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxEmpty" id="NoFocus"]
+
+[sub_resource type="Theme" id="RecordingTheme"]
+default_font_size = 30
+Button/colors/font_color = Color(0.88, 0.82, 0.69, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.9490196, 0.9019608, 0.83137256, 1)
+Button/colors/font_hover_color = Color(0.9490196, 0.9019608, 0.83137256, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0.78, 0.69, 0.51, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/fonts/font = ExtResource("7_yi7n3")
+Button/styles/disabled = SubResource("RecordingStyle")
+Button/styles/focus = SubResource("NoFocus")
+Button/styles/hover = SubResource("RecordingStyle")
+Button/styles/normal = SubResource("RecordingStyle")
+Button/styles/pressed = SubResource("RecordingStyle")
 
 [sub_resource type="Animation" id="Animation_54cvm"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Screen/Margin/Layout/Columns/Video/Playback/OpenDoor/KeyCard:position")
+tracks/0/path = NodePath("Screen/Layout/Columns/Video/Playback/OpenDoor/KeyCard:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -33,7 +76,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Screen/Margin/Layout/Columns/Video/Playback/OpenDoor/Closed:visible")
+tracks/1/path = NodePath("Screen/Layout/Columns/Video/Playback/OpenDoor/Closed:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -125,7 +168,7 @@ length = 3.0000000000000004
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Screen/Margin/Layout/Columns/Video/Playback/OpenDoor/KeyCard:position")
+tracks/0/path = NodePath("Screen/Layout/Columns/Video/Playback/OpenDoor/KeyCard:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -137,7 +180,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Screen/Margin/Layout/Columns/Video/Playback/OpenDoor/Closed:visible")
+tracks/1/path = NodePath("Screen/Layout/Columns/Video/Playback/OpenDoor/Closed:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -157,7 +200,7 @@ _data = {
 [node name="Memory" type="CanvasLayer" unique_id=1961420886 node_paths=PackedStringArray("animation_content")]
 layer = 40
 script = ExtResource("1")
-animation_content = NodePath("Screen/Margin/Layout/Columns/Video/Playback/OpenDoor")
+animation_content = NodePath("Screen/Layout/Columns/Video/Playback/OpenDoor")
 animation_contents = Dictionary[String, NodePath]({
 "clean_bedroom": NodePath("CleanBedroom")
 })
@@ -184,80 +227,115 @@ anchor_bottom = 1.0
 theme = SubResource("Theme")
 color = Color(0.035, 0.045, 0.06, 1)
 
-[node name="Margin" type="MarginContainer" parent="Screen" unique_id=113392687]
+[node name="background" type="TextureRect" parent="Screen" unique_id=1843433624]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme_override_constants/margin_left = 64
-theme_override_constants/margin_top = 40
-theme_override_constants/margin_right = 64
-theme_override_constants/margin_bottom = 180
+mouse_filter = 2
+texture = ExtResource("5_gcr31")
+expand_mode = 1
 
-[node name="Layout" type="VBoxContainer" parent="Screen/Margin" unique_id=1307025470]
-layout_mode = 2
+[node name="VideoBackground" type="ColorRect" parent="Screen" unique_id=1806556252]
+layout_mode = 0
+offset_left = 434.0
+offset_top = 170.0
+offset_right = 1806.0
+offset_bottom = 948.0
+mouse_filter = 2
+color = Color(0.17, 0.12, 0.08, 1)
+
+[node name="Layout" type="VBoxContainer" parent="Screen" unique_id=1307025470]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 40.0
+offset_right = 1806.0
+offset_bottom = 948.0
 theme_override_constants/separation = 40
 
-[node name="Header" type="HBoxContainer" parent="Screen/Margin/Layout" unique_id=1073792030]
+[node name="Header" type="HBoxContainer" parent="Screen/Layout" unique_id=1073792030]
+custom_minimum_size = Vector2(0, 80)
+custom_maximum_size = Vector2(-1, 80)
 layout_mode = 2
+theme_override_constants/separation = 20
 
-[node name="Title" type="Label" parent="Screen/Margin/Layout/Header" unique_id=1122965107]
+[node name="Icon" type="TextureRect" parent="Screen/Layout/Header" unique_id=394381000]
+custom_minimum_size = Vector2(64, 90)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("3_ornpi")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Title" type="Label" parent="Screen/Layout/Header" unique_id=1122965107]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.9490196, 0.9019608, 0.83137256, 1)
 theme_override_font_sizes/font_size = 38
 text = "记忆录像"
 
-[node name="Close" type="Button" parent="Screen/Margin/Layout/Header" unique_id=1171648381]
+[node name="Close" type="TextureButton" parent="Screen/Layout/Header" unique_id=1171648381]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
-text = "返回"
+texture_normal = ExtResource("ui_back")
+ignore_texture_size = true
+stretch_mode = 5
 
-[node name="Columns" type="HBoxContainer" parent="Screen/Margin/Layout" unique_id=1194253702]
+[node name="HoverScale" parent="Screen/Layout/Header/Close" unique_id=433011620 instance=ExtResource("7_5g3nx")]
+
+[node name="Columns" type="HBoxContainer" parent="Screen/Layout" unique_id=1194253702]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/separation = 40
+theme_override_constants/separation = 54
 
-[node name="List" type="ScrollContainer" parent="Screen/Margin/Layout/Columns" unique_id=374104706]
-custom_minimum_size = Vector2(380, 0)
+[node name="List" type="ScrollContainer" parent="Screen/Layout/Columns" unique_id=374104706]
+custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 
-[node name="Recordings" type="VBoxContainer" parent="Screen/Margin/Layout/Columns/List" unique_id=141333045]
+[node name="Recordings" type="VBoxContainer" parent="Screen/Layout/Columns/List" unique_id=141333045]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme = SubResource("RecordingTheme")
+theme_override_constants/separation = 24
 
-[node name="Empty" type="Label" parent="Screen/Margin/Layout/Columns/List/Recordings" unique_id=821684263]
+[node name="Empty" type="Label" parent="Screen/Layout/Columns/List/Recordings" unique_id=821684263]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_colors/font_color = Color(0.9490196, 0.9019608, 0.83137256, 1)
 text = "暂无记忆录像"
 
-[node name="Video" type="SubViewportContainer" parent="Screen/Margin/Layout/Columns" unique_id=635248088]
+[node name="Video" type="SubViewportContainer" parent="Screen/Layout/Columns" unique_id=635248088]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 stretch = true
 
-[node name="Playback" type="SubViewport" parent="Screen/Margin/Layout/Columns/Video" unique_id=788391523]
+[node name="Playback" type="SubViewport" parent="Screen/Layout/Columns/Video" unique_id=788391523]
 unique_name_in_owner = true
+transparent_bg = true
 handle_input_locally = false
-size = Vector2i(1372, 778)
+size = Vector2i(1372, 788)
 render_target_update_mode = 4
 
-[node name="OpenDoor" type="Control" parent="Screen/Margin/Layout/Columns/Video/Playback" unique_id=1791337469]
+[node name="OpenDoor" type="Control" parent="Screen/Layout/Columns/Video/Playback" unique_id=1791337469]
 layout_mode = 3
 anchors_preset = 0
 scale = Vector2(0.7145833, 0.7203704)
 mouse_filter = 2
 
-[node name="Open" type="Sprite2D" parent="Screen/Margin/Layout/Columns/Video/Playback/OpenDoor" unique_id=376813366]
-position = Vector2(960, 540)
+[node name="Open" type="Sprite2D" parent="Screen/Layout/Columns/Video/Playback/OpenDoor" unique_id=376813366]
+position = Vector2(960, 546.94086)
+scale = Vector2(1, 1.0128534)
 texture = ExtResource("92_open")
 
-[node name="Closed" type="Sprite2D" parent="Screen/Margin/Layout/Columns/Video/Playback/OpenDoor" unique_id=513076167]
-position = Vector2(960, 540)
+[node name="Closed" type="Sprite2D" parent="Screen/Layout/Columns/Video/Playback/OpenDoor" unique_id=513076167]
+position = Vector2(960, 546.94073)
+scale = Vector2(1, 1.0128534)
 texture = ExtResource("91_closed")
 
-[node name="Bag" type="TextureRect" parent="Screen/Margin/Layout/Columns/Video/Playback/OpenDoor" unique_id=55961516]
+[node name="Bag" type="TextureRect" parent="Screen/Layout/Columns/Video/Playback/OpenDoor" unique_id=55961516]
 layout_mode = 0
 offset_left = 1740.0
 offset_top = 20.0
@@ -268,20 +346,30 @@ texture = ExtResource("94_bag")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Drawer" type="TextureRect" parent="Screen/Margin/Layout/Columns/Video/Playback/OpenDoor" unique_id=698970298]
+[node name="Drawer" type="TextureRect" parent="Screen/Layout/Columns/Video/Playback/OpenDoor" unique_id=698970298]
 layout_mode = 0
 offset_left = 1750.0
 offset_top = 180.0
 offset_right = 1890.0
-offset_bottom = 642.72485
+offset_bottom = 737.1207
 mouse_filter = 2
 texture = ExtResource("95_drawer")
 expand_mode = 1
 
-[node name="KeyCard" type="Sprite2D" parent="Screen/Margin/Layout/Columns/Video/Playback/OpenDoor" unique_id=239828807]
+[node name="KeyCard" type="Sprite2D" parent="Screen/Layout/Columns/Video/Playback/OpenDoor" unique_id=239828807]
 position = Vector2(1820, 260)
 scale = Vector2(0.13567282, 0.13567282)
 texture = ExtResource("93_card")
+
+[node name="Decoration" type="TextureRect" parent="Screen" unique_id=1058956784]
+layout_mode = 0
+offset_left = 357.0
+offset_top = 159.0
+offset_right = 1805.0
+offset_bottom = 1037.0
+mouse_filter = 2
+texture = ExtResource("ui_decoration")
+expand_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1413286960]
 libraries/ = SubResource("AnimationLibrary_ornpi")
