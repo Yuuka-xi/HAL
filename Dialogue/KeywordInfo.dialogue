@@ -92,7 +92,8 @@ do GameState.set_flag("pc_dsk_understood", true)
 
 # Chapter2
 ~ bedroom_info
-Elliot家的卧室
+if GameState.get_flag("bedroom_access"):
+	客厅最右边的门与卧室相连。
 => END
 
 ~ sensor_info

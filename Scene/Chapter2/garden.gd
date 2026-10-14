@@ -6,5 +6,4 @@ func _ready() -> void:
 func _refresh_room() -> void:
 	var placed: bool = GameState.get_flag("flower_placed")
 	$PlacedTulip.visible = placed
-	$gap/Label.visible = not placed
 	$gap/PlaceTarget.input_pickable = not placed

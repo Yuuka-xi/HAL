@@ -12,4 +12,4 @@ func _ready() -> void:
 		DialogueManager.show_dialogue_balloon(dialogue, "coffee")
 
 func receive_bucket() -> void:
-	await Inventory.collect_item("tool_bucket", $elliot.get_global_transform_with_canvas().origin)
+	await Inventory.collect_item("tool_bucket", $Elliot.get_global_transform_with_canvas().origin)

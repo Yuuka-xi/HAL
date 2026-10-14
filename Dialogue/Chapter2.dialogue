@@ -1,15 +1,14 @@
 ~ start
-do GameState.set_flag("chapter2_started", true)
-do GameState.set_flag("inventory_enabled", true)
-do GameState.set_flag("memory_installed", true)
-do Inventory.add_item("key_card")
-Elliot: hal，带上你的清洁工具桶。
-do LivingRoom.receive_bucket()
-Elliot: [kw=bedroom]需要清理了，去打扫吧。
-系统: 查询卧室位置[next=2]
+# do GameState.set_flag("chapter2_started", true)
+# do GameState.set_flag("inventory_enabled", true)
+# do GameState.set_flag("memory_installed", true)
+# do Inventory.add_item("key_card")
+do wait(2)
+Elliot: hal，去打扫[kw=bedroom]。
+hal: 收到。
 do WorkLog.require_query(["bedroom"])
 do Memory.add_animation("clean_bedroom", "清理卧室")
-系统: 找到了一段hal前去卧室打扫的录像。
+正在调用记忆录像……
 do Memory.require_watch("clean_bedroom")
 do GameState.set_flag("bedroom_access", true)
 => END
@@ -63,7 +62,7 @@ else:
 if GameState.get_flag("mirror_cleaned"):
 	思考: 镜子已经擦干净了。
 else:
-	思考: 镜子很脏，看不清里面的影像。需要浸了清洁剂的抹布。
+	hal: 检测到镜子。镜面污渍覆盖率过高，建议立刻清洗。
 => END
 
 ~ place_bucket
