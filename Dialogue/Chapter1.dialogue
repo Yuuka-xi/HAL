@@ -20,7 +20,7 @@ do! WorkLog.open()
 => END
 
 ~ submit
-if GameState.get_choice("keyword_submission") == "pc":
+if GameState.get_choice("keyword_submission") == "dsk+pc" and GameState.get_flag("pc_dsk_understood"):
 	do! StudyRoomPC.open()
 else:
 	思考: 暂时不知道怎样用这个组合行动。

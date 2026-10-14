@@ -6,7 +6,7 @@ extends Node2D
 @onready var memory_storage_drive: Sprite2D = $MemoryStorageDrive
 
 func _ready() -> void:
-	$Back.pressed.connect(close)
+	pass
 
 func open() -> void:
 	show()
@@ -22,13 +22,3 @@ func close() -> void:
 	hide()
 	for area in get_parent().find_children("*", "Area2D"):
 		area.input_pickable = true
-
-
-func open_disc_reader() -> void:
-	memory_storage_drive.show()
-	$AnimationPlayer.play("open_disc_reader")
-	await $AnimationPlayer.animation_finished
-
-func hal_get_memory_storage_drive() -> void:
-	$AnimationPlayer.play("hal_get_memory_storage_drive")
-	await $AnimationPlayer.animation_finished
