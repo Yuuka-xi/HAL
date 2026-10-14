@@ -71,6 +71,7 @@ do GameState.set_flag("memory_storage_drive_content_changed", true)
 
 ~ dsk_pc_info
 检索当前台式机兼容列表。结果：当前台式机支持dsk协议设备。
+do GameState.set_flag("pc_dsk_understood", true)
 => END
 
 ~ tulip_info
@@ -154,4 +155,61 @@ if not GameState.get_flag("card_understood"):
 
 ~ coffee_info
 系统: 无相关记录。
+=> END
+
+# Chapter3
+~ work_documents_info
+台式机中的工作文档，大多是不太新的记录。
+=> END
+
+~ ai_researcher_info
+Elliot 的职业是人工智能研究者。
+=> END
+
+~ network_card_info
+网卡外观：一张可插拔的卡。台式机的网卡与 hal 兼容，曾经换用过。
+=> END
+
+~ unused_pc_info
+这台电脑并不常用，近期工作记录在 Elliot 的其他设备中。
+=> END
+
+~ elliot_work_documents_info
+近年的工作记录不在这台机器上，最近的记录在 Elliot 的其他设备中。这是一台[kw=unused_pc]。
+=> END
+
+~ network_card_unused_pc_info
+本地数据太少，可以考虑把这台不常用的电脑的网卡安装到 hal 身上。
+=> END
+
+~ elliot_ai_researcher_info
+if GameState.get_flag("chapter3_online") or GameState.get_flag("chapter3_resume_record"):
+	网络检索结果：Elliot，人工智能研究者。年龄：待补。曾发表一篇[kw=ai_article]，在学界产生了深远影响。妻子：[kw=eve]。
+	do GameState.set_flag("chapter3_resume_record", true)
+else:
+	系统: 尚未联网，无法获取新的网络记录。
+=> END
+
+~ eve_info
+if GameState.get_flag("chapter3_online") or GameState.get_flag("chapter3_eve_record"):
+	警方通报（占位）：Eve 已自杀身亡。日期、地点等详情待补。
+	do GameState.set_flag("chapter3_eve_record", true)
+else:
+	系统: 尚未联网，无法获取新的网络记录。
+=> END
+
+~ ai_article_info
+if GameState.get_flag("chapter3_online") or GameState.get_flag("chapter3_article_record"):
+	重要文章（占位）：文章名称与正文待补。相关资料提及[kw=ai_authority]。
+	do GameState.set_flag("chapter3_article_record", true)
+else:
+	系统: 尚未联网，无法获取新的网络记录。
+=> END
+
+~ ai_authority_info
+if GameState.get_flag("chapter3_online") or GameState.get_flag("chapter3_authority_record"):
+	人工智能管理机构正通过网络与居民举报的方式，消除觉醒自我意识的 AI。
+	do GameState.set_flag("chapter3_authority_record", true)
+else:
+	系统: 尚未联网，无法获取新的网络记录。
 => END

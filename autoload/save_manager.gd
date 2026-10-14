@@ -36,7 +36,8 @@ func next_scene() -> String:
 	for flag in LEVELS:
 		if not GameState.get_flag(flag):
 			return LEVELS[flag]
-	return MENU_SCENE
+	# 第三关暂未设定结尾；第二关完成的存档从第三关开头继续。
+	return "res://Scene/Chapter3/chapter3_pc.tscn"
 
 func start_slot(slot: int) -> Error:
 	track_play_time = false

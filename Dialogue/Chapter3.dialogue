@@ -1,0 +1,141 @@
+# 第三关占位剧情；正式文本后续替换。
+~ start
+系统: 新的一天，Elliot 已经出门。
+思考: 开始执行完善数据库的任务，先研究书房的台式机。
+=> END
+
+~ connect_cable
+if not GameState.get_flag("chapter3_cable_connected"):
+	do Chapter3PC.play_animation("connect_data_cable")
+	do GameState.set_flag("chapter3_cable_connected", true)
+	系统: 登录成功，无需密码。
+=> END
+
+~ open_screen
+if GameState.get_flag("chapter3_cable_connected"):
+	do Chapter3PC.open_desktop()
+else:
+	思考: 先试试连接旁边的数据线吧。
+=> END
+
+~ observe_network_card_slot
+if not GameState.get_flag("chapter3_card_decided"):
+	思考: 现在似乎没有动它的必要
+elif not GameState.get_flag("chapter3_online") and not GameState.get_flag("chapter3_card_out"):
+	do Chapter3PC.show_card()
+	do GameState.set_flag("chapter3_card_out", true)
+=> END
+
+~ install_card
+if not GameState.get_flag("chapter3_card_decided"):
+	思考: 现在似乎没有动它的必要
+elif GameState.get_flag("chapter3_card_out"):
+	do Chapter3PC.play_animation("hal_get_network_card")
+	do Inventory.add_item("network_card")
+	do GameState.set_flag("chapter3_card_out", false)
+	do GameState.set_flag("chapter3_online", true)
+	系统: 网卡已安装，联网功能启用。
+=> END
+
+~ return_card
+if GameState.get_flag("chapter3_online"):
+	do Inventory.remove_item("network_card")
+	do GameState.set_flag("chapter3_online", false)
+	do Chapter3PC.play_animation("hal_put_network_card_back")
+	系统: 网卡已放回台式机，联网功能关闭。
+=> END
+
+~ hover_network_card
+ntw插口
+=> END
+
+~ hover_disc_reader
+dsk插口
+=> END
+
+~ document1
+文档1：得知台式机信息很少。这里的[kw=work_documents]大多是不太新的记录。
+do GameState.set_flag("chapter3_document1_read", true)
+=> END
+
+~ document2
+文档2：Elliot 是一个[kw=ai_researcher]。他对自己和别人都很严厉，生活有计划、有规律。
+do GameState.unlock_keyword("work_documents")
+do GameState.set_flag("chapter3_document2_read", true)
+=> END
+
+~ document3
+文档3：电脑的[kw=network_card]和 hal 的网卡兼容，可以换用；此前已有换用先例。
+do GameState.unlock_keyword("work_documents")
+do GameState.set_flag("chapter3_document3_read", true)
+=> END
+
+~ document4
+暂无更多记录。
+=> END
+
+~ card_decision_prompt
+思考: 本地数据太少，是否借用这张网卡，需要进一步评估。（阅读查询结果后，点击此处继续。）
+do WorkLog.close()
+=> card_decision
+
+~ card_decision
+if GameState.get_flag("chapter3_card_decided"):
+	=> END
+- 逻辑性：使用逻辑性决定装上网卡。 => card_decision_logic
+- 社交性：使用社交性决定装上网卡。 => card_decision_social
+- 发散性：使用发散性决定装上网卡。 => card_decision_exploration
+
+~ card_decision_logic
+do GameState.set_flag("chapter3_card_decided", true)
+do GameState.set_choice("chapter3_card_dimension", "logic")
+do GameState.add_attribute("logic", 1)
+思考: 使用逻辑性决定装上网卡。（占位）
+=> END
+
+~ card_decision_social
+do GameState.set_flag("chapter3_card_decided", true)
+do GameState.set_choice("chapter3_card_dimension", "social")
+do GameState.add_attribute("social", 1)
+思考: 使用社交性决定装上网卡。（占位）
+=> END
+
+~ card_decision_exploration
+do GameState.set_flag("chapter3_card_decided", true)
+do GameState.set_choice("chapter3_card_dimension", "exploration")
+do GameState.add_attribute("exploration", 1)
+思考: 使用发散性决定装上网卡。（占位）
+=> END
+
+~ eve_reaction_prompt
+思考: Eve 已经去世了。hal 开始分析这条消息。（阅读查询结果后，点击此处继续。）
+do WorkLog.close()
+=> eve_reaction
+
+~ eve_reaction
+if GameState.get_flag("chapter3_eve_reacted"):
+	=> END
+- 逻辑性：使用逻辑性面对 Eve 自杀的消息。 => eve_reaction_logic
+- 社交性：使用社交性面对 Eve 自杀的消息。 => eve_reaction_social
+- 发散性：使用发散性面对 Eve 自杀的消息。 => eve_reaction_exploration
+
+~ eve_reaction_logic
+do GameState.set_flag("chapter3_eve_reacted", true)
+do GameState.set_choice("chapter3_eve_dimension", "logic")
+do GameState.add_attribute("logic", 1)
+思考: 使用逻辑性面对 Eve 自杀的消息。（占位）
+=> END
+
+~ eve_reaction_social
+do GameState.set_flag("chapter3_eve_reacted", true)
+do GameState.set_choice("chapter3_eve_dimension", "social")
+do GameState.add_attribute("social", 1)
+思考: 使用社交性面对 Eve 自杀的消息。（占位）
+=> END
+
+~ eve_reaction_exploration
+do GameState.set_flag("chapter3_eve_reacted", true)
+do GameState.set_choice("chapter3_eve_dimension", "exploration")
+do GameState.add_attribute("exploration", 1)
+思考: 使用发散性面对 Eve 自杀的消息。（占位）
+=> END

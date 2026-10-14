@@ -1,0 +1,234 @@
+[gd_scene format=3 uid="uid://cxjw35bv4t8gb"]
+
+[ext_resource type="Texture2D" uid="uid://crkeje15uc0um" path="res://Asset/WhiteBlock.png" id="1_q7xep"]
+[ext_resource type="Texture2D" uid="uid://yvv2rbs15sq" path="res://Asset/UI/back.png" id="2_7d46s"]
+[ext_resource type="Texture2D" uid="uid://7454mv4u3g4i" path="res://Asset/Pinkblock.png" id="3_07rj8"]
+
+[ext_resource type="Script" path="res://Scene/Chapter3/screen.gd" id="script"]
+[ext_resource type="Resource" path="res://Dialogue/Chapter3.dialogue" id="dialogue"]
+
+[node name="Screen" type="CanvasLayer" unique_id=91676170]
+layer = 20
+script = ExtResource("script")
+dialogue = ExtResource("dialogue")
+
+[node name="InputShield" type="Control" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 0
+
+[node name="desktop" type="Sprite2D" parent="." unique_id=1437459777]
+position = Vector2(960, 535)
+scale = Vector2(14.96875, 8.4375)
+texture = ExtResource("1_q7xep")
+
+[node name="BackButton" type="TextureButton" parent="." unique_id=1790956426]
+offset_left = 1771.0
+offset_top = 35.0
+offset_right = 2056.0
+offset_bottom = 327.0
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("2_7d46s")
+
+[node name="document" type="Sprite2D" parent="." unique_id=132879267]
+position = Vector2(194, 164)
+texture = ExtResource("3_07rj8")
+
+[node name="Label" type="Label" parent="document" unique_id=1743317376]
+offset_left = -38.0
+offset_top = -39.0
+offset_right = 42.0
+offset_bottom = 52.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "工作
+文档1"
+
+[node name="document2" type="Sprite2D" parent="." unique_id=998731607]
+position = Vector2(194, 330)
+texture = ExtResource("3_07rj8")
+
+[node name="Label" type="Label" parent="document2" unique_id=750880221]
+offset_left = -38.0
+offset_top = -39.0
+offset_right = 42.0
+offset_bottom = 52.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "工作
+文档2"
+
+[node name="document3" type="Sprite2D" parent="." unique_id=115902325]
+position = Vector2(194, 511)
+texture = ExtResource("3_07rj8")
+
+[node name="Label" type="Label" parent="document3" unique_id=278340297]
+offset_left = -38.0
+offset_top = -39.0
+offset_right = 42.0
+offset_bottom = 52.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "工作
+文档3"
+
+[node name="document4" type="Sprite2D" parent="." unique_id=1154340979]
+position = Vector2(197, 695)
+texture = ExtResource("3_07rj8")
+
+[node name="Label" type="Label" parent="document4" unique_id=1288084638]
+offset_left = -49.0
+offset_top = -43.0
+offset_right = 48.0
+offset_bottom = 95.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "工作
+文档4
+……"
+
+[node name="Email" type="Sprite2D" parent="." unique_id=2125273283]
+position = Vector2(423, 166)
+texture = ExtResource("3_07rj8")
+
+[node name="Label" type="Label" parent="Email" unique_id=1938857056]
+offset_left = -38.0
+offset_top = -39.0
+offset_right = 42.0
+offset_bottom = 52.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "邮件"
+
+[node name="DocumentButton1" type="Button" parent="."]
+offset_left = 130.0
+offset_top = 100.0
+offset_right = 258.0
+offset_bottom = 228.0
+flat = true
+
+[node name="DocumentButton2" type="Button" parent="."]
+offset_left = 130.0
+offset_top = 266.0
+offset_right = 258.0
+offset_bottom = 394.0
+flat = true
+
+[node name="DocumentButton3" type="Button" parent="."]
+offset_left = 130.0
+offset_top = 447.0
+offset_right = 258.0
+offset_bottom = 575.0
+flat = true
+
+[node name="DocumentButton4" type="Button" parent="."]
+offset_left = 133.0
+offset_top = 631.0
+offset_right = 261.0
+offset_bottom = 759.0
+flat = true
+
+[node name="EmailButton" type="Button" parent="."]
+offset_left = 359.0
+offset_top = 102.0
+offset_right = 487.0
+offset_bottom = 230.0
+flat = true
+
+[node name="DocumentPage" type="Control" parent="."]
+visible = false
+offset_right = 1920.0
+offset_bottom = 1080.0
+[node name="Background" type="TextureRect" parent="DocumentPage"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+texture = ExtResource("1_q7xep")
+[node name="Back" type="Button" parent="DocumentPage"]
+offset_left = 1580.0
+offset_top = 160.0
+offset_right = 1790.0
+offset_bottom = 225.0
+theme_override_colors/font_color = Color(0.12, 0.12, 0.12, 1)
+theme_override_colors/font_hover_color = Color(0.12, 0.12, 0.12, 1)
+theme_override_colors/font_pressed_color = Color(0.12, 0.12, 0.12, 1)
+theme_override_font_sizes/font_size = 30
+text = "返回桌面"
+[node name="Body" type="RichTextLabel" parent="DocumentPage"]
+offset_left = 180.0
+offset_top = 280.0
+offset_right = 1740.0
+offset_bottom = 900.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.12, 0.12, 0.12, 1)
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+
+[node name="MailPage" type="Control" parent="."]
+visible = false
+offset_right = 1920.0
+offset_bottom = 1080.0
+[node name="Background" type="TextureRect" parent="MailPage"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+texture = ExtResource("1_q7xep")
+[node name="Back" type="Button" parent="MailPage"]
+offset_left = 1580.0
+offset_top = 160.0
+offset_right = 1790.0
+offset_bottom = 225.0
+theme_override_colors/font_color = Color(0.12, 0.12, 0.12, 1)
+theme_override_colors/font_hover_color = Color(0.12, 0.12, 0.12, 1)
+theme_override_colors/font_pressed_color = Color(0.12, 0.12, 0.12, 1)
+theme_override_font_sizes/font_size = 30
+text = "返回桌面"
+[node name="ListBackground" type="TextureRect" parent="MailPage"]
+offset_left = 140.0
+offset_top = 270.0
+offset_right = 650.0
+offset_bottom = 930.0
+mouse_filter = 2
+texture = ExtResource("3_07rj8")
+[node name="Body" type="TextEdit" parent="MailPage"]
+offset_left = 700.0
+offset_top = 270.0
+offset_right = 1780.0
+offset_bottom = 930.0
+theme_override_colors/font_color = Color(0.12, 0.12, 0.12, 1)
+theme_override_colors/font_hover_color = Color(0.12, 0.12, 0.12, 1)
+theme_override_colors/font_pressed_color = Color(0.12, 0.12, 0.12, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_colors/font_readonly_color = Color(0.12, 0.12, 0.12, 1)
+editable = false
+text = "选择左侧邮件查看正文。"
+[node name="Mail1" type="Button" parent="MailPage"]
+offset_left = 170.0
+offset_top = 300.0
+offset_right = 620.0
+offset_bottom = 400.0
+theme_override_colors/font_color = Color(0.12, 0.12, 0.12, 1)
+theme_override_colors/font_hover_color = Color(0.12, 0.12, 0.12, 1)
+theme_override_colors/font_pressed_color = Color(0.12, 0.12, 0.12, 1)
+theme_override_font_sizes/font_size = 30
+text = "邮件1：主题待补"
+[node name="Mail2" type="Button" parent="MailPage"]
+offset_left = 170.0
+offset_top = 440.0
+offset_right = 620.0
+offset_bottom = 540.0
+theme_override_colors/font_color = Color(0.12, 0.12, 0.12, 1)
+theme_override_colors/font_hover_color = Color(0.12, 0.12, 0.12, 1)
+theme_override_colors/font_pressed_color = Color(0.12, 0.12, 0.12, 1)
+theme_override_font_sizes/font_size = 30
+text = "邮件2：主题待补"
+[node name="Mail3" type="Button" parent="MailPage"]
+offset_left = 170.0
+offset_top = 580.0
+offset_right = 620.0
+offset_bottom = 680.0
+theme_override_colors/font_color = Color(0.12, 0.12, 0.12, 1)
+theme_override_colors/font_hover_color = Color(0.12, 0.12, 0.12, 1)
+theme_override_colors/font_pressed_color = Color(0.12, 0.12, 0.12, 1)
+theme_override_font_sizes/font_size = 30
+text = "邮件3：主题待补"

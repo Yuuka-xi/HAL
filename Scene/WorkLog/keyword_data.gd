@@ -24,8 +24,15 @@ const NAMES = {
 	"sensor": "感应器",
 	"bed": "床",
 	"cleaner": "清洁剂",
-	"coffee": "咖啡"
-	
+	"coffee": "咖啡",
+	# 关卡3
+	"work_documents": "工作文档",
+	"ai_researcher": "人工智能研究者",
+	"network_card": "网卡",
+	"unused_pc": "不常用的电脑",
+	"eve": "Eve",
+	"ai_article": "有关人工智能的重要文章",
+	"ai_authority": "人工智能管理机构",
 }
 
 # 双词组合按编号排序，用 + 连接；值是 .dialogue 中的入口标题。
@@ -63,6 +70,16 @@ const ENTRIES = {
 	"bed": "bed_info",
 	"bed+sensor": "bed_sensor_info",
 	"cleaner": "cleaner_info",
-	"coffee": "coffee_info"
-	
+	"coffee": "coffee_info",
+	# 关卡3
+	"work_documents": "work_documents_info",
+	"ai_researcher": "ai_researcher_info",
+	"network_card": "network_card_info",
+	"unused_pc": "unused_pc_info",
+	"eve": "eve_info",
+	"ai_article": "ai_article_info",
+	"ai_authority": "ai_authority_info",
+	"elliot+work_documents": "elliot_work_documents_info",
+	"network_card+unused_pc": "network_card_unused_pc_info",
+	"ai_researcher+elliot": "elliot_ai_researcher_info",
 }

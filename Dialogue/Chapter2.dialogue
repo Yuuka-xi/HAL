@@ -338,5 +338,5 @@ hal: 使用社交性推辞：我需要先完善数据库，再协助查文献。
 ~ finish_chapter2
 Elliot: 孩子学会糊弄了。
 do GameState.set_flag("chapter2_completed", true)
-do SaveManager.return_to_menu()
+do SceneTransition.change_scene("res://Scene/Chapter3/chapter3_pc.tscn")
 => END

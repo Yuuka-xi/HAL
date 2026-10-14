@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://crocmpcsrqp33"
+path="res://.godot/imported/Chapter3.dialogue-d38ab7755d496fb87c537d34ab131e30.tres"
+
+[deps]
+
+source_file="res://Dialogue/Chapter3.dialogue"
+dest_files=["res://.godot/imported/Chapter3.dialogue-d38ab7755d496fb87c537d34ab131e30.tres"]
+
+[params]
+
+defaults=true

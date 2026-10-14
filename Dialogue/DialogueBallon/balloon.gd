@@ -9,6 +9,8 @@ var dialogue_line: DialogueLine
 var waiting := false
 var collecting := false
 var locals: Dictionary = {}
+# 仅供需要在工作日志上方手动确认的提示使用。
+var advance_from_subtitle := false
 var keyword_effect = preload("res://Dialogue/DialogueBallon/keyword_effect.gd").new()
 @onready var subtitle: DialogueLabel = %Subtitle
 
@@ -87,3 +89,11 @@ func _input(event: InputEvent) -> void:
 		return
 	if collecting:
 		get_viewport().set_input_as_handled()
+		return
+	if advance_from_subtitle and not SettingsMenu.is_open() and not Attributes.screen.visible and not Memory.screen.visible:
+		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and subtitle.get_global_rect().has_point(event.position):
+			get_viewport().set_input_as_handled()
+			if subtitle.is_typing:
+				subtitle.skip_typing()
+			elif waiting:
+				_advance()
