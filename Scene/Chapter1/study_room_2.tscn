@@ -14,11 +14,14 @@
 [ext_resource type="Texture2D" uid="uid://b5f1efusho52d" path="res://Asset/studyroom/curtain.png" id="9_qmr0i"]
 [ext_resource type="Texture2D" uid="uid://ckfkvb8cptwqu" path="res://Asset/studyroom/PC.png" id="12_q63yh"]
 [ext_resource type="Texture2D" uid="uid://rjkoxe47o3v3" path="res://Asset/studyroom/tulip.png" id="13_nj0vu"]
+[ext_resource type="Texture2D" uid="uid://cw1xe0prtjxiy" path="res://Asset/studyroom/hourhand.png" id="13_ucsqa"]
+[ext_resource type="Texture2D" uid="uid://cdnqj3unxadpc" path="res://Asset/studyroom/minutehand.png" id="14_buoml"]
 [ext_resource type="Texture2D" uid="uid://c4keu3f2jicb4" path="res://Asset/studyroom/desk.png" id="14_rl1os"]
 [ext_resource type="Texture2D" uid="uid://4h314655l78u" path="res://Asset/studyroom/chargingpile.png" id="15_k45oy"]
 [ext_resource type="Texture2D" uid="uid://cki1r7sam6nb1" path="res://Asset/studyroom/sofa.png" id="15_ucsqa"]
 [ext_resource type="Texture2D" uid="uid://bk10s73lct40a" path="res://Asset/studyroom/toybox.png" id="19_nj0vu"]
 [ext_resource type="PackedScene" uid="uid://bdoiafjgq4y46" path="res://Scene/Tool/scene_transition/0_1_transition.tscn" id="20_vision"]
+[ext_resource type="Script" uid="uid://djvq5f2ydjp4u" path="res://Scene/Chapter1/clock.gd" id="21_clock"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pimtm"]
 size = Vector2(711.98914, 1642.4517)
@@ -65,7 +68,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../DoorHandle:rotation")
+tracks/0/path = NodePath("DoorHandle:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -81,7 +84,7 @@ length = 1.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../DoorHandle:rotation")
+tracks/0/path = NodePath("DoorHandle:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -393,7 +396,7 @@ dialogue_state = NodePath("../..")
 dialogue_state_name = "StudyRoom2"
 click_animation_player = NodePath("../AnimationPlayer")
 click_animation = &"click_door"
-priority_area = NodePath("../../DoorHandle/PerceptionClick")
+priority_area = NodePath("../DoorHandle/PerceptionClick")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door/PerceptionClick" unique_id=443087293]
 position = Vector2(128.25568, -38.35022)
@@ -402,25 +405,27 @@ shape = SubResource("RectangleShape2D_pimtm")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Door" unique_id=1494042104]
 libraries/ = SubResource("AnimationLibrary_ghsoh")
 
-[node name="DoorHandle" type="Sprite2D" parent="." unique_id=1163537994]
-position = Vector2(430.97064, 671.9696)
-scale = Vector2(0.47300407, 0.4950646)
+[node name="DoorHandle" type="Sprite2D" parent="Door" unique_id=1163537994]
+position = Vector2(378.94116, 264.02234)
+scale = Vector2(0.9904409, 0.9904408)
 texture = ExtResource("9_q63yh")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="DoorHandle" unique_id=732269686]
-root_node = NodePath("../../Door")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Door/DoorHandle" unique_id=732269686]
+root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_ucsqa")
 
-[node name="PerceptionClick" type="Area2D" parent="DoorHandle" unique_id=817910944 node_paths=PackedStringArray("click_animation_player")]
+[node name="PerceptionClick" type="Area2D" parent="Door/DoorHandle" unique_id=817910944 node_paths=PackedStringArray("dialogue_state", "click_animation_player")]
 scale = Vector2(0.99999994, 1)
 script = ExtResource("4_tptwy")
 dialogue = ExtResource("2_32efi")
 start_title = "observe_doorhandle"
 required_flag = "elliot_close_door"
+dialogue_state = NodePath("../../..")
+dialogue_state_name = "StudyRoom2"
 click_animation_player = NodePath("../AnimationPlayer")
 click_animation = &"click_doorhandle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorHandle/PerceptionClick" unique_id=910574378]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/DoorHandle/PerceptionClick" unique_id=910574378]
 position = Vector2(-1.5258789e-05, 4.0343323)
 shape = SubResource("CircleShape2D_nj0vu")
 
@@ -438,6 +443,19 @@ texture = ExtResource("9_qmr0i")
 position = Vector2(1735.1875, 579)
 scale = Vector2(0.47842923, 0.48783195)
 texture = ExtResource("9_7fidx")
+script = ExtResource("21_clock")
+
+[node name="minutehand" type="Sprite2D" parent="BookShelf" unique_id=71778020]
+position = Vector2(-27.564209, -690.81177)
+rotation = -0.70886135
+texture = ExtResource("14_buoml")
+offset = Vector2(30, -32)
+
+[node name="hourhand" type="Sprite2D" parent="BookShelf" unique_id=946945768]
+position = Vector2(-33.834663, -688.7618)
+scale = Vector2(0.9644866, 0.96448654)
+texture = ExtResource("13_ucsqa")
+offset = Vector2(0, -40)
 
 [node name="StorageBox" type="Sprite2D" parent="." unique_id=1557082183]
 position = Vector2(1715, 952)

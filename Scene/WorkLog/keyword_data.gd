@@ -19,6 +19,7 @@ const NAMES = {
 	"pc": "台式机",
 	"disc_reader": "读盘器",
 	"door": "门",
+	"key_card": "门卡",
 	# 关卡2
 	"bedroom": "卧室",
 	"sensor": "感应器",
@@ -64,6 +65,7 @@ const ENTRIES = {
 	"memory_storage_drive+storage_box": "memory_storage_drive_storage_box_info",
 	"dsk+pc": "dsk_pc_info",
 	"hal+memory_storage_drive": "hal_memory_storage_drive_info",
+	"key_card": "key_card_info",
 	# 关卡2
 	"bedroom": "bedroom_info",
 	"sensor":"sensor_info",

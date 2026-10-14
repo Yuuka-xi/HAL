@@ -143,7 +143,9 @@ func _refresh_keywords() -> void:
 		%KeywordList.remove_child(child)
 		child.queue_free()
 	var unlocked: Dictionary = GameState.get_available_keywords()
-	for id in KeywordData.NAMES:
+	var ids := unlocked.keys()
+	ids.reverse()
+	for id in ids:
 		if unlocked.get(id, false):
 			var button := Button.new()
 			button.text = KeywordData.NAMES[id]
@@ -206,7 +208,7 @@ func _search() -> void:
 	var ids := selected.duplicate()
 	ids.sort()
 	var title: String = KeywordData.ENTRIES.get("+".join(ids), "")
-	if title.is_empty():
+	if title.is_empty() or not keyword_dialogue.titles.has(title):
 		%Result.text = "本地未找到相关记录。"
 		%Notice.hide()
 		return

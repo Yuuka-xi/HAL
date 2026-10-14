@@ -18,11 +18,12 @@ func _ready() -> void:
 		var button := Button.new()
 		button.text = dimensions[id]
 		button.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
-		button.add_theme_font_size_override("font_size", 38)
+		button.add_theme_font_size_override("font_size", 33)
 		button.mouse_entered.connect(func(): dimension_hovered.emit(id))
 		button.mouse_exited.connect(func(): dimension_hovered.emit(""))
 		button.pressed.connect(func(): dimension_selected.emit(id))
 		add_child(button)
+		button.add_child(preload("res://Scene/Tool/hover_scale/return_hover_scale.tscn").instantiate())
 		buttons[id] = button
 	resized.connect(refresh)
 	refresh()
@@ -38,7 +39,7 @@ func refresh() -> void:
 		points.append(center + direction * radius)
 		var button: Button = buttons[id]
 		button.size = Vector2(164, 66)
-		button.position = center + direction * (radius + button_distance) - button.size / 2
+		button.position = center + direction * (radius + button_distance) - button.size / 2 + Vector2(0, 15)
 		index += 1
 	queue_redraw()
 

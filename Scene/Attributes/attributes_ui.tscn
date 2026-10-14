@@ -3,13 +3,12 @@
 [ext_resource type="Script" uid="uid://4awkedv2ps7x" path="res://Scene/Attributes/attributes_ui.gd" id="1"]
 [ext_resource type="Script" uid="uid://k62lc1okcgpb" path="res://Scene/Attributes/dimension_chart.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://gq7imtd4gr1f" path="res://Asset/UI/attribute.png" id="2_vqx8s"]
-[ext_resource type="PackedScene" path="res://Scene/Tool/hover_scale/hover_scale.tscn" id="90_hover"]
+[ext_resource type="PackedScene" uid="uid://sku1m53v5qqm" path="res://Scene/Tool/hover_scale/hover_scale.tscn" id="90_hover"]
 [ext_resource type="Texture2D" uid="uid://ckwlkypov7ul2" path="res://Asset/UI/Attribute/back.png" id="art_back"]
 [ext_resource type="Texture2D" uid="uid://cvqx1ss552ul3" path="res://Asset/UI/Attribute/background.png" id="art_background"]
 [ext_resource type="Texture2D" uid="uid://bm2noc7380kcp" path="res://Asset/UI/Attribute/button.png" id="art_button"]
 [ext_resource type="Texture2D" uid="uid://dxmmjs52q7f4v" path="res://Asset/UI/Attribute/round.png" id="art_round"]
-
-[ext_resource type="PackedScene" path="res://Scene/Tool/hover_scale/return_hover_scale.tscn" id="return_hover"]
+[ext_resource type="PackedScene" uid="uid://bg0dhcmtonb5v" path="res://Scene/Tool/hover_scale/return_hover_scale.tscn" id="return_hover"]
 
 [sub_resource type="StyleBoxEmpty" id="NoFocus"]
 
@@ -25,9 +24,10 @@ texture_margin_bottom = 12.0
 [sub_resource type="Theme" id="ChartTheme"]
 default_font_size = 36
 Button/colors/font_color = Color(0, 0.4, 0.49, 1)
-Button/colors/font_focus_color = Color(0, 0.5, 0.6, 1)
-Button/colors/font_hover_color = Color(0, 0.5, 0.6, 1)
-Button/colors/font_pressed_color = Color(0, 0.3, 0.38, 1)
+Button/colors/font_focus_color = Color(0, 0.4, 0.49, 1)
+Button/colors/font_hover_color = Color(0, 0.4, 0.49, 1)
+Button/colors/font_hover_pressed_color = Color(0, 0.4, 0.49, 1)
+Button/colors/font_pressed_color = Color(0, 0.4, 0.49, 1)
 Button/styles/focus = SubResource("NoFocus")
 Button/styles/hover = SubResource("DimensionStyle")
 Button/styles/normal = SubResource("DimensionStyle")

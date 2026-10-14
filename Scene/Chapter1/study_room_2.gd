@@ -70,4 +70,8 @@ func finish_level() -> void:
 	while Inventory.busy:
 		await get_tree().process_frame
 	GameState.set_flag("chapter1_completed", true)
-	await SceneTransition.change_scene("res://Scene/Chapter2/living_room.tscn")
+	await SceneTransition.change_scene("res://Scene/Chapter2/living_room.tscn", 0.8)
+
+func play_phone_ring() -> void:
+	AudioManager.play_sfx(preload("res://Asset/audio/电话铃_耳聆网_[声音ID：10166].wav"))
+	await get_tree().create_timer(2.5).timeout

@@ -3,9 +3,9 @@
 
 ~ hal_info
 if GameState.campaign.get("current_level", "") == "chapter1":
-	系统日志>设备信息: 本设备初始登记名称为hal。备注：该机初始设计为家务机器人。
+	系统日志>设备信息：本设备初始登记名称为hal。备注：该机初始设计为家务机器人。
 else:
-	系统日志>设备信息: 本设备初始登记名称为hal。备注：该机初始设计为[kw=household_robot]。
+	系统日志>设备信息：本设备初始登记名称为hal。备注：该机初始设计为[kw=household_robot]。
 => END
 
 ~ keyword_info
@@ -14,14 +14,14 @@ if GameState.campaign.get("current_level", "") == "chapter2":
 elif GameState.campaign.get("current_level", "") == "beginnersguide":
 	系统备注：受处理器内存限制，进行深度思考时，本机仅能处理有限字符数。为优化思考效率，本机限制每次深度思考仅能输入限定数量的关键词，其余缓存信息将被删除。
 else:
-	系统备注: 受处理器内存限制，进行深度思考时，本机仅能处理有限字符数。为优化思考效率，本机限制每次深度思考仅能输入限定数量的关键词，其余缓存信息将被删除。
+	系统备注：受处理器内存限制，进行深度思考时，本机仅能处理有限字符数。为优化思考效率，本机限制每次深度思考仅能输入限定数量的关键词，其余缓存信息将被删除。
 => END
 
 ~ household_robot_info
 if GameState.campaign.get("current_level", "") == "beginnersguide":
 	系统备注：家务机器人当然就是做家务的机器人啦～不过如果你非要问我什么是家务，什么是机器，什么是人的话……大概就是打扫房间，能够执行命令的装置，以及……某种独立的个体？
 else:
-	系统备注: 家务机器人当然就是做家务的机器人啦～不过如果你非要问我什么是家务，什么是机器，什么是人的话……大概就是打扫房间，能够执行命令的装置，以及……某种独立的个体？
+	系统备注：家务机器人当然就是做家务的机器人啦～不过如果你非要问我什么是家务，什么是机器，什么是人的话……大概就是打扫房间，能够执行命令的装置，以及……某种独立的个体？
 => END
 
 ~ unknown_audio_source_info
@@ -82,50 +82,12 @@ do GameState.set_flag("pc_dsk_understood", true)
 系统备注：还有还有，hal，要照顾好书房里的那盆郁金香哦。Elliot可不懂得爱惜花草，所以只能拜托你啦～可能只有这样才能让他的书房看起来有一点生命的气息。
 => END
 
-~ storage_box_info
-关于收纳盒的关键词描述
-=> END
-
-~ pc_info
-关于台式机的关键词描述
-=> END
-
-~ dsk_info
-关于dsk的关键词描述
-=> END
-
-~ toy_info
-关于玩具的关键词描述
-=> END
-
-~ sofa_info
-关于单人沙发的关键词描述
-=> END
-
-~ disc_reader_info
-关于读盘器的关键词描述
-=> END
-
 ~ elliot_toy_info
 检测到玩具购买记录，但记录中未出现Elliot。推论：玩具并非Elliot购买。
 => END
 
 ~ elliot_sofa_info
 检测到单人沙发购买记录，但记录中未出现Elliot。推论：单人沙发并非Elliot购买。
-=> END
-
-~ door_info
-if GameState.get_flag("memory_installed"):
-	未生成文本描述。正在调用记忆录像……
-else:
-	本地未找到相关记录。
-=> END
-
-~ door_lock_info
-if GameState.get_flag("memory_installed"):
-	未生成文本描述。正在调用记忆录像……
-else:
-	本地未找到相关记录。
 => END
 
 # Chapter2
@@ -187,7 +149,7 @@ if GameState.get_flag("chapter3_online") or GameState.get_flag("chapter3_resume_
 	网络检索结果：Elliot，人工智能研究者。年龄：待补。曾发表一篇[kw=ai_article]，在学界产生了深远影响。妻子：[kw=eve]。
 	do GameState.set_flag("chapter3_resume_record", true)
 else:
-	系统: 尚未联网，无法获取新的网络记录。
+	系统：尚未联网，无法获取新的网络记录。
 => END
 
 ~ eve_info
@@ -195,7 +157,7 @@ if GameState.get_flag("chapter3_online") or GameState.get_flag("chapter3_eve_rec
 	警方通报（占位）：Eve 已自杀身亡。日期、地点等详情待补。
 	do GameState.set_flag("chapter3_eve_record", true)
 else:
-	系统: 尚未联网，无法获取新的网络记录。
+	系统：尚未联网，无法获取新的网络记录。
 => END
 
 ~ ai_article_info
@@ -203,7 +165,7 @@ if GameState.get_flag("chapter3_online") or GameState.get_flag("chapter3_article
 	重要文章（占位）：文章名称与正文待补。相关资料提及[kw=ai_authority]。
 	do GameState.set_flag("chapter3_article_record", true)
 else:
-	系统: 尚未联网，无法获取新的网络记录。
+	系统： 尚未联网，无法获取新的网络记录。
 => END
 
 ~ ai_authority_info
@@ -211,5 +173,5 @@ if GameState.get_flag("chapter3_online") or GameState.get_flag("chapter3_authori
 	人工智能管理机构正通过网络与居民举报的方式，消除觉醒自我意识的 AI。
 	do GameState.set_flag("chapter3_authority_record", true)
 else:
-	系统: 尚未联网，无法获取新的网络记录。
+	系统：尚未联网，无法获取新的网络记录。
 => END

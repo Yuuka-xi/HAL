@@ -19,6 +19,12 @@ func _ready() -> void:
 	keyword_effect.label = subtitle
 	subtitle.install_effect(keyword_effect)
 
+func hide_subtitle() -> void:
+	subtitle.hide()
+
+func show_subtitle() -> void:
+	subtitle.show()
+
 func start(dialogue_resource: DialogueResource, title: String, extra_game_states: Array = []) -> void:
 	resource = dialogue_resource
 	temporary_game_states = [self] + extra_game_states

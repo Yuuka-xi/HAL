@@ -164,7 +164,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_jpdbn"]
 resource_name = "open_door"
-length = 3.0000000000000004
+length = 3.5000000000000004
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -184,7 +184,7 @@ tracks/1/path = NodePath("Screen/Layout/Columns/Video/Playback/OpenDoor/Closed:v
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(2, 2.2, 2.21, 3),
+"times": PackedFloat32Array(2, 2.2, 2.21, 3.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [true, true, false, false]
@@ -326,13 +326,13 @@ scale = Vector2(0.7145833, 0.7203704)
 mouse_filter = 2
 
 [node name="Open" type="Sprite2D" parent="Screen/Layout/Columns/Video/Playback/OpenDoor" unique_id=376813366]
-position = Vector2(960, 546.94086)
-scale = Vector2(1, 1.0128534)
+position = Vector2(958.7579, 553.7082)
+scale = Vector2(0.49931931, 0.5001607)
 texture = ExtResource("92_open")
 
 [node name="Closed" type="Sprite2D" parent="Screen/Layout/Columns/Video/Playback/OpenDoor" unique_id=513076167]
-position = Vector2(960, 546.94073)
-scale = Vector2(1, 1.0128534)
+position = Vector2(959.7592, 553.88165)
+scale = Vector2(0.5002558, 0.5)
 texture = ExtResource("91_closed")
 
 [node name="Bag" type="TextureRect" parent="Screen/Layout/Columns/Video/Playback/OpenDoor" unique_id=55961516]
