@@ -30,7 +30,7 @@ func read_document(title: String) -> void:
 		texts.append(line.text)
 		line = await dialogue.get_next_dialogue_line(line.next_id)
 	$DocumentPage/Body.text = keyword_effect.prepare("\n".join(texts))
-	await keyword_effect.collect(self, WorkLog.get_collection_target())
+	keyword_effect.collect()
 	reading = false
 
 func read_mail(index: int) -> void:

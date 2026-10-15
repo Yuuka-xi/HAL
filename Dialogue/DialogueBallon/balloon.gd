@@ -7,7 +7,6 @@ var resource: DialogueResource
 var temporary_game_states: Array = []
 var dialogue_line: DialogueLine
 var waiting := false
-var collecting := false
 var locals: Dictionary = {}
 # 仅供需要在工作日志上方手动确认的提示使用。
 var advance_from_subtitle := false
@@ -86,15 +85,10 @@ func _advance() -> void:
 	next(dialogue_line.next_id)
 
 func _collect_keywords() -> void:
-	collecting = true
-	await keyword_effect.collect(self, WorkLog.get_collection_target())
-	collecting = false
+	keyword_effect.collect()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_settings"):
-		return
-	if collecting:
-		get_viewport().set_input_as_handled()
 		return
 	if advance_from_subtitle and not SettingsMenu.is_open() and not Attributes.screen.visible and not Memory.screen.visible:
 		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed and subtitle.get_global_rect().has_point(event.position):

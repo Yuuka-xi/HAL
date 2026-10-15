@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://lim8omc0c81e" path="res://Asset/UI/Worklog/searchpanel.png" id="art_searchpanel"]
 [ext_resource type="Texture2D" uid="uid://5wxomavr3wjq" path="res://Asset/UI/Worklog/submit.png" id="art_submit"]
 [ext_resource type="Texture2D" uid="uid://bcqhf3hqkluas" path="res://Asset/UI/Worklog/submitpanel.png" id="art_submitpanel"]
+[ext_resource type="PackedScene" uid="uid://c8n17wpcxvfi" path="res://Scene/WorkLog/keyword_notice.tscn" id="keyword_notice"]
 
 [sub_resource type="StyleBoxEmpty" id="Empty"]
 
@@ -99,6 +100,8 @@ script = ExtResource("1")
 dialogue = ExtResource("2")
 keyword_dialogue = ExtResource("3_keywords")
 
+[node name="KeywordNotice" parent="." unique_id=439792802 instance=ExtResource("keyword_notice")]
+
 [node name="Open" type="TextureButton" parent="." unique_id=781712064]
 offset_left = 152.99998
 offset_top = 12.0
@@ -119,19 +122,22 @@ theme = SubResource("Theme")
 color = Color(0.31, 0.34, 0.29, 1)
 
 [node name="Background" type="TextureRect" parent="Screen" unique_id=574772042]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("art_background")
 expand_mode = 1
 
 [node name="Icon" type="TextureRect" parent="Screen" unique_id=1834865646]
 layout_mode = 0
-offset_left = 40.0
-offset_top = 32.0
-offset_right = 105.0
-offset_bottom = 122.0
+offset_left = 59.0
+offset_top = 15.0
+offset_right = 124.0
+offset_bottom = 105.0
 mouse_filter = 2
 texture = ExtResource("4_fc2gw")
 expand_mode = 1
@@ -139,10 +145,10 @@ stretch_mode = 5
 
 [node name="Title" type="Label" parent="Screen" unique_id=2103682984]
 layout_mode = 0
-offset_left = 133.0
-offset_top = 45.0
-offset_right = 413.0
-offset_bottom = 105.0
+offset_left = 144.0
+offset_top = 42.0
+offset_right = 424.0
+offset_bottom = 102.0
 theme_override_colors/font_color = Color(0.8980392, 0.7254902, 0.5176471, 1)
 theme_override_font_sizes/font_size = 38
 text = "工作日志"

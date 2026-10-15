@@ -8,7 +8,7 @@ func _ready() -> void:
 	WorkLog.start_level("chapter1", ["hal", "elliot"])
 	WorkLog.dialogue = dialogue
 	WorkLog.dialogue_states = [{"StudyRoom2": self, "StudyRoomPC": $StudyRoomPC}]
-	WorkLog.submit_title = "submit"
+	WorkLog.submit_title = ""
 	WorkLog.query_completed.connect(_on_query_completed)
 	if vision_transition != null:
 		WorkLog.set_navigation(false)
@@ -43,6 +43,9 @@ func _exit_tree() -> void:
 func show_storage_box() -> void:
 	var closeup = preload("res://Scene/Chapter1/storage_box_closeup.tscn").instantiate()
 	add_child(closeup)
+	var balloon = get_tree().get_first_node_in_group("dialogue_balloon")
+	if balloon != null:
+		balloon.advance_from_subtitle = true
 
 func _on_query_completed(keywords: Array) -> void:
 	var title := ""
@@ -55,8 +58,9 @@ func _on_query_completed(keywords: Array) -> void:
 		watch_open_door()
 		return
 	if not title.is_empty():
-		var balloon = DialogueManager.show_dialogue_balloon(dialogue, title)
+		var balloon = DialogueManager.show_dialogue_balloon(dialogue, title, [{"StudyRoomPC": $StudyRoomPC}])
 		balloon.layer = 41
+		balloon.advance_from_subtitle = true
 
 func watch_open_door() -> void:
 	Memory.add_animation("open_door", "开门")

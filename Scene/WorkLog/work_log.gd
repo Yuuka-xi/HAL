@@ -111,6 +111,7 @@ func start_level(level: String, initial_keywords: Array) -> void:
 	GameState.start_keyword_list(level, initial_keywords)
 
 func reset() -> void:
+	$KeywordNotice.clear()
 	submitted_answer_text = ""
 	required_action = ""
 	required_keywords.clear()
@@ -128,9 +129,6 @@ func reset() -> void:
 		for connection in pending_signal.get_connections():
 			pending_signal.disconnect(connection.callable)
 
-func get_collection_target() -> Control:
-	return %KeywordList if screen.visible else $Open
-
 func _show() -> void:
 	Inventory.set_navigation(false)
 	Memory.set_navigation(false)
@@ -143,6 +141,11 @@ func _refresh_keywords() -> void:
 		%KeywordList.remove_child(child)
 		child.queue_free()
 	var unlocked: Dictionary = GameState.get_available_keywords()
+	var reads: Dictionary = GameState.campaign.get("keyword_reads", {})
+	var unread_ids: Array = []
+	for combination in reads:
+		if not reads[combination]:
+			unread_ids.append_array(combination.split("+"))
 	var ids := unlocked.keys()
 	ids.reverse()
 	for id in ids:
@@ -150,7 +153,9 @@ func _refresh_keywords() -> void:
 			var button := Button.new()
 			button.text = KeywordData.NAMES[id]
 			button.clip_text = true
-			button.tooltip_text = KeywordData.NAMES[id]
+			if not reads.get(id, false) or id in unread_ids:
+				for color_name in ["font_color", "font_hover_color", "font_pressed_color", "font_hover_pressed_color", "font_focus_color"]:
+					button.add_theme_color_override(color_name, Color("ba0d0d"))
 			button.custom_minimum_size.y = 54
 			button.pressed.connect(_select.bind(id))
 			%KeywordList.add_child(button)
@@ -217,6 +222,7 @@ func _search() -> void:
 	_update_answer()
 	var texts: PackedStringArray = []
 	var notices: PackedStringArray = []
+	GameState.set_keyword_read(ids)
 	var line = await keyword_dialogue.get_next_dialogue_line(title)
 	while line != null:
 		if session != SaveManager.session_id:
@@ -232,7 +238,7 @@ func _search() -> void:
 	%Notice.text = _format_notice("\n".join(notices) if not notices.is_empty() else default_notice)
 	%Notice.show()
 	%Close.disabled = true
-	await keyword_effect.collect(self, get_collection_target())
+	keyword_effect.collect()
 	if session != SaveManager.session_id:
 		return
 	%Close.disabled = false

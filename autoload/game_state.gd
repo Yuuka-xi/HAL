@@ -6,6 +6,7 @@ signal campaign_changed
 # 新游戏的初始模板
 const INITIAL_CAMPAIGN = {
 	"keywords": {},
+	"keyword_reads": {},
 	"attributes": {
 		"social": 0, 
 		"exploration": 0, 
@@ -46,6 +47,17 @@ func unlock_keyword(id: String) -> void:
 	if campaign.has("level_keywords"):
 		campaign["level_keywords"][id] = true
 	campaign_changed.emit()
+
+# 双词变化需要查询对应组合才算已读；剧情可传 false 主动提示变化。
+func set_keyword_read(ids: Array, value := true) -> void:
+	var sorted_ids := ids.duplicate()
+	sorted_ids.sort()
+	var reads: Dictionary = campaign.get("keyword_reads", {})
+	reads["+".join(sorted_ids)] = value
+	if value:
+		for id in sorted_ids:
+			reads[id] = true
+	set_campaign_value("keyword_reads", reads)
 
 ## 价值评估模块（属性）
 # 数值与显示无关：情感未显示时也可以读取和修改。

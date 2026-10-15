@@ -67,6 +67,7 @@ do GameState.set_flag("know_memory_storage_drive_position", true)
 应用>书房整理：要点21：记忆存储盘应按编号放在对应收纳盒中。若对应收纳盒为空，则物品只可能正在其他机器中使用。
 do GameState.set_flag("memory_storage_drive_content_changed", true)
 系统提示：记忆存储盘调用内容已更新。 [#notice]
+do GameState.set_keyword_read(["memory_storage_drive"], false)
 => END
 
 ~ dsk_pc_info

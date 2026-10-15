@@ -6,20 +6,7 @@ var bbcode := "collect"
 var label: RichTextLabel
 var words: Array[Dictionary] = []
 
-# 复制实际绘制的字形，而不是重新排版一个 Label，因此换行位置也保持一致。
-class FlyingWord extends Node2D:
-	var glyphs: Array = []
-	var font_size: int
-	var origin: Vector2
-	var color: Color
-
-	func _draw() -> void:
-		var server := TextServerManager.get_primary_interface()
-		for glyph in glyphs:
-			server.font_draw_glyph(glyph.font, get_canvas_item(), font_size,
-				glyph.position - origin, glyph.index, color)
-
-# [kw=真实ID] 自动替换为显示名称和收录效果；每个标记独立播放，不检查解锁状态。
+# [kw=真实ID] 替换为显示名称，未收录的关键词才高亮和提示。
 func prepare(text: String) -> String:
 	words.clear()
 	var pattern := RegEx.create_from_string("\\[kw=([^\\]]+)\\]")
@@ -29,53 +16,31 @@ func prepare(text: String) -> String:
 		var id := token.get_string(1)
 		result += text.substr(cursor, token.get_start() - cursor)
 		result += "[collect index=%d]%s[/collect]" % [words.size(), KeywordData.NAMES[id]]
-		words.append({"id": id, "glyphs": {}, "collected": false})
+		words.append({"id": id, "collected": false})
 		cursor = token.get_end()
 	return result + text.substr(cursor)
 
 func _process_custom_fx(fx: CharFXTransform) -> bool:
 	var word: Dictionary = words[int(fx.env.index)]
-	if not word.collected:
+	if not word.collected and not GameState.campaign["keywords"].get(word.id, false):
 		fx.color = highlight_color
-	if not fx.outline:
-		word.glyphs[Vector2i(fx.range.x, fx.glyph_index)] = {
-			"font": fx.font, "index": fx.glyph_index,
-			"position": fx.transform.origin + fx.offset,
-		}
 	return true
 
-# 飞入期间由调用方锁住推进；动画结束才写入 GameState 并取消高亮。
-func collect(host: Node, target: Control) -> void:
-	var session := SaveManager.session_id
-	if words.is_empty():
-		return
-	await RenderingServer.frame_post_draw
-	if session != SaveManager.session_id:
-		return
+# 历史收录不重复提示，但仍可重新加入当前关卡的可用列表。
+func collect() -> void:
+	var names: PackedStringArray = []
 	for word in words:
-		var copy := FlyingWord.new()
-		copy.color = highlight_color
-		copy.glyphs = word.glyphs.values()
-		copy.font_size = label.get_theme_font_size("normal_font_size")
-		copy.origin = copy.glyphs[0].position if not copy.glyphs.is_empty() else Vector2.ZERO
-		host.add_child(copy)
-		copy.transform = label.get_global_transform() * Transform2D(0.0, copy.origin)
-		var destination := target.get_global_rect().get_center()
-		var tween := host.create_tween().set_parallel(true)
-		tween.tween_property(copy, "position", destination, 0.6).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
-		tween.tween_property(copy, "scale", copy.scale * 0.25, 0.6)
-		tween.tween_property(copy, "modulate:a", 0.0, 0.2).set_delay(0.4)
-		await tween.finished
-		copy.queue_free()
-		if session != SaveManager.session_id:
-			return
+		if word.collected:
+			continue
 		word.collected = true
-		GameState.unlock_keyword(word.id)
+		var already_collected: bool = GameState.campaign["keywords"].get(word.id, false)
+		if not GameState.get_available_keywords().get(word.id, false):
+			GameState.unlock_keyword(word.id)
+		if not already_collected:
+			names.append(KeywordData.NAMES[word.id])
+	if not names.is_empty():
+		WorkLog.get_node("KeywordNotice").show_keywords(names)
 		label.queue_redraw()
-	var flash := host.create_tween()
-	flash.tween_property(target, "modulate", highlight_color, 0.1)
-	flash.tween_property(target, "modulate", Color.WHITE, 0.15)
-	await flash.finished
 
 # 插件的停顿、速度与行内指令使用字符编号；补上前缀和关键词后同步移动这些编号。
 func shift_index(index: int, text: String, prefix: String) -> int:

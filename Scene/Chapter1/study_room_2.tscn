@@ -24,7 +24,7 @@
 [ext_resource type="Script" uid="uid://djvq5f2ydjp4u" path="res://Scene/Chapter1/clock.gd" id="21_clock"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pimtm"]
-size = Vector2(711.98914, 1642.4517)
+size = Vector2(560.8317, 1953.5415)
 
 [sub_resource type="Animation" id="Animation_5y8j8"]
 length = 0.001
@@ -102,6 +102,43 @@ _data = {
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nj0vu"]
 radius = 99.50635
+
+[sub_resource type="Animation" id="Animation_ghsoh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_vi2nj"]
+resource_name = "click_bookshelf"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.02617993877991494, 0.02617993877991494, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yd462"]
+_data = {
+&"RESET": SubResource("Animation_ghsoh"),
+&"click_bookshelf": SubResource("Animation_vi2nj")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k45oy"]
 size = Vector2(131.21619, 93.56739)
@@ -456,6 +493,25 @@ position = Vector2(-33.834663, -688.7618)
 scale = Vector2(0.9644866, 0.96448654)
 texture = ExtResource("13_ucsqa")
 offset = Vector2(0, -40)
+
+[node name="PerceptionClick" type="Area2D" parent="BookShelf" unique_id=1950126775 node_paths=PackedStringArray("dialogue_state", "click_animation_player", "priority_area")]
+scale = Vector2(0.99999994, 1)
+script = ExtResource("4_tptwy")
+dialogue = ExtResource("2_32efi")
+start_title = "observe_book_shelf"
+required_flag = "elliot_close_door"
+dialogue_state = NodePath("../..")
+dialogue_state_name = "StudyRoom2"
+click_animation_player = NodePath("../AnimationPlayer")
+click_animation = &"click_bookshelf"
+priority_area = NodePath("../../StorageBox/PerceptionClick")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BookShelf/PerceptionClick" unique_id=826547764]
+position = Vector2(-27.896729, 23.573486)
+shape = SubResource("RectangleShape2D_pimtm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BookShelf" unique_id=1289795669]
+libraries/ = SubResource("AnimationLibrary_yd462")
 
 [node name="StorageBox" type="Sprite2D" parent="." unique_id=1557082183]
 position = Vector2(1715, 952)

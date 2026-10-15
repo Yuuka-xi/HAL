@@ -1,4 +1,5 @@
 ~ start
+do GameState.set_keyword_read(["hal", "elliot"], true)
 do StudyRoom2.play_phone_ring()
 Elliot: hal，继续完成自检。
 hal: 指令确认。
@@ -19,11 +20,8 @@ hal: 自检完成。异常：记忆模块缺失 M-07 [kw=memory_storage_drive]�
 do! WorkLog.open()
 => END
 
-~ submit
-if GameState.get_choice("keyword_submission") == "dsk+pc" and GameState.get_flag("pc_dsk_understood"):
-	do! StudyRoomPC.open()
-else:
-	思考: 暂时不知道怎样用这个组合行动。
+~ observe_book_shelf
+hal: 检测到书柜。建议查看书柜下方的柜子。
 => END
 
 ~ observe_storage_box
@@ -117,6 +115,8 @@ hal: 更新本地信息：记忆存储盘 状态：使用中。位置：其他�
 => END
 
 ~ pc_dsk_found
-hal: 推论：M-07存储盘可能正在台式机上使用，应检查台式机读盘器。[next=auto]
+hal: 推论：M-07存储盘可能正在台式机上使用，应检查台式机读盘器。
+do WorkLog.close()
+do StudyRoomPC.open()
 => END
 

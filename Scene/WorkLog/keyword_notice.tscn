@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://c8n17wpcxvfi"]
+
+[ext_resource type="Script" uid="uid://bigmd2heeosyn" path="res://Scene/WorkLog/keyword_notice.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dobg81xruq22b" path="res://Asset/UI/keywordnotice.png" id="2"]
+
+[sub_resource type="AtlasTexture" id="NoticeTexture"]
+atlas = ExtResource("2")
+region = Rect2(0, 0, 857, 150)
+
+[sub_resource type="StyleBoxTexture" id="NoticeBackground"]
+content_margin_left = 110.0
+content_margin_top = 28.0
+content_margin_right = 110.0
+content_margin_bottom = 28.0
+texture = SubResource("NoticeTexture")
+texture_margin_left = 100.0
+texture_margin_top = 20.0
+texture_margin_right = 100.0
+texture_margin_bottom = 20.0
+
+[node name="KeywordNotice" type="CanvasLayer" unique_id=1546657877]
+layer = 80
+script = ExtResource("1")
+
+[node name="Panel" type="PanelContainer" parent="." unique_id=186945398]
+offset_left = 21.0
+offset_top = 115.00001
+offset_right = 660.0
+offset_bottom = 225.0
+scale = Vector2(0.6, 0.6)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("NoticeBackground")
+
+[node name="Text" type="Label" parent="Panel" unique_id=1646575087]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.30588236, 0.17254902, 0.11764706, 1)
+theme_override_font_sizes/font_size = 50
+text = "关键词已收录：xxx"
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="." unique_id=113875391]
+wait_time = 2.5
+one_shot = true
