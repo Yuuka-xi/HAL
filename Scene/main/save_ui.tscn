@@ -45,17 +45,50 @@ custom_minimum_size = Vector2(680, 132)
 layout_mode = 2
 text = "存档 1"
 
+[node name="Clear1" type="Button" parent="Center/Layout/Slot1"]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 64.0
+offset_right = 260.0
+offset_bottom = 132.0
+theme_override_colors/font_color = Color(1, 0.3, 0.3, 1)
+text = "清除存档"
+
 [node name="Slot2" type="Button" parent="Center/Layout"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(680, 132)
 layout_mode = 2
 text = "存档 2"
 
+[node name="Clear2" type="Button" parent="Center/Layout/Slot2"]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 64.0
+offset_right = 260.0
+offset_bottom = 132.0
+theme_override_colors/font_color = Color(1, 0.3, 0.3, 1)
+text = "清除存档"
+
 [node name="Slot3" type="Button" parent="Center/Layout"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(680, 132)
 layout_mode = 2
 text = "存档 3"
+
+[node name="Clear3" type="Button" parent="Center/Layout/Slot3"]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 64.0
+offset_right = 260.0
+offset_bottom = 132.0
+theme_override_colors/font_color = Color(1, 0.3, 0.3, 1)
+text = "清除存档"
 
 [node name="Back" type="Button" parent="Center/Layout"]
 unique_name_in_owner = true

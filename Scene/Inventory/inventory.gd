@@ -65,7 +65,7 @@ func collect_item(id: String, screen_position: Vector2) -> void:
 	add_item(id)
 
 func get_item_name(id: String) -> String:
-	if id == "key_card" and GameState.get_flag("card_understood"):
+	if id == "key_card" and GameState.get_flag("cabinet_open"):
 		return "感应卡"
 	return item_names[id]
 

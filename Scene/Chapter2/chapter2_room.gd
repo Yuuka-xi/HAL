@@ -4,7 +4,7 @@ extends Node2D
 
 func setup_room() -> void:
 	if GameState.campaign.get("current_level", "") != "chapter2":
-		WorkLog.start_level("chapter2", [])
+		WorkLog.start_level("chapter2", ["hal"])
 	WorkLog.dialogue = dialogue
 	WorkLog.dialogue_states.clear()
 	WorkLog.submit_title = ""
@@ -13,7 +13,8 @@ func setup_room() -> void:
 	WorkLog.query_completed.connect(_on_query_completed)
 
 func _on_query_completed(keywords: Array) -> void:
-	if keywords != ["cleaner"] or GameState.get_flag("cleaner_research_chosen") or GameState.get_flag("card_understood"):
+	if get_tree().get_first_node_in_group("dialogue_balloon") != null:
 		return
-	WorkLog.close()
-	DialogueManager.show_dialogue_balloon(dialogue, "research_cleaner")
+	if keywords not in [["cleaner"], ["cleaner", "hal"], ["cleaner_record"], ["auto_cabinet"], ["sensor"], ["auto_cabinet", "sensor"], ["tulip"], ["garden"], ["garden", "tulip"]]:
+		return
+	DialogueManager.show_dialogue_balloon(dialogue, "query_event", [{"QueryKeywords": keywords}])

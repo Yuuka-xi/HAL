@@ -19,6 +19,9 @@ size = Vector2(100, 70)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4n7dc"]
 size = Vector2(99.375, 70)
 
+[sub_resource type="RectangleShape2D" id="WardrobeShape"]
+size = Vector2(377, 929)
+
 [sub_resource type="RectangleShape2D" id="C2Shape_1"]
 size = Vector2(367, 926)
 
@@ -163,12 +166,11 @@ theme_override_font_sizes/font_size = 20
 text = "灯控开关"
 
 [node name="Wardrobe" type="Node2D" parent="." unique_id=1899435700]
-visible = false
 position = Vector2(1444, 952)
 
 [node name="Sprite2D" type="Sprite2D" parent="Wardrobe" unique_id=749711159]
-position = Vector2(197.00006, -331.5)
-scale = Vector2(4.4999995, 7.2578125)
+position = Vector2(296.50006, -331.5)
+scale = Vector2(2.945312, 7.2578125)
 texture = ExtResource("2_uto38")
 
 [node name="Label" type="Label" parent="Wardrobe" unique_id=1710931156]
@@ -179,6 +181,15 @@ offset_bottom = -152.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 40
 text = "衣柜"
+
+[node name="Observe" type="Area2D" parent="Wardrobe" unique_id=702965261]
+position = Vector2(296.5, -331.5)
+script = ExtResource("c2_click")
+dialogue = ExtResource("c2_dialogue")
+start_title = "observe_wardrobe"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wardrobe/Observe" unique_id=2056017484]
+shape = SubResource("WardrobeShape")
 
 [node name="Mirror" type="Node2D" parent="." unique_id=163275830]
 position = Vector2(817, 283)
@@ -283,23 +294,6 @@ dialogue_state_name = "Bedroom"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CleaningAgent2/Bag/TakeCleaner" unique_id=878797463]
 shape = SubResource("C2Shape_6")
-
-[node name="table" type="Node2D" parent="." unique_id=2042398687]
-position = Vector2(2083, 904)
-
-[node name="Sprite2D" type="Sprite2D" parent="table" unique_id=995087129]
-position = Vector2(246.00006, 31.000015)
-scale = Vector2(3.7343745, 2.457031)
-texture = ExtResource("1_gekc3")
-
-[node name="Label" type="Label" parent="table" unique_id=367356578]
-offset_left = 126.0
-offset_top = 37.0
-offset_right = 246.0
-offset_bottom = 175.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 40
-text = "桌子"
 
 [node name="bed" type="Node2D" parent="." unique_id=460123393]
 position = Vector2(3501, 904)

@@ -9,6 +9,8 @@ extends "res://Scene/Chapter2/chapter2_room.gd"
 @onready var right_arrow: Button = $Navigation/Right
 var on_right := false
 var moving := false
+var awaiting_mirror_click := false
+signal mirror_clicked
 
 func _ready() -> void:
 	setup_room()
@@ -72,3 +74,17 @@ func finish_closeup() -> void:
 	await tween.finished
 	on_right = false
 	SettingsMenu.set_interaction_locked(false)
+
+func wait_for_mirror_click() -> void:
+	awaiting_mirror_click = true
+	await mirror_clicked
+
+func _input(event: InputEvent) -> void:
+	if not awaiting_mirror_click or SettingsMenu.is_open():
+		return
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		var point: Vector2 = $Mirror/MirrorWipe.get_global_transform_with_canvas().affine_inverse() * event.position
+		if Rect2(Vector2.ZERO, $Mirror/MirrorWipe.mirror_size).has_point(point):
+			get_viewport().set_input_as_handled()
+			awaiting_mirror_click = false
+			mirror_clicked.emit()

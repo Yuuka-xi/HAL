@@ -6,9 +6,9 @@ func _ready() -> void:
 	setup_room()
 	if not GameState.get_flag("chapter2_started"):
 		DialogueManager.show_dialogue_balloon(dialogue, start_title, [{"LivingRoom": self}])
-	elif GameState.get_flag("flower_placed") and not GameState.get_flag("chapter2_completed"):
+	elif GameState.get_flag("garden_event_completed") and not GameState.get_flag("chapter2_completed"):
 		DialogueManager.show_dialogue_balloon(dialogue, "literature")
-	elif GameState.get_flag("bedroom_task_completed") and not GameState.get_flag("flower_task_started"):
+	elif GameState.get_flag("bedroom_task_completed") and not GameState.get_flag("coffee_completed"):
 		DialogueManager.show_dialogue_balloon(dialogue, "coffee")
 
 func receive_bucket() -> void:

@@ -23,9 +23,12 @@ const NAMES = {
 	# 关卡2
 	"bedroom": "卧室",
 	"sensor": "感应器",
-	"bed": "床",
 	"cleaner": "清洁剂",
 	"coffee": "咖啡",
+	"garden": "花园",
+	"literature": "文献",
+	"cleaner_record": "清洁剂记录",
+	"auto_cabinet": "自动柜",
 	# 关卡3
 	"work_documents": "工作文档",
 	"ai_researcher": "人工智能研究者",
@@ -69,10 +72,15 @@ const ENTRIES = {
 	# 关卡2
 	"bedroom": "bedroom_info",
 	"sensor":"sensor_info",
-	"bed": "bed_info",
-	"bed+sensor": "bed_sensor_info",
 	"cleaner": "cleaner_info",
 	"coffee": "coffee_info",
+	"garden": "garden_info",
+	"garden+tulip": "garden_info",
+	"literature": "literature_info",
+	"auto_cabinet+sensor": "auto_cabinet_sensor_info",
+	"cleaner+hal": "cleaner_hal_info",
+	"cleaner_record": "cleaner_record_info",
+	"auto_cabinet": "auto_cabinet_info",
 	# 关卡3
 	"work_documents": "work_documents_info",
 	"ai_researcher": "ai_researcher_info",

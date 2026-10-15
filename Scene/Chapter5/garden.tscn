@@ -6,8 +6,8 @@
 [ext_resource type="Script" uid="uid://dwo4rtkee6e6v" path="res://Scene/Tool/perception_click/perception_click.gd" id="c2_click"]
 [ext_resource type="Resource" uid="uid://bqr4jmfm8rea7" path="res://Dialogue/Chapter2.dialogue" id="c2_dialogue"]
 [ext_resource type="Script" uid="uid://sueen46n1aoo" path="res://Scene/Tool/item_drop_target/item_drop_target.gd" id="c2_drop"]
-[ext_resource type="Shader" uid="uid://cxr4hlcg0naud" path="res://Scene/Chapter2/rain.gdshader" id="c2_rain"]
-[ext_resource type="Script" uid="uid://krd00232kny3" path="res://Scene/Chapter2/garden.gd" id="c2_script"]
+[ext_resource type="Shader" path="res://Scene/Chapter5/rain.gdshader" id="c2_rain"]
+[ext_resource type="Script" path="res://Scene/Chapter5/garden.gd" id="c2_script"]
 [ext_resource type="Texture2D" uid="uid://rjkoxe47o3v3" path="res://Asset/studyroom/tulip.png" id="c2_tulip"]
 
 [sub_resource type="RectangleShape2D" id="C2Door"]

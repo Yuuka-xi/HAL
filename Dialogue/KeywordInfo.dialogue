@@ -1,8 +1,7 @@
-# 统一关键词说明；名称和组合入口在 Scene/WorkLog/keyword_data.gd 中。
 # Beginnersguide
 
 ~ hal_info
-if GameState.campaign.get("current_level", "") == "chapter1":
+if GameState.get_flag("beginnerguide_completed"):
 	系统日志>设备信息：本设备初始登记名称为hal。备注：该机初始设计为家务机器人。
 else:
 	系统日志>设备信息：本设备初始登记名称为hal。备注：该机初始设计为[kw=household_robot]。
@@ -76,7 +75,10 @@ do GameState.set_flag("pc_dsk_understood", true)
 => END
 
 ~ tulip_info
-应用>书房整理：要点1：在整理房间时切记不能伤害那盆郁金香，必须按照系统设定的时间浇水、施肥并将其搬入花园通风。如果出现病虫害必须立刻上报。
+if GameState.campaign.get("current_level", "") == "chapter2":
+	应用>书房整理：在整理房间时切记不能伤害那盆郁金香，必须按照系统设定的时间浇水、施肥并将其搬入花园通风。
+else:
+	应用>书房整理：要点1：在整理房间时切记不能伤害那盆郁金香，必须按照系统设定的时间浇水、施肥并将其搬入花园通风。如果出现病虫害必须立刻上报。
 => END
 
 ~ elliot_tulip_info
@@ -98,27 +100,49 @@ if GameState.get_flag("bedroom_access"):
 => END
 
 ~ sensor_info
-卧室中的感应器，不知道有什么用途
+控制自动装置的外部控制端，应位于易触摸到的位置。
 => END
 
 ~ bed_info
 床下似乎有什么东西
 => END
 
-~ bed_sensor_info
-系统：（通过一番研究后发现在感应器刷门卡可以打开床下的自动柜）
-if not GameState.get_flag("card_understood"):
-	系统：（逻辑属性+1）
-	do GameState.set_flag("card_understood", true)
-	do GameState.add_attribute("logic", 1)
-=> END
-
 ~ cleaner_info
-清洁剂存放在卧室床底的自动柜中，hal的移动模块不适合钻入床底，也不方便直接拉开柜子。
+用于清洁污渍。当前清洁剂瓶为空，需要补充。
 => END
 
 ~ coffee_info
-系统: 无相关记录。
+系统：无相关记录。
+=> END
+
+~ cleaner_hal_info
+系统日志>工作记录>[kw=cleaner_record]
+=> END
+
+~ cleaner_record_info
+2月4日，使用清洁剂，位置：卧室
+2月4日，补充清洁剂，位置：卧室
+2月6日，使用清洁剂，位置：书房
+3月1日，使用清洁剂，位置：书房
+3月25日，使用清洁剂，位置：客厅
+4月16日，使用清洁剂，位置：卧室
+=> END
+
+~ auto_cabinet_info
+床底的储物用自动柜，无法手动开启。
+=> END
+
+
+~ auto_cabinet_sensor_info
+自动柜的感应器应位于自动柜附近。
+=> END
+
+~ garden_info
+无相关记录。
+=> END
+
+~ literature_info
+无记录。
 => END
 
 # Chapter3

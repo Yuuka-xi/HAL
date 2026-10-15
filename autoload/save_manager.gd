@@ -9,6 +9,7 @@ const LEVELS := {
 	"beginnerguide_completed": "res://Scene/BeginnersGuide/beginners_guide.tscn",
 	"chapter1_completed": "res://Scene/Chapter1/study_room_2.tscn",
 	"chapter2_completed": "res://Scene/Chapter2/living_room.tscn",
+	"chapter3_completed": "res://Scene/Chapter3/chapter3_pc.tscn",
 }
 const SAVE_DIRECTORY := "user://saves/"
 var current_slot := 1
@@ -92,6 +93,11 @@ func get_save_metadata(slot: int) -> Dictionary:
 		return {}
 	var data = JSON.parse_string(file.get_as_text())
 	return data if data is Dictionary else {}
+
+func delete_save(slot: int) -> Error:
+	if not FileAccess.file_exists(_path_for_slot(slot)):
+		return OK
+	return DirAccess.remove_absolute(_path_for_slot(slot))
 
 func format_seconds(seconds: float) -> String:
 	var total := int(seconds)

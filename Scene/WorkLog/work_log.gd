@@ -17,6 +17,10 @@ var submitted_answer_text := ""
 var target := "query"
 var required_action := ""
 var required_keywords: Array = []
+var required_query_alternatives: Array = []
+var required_query_followups: Dictionary = {}
+var query_result: Array = []
+var close_after_query := true
 var keyword_effect = preload("res://Dialogue/DialogueBallon/keyword_effect.gd").new()
 
 @onready var screen: Control = %Screen
@@ -60,8 +64,15 @@ func choose_answer() -> void:
 	await answer_confirmed
 	close(true)
 
-func require_query(keywords: Array) -> void:
+# followups 指定查询后必须继续查的词；query_result 保留首次命中的组合，供剧情分支读取。
+func require_query(keywords: Array, auto_close := true, alternatives: Array = [], followups: Dictionary = {}) -> void:
+	close_after_query = auto_close
 	_begin_required("query", keywords)
+	required_query_followups = followups.duplicate(true)
+	for alternative in alternatives:
+		var ids: Array = alternative.duplicate()
+		ids.sort()
+		required_query_alternatives.append(ids)
 	await closed
 
 func require_submission(keywords: Array) -> void:
@@ -69,6 +80,9 @@ func require_submission(keywords: Array) -> void:
 	await closed
 
 func _begin_required(action: String, keywords: Array) -> void:
+	required_query_alternatives.clear()
+	required_query_followups.clear()
+	query_result.clear()
 	required_action = action
 	required_keywords = keywords.duplicate()
 	required_keywords.sort()
@@ -86,6 +100,8 @@ func close(completed := false) -> void:
 		return
 	required_action = ""
 	required_keywords.clear()
+	required_query_alternatives.clear()
+	required_query_followups.clear()
 	%Close.show()
 	screen.hide()
 	selected.clear()
@@ -115,6 +131,9 @@ func reset() -> void:
 	submitted_answer_text = ""
 	required_action = ""
 	required_keywords.clear()
+	required_query_alternatives.clear()
+	required_query_followups.clear()
+	query_result.clear()
 	%Close.show()
 	screen.hide()
 	selected.clear()
@@ -245,8 +264,23 @@ func _search() -> void:
 	searching = false
 	_update_answer()
 	%Search.disabled = false
-	if required_action == "query" and ids == required_keywords:
-		close(true)
+	if required_action == "query" and (ids == required_keywords or required_query_alternatives.has(ids)):
+		if query_result.is_empty():
+			query_result = ids.duplicate()
+		var next_query: Array = required_query_followups.get("+".join(ids), [])
+		if not next_query.is_empty():
+			required_keywords = next_query.duplicate()
+			required_keywords.sort()
+			required_query_alternatives.clear()
+			required_query_followups.erase("+".join(ids))
+		elif close_after_query:
+			close(true)
+		else:
+			required_action = ""
+			required_keywords.clear()
+			required_query_alternatives.clear()
+			required_query_followups.clear()
+			%Close.show()
 	query_completed.emit(ids)
 
 # 查询中带 [#notice] 的文字显示在提示区；关键词只高亮，不重复收录。
