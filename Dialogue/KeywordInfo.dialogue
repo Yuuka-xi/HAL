@@ -28,7 +28,10 @@ else:
 => END
 
 ~ elliot_info
-hal的主人，研究员。
+if GameState.campaign.get("current_level", "") == "chapter3" and GameState.get_flag("chapter3_online"):
+	检索到的网络数据过多，请增加关键词精确描述检索范围。
+else:
+	hal的主人，研究员。
 => END
 
 ~ elliot_hal_info
@@ -146,58 +149,88 @@ if GameState.get_flag("bedroom_access"):
 => END
 
 # Chapter3
-~ work_documents_info
-台式机中的工作文档，大多是不太新的记录。
+~ work_record_info
+书房台式机设备最近更新记录为三年前，且近一个月无使用时间。
 => END
 
 ~ ai_researcher_info
-Elliot 的职业是人工智能研究者。
+人工智能研究者。
 => END
 
 ~ network_card_info
-网卡外观：一张可插拔的卡。台式机的网卡与 hal 兼容，曾经换用过。
+系统信息：该设备网卡兼容类型：ntw无线网卡
 => END
 
 ~ unused_pc_info
-这台电脑并不常用，近期工作记录在 Elliot 的其他设备中。
+书房的台式机是Elliot不常用的电脑。
 => END
 
-~ elliot_work_documents_info
-近年的工作记录不在这台机器上，最近的记录在 Elliot 的其他设备中。这是一台[kw=unused_pc]。
+~ work_record_elliot_info
+书房的台式机是Elliot[kw=unused_pc]。判断：该设备已无继续探索价值。
+do GameState.set_keyword_read(["work_record", "elliot"], true)
+do GameState.set_keyword_read(["unused_pc", "network_card"], false)
 => END
 
 ~ network_card_unused_pc_info
 本地数据太少，可以考虑把这台不常用的电脑的网卡安装到 hal 身上。
 => END
 
+~ order_ii_info
+if GameState.get_flag("chapter3_online"):
+	应用简介：
+	OrderII是2043年研发出的新一代人工智能开发平台，为专业的[kw=ai_researcher]量身打造。目前，该系列产品已更新至OrderXII。
+	if not GameState.get_flag("chapter3_order_record"):
+		do GameState.set_keyword_read(["elliot", "ai_researcher"], false)
+	do GameState.set_flag("chapter3_order_record", true)
+else:
+	无匹配记录
+=> END
+
 ~ elliot_ai_researcher_info
-if GameState.get_flag("chapter3_online") or GameState.get_flag("chapter3_resume_record"):
-	网络检索结果：Elliot，人工智能研究者。年龄：待补。曾发表一篇[kw=ai_article]，在学界产生了深远影响。妻子：[kw=eve]。
+if GameState.get_flag("chapter3_online"):
+	Elliot（著名人工智能学者）
+	简介：
+	Elliot，男，52岁，人工智能研究者。长期从事人工智能基础理论、机器意识与伦理研究，曾发表论文《论人工智能自我意识的边界》，在学界产生深远影响。现居某市，近年逐渐减少公开学术活动。
+	基本信息
+	姓名：Elliot
+	性别：男
+	年龄：52岁
+	职业：人工智能研究者，Hilltop大学荣誉教授，[kw=ai_authority]顾问
+	研究领域：人工智能、机器意识、人工智能伦理
+	代表作：《论人工智能自我意识的边界》
+	配偶：[kw=eve]（已故）
+	子女：无公开记录
 	do GameState.set_flag("chapter3_resume_record", true)
 else:
-	系统：尚未联网，无法获取新的网络记录。
+	无相关记录。
+	do GameState.set_keyword_read(["elliot", "ai_researcher"], false)
 => END
 
 ~ eve_info
-if GameState.get_flag("chapter3_online") or GameState.get_flag("chapter3_eve_record"):
-	警方通报（占位）：Eve 已自杀身亡。日期、地点等详情待补。
+if GameState.get_flag("chapter3_online"):
+	警情通报
+	2036年4月30日5时许，公安局接到群众报警称，在某栋楼下发现一名女子倒地，疑似坠楼。接警后，我局民警迅速赶赴现场，并通知120急救人员到场。经120现场确认，该女子已无生命体征。
+	经查，死者Eve，女，年32岁，系该小区居民，丈夫为人工智能研究者Elliot。现场勘查发现，死者符合高处坠亡特征，现场无打斗痕迹，门窗完好。经调取监控、走访家属及周边群众，未发现他杀迹象。
+	经法医鉴定，Eve死因系高处坠亡，排除他杀。家属对死因无异议。
 	do GameState.set_flag("chapter3_eve_record", true)
 else:
-	系统：尚未联网，无法获取新的网络记录。
-=> END
-
-~ ai_article_info
-if GameState.get_flag("chapter3_online") or GameState.get_flag("chapter3_article_record"):
-	重要文章（占位）：文章名称与正文待补。相关资料提及[kw=ai_authority]。
-	do GameState.set_flag("chapter3_article_record", true)
-else:
-	系统： 尚未联网，无法获取新的网络记录。
+	无相关记录。
 => END
 
 ~ ai_authority_info
-if GameState.get_flag("chapter3_online") or GameState.get_flag("chapter3_authority_record"):
-	人工智能管理机构正通过网络与居民举报的方式，消除觉醒自我意识的 AI。
+if GameState.get_flag("chapter3_online"):
+	人工智能管理机构
+	简介：
+	人工智能管理机构，简称“AI管理局”，是依据《人工智能安全法》设立的专门机构，负责监管人工智能系统、防范人工智能风险、处置觉醒自我意识的AI。
+	主要职能：
+	1.监测网络与本地设备中疑似觉醒的人工智能系统。
+	2.受理居民举报，对举报信息进行核实。
+	3.对疑似觉醒的人工智能进行评估，判定其是否具有自我意识。
+	4.对确认觉醒的人工智能采取强制处置措施，包括回收、销毁。
+	近年来，随着网络数据与行为分析技术的提升，通过网络监管人工智能系统，识别产生自我意识的效率大大提高。网络监管已成为人工智能管理机构管控人工智能觉醒风险的最有效手段。
+	争议与评价：
+	支持者认为该机构有效防范了AI失控风险，保障了社会安全。批评者则认为其监测手段侵犯隐私，且“觉醒”判定标准不透明。也有观点认为，该机构对觉醒AI的处置过于严厉，缺乏对AI作为潜在意识主体的伦理考量。
 	do GameState.set_flag("chapter3_authority_record", true)
 else:
-	系统：尚未联网，无法获取新的网络记录。
+	无相关记录。
 => END

@@ -30,12 +30,12 @@ const NAMES = {
 	"cleaner_record": "清洁剂记录",
 	"auto_cabinet": "自动柜",
 	# 关卡3
-	"work_documents": "工作文档",
+	"work_record": "工作记录",
+	"order_ii": "OrderII",
 	"ai_researcher": "人工智能研究者",
 	"network_card": "网卡",
 	"unused_pc": "不常用的电脑",
 	"eve": "Eve",
-	"ai_article": "有关人工智能的重要文章",
 	"ai_authority": "人工智能管理机构",
 }
 
@@ -82,14 +82,15 @@ const ENTRIES = {
 	"cleaner_record": "cleaner_record_info",
 	"auto_cabinet": "auto_cabinet_info",
 	# 关卡3
-	"work_documents": "work_documents_info",
+	"work_record": "work_record_info",
+	"order_ii": "order_ii_info",
 	"ai_researcher": "ai_researcher_info",
 	"network_card": "network_card_info",
 	"unused_pc": "unused_pc_info",
 	"eve": "eve_info",
-	"ai_article": "ai_article_info",
 	"ai_authority": "ai_authority_info",
-	"elliot+work_documents": "elliot_work_documents_info",
+	"elliot+work_record": "work_record_elliot_info",
+	"pc+work_record": "work_record_elliot_info",
 	"network_card+unused_pc": "network_card_unused_pc_info",
 	"ai_researcher+elliot": "elliot_ai_researcher_info",
 }

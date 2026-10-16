@@ -21,6 +21,7 @@ var required_query_alternatives: Array = []
 var required_query_followups: Dictionary = {}
 var query_result: Array = []
 var close_after_query := true
+var close_allowed := true
 var keyword_effect = preload("res://Dialogue/DialogueBallon/keyword_effect.gd").new()
 
 @onready var screen: Control = %Screen
@@ -49,7 +50,7 @@ func open() -> void:
 	if querying or not required_action.is_empty():
 		return
 	%AnswerPanel.visible = not submit_title.is_empty()
-	%Close.show()
+	%Close.visible = close_allowed
 	_show()
 	_update_answer()
 	await closed
@@ -96,6 +97,8 @@ func _begin_required(action: String, keywords: Array) -> void:
 	_set_target("answer" if action == "submission" else "query")
 
 func close(completed := false) -> void:
+	if not close_allowed and not completed:
+		return
 	if not required_action.is_empty() and not completed:
 		return
 	required_action = ""
@@ -113,6 +116,10 @@ func close(completed := false) -> void:
 	Inventory.set_navigation(true)
 	closed.emit()
 
+func set_close_allowed(allowed: bool) -> void:
+	close_allowed = allowed
+	%Close.visible = allowed and required_action.is_empty()
+
 func set_navigation(enabled: bool) -> void:
 	if enabled:
 		GameState.set_flag("worklog_enabled", true)
@@ -127,6 +134,7 @@ func start_level(level: String, initial_keywords: Array) -> void:
 	GameState.start_keyword_list(level, initial_keywords)
 
 func reset() -> void:
+	close_allowed = true
 	$KeywordNotice.clear()
 	submitted_answer_text = ""
 	required_action = ""
@@ -280,7 +288,7 @@ func _search() -> void:
 			required_keywords.clear()
 			required_query_alternatives.clear()
 			required_query_followups.clear()
-			%Close.show()
+			%Close.visible = close_allowed
 	query_completed.emit(ids)
 
 # 查询中带 [#notice] 的文字显示在提示区；关键词只高亮，不重复收录。

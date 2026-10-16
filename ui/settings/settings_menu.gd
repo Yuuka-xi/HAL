@@ -3,6 +3,7 @@ extends CanvasLayer
 @onready var panel: Control = $Backdrop/Panel
 @onready var display_size: OptionButton = $Backdrop/Panel/Layout/DisplaySize
 var interaction_locked := false
+var navigation_hidden := false
 
 
 func _ready() -> void:
@@ -27,7 +28,7 @@ func _connect_navigation() -> void:
 
 # 页面打开时统一遮住入口；关卡临时禁用不再影响已经解锁的图标。
 func refresh_navigation() -> void:
-	var page_open: bool = interaction_locked or is_open() or WorkLog.get_node("Screen").visible or Attributes.get_node("Screen").visible or Memory.get_node("Screen").visible
+	var page_open: bool = navigation_hidden or interaction_locked or is_open() or WorkLog.get_node("Screen").visible or Attributes.get_node("Screen").visible or Memory.get_node("Screen").visible
 	$Open.visible = not page_open
 	WorkLog.get_node("Open").visible = not page_open and GameState.get_flag("worklog_enabled")
 	Attributes.get_node("Open").visible = not page_open and GameState.get_flag("attributes_enabled")
@@ -63,6 +64,10 @@ func is_open() -> bool:
 
 func set_interaction_locked(locked: bool) -> void:
 	interaction_locked = locked
+	refresh_navigation()
+
+func set_navigation_hidden(hidden: bool) -> void:
+	navigation_hidden = hidden
 	refresh_navigation()
 
 

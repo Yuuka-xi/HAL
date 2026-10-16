@@ -9,19 +9,16 @@
 [ext_resource type="PackedScene" uid="uid://dmyuybmikxcc7" path="res://Scene/Chapter1/study_room_pc.tscn" id="6_pc"]
 [ext_resource type="Texture2D" uid="uid://cn30vjdjhexx0" path="res://Asset/studyroom/elliot.png" id="8_7fidx"]
 [ext_resource type="PackedScene" path="res://Scene/Tool/item_drop_target/item_drop_target.tscn" id="8_drop"]
-[ext_resource type="Texture2D" uid="uid://cwhwk73nr72rd" path="res://Asset/studyroom/bookshelf.png" id="9_7fidx"]
 [ext_resource type="Texture2D" uid="uid://brjj5po4vy5dr" path="res://Asset/studyroom/DoorHandle.png" id="9_q63yh"]
 [ext_resource type="Texture2D" uid="uid://b5f1efusho52d" path="res://Asset/studyroom/curtain.png" id="9_qmr0i"]
+[ext_resource type="PackedScene" uid="uid://cuud2qofw5b8i" path="res://Scene/Chapter1/book_shelf.tscn" id="12_nj0vu"]
 [ext_resource type="Texture2D" uid="uid://ckfkvb8cptwqu" path="res://Asset/studyroom/PC.png" id="12_q63yh"]
 [ext_resource type="Texture2D" uid="uid://rjkoxe47o3v3" path="res://Asset/studyroom/tulip.png" id="13_nj0vu"]
-[ext_resource type="Texture2D" uid="uid://cw1xe0prtjxiy" path="res://Asset/studyroom/hourhand.png" id="13_ucsqa"]
-[ext_resource type="Texture2D" uid="uid://cdnqj3unxadpc" path="res://Asset/studyroom/minutehand.png" id="14_buoml"]
 [ext_resource type="Texture2D" uid="uid://c4keu3f2jicb4" path="res://Asset/studyroom/desk.png" id="14_rl1os"]
 [ext_resource type="Texture2D" uid="uid://4h314655l78u" path="res://Asset/studyroom/chargingpile.png" id="15_k45oy"]
 [ext_resource type="Texture2D" uid="uid://cki1r7sam6nb1" path="res://Asset/studyroom/sofa.png" id="15_ucsqa"]
 [ext_resource type="Texture2D" uid="uid://bk10s73lct40a" path="res://Asset/studyroom/toybox.png" id="19_nj0vu"]
 [ext_resource type="PackedScene" uid="uid://bdoiafjgq4y46" path="res://Scene/Tool/scene_transition/0_1_transition.tscn" id="20_vision"]
-[ext_resource type="Script" uid="uid://djvq5f2ydjp4u" path="res://Scene/Chapter1/clock.gd" id="21_clock"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pimtm"]
 size = Vector2(560.8317, 1953.5415)
@@ -476,42 +473,27 @@ position = Vector2(1011, 522.00006)
 scale = Vector2(0.4334941, 0.49758264)
 texture = ExtResource("9_qmr0i")
 
-[node name="BookShelf" type="Sprite2D" parent="." unique_id=1545835636]
+[node name="BookShelf" parent="." unique_id=1077337476 instance=ExtResource("12_nj0vu")]
 position = Vector2(1735.1875, 579)
-scale = Vector2(0.47842923, 0.48783195)
-texture = ExtResource("9_7fidx")
-script = ExtResource("21_clock")
 
-[node name="minutehand" type="Sprite2D" parent="BookShelf" unique_id=71778020]
-position = Vector2(-27.564209, -690.81177)
-rotation = -0.70886135
-texture = ExtResource("14_buoml")
-offset = Vector2(30, -32)
-
-[node name="hourhand" type="Sprite2D" parent="BookShelf" unique_id=946945768]
-position = Vector2(-33.834663, -688.7618)
-scale = Vector2(0.9644866, 0.96448654)
-texture = ExtResource("13_ucsqa")
-offset = Vector2(0, -40)
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="BookShelf" unique_id=1289795669]
+libraries/ = SubResource("AnimationLibrary_yd462")
 
 [node name="PerceptionClick" type="Area2D" parent="BookShelf" unique_id=1950126775 node_paths=PackedStringArray("dialogue_state", "click_animation_player", "priority_area")]
-scale = Vector2(0.99999994, 1)
+scale = Vector2(0.9999999, 1)
 script = ExtResource("4_tptwy")
 dialogue = ExtResource("2_32efi")
 start_title = "observe_book_shelf"
 required_flag = "elliot_close_door"
 dialogue_state = NodePath("../..")
 dialogue_state_name = "StudyRoom2"
-click_animation_player = NodePath("../AnimationPlayer")
+click_animation_player = NodePath("../AnimationPlayer2")
 click_animation = &"click_bookshelf"
 priority_area = NodePath("../../StorageBox/PerceptionClick")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BookShelf/PerceptionClick" unique_id=826547764]
 position = Vector2(-27.896729, 23.573486)
 shape = SubResource("RectangleShape2D_pimtm")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="BookShelf" unique_id=1289795669]
-libraries/ = SubResource("AnimationLibrary_yd462")
 
 [node name="StorageBox" type="Sprite2D" parent="." unique_id=1557082183]
 position = Vector2(1715, 952)

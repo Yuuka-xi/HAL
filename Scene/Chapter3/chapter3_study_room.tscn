@@ -1,0 +1,242 @@
+[gd_scene format=3 uid="uid://doat3tdtodeu0"]
+
+[ext_resource type="Script" uid="uid://cbpl20m1302cc" path="res://Scene/Chapter3/chapter_3_study_room.gd" id="1_72yb8"]
+[ext_resource type="Texture2D" uid="uid://8p5nmmhfel37" path="res://Asset/studyroom/background.png" id="2_07oh8"]
+[ext_resource type="Texture2D" uid="uid://ce85b32v36g7s" path="res://Asset/studyroom/wall.png" id="3_qejb8"]
+[ext_resource type="Texture2D" uid="uid://chc5gm0cvanq" path="res://Asset/studyroom/door.png" id="4_dp320"]
+[ext_resource type="Resource" uid="uid://crocmpcsrqp33" path="res://Dialogue/Chapter3.dialogue" id="6_tt3y2"]
+[ext_resource type="Script" uid="uid://dwo4rtkee6e6v" path="res://Scene/Tool/perception_click/perception_click.gd" id="7_016ws"]
+[ext_resource type="Texture2D" uid="uid://brjj5po4vy5dr" path="res://Asset/studyroom/DoorHandle.png" id="8_akk8u"]
+[ext_resource type="Texture2D" uid="uid://cn30vjdjhexx0" path="res://Asset/studyroom/elliot.png" id="9_lcw1e"]
+[ext_resource type="Texture2D" uid="uid://b5f1efusho52d" path="res://Asset/studyroom/curtain.png" id="10_pydkq"]
+[ext_resource type="Texture2D" uid="uid://ckfkvb8cptwqu" path="res://Asset/studyroom/PC.png" id="15_nl8d8"]
+[ext_resource type="Texture2D" uid="uid://rjkoxe47o3v3" path="res://Asset/studyroom/tulip.png" id="16_fpq4b"]
+[ext_resource type="Texture2D" uid="uid://c4keu3f2jicb4" path="res://Asset/studyroom/desk.png" id="17_h15sv"]
+[ext_resource type="PackedScene" uid="uid://cuud2qofw5b8i" path="res://Scene/Chapter1/book_shelf.tscn" id="17_r1wda"]
+[ext_resource type="Texture2D" uid="uid://cki1r7sam6nb1" path="res://Asset/studyroom/sofa.png" id="18_6hnbq"]
+[ext_resource type="Texture2D" uid="uid://bk10s73lct40a" path="res://Asset/studyroom/toybox.png" id="19_sigbv"]
+[ext_resource type="Texture2D" uid="uid://4h314655l78u" path="res://Asset/studyroom/chargingpile.png" id="21_u2hs1"]
+[ext_resource type="PackedScene" uid="uid://2n574cmahd36" path="res://Scene/Chapter3/chapter3_pc.tscn" id="c3_pc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m4wl0"]
+size = Vector2(620.6105, 432.82425)
+
+[sub_resource type="Animation" id="Animation_q63yh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ucsqa"]
+resource_name = "click_pc"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.034906585, 0.034906585, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_buoml"]
+_data = {
+&"RESET": SubResource("Animation_q63yh"),
+&"click_pc": SubResource("Animation_ucsqa")
+}
+
+[sub_resource type="Animation" id="Animation_tptwy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Elliot:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.001),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_m4wl0"]
+resource_name = "elliot_close_door"
+length = 3.0000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.1, 1.7, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Elliot:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6333333, 1.2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, true, false, false]
+}
+
+[sub_resource type="Animation" id="Animation_pdgv6"]
+resource_name = "hal_open_door"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Elliot:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pdgv6"]
+_data = {
+&"RESET": SubResource("Animation_tptwy"),
+&"elliot_close_door": SubResource("Animation_m4wl0"),
+&"hal_open_door": SubResource("Animation_pdgv6")
+}
+
+[node name="Chapter3Room" type="Node2D" unique_id=939539833]
+script = ExtResource("1_72yb8")
+dialogue = ExtResource("6_tt3y2")
+
+[node name="background1" type="Sprite2D" parent="." unique_id=1344781212]
+position = Vector2(960.00006, 539.99994)
+scale = Vector2(0.3880356, 0.49999994)
+texture = ExtResource("2_07oh8")
+
+[node name="wall" type="Sprite2D" parent="." unique_id=368570682]
+position = Vector2(1134.7863, 539.75)
+scale = Vector2(0.48010764, 0.50023144)
+texture = ExtResource("3_qejb8")
+
+[node name="Door" type="Sprite2D" parent="." unique_id=1511944432]
+visible = false
+position = Vector2(250, 540)
+scale = Vector2(0.47756916, 0.49984264)
+texture = ExtResource("4_dp320")
+
+[node name="DoorHandle" type="Sprite2D" parent="Door" unique_id=1163537994]
+position = Vector2(378.94116, 264.02234)
+scale = Vector2(0.9904409, 0.9904408)
+texture = ExtResource("8_akk8u")
+
+[node name="Elliot" type="Sprite2D" parent="." unique_id=1630145726]
+visible = false
+position = Vector2(341.78616, 671.00006)
+scale = Vector2(0.4862043, 0.48620427)
+texture = ExtResource("9_lcw1e")
+
+[node name="curtain" type="Sprite2D" parent="." unique_id=30220602]
+position = Vector2(1011, 522.00006)
+scale = Vector2(0.4334941, 0.49758264)
+texture = ExtResource("10_pydkq")
+
+[node name="PC" type="Sprite2D" parent="." unique_id=2092021270]
+position = Vector2(848.37836, 656.6719)
+scale = Vector2(0.4366668, 0.4366668)
+texture = ExtResource("15_nl8d8")
+
+[node name="PerceptionClick" type="Area2D" parent="PC" unique_id=1933836004 node_paths=PackedStringArray("dialogue_state", "click_animation_player")]
+scale = Vector2(0.99999994, 1)
+script = ExtResource("7_016ws")
+dialogue = ExtResource("6_tt3y2")
+start_title = "observe_pc"
+dialogue_state = NodePath("../..")
+dialogue_state_name = "Chapter3Room"
+click_animation_player = NodePath("../AnimationPlayer")
+click_animation = &"click_pc"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PC/PerceptionClick" unique_id=1633577734]
+position = Vector2(-79.874146, 1.8964844)
+scale = Vector2(1.0000002, 1)
+shape = SubResource("RectangleShape2D_m4wl0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PC" unique_id=469233051]
+libraries/ = SubResource("AnimationLibrary_buoml")
+
+[node name="Tulip" type="Sprite2D" parent="." unique_id=1630688574]
+position = Vector2(1035, 619)
+scale = Vector2(0.4687499, 0.46874997)
+texture = ExtResource("16_fpq4b")
+
+[node name="Desk" type="Sprite2D" parent="." unique_id=818718368]
+position = Vector2(872, 817.4095)
+scale = Vector2(0.5346342, 0.4585361)
+texture = ExtResource("17_h15sv")
+
+[node name="Sofa" type="Sprite2D" parent="." unique_id=868732786]
+position = Vector2(1380.6067, 866.6327)
+scale = Vector2(0.4342074, 0.43420738)
+texture = ExtResource("18_6hnbq")
+
+[node name="Toybox" type="Sprite2D" parent="." unique_id=496859004]
+position = Vector2(783.00006, 1011.75)
+scale = Vector2(0.42543888, 0.42543876)
+texture = ExtResource("19_sigbv")
+
+[node name="chargingpile" type="Sprite2D" parent="." unique_id=659815291]
+position = Vector2(433, 1035.25)
+scale = Vector2(0.54042506, 0.5196632)
+texture = ExtResource("21_u2hs1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1656242460]
+libraries/ = SubResource("AnimationLibrary_pdgv6")
+
+[node name="BookShelf" parent="." unique_id=1077337476 instance=ExtResource("17_r1wda")]
+position = Vector2(1752, 582)
+
+[node name="ComputerCloseup" parent="." unique_id=834677329 instance=ExtResource("c3_pc")]
+visible = false

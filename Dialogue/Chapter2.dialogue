@@ -386,5 +386,5 @@ Elliot: ……见鬼。好，先去完善数据库。
 
 ~ finish_chapter2
 do GameState.set_flag("chapter2_completed", true)
-do SceneTransition.change_scene("res://Scene/Chapter3/chapter3_pc.tscn")
+do SceneTransition.change_scene("res://Scene/Chapter3/chapter3_study_room.tscn", 0.8)
 => END

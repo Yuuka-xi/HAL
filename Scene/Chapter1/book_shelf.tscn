@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cuud2qofw5b8i"]
+
+[ext_resource type="Texture2D" uid="uid://cwhwk73nr72rd" path="res://Asset/studyroom/bookshelf.png" id="1_485rl"]
+[ext_resource type="Script" uid="uid://djvq5f2ydjp4u" path="res://Scene/Chapter1/clock.gd" id="2_cy6ra"]
+[ext_resource type="Texture2D" uid="uid://cdnqj3unxadpc" path="res://Asset/studyroom/minutehand.png" id="3_8miru"]
+[ext_resource type="Texture2D" uid="uid://cw1xe0prtjxiy" path="res://Asset/studyroom/hourhand.png" id="4_5m8jl"]
+
+[node name="BookShelf" type="Sprite2D" unique_id=1077337476]
+scale = Vector2(0.47842923, 0.48783195)
+texture = ExtResource("1_485rl")
+script = ExtResource("2_cy6ra")
+
+[node name="minutehand" type="Sprite2D" parent="." unique_id=911945457]
+position = Vector2(-27.564209, -690.81177)
+rotation = -0.70886135
+texture = ExtResource("3_8miru")
+offset = Vector2(30, -32)
+
+[node name="hourhand" type="Sprite2D" parent="." unique_id=438763735]
+position = Vector2(-33.834663, -688.7618)
+scale = Vector2(0.9644866, 0.96448654)
+texture = ExtResource("4_5m8jl")
+offset = Vector2(0, -40)

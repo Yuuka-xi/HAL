@@ -4,15 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://t6ysuoe3m65h" path="res://Asset/UI/inventory.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://dmqrnhwhv8b2" path="res://Asset/Items/keycard.png" id="2_ai68l"]
 [ext_resource type="Texture2D" uid="uid://bslsst3hmi66c" path="res://Asset/UI/invertory2.png" id="3"]
-[ext_resource type="PackedScene" path="res://Scene/Tool/hover_scale/hover_scale.tscn" id="90_hover"]
-[ext_resource type="Texture2D" path="res://Asset/BrownBlock.png" id="c2_bucket"]
-[ext_resource type="Texture2D" path="res://Asset/WhiteBlock.png" id="c2_rag"]
-[ext_resource type="Texture2D" path="res://Asset/Pinkblock.png" id="c2_empty"]
-[ext_resource type="Texture2D" path="res://Asset/YellowBlock.png" id="c2_cleaner"]
-[ext_resource type="Resource" path="res://Dialogue/Chapter2.dialogue" id="c2_dialogue"]
-
-
-[ext_resource type="Texture2D" path="res://Asset/studyroom/tulip.png" id="c2_tulip"]
+[ext_resource type="Texture2D" uid="uid://cyu43hopbr36f" path="res://Asset/PCSystem/networkcard.png" id="8_bph8g"]
+[ext_resource type="PackedScene" uid="uid://sku1m53v5qqm" path="res://Scene/Tool/hover_scale/hover_scale.tscn" id="90_hover"]
+[ext_resource type="Texture2D" uid="uid://c30t6mgb6gkbf" path="res://Asset/BrownBlock.png" id="c2_bucket"]
+[ext_resource type="Texture2D" uid="uid://ca5idgyqvk611" path="res://Asset/YellowBlock.png" id="c2_cleaner"]
+[ext_resource type="Resource" uid="uid://bqr4jmfm8rea7" path="res://Dialogue/Chapter2.dialogue" id="c2_dialogue"]
+[ext_resource type="Texture2D" uid="uid://7454mv4u3g4i" path="res://Asset/Pinkblock.png" id="c2_empty"]
+[ext_resource type="Texture2D" uid="uid://crkeje15uc0um" path="res://Asset/WhiteBlock.png" id="c2_rag"]
+[ext_resource type="Texture2D" uid="uid://rjkoxe47o3v3" path="res://Asset/studyroom/tulip.png" id="c2_tulip"]
 
 [sub_resource type="StyleBoxEmpty" id="Empty"]
 
@@ -28,37 +27,36 @@ Button/styles/hover_pressed = SubResource("Empty")
 Button/styles/normal = SubResource("StyleBoxEmpty_ai68l")
 Button/styles/pressed = SubResource("Empty")
 
-
 [node name="Inventory" type="CanvasLayer" unique_id=128616207]
 layer = 40
 script = ExtResource("1")
 item_names = Dictionary[String, String]({
-"key_card": "门卡",
-"tool_bucket": "清洁工具桶",
-"rag": "抹布",
-"empty_bottle": "空清洁剂瓶",
 "cleaner_bag": "袋装清洁剂",
 "cleaner_bottle": "瓶装清洁剂",
-"wet_rag": "浸了清洁剂的抹布",
+"empty_bottle": "空清洁剂瓶",
+"key_card": "门卡",
+"network_card": "网卡",
+"rag": "抹布",
+"tool_bucket": "清洁工具桶",
 "tulip": "郁金香",
-"network_card": "网卡"
+"wet_rag": "浸了清洁剂的抹布"
+})
+item_icons = Dictionary[String, Texture2D]({
+"cleaner_bag": ExtResource("c2_cleaner"),
+"cleaner_bottle": ExtResource("c2_empty"),
+"empty_bottle": ExtResource("c2_empty"),
+"key_card": ExtResource("2_ai68l"),
+"network_card": ExtResource("8_bph8g"),
+"rag": ExtResource("c2_rag"),
+"tool_bucket": ExtResource("c2_bucket"),
+"tulip": ExtResource("c2_tulip"),
+"wet_rag": ExtResource("c2_bucket")
 })
 combination_dialogue = ExtResource("c2_dialogue")
 combinations = Dictionary[String, String]({
 "cleaner_bag+empty_bottle": "fill_bottle",
 "cleaner_bag+rag": "soak_rag_bag",
 "cleaner_bottle+rag": "soak_rag_bottle"
-})
-item_icons = Dictionary[String, Texture2D]({
-"key_card": ExtResource("2_ai68l"),
-"tool_bucket": ExtResource("c2_bucket"),
-"rag": ExtResource("c2_rag"),
-"empty_bottle": ExtResource("c2_empty"),
-"cleaner_bag": ExtResource("c2_cleaner"),
-"cleaner_bottle": ExtResource("c2_empty"),
-"wet_rag": ExtResource("c2_bucket"),
-"tulip": ExtResource("c2_tulip"),
-"network_card": ExtResource("c2_cleaner")
 })
 
 [node name="Dock" type="Control" parent="." unique_id=1798021066]
@@ -108,9 +106,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 18.0
-offset_top = 22.0
+offset_top = 21.0
 offset_right = -16.0
-offset_bottom = -95.0
+offset_bottom = -36.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("SlotTheme")

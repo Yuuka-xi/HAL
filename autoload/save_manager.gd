@@ -9,7 +9,7 @@ const LEVELS := {
 	"beginnerguide_completed": "res://Scene/BeginnersGuide/beginners_guide.tscn",
 	"chapter1_completed": "res://Scene/Chapter1/study_room_2.tscn",
 	"chapter2_completed": "res://Scene/Chapter2/living_room.tscn",
-	"chapter3_completed": "res://Scene/Chapter3/chapter3_pc.tscn",
+	"chapter3_completed": "res://Scene/Chapter3/chapter3_study_room.tscn",
 }
 const SAVE_DIRECTORY := "user://saves/"
 var current_slot := 1
@@ -38,7 +38,7 @@ func next_scene() -> String:
 		if not GameState.get_flag(flag):
 			return LEVELS[flag]
 	# 第三关暂未设定结尾；第二关完成的存档从第三关开头继续。
-	return "res://Scene/Chapter3/chapter3_pc.tscn"
+	return "res://Scene/Chapter3/chapter3_study_room.tscn"
 
 func start_slot(slot: int) -> Error:
 	track_play_time = false

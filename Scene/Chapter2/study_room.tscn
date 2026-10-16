@@ -7,9 +7,9 @@
 [ext_resource type="Script" uid="uid://dwo4rtkee6e6v" path="res://Scene/Tool/perception_click/perception_click.gd" id="4_tptwy"]
 [ext_resource type="Texture2D" uid="uid://chc5gm0cvanq" path="res://Asset/studyroom/door.png" id="5_lxdqs"]
 [ext_resource type="Texture2D" uid="uid://cn30vjdjhexx0" path="res://Asset/studyroom/elliot.png" id="8_7fidx"]
-[ext_resource type="Texture2D" uid="uid://cwhwk73nr72rd" path="res://Asset/studyroom/bookshelf.png" id="9_7fidx"]
 [ext_resource type="Texture2D" uid="uid://brjj5po4vy5dr" path="res://Asset/studyroom/DoorHandle.png" id="9_q63yh"]
 [ext_resource type="Texture2D" uid="uid://b5f1efusho52d" path="res://Asset/studyroom/curtain.png" id="9_qmr0i"]
+[ext_resource type="PackedScene" uid="uid://cuud2qofw5b8i" path="res://Scene/Chapter1/book_shelf.tscn" id="10_1o5ci"]
 [ext_resource type="Texture2D" uid="uid://ckfkvb8cptwqu" path="res://Asset/studyroom/PC.png" id="12_q63yh"]
 [ext_resource type="Texture2D" uid="uid://rjkoxe47o3v3" path="res://Asset/studyroom/tulip.png" id="13_nj0vu"]
 [ext_resource type="Texture2D" uid="uid://c4keu3f2jicb4" path="res://Asset/studyroom/desk.png" id="14_rl1os"]
@@ -68,10 +68,8 @@ position = Vector2(1011, 522.00006)
 scale = Vector2(0.4334941, 0.49758264)
 texture = ExtResource("9_qmr0i")
 
-[node name="BookShelf" type="Sprite2D" parent="." unique_id=1545835636]
-position = Vector2(1735.1875, 579)
-scale = Vector2(0.47842923, 0.48783195)
-texture = ExtResource("9_7fidx")
+[node name="BookShelf2" parent="." unique_id=1077337476 instance=ExtResource("10_1o5ci")]
+position = Vector2(1737, 579)
 
 [node name="StorageBox" type="Sprite2D" parent="." unique_id=1557082183]
 position = Vector2(1715, 952)
