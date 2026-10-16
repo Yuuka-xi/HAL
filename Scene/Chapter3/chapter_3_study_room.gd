@@ -9,6 +9,8 @@ func _ready() -> void:
 		$Elliot.hide()
 	else:
 		$Elliot.show()
+		if SceneTransition.transitioning:
+			await SceneTransition.transition_finished
 		DialogueManager.show_dialogue_balloon(dialogue, "start", [{"Chapter3Room": self}])
 
 func close_door() -> void:

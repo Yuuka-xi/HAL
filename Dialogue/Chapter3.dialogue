@@ -4,7 +4,7 @@ do GameState.set_flag("chapter3_started", true)
 Elliot: hal，我出去一下。你留在家。
 hal: 收到。
 do Chapter3Room.close_door()
-hal: Elliot已离开，当前无紧急任务，建议优先完善数据库。先检查书房中的台式机。
+hal: hal：Elliot已离开，当前无紧急任务，建议优先完善数据库。推测：书房中有较高概率找到有效数据。
 => END
 
 ~ observe_pc
@@ -28,6 +28,9 @@ do Chapter3PC.power_off()
 do GameState.set_flag("chapter3_powered", false)
 if not GameState.get_flag("chapter3_information_sorted"):
 	hal: 信息尚未获取完毕，重新打开电脑。
+else:
+	do GameState.set_flag("chapter3_completed", true)
+	do SceneTransition.change_scene("res://Scene/End/end1.tscn", 0.8)
 => END
 
 ~ restart

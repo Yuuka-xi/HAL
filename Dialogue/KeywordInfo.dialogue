@@ -53,11 +53,25 @@ hal是家务机器人。
 ~ memory_storage_drive_info
 if GameState.get_flag("memory_storage_drive_content_changed"):
 	盘片外形：圆形。用途：存储本机视频记忆数据。当前状态：正在其他设备使用。设备传输协议：[kw=dsk]。
+	do GameState.set_keyword_read(["dsk", "pc"], false)
 else:
 	if GameState.get_flag("know_memory_storage_drive_position"):
 		盘片外形：圆形。用途：存储本机视频记忆数据。当前状态：缺失。最后读写记录在书房。
 	else:
 		盘片外形：圆形。用途：存储本机视频记忆数据。当前状态：缺失。
+=> END
+
+~ storage_box_info
+M-07 位置为空。
+do GameState.set_keyword_read(["memory_storage_drive", "storage_box"], false)
+=> END
+
+~ pc_info
+老旧的台式机。
+=> END
+
+~ dsk_info
+记忆储存盘的设备传输协议。
 => END
 
 ~ hal_memory_storage_drive_info
@@ -68,7 +82,7 @@ do GameState.set_flag("know_memory_storage_drive_position", true)
 ~ memory_storage_drive_storage_box_info
 应用>书房整理：要点21：记忆存储盘应按编号放在对应收纳盒中。若对应收纳盒为空，则物品只可能正在其他机器中使用。
 do GameState.set_flag("memory_storage_drive_content_changed", true)
-系统提示：记忆存储盘调用内容已更新。 [#notice]
+[color=#ba0d0d]系统提示：记忆存储盘调用内容已更新。[/color] [#notice]
 do GameState.set_keyword_read(["memory_storage_drive"], false)
 => END
 

@@ -45,7 +45,6 @@ elif QueryKeywords == ["cleaner_record"] and not GameState.get_flag("cleaner_rec
 	do WorkLog.close()
 	=> infer_cleaner_location
 elif QueryKeywords == ["auto_cabinet"] and not GameState.get_flag("cabinet_research_chosen") and not GameState.get_flag("card_understood"):
-	do wait(1)
 	do WorkLog.close()
 	=> auto_cabinet_dimenssion
 elif QueryKeywords == ["sensor"] and not GameState.get_flag("card_understood") and GameState.get_flag("empty_bottle_taken"):
@@ -386,5 +385,5 @@ Elliot: ……见鬼。好，先去完善数据库。
 
 ~ finish_chapter2
 do GameState.set_flag("chapter2_completed", true)
-do SceneTransition.change_scene("res://Scene/Chapter3/chapter3_study_room.tscn", 0.8)
+do SceneTransition.change_scene_with_animation("res://Scene/Chapter3/chapter3_study_room.tscn", "res://Scene/Tool/scene_transition/2_3_transition.tscn", "2_3_transition", 2)
 => END

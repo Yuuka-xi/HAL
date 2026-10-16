@@ -28,6 +28,7 @@ WorkLog="*res://Scene/WorkLog/work_log.tscn"
 Attributes="*res://Scene/Attributes/attributes_ui.tscn"
 Memory="*res://Scene/Memory/memory.tscn"
 Inventory="*res://Scene/Inventory/inventory.tscn"
+ClickEffect="*res://autoload/click_effect.tscn"
 
 [dialogue_manager]
 
@@ -41,6 +42,7 @@ window/size/resizable=false
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
+mouse_cursor/custom_image="uid://bqpra8lwla3ij"
 
 [editor_plugins]
 
@@ -60,7 +62,7 @@ toggle_settings={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Dialogue/BeginnersGuide.dialogue", "res://Dialogue/Chapter1.dialogue", "res://Dialogue/Chapter2.dialogue", "res://Dialogue/Chapter3.dialogue", "res://Dialogue/KeywordInfo.dialogue", "res://Dialogue/Test/Test1.dialogue", "res://Dialogue/Test/Test2.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Dialogue/BeginnersGuide.dialogue", "res://Dialogue/Chapter1.dialogue", "res://Dialogue/Chapter2.dialogue", "res://Dialogue/Chapter3.dialogue", "res://Dialogue/KeywordInfo.dialogue", "res://Dialogue/Test/Test1.dialogue", "res://Dialogue/Test/Test2.dialogue", "res://Dialogue/Chapter4.dialogue")
 
 [physics]
 

@@ -5,7 +5,6 @@ signal response_selected(response: DialogueResponse)
 @onready var screen: Control = %Screen
 var choices: Dictionary = {}
 var choosing := false
-@onready var thought_labels := {"logic": %Thought, "social": %SocialThought, "exploration": %ExplorationThought}
 
 func _ready() -> void:
 	screen.hide()
@@ -67,11 +66,10 @@ func _hover_dimension(id: String) -> void:
 	_clear_thoughts()
 	if choices.has(id):
 		var text: String = choices[id].text
-		thought_labels[id].text = "思考：" + text.substr(%Chart.dimensions[id].length() + 1).strip_edges()
+		%Thought.text = "思考：" + text.substr(%Chart.dimensions[id].length() + 1).strip_edges()
 
 func _clear_thoughts() -> void:
-	for label in thought_labels.values():
-		label.text = ""
+	%Thought.text = ""
 
 func _select_dimension(id: String) -> void:
 	if choices.has(id) and choices[id].is_allowed:

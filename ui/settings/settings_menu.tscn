@@ -2,7 +2,37 @@
 
 [ext_resource type="Script" uid="uid://2hqs577hq43j" path="res://ui/settings/settings_menu.gd" id="1_jwxja"]
 [ext_resource type="Texture2D" uid="uid://c1qwy5ihl5vsd" path="res://Asset/UI/setting.png" id="2_a66ha"]
-[ext_resource type="PackedScene" path="res://Scene/Tool/hover_scale/hover_scale.tscn" id="3_5fsn8"]
+[ext_resource type="PackedScene" uid="uid://sku1m53v5qqm" path="res://Scene/Tool/hover_scale/hover_scale.tscn" id="3_5fsn8"]
+[ext_resource type="Texture2D" uid="uid://cdf0ahki2ftwe" path="res://Asset/UI/setting/back.png" id="back"]
+[ext_resource type="Texture2D" uid="uid://cx35g47ao8qv6" path="res://Asset/UI/setting/background.png" id="background"]
+[ext_resource type="Texture2D" uid="uid://dnbdut8ovg7jg" path="res://ui/settings/slider_grabber.svg" id="grabber"]
+[ext_resource type="PackedScene" uid="uid://bg0dhcmtonb5v" path="res://Scene/Tool/hover_scale/return_hover_scale.tscn" id="return_hover"]
+
+[sub_resource type="StyleBoxEmpty" id="Empty"]
+
+[sub_resource type="StyleBoxFlat" id="SliderTrack"]
+content_margin_top = 7.0
+content_margin_bottom = 7.0
+bg_color = Color(0.9607843, 0.8980392, 0.8980392, 1)
+
+[sub_resource type="Theme" id="SettingsTheme"]
+default_font_size = 40
+Button/colors/font_color = Color(0.9607843, 0.8980392, 0.8980392, 1)
+Button/colors/font_focus_color = Color(0.9607843, 0.8980392, 0.8980392, 1)
+Button/colors/font_hover_color = Color(0.9607843, 0.8980392, 0.8980392, 1)
+Button/colors/font_hover_pressed_color = Color(0.9607843, 0.8980392, 0.8980392, 1)
+Button/colors/font_pressed_color = Color(0.9607843, 0.8980392, 0.8980392, 1)
+Button/styles/focus = SubResource("Empty")
+Button/styles/hover = SubResource("Empty")
+Button/styles/normal = SubResource("Empty")
+Button/styles/pressed = SubResource("Empty")
+HSlider/icons/grabber = ExtResource("grabber")
+HSlider/icons/grabber_disabled = ExtResource("grabber")
+HSlider/icons/grabber_highlight = ExtResource("grabber")
+HSlider/styles/grabber_area = SubResource("SliderTrack")
+HSlider/styles/grabber_area_highlight = SubResource("SliderTrack")
+HSlider/styles/slider = SubResource("SliderTrack")
+Label/colors/font_color = Color(0.9607843, 0.8980392, 0.8980392, 1)
 
 [node name="SettingsMenu" type="CanvasLayer" unique_id=1661374043]
 process_mode = 3
@@ -26,75 +56,168 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.7)
+theme = SubResource("SettingsTheme")
+color = Color(0.40784314, 0.3372549, 0.4117647, 1)
 
-[node name="Panel" type="PanelContainer" parent="Backdrop" unique_id=1296272198]
-custom_minimum_size = Vector2(620, 0)
+[node name="Background" type="TextureRect" parent="Backdrop" unique_id=390972677]
 layout_mode = 0
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -310.0
-offset_top = -360.0
-offset_right = 310.0
-offset_bottom = 360.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("background")
+expand_mode = 1
+
+[node name="Panel" type="Control" parent="Backdrop" unique_id=1296272198]
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
 focus_mode = 1
+mouse_filter = 1
 
-[node name="Layout" type="VBoxContainer" parent="Backdrop/Panel" unique_id=1451342182]
-layout_mode = 2
-theme_override_constants/separation = 12
+[node name="Icon" type="TextureRect" parent="Backdrop/Panel" unique_id=465698442]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 16.0
+offset_right = 102.0
+offset_bottom = 95.0
+mouse_filter = 2
+texture = ExtResource("2_a66ha")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="Title" type="Label" parent="Backdrop/Panel/Layout" unique_id=2029894452]
-layout_mode = 2
-theme_override_font_sizes/font_size = 42
+[node name="Title" type="Label" parent="Backdrop/Panel" unique_id=676164045]
+layout_mode = 0
+offset_left = 138.0
+offset_top = 34.0
+offset_right = 378.0
+offset_bottom = 114.0
+theme_override_font_sizes/font_size = 38
 text = "设置"
-horizontal_alignment = 1
+
+[node name="Layout" type="Control" parent="Backdrop/Panel" unique_id=1451342182]
+anchors_preset = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -380.0
+offset_top = 250.0
+offset_right = 380.0
+offset_bottom = 590.0
+grow_horizontal = 2
+mouse_filter = 1
 
 [node name="DisplayLabel" type="Label" parent="Backdrop/Panel/Layout" unique_id=1639300241]
-layout_mode = 2
+layout_mode = 0
+offset_right = 240.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 36
 text = "画面大小"
+vertical_alignment = 1
 
-[node name="DisplaySize" type="OptionButton" parent="Backdrop/Panel/Layout" unique_id=379749061]
-custom_minimum_size = Vector2(0, 48)
+[node name="DisplayMode" type="HBoxContainer" parent="Backdrop/Panel/Layout" unique_id=1526895494]
+layout_mode = 0
+offset_left = 300.0
+offset_right = 760.0
+offset_bottom = 60.0
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="DisplayPrevious" type="Button" parent="Backdrop/Panel/Layout/DisplayMode" unique_id=433054187]
+custom_minimum_size = Vector2(50, 60)
 layout_mode = 2
+text = "<"
+
+[node name="DisplaySize" type="Label" parent="Backdrop/Panel/Layout/DisplayMode" unique_id=379749061]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "全屏"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DisplayNext" type="Button" parent="Backdrop/Panel/Layout/DisplayMode" unique_id=1858799650]
+custom_minimum_size = Vector2(50, 60)
+layout_mode = 2
+text = ">"
 
 [node name="MasterLabel" type="Label" parent="Backdrop/Panel/Layout" unique_id=657300393]
-layout_mode = 2
+layout_mode = 0
+offset_top = 85.0
+offset_right = 240.0
+offset_bottom = 145.0
+theme_override_font_sizes/font_size = 36
 text = "主音量"
+vertical_alignment = 1
 
 [node name="Master" type="HSlider" parent="Backdrop/Panel/Layout" unique_id=1074610818]
-layout_mode = 2
+layout_mode = 0
+offset_left = 300.0
+offset_top = 85.0
+offset_right = 760.0
+offset_bottom = 145.0
 max_value = 1.0
 step = 0.05
 
 [node name="MusicLabel" type="Label" parent="Backdrop/Panel/Layout" unique_id=710951]
-layout_mode = 2
+layout_mode = 0
+offset_top = 180.0
+offset_right = 240.0
+offset_bottom = 240.0
+theme_override_font_sizes/font_size = 36
 text = "音乐音量"
+vertical_alignment = 1
 
 [node name="Music" type="HSlider" parent="Backdrop/Panel/Layout" unique_id=15395020]
-layout_mode = 2
+layout_mode = 0
+offset_left = 300.0
+offset_top = 180.0
+offset_right = 760.0
+offset_bottom = 240.0
 max_value = 1.0
 step = 0.05
 
 [node name="SFXLabel" type="Label" parent="Backdrop/Panel/Layout" unique_id=890958833]
-layout_mode = 2
+layout_mode = 0
+offset_top = 275.0
+offset_right = 240.0
+offset_bottom = 335.0
+theme_override_font_sizes/font_size = 36
 text = "音效音量"
+vertical_alignment = 1
 
 [node name="SFX" type="HSlider" parent="Backdrop/Panel/Layout" unique_id=2114424328]
-layout_mode = 2
+layout_mode = 0
+offset_left = 300.0
+offset_top = 275.0
+offset_right = 760.0
+offset_bottom = 335.0
 max_value = 1.0
 step = 0.05
 
-[node name="ReturnToTitle" type="Button" parent="Backdrop/Panel/Layout" unique_id=831786464]
-custom_minimum_size = Vector2(0, 56)
-layout_mode = 2
-text = "返回标题（本关进度不保存）"
+[node name="ReturnToTitle" type="Button" parent="Backdrop/Panel/Layout" unique_id=2082787626]
+layout_mode = 0
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -380.0
+offset_top = 700.0
+offset_right = 380.0
+offset_bottom = 760.0
+theme_override_font_sizes/font_size = 35
+text = "返回标题页"
 
-[node name="Close" type="Button" parent="Backdrop/Panel/Layout" unique_id=587391862]
-custom_minimum_size = Vector2(0, 56)
-layout_mode = 2
-text = "关闭"
+[node name="Close" type="TextureButton" parent="Backdrop/Panel/Layout" unique_id=587391862]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 835.0
+offset_top = -220.0
+offset_right = 920.0
+offset_bottom = -135.0
+grow_horizontal = 2
+texture_normal = ExtResource("back")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="HoverScale" parent="Backdrop/Panel/Layout/Close" unique_id=851327582 instance=ExtResource("return_hover")]
 
 [connection signal="pressed" from="Open" to="." method="_on_open_pressed"]
 [connection signal="value_changed" from="Backdrop/Panel/Layout/Master" to="." method="_on_master_changed"]

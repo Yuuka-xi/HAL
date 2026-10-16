@@ -1,19 +1,18 @@
 extends CanvasLayer
 
 @onready var panel: Control = $Backdrop/Panel
-@onready var display_size: OptionButton = $Backdrop/Panel/Layout/DisplaySize
+const DISPLAY_MODES := ["1280 × 720", "1920 × 1080", "全屏"]
+@onready var display_size: Label = $Backdrop/Panel/Layout/DisplayMode/DisplaySize
+var display_index := 2
 var interaction_locked := false
 var navigation_hidden := false
 
 
 func _ready() -> void:
 	$Backdrop.hide()
-	display_size.add_item("1280 × 720（小窗口）")
-	display_size.add_item("1920 × 1080")
-	display_size.add_item("全屏")
 	_on_display_size_selected(2)
-	display_size.select(2)
-	display_size.item_selected.connect(_on_display_size_selected)
+	$Backdrop/Panel/Layout/DisplayMode/DisplayPrevious.pressed.connect(_cycle_display_size.bind(-1))
+	$Backdrop/Panel/Layout/DisplayMode/DisplayNext.pressed.connect(_cycle_display_size.bind(1))
 	$Backdrop/Panel/Layout/Master.value = AudioManager.get_bus_volume(&"Master")
 	$Backdrop/Panel/Layout/Music.value = AudioManager.get_bus_volume(&"Music")
 	$Backdrop/Panel/Layout/SFX.value = AudioManager.get_bus_volume(&"SFX")
@@ -51,13 +50,12 @@ func open() -> void:
 	$Backdrop.show()
 	panel.grab_focus()
 
+func close() -> void:
+	$Backdrop.hide()
+
 func _return_to_title() -> void:
 	close()
 	await SaveManager.return_to_menu()
-
-
-func close() -> void:
-	$Backdrop.hide()
 
 func is_open() -> bool:
 	return $Backdrop.visible
@@ -83,6 +81,8 @@ func _on_sfx_changed(value: float) -> void:
 	AudioManager.set_bus_volume(&"SFX", value)
 
 func _on_display_size_selected(index: int) -> void:
+	display_index = index
+	display_size.text = DISPLAY_MODES[index]
 	var window := get_window()
 	if index == 2:
 		window.mode = Window.MODE_FULLSCREEN
@@ -90,6 +90,9 @@ func _on_display_size_selected(index: int) -> void:
 		window.mode = Window.MODE_WINDOWED
 		window.size = Vector2i(1280, 720) if index == 0 else Vector2i(1920, 1080)
 		window.move_to_center()
+
+func _cycle_display_size(direction: int) -> void:
+	_on_display_size_selected(posmod(display_index + direction, DISPLAY_MODES.size()))
 
 
 func _on_open_pressed() -> void:
