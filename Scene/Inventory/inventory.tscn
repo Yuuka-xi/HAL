@@ -6,12 +6,15 @@
 [ext_resource type="Texture2D" uid="uid://bslsst3hmi66c" path="res://Asset/UI/invertory2.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://cyu43hopbr36f" path="res://Asset/PCSystem/networkcard.png" id="8_bph8g"]
 [ext_resource type="PackedScene" uid="uid://sku1m53v5qqm" path="res://Scene/Tool/hover_scale/hover_scale.tscn" id="90_hover"]
-[ext_resource type="Texture2D" uid="uid://c30t6mgb6gkbf" path="res://Asset/BrownBlock.png" id="c2_bucket"]
-[ext_resource type="Texture2D" uid="uid://ca5idgyqvk611" path="res://Asset/YellowBlock.png" id="c2_cleaner"]
+[ext_resource type="Texture2D" path="res://Asset/Items/bucket.png" id="c2_bucket"]
+[ext_resource type="Texture2D" path="res://Asset/Items/CleaningAgent.png" id="c2_cleaner"]
 [ext_resource type="Resource" uid="uid://bqr4jmfm8rea7" path="res://Dialogue/Chapter2.dialogue" id="c2_dialogue"]
-[ext_resource type="Texture2D" uid="uid://7454mv4u3g4i" path="res://Asset/Pinkblock.png" id="c2_empty"]
-[ext_resource type="Texture2D" uid="uid://crkeje15uc0um" path="res://Asset/WhiteBlock.png" id="c2_rag"]
+[ext_resource type="Texture2D" path="res://Asset/Items/Empty_cleaner_bottle.png" id="c2_empty"]
+[ext_resource type="Texture2D" path="res://Asset/Items/rag.png" id="c2_rag"]
 [ext_resource type="Texture2D" uid="uid://rjkoxe47o3v3" path="res://Asset/studyroom/tulip.png" id="c2_tulip"]
+
+[ext_resource type="Texture2D" path="res://Asset/Items/full_cleaner_bottle.png" id="full_bottle"]
+[ext_resource type="Texture2D" path="res://Asset/Items/rag_cleaner.png" id="wet_rag"]
 
 [sub_resource type="StyleBoxEmpty" id="Empty"]
 
@@ -20,6 +23,7 @@
 [sub_resource type="Theme" id="SlotTheme"]
 default_font_size = 24
 Button/colors/font_color = Color(1, 0.94, 0.8, 1)
+Button/constants/icon_max_width = 64
 Button/styles/disabled = SubResource("Empty")
 Button/styles/focus = SubResource("Empty")
 Button/styles/hover = SubResource("Empty")
@@ -43,14 +47,14 @@ item_names = Dictionary[String, String]({
 })
 item_icons = Dictionary[String, Texture2D]({
 "cleaner_bag": ExtResource("c2_cleaner"),
-"cleaner_bottle": ExtResource("c2_empty"),
+"cleaner_bottle": ExtResource("full_bottle"),
 "empty_bottle": ExtResource("c2_empty"),
 "key_card": ExtResource("2_ai68l"),
 "network_card": ExtResource("8_bph8g"),
 "rag": ExtResource("c2_rag"),
 "tool_bucket": ExtResource("c2_bucket"),
 "tulip": ExtResource("c2_tulip"),
-"wet_rag": ExtResource("c2_bucket")
+"wet_rag": ExtResource("wet_rag")
 })
 combination_dialogue = ExtResource("c2_dialogue")
 combinations = Dictionary[String, String]({
@@ -77,8 +81,8 @@ clip_contents = true
 anchors_preset = 0
 offset_left = 61.0
 offset_top = 110.0
-offset_right = 180.0
-offset_bottom = 821.0
+offset_right = 181.0
+offset_bottom = 604.0
 mouse_filter = 2
 
 [node name="Drawer" type="Control" parent="Dock/DrawerClip" unique_id=525830320]
@@ -86,6 +90,7 @@ unique_name_in_owner = true
 anchors_preset = 0
 offset_top = -494.0
 offset_right = 120.0
+offset_bottom = 0.0
 mouse_filter = 2
 
 [node name="Background" type="TextureRect" parent="Dock/DrawerClip/Drawer" unique_id=1704128144]
@@ -106,13 +111,13 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 18.0
-offset_top = 21.0
+offset_top = 8.0
 offset_right = -16.0
-offset_bottom = -36.0
+offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("SlotTheme")
-theme_override_constants/separation = 8
+theme_override_constants/separation = 0
 
 [node name="Slot1" type="Button" parent="Dock/DrawerClip/Drawer/Slots" unique_id=1442873715]
 layout_mode = 2

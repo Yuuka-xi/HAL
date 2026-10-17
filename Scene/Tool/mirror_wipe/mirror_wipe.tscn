@@ -1,39 +1,85 @@
 [gd_scene format=3 uid="uid://u7ewst1c1n2a"]
 
 [ext_resource type="Script" uid="uid://ku1sdx3fjptl" path="res://Scene/Tool/mirror_wipe/mirror_wipe.gd" id="1"]
-[ext_resource type="Shader" uid="uid://mctydfj6sq2o" path="res://Scene/Tool/mirror_wipe/dirt.gdshader" id="2"]
-[ext_resource type="Texture2D" uid="uid://crkeje15uc0um" path="res://Asset/WhiteBlock.png" id="4_88au2"]
-[ext_resource type="Texture2D" uid="uid://c30t6mgb6gkbf" path="res://Asset/BrownBlock.png" id="6_10v0b"]
+[ext_resource type="Texture2D" uid="uid://ebyloa5w0p7f" path="res://Asset/bedroom/body.png" id="3_1dgqa"]
+[ext_resource type="Texture2D" uid="uid://cilyiaucpfwu7" path="res://Asset/bedroom/head.png" id="4_8q6jr"]
+[ext_resource type="Texture2D" uid="uid://ll3ffyry1chs" path="res://Asset/bedroom/clean_mirror.png" id="4_qtldr"]
+[ext_resource type="Texture2D" uid="uid://dlrcbobva1vhw" path="res://Asset/bedroom/left_hand.png" id="5_2y61w"]
+[ext_resource type="Texture2D" uid="uid://osf0vrfc5td6" path="res://Asset/bedroom/dirty_mirror.png" id="5_10v0b"]
+[ext_resource type="Texture2D" uid="uid://bv0inov5dhdeo" path="res://Asset/bedroom/frame.png" id="5_88au2"]
+[ext_resource type="Texture2D" uid="uid://b0g25y5xe7jwi" path="res://Asset/bedroom/right_hand.png" id="6_rerxj"]
+[ext_resource type="Shader" uid="uid://mctydfj6sq2o" path="res://Scene/Tool/mirror_wipe/dirt.gdshader" id="dirt_shader"]
 
 [sub_resource type="ShaderMaterial" id="Dirt"]
 resource_local_to_scene = true
-shader = ExtResource("2")
+shader = ExtResource("dirt_shader")
 
 [node name="MirrorWipe" type="Node2D" unique_id=1725197572]
 script = ExtResource("1")
-clean_texture = ExtResource("4_88au2")
-dirty_texture = ExtResource("6_10v0b")
 
 [node name="Clean" type="TextureRect" parent="." unique_id=1950299989]
-offset_right = 367.0
-offset_bottom = 926.0
+offset_left = 3.0
+offset_top = 16.0
+offset_right = 369.64084
+offset_bottom = 878.0
 mouse_filter = 2
-texture = ExtResource("4_88au2")
+texture = ExtResource("4_qtldr")
 expand_mode = 1
 
-[node name="Dirty" type="TextureRect" parent="." unique_id=1220077843]
-material = SubResource("Dirt")
-offset_right = 367.0
-offset_bottom = 926.0
-mouse_filter = 2
-texture = ExtResource("6_10v0b")
-expand_mode = 1
+[node name="hal" type="Node2D" parent="." unique_id=621534289]
+position = Vector2(-3, -20)
 
-[node name="Hint" type="Label" parent="." unique_id=1187596567]
+[node name="body" type="Sprite2D" parent="hal" unique_id=226359979]
+position = Vector2(194.99998, 691.00006)
+scale = Vector2(0.48757774, 0.48757777)
+texture = ExtResource("3_1dgqa")
+
+[node name="head" type="Sprite2D" parent="hal" unique_id=1124149056]
+position = Vector2(194, 454.00003)
+scale = Vector2(0.48757774, 0.48757777)
+texture = ExtResource("4_8q6jr")
+
+[node name="lefthand" type="Sprite2D" parent="hal" unique_id=961889572]
+position = Vector2(111.999985, 541.00006)
+scale = Vector2(0.48757774, 0.48757777)
+texture = ExtResource("5_2y61w")
+
+[node name="righthand" type="Sprite2D" parent="hal" unique_id=1634794016]
+position = Vector2(241.99998, 513.00006)
+scale = Vector2(0.48757774, 0.48757777)
+texture = ExtResource("6_rerxj")
+
+[node name="Label" type="Label" parent="hal" unique_id=1029717793]
 visible = false
-offset_top = 8.0
-offset_right = 367.0
-offset_bottom = 60.0
-theme_override_font_sizes/font_size = 22
-text = "按住左键，来回擦拭镜子"
-horizontal_alignment = 1
+offset_left = 286.00003
+offset_top = 357.0
+offset_right = 326.00003
+offset_bottom = 411.0
+rotation = 0.17025343
+theme_override_colors/font_color = Color(0.92253447, 0.9042444, 0.86924887, 1)
+theme_override_font_sizes/font_size = 50
+text = "?"
+
+[node name="Dirty" type="TextureRect" parent="." unique_id=1302829799]
+material = SubResource("Dirt")
+offset_left = 3.0
+offset_top = 16.0
+offset_right = 364.0
+offset_bottom = 847.0
+mouse_filter = 2
+texture = ExtResource("5_10v0b")
+expand_mode = 1
+
+[node name="frame" type="Sprite2D" parent="." unique_id=325992064]
+position = Vector2(192.375, 433.9957)
+scale = Vector2(0.50504714, 0.50504714)
+texture = ExtResource("5_88au2")
+
+[node name="Cursor" type="CanvasLayer" parent="." unique_id=792682808]
+layer = 100
+
+[node name="Icon" type="TextureRect" parent="Cursor" unique_id=1921051448]
+visible = false
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 5

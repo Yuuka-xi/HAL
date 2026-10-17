@@ -1,18 +1,21 @@
 extends "res://Scene/Chapter2/chapter2_room.gd"
 
 @export var right_camera_x := 2880.0
+@export var left_camera_position := Vector2(960, 542)
 @export var move_duration := 0.25
 
 @onready var camera: Camera2D = $Camera2D
-@onready var left_x := camera.position.x
-@onready var left_arrow: Button = $Navigation/Left
-@onready var right_arrow: Button = $Navigation/Right
+@onready var left_x := left_camera_position.x
+@onready var left_arrow: BaseButton = $Navigation/Left
+@onready var right_arrow: BaseButton = $Navigation/Right
 var on_right := false
 var moving := false
 var awaiting_mirror_click := false
 signal mirror_clicked
 
 func _ready() -> void:
+	camera.position = left_camera_position
+	camera.zoom = Vector2.ONE
 	setup_room()
 	if GameState.get_flag("cabinet_open"):
 		$AnimationPlayer.play("auto_cabinet_open")
@@ -42,12 +45,15 @@ func _switch_side(to_right: bool) -> void:
 
 func _refresh_room() -> void:
 	$ToolBucket.visible = GameState.get_flag("bucket_placed")
+	$ToolBucket/bucket.visible = not GameState.get_flag("rag_taken")
+	$ToolBucket/bucket_remove_rag.visible = GameState.get_flag("rag_taken") and not GameState.get_flag("empty_bottle_taken")
+	$ToolBucket/bucket_remove_cleaner.visible = GameState.get_flag("empty_bottle_taken")
 	$CleaningAgent/BucketTarget.input_pickable = not GameState.get_flag("bucket_placed")
 	$CleaningAgent2.visible = GameState.get_flag("cabinet_open")
 	$CleaningAgent2/Bag.visible = GameState.get_flag("cabinet_open") and not GameState.get_flag("cleaner_taken")
 
 func take_tool(id: String) -> void:
-	await Inventory.collect_item(id, $ToolBucket.get_global_transform_with_canvas().origin)
+	await Inventory.collect_item(id, $ToolBucket/bucket.get_global_transform_with_canvas().origin)
 
 func take_cleaner() -> void:
 	await Inventory.collect_item("cleaner_bag", $CleaningAgent2/Bag.get_global_transform_with_canvas().origin)
@@ -62,16 +68,12 @@ func clean_mirror() -> void:
 	await $Mirror/MirrorWipe.begin()
 
 func mirror_closeup() -> void:
-	var tween := create_tween().set_parallel(true)
-	tween.tween_property(camera, "global_position", $Mirror/MirrorWipe.get_global_transform() * Vector2(183.5, 463), 0.8)
-	tween.tween_property(camera, "zoom", Vector2(1.45, 1.45), 0.8)
-	await tween.finished
+	$AnimationPlayer.play("mirror_closeup")
+	await $AnimationPlayer.animation_finished
 
 func finish_closeup() -> void:
-	var tween := create_tween().set_parallel(true)
-	tween.tween_property(camera, "position", Vector2(left_x, 542), 0.5)
-	tween.tween_property(camera, "zoom", Vector2.ONE, 0.5)
-	await tween.finished
+	$AnimationPlayer.play("mirror_restore")
+	await $AnimationPlayer.animation_finished
 	on_right = false
 	SettingsMenu.set_interaction_locked(false)
 
@@ -84,7 +86,7 @@ func _input(event: InputEvent) -> void:
 		return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		var point: Vector2 = $Mirror/MirrorWipe.get_global_transform_with_canvas().affine_inverse() * event.position
-		if Rect2(Vector2.ZERO, $Mirror/MirrorWipe.mirror_size).has_point(point):
+		if $Mirror/MirrorWipe.get_mirror_rect().has_point(point):
 			get_viewport().set_input_as_handled()
 			awaiting_mirror_click = false
 			mirror_clicked.emit()
