@@ -3,11 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://psikufmy40xy" path="res://Asset/Garden/background.png" id="3_0i1vr"]
 [ext_resource type="Texture2D" uid="uid://ch4j4dpldprgt" path="res://Asset/Garden/flower.png" id="5_wo43w"]
 [ext_resource type="Texture2D" uid="uid://6qbvg2x7oala" path="res://Asset/Garden/chair.png" id="6_pdk0p"]
+[ext_resource type="Texture2D" uid="uid://crkeje15uc0um" path="res://Asset/WhiteBlock.png" id="10_mh8y6"]
+[ext_resource type="Texture2D" uid="uid://ca5idgyqvk611" path="res://Asset/YellowBlock.png" id="11_rs848"]
 [ext_resource type="Script" uid="uid://dwo4rtkee6e6v" path="res://Scene/Tool/perception_click/perception_click.gd" id="c2_click"]
-[ext_resource type="Resource" uid="uid://bqr4jmfm8rea7" path="res://Dialogue/Chapter2.dialogue" id="c2_dialogue"]
+[ext_resource type="Resource" uid="uid://bsk7ltudfrslr" path="res://Dialogue/Chapter5.dialogue" id="c2_dialogue"]
 [ext_resource type="Script" uid="uid://sueen46n1aoo" path="res://Scene/Tool/item_drop_target/item_drop_target.gd" id="c2_drop"]
-[ext_resource type="Shader" path="res://Scene/Chapter5/rain.gdshader" id="c2_rain"]
-[ext_resource type="Script" path="res://Scene/Chapter5/garden.gd" id="c2_script"]
+[ext_resource type="Shader" uid="uid://cxr4hlcg0naud" path="res://Scene/Chapter5/rain.gdshader" id="c2_rain"]
+[ext_resource type="Script" uid="uid://c7ihasngpkudy" path="res://Scene/Chapter5/chapter5_room.gd" id="c2_script"]
 [ext_resource type="Texture2D" uid="uid://rjkoxe47o3v3" path="res://Asset/studyroom/tulip.png" id="c2_tulip"]
 
 [sub_resource type="RectangleShape2D" id="C2Door"]
@@ -28,9 +30,110 @@ shader_parameter/global_scale = Vector2(0.001, 0.001)
 shader_parameter/rain_length = 0.3
 shader_parameter/camera_pos = Vector2(0, 0)
 
+[sub_resource type="Animation" id="Animation_rs848"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WateringCan:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0009999999),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WateringCan:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0009999999),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(607, 988)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WateringCan:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0009999999),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("WateringCan:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.43237236]
+}
+
+[sub_resource type="Animation" id="Animation_tugso"]
+resource_name = "watering"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WateringCan:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WateringCan:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(205, 764), Vector2(1776, 764)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WateringCan:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.43237236]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2xtbw"]
+_data = {
+&"RESET": SubResource("Animation_rs848"),
+&"watering": SubResource("Animation_tugso")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rs848"]
+size = Vector2(1916, 363)
+
 [node name="Garden" type="Node2D" unique_id=123748347]
 script = ExtResource("c2_script")
 dialogue = ExtResource("c2_dialogue")
+room = "garden"
 
 [node name="background" type="Sprite2D" parent="." unique_id=1618019525]
 position = Vector2(959.75, 540)
@@ -73,7 +176,6 @@ position = Vector2(1387, -3)
 position = Vector2(46, 1003)
 script = ExtResource("c2_drop")
 accepted_item = "tulip"
-dialogue = ExtResource("c2_dialogue")
 start_title = "place_tulip"
 release_before_dialogue = true
 
@@ -82,12 +184,13 @@ position = Vector2(-10, 23.5)
 shape = SubResource("C2Place")
 
 [node name="PlacedTulip" type="Sprite2D" parent="." unique_id=1354927021]
-position = Vector2(1425, 934.00006)
-scale = Vector2(0.45, 0.45)
+position = Vector2(1423.9999, 932)
+scale = Vector2(0.54999983, 0.54999983)
 texture = ExtResource("c2_tulip")
 
 [node name="Rain" type="CanvasLayer" parent="." unique_id=2097910281]
 layer = 5
+visible = false
 
 [node name="Overlay" type="ColorRect" parent="Rain" unique_id=2008237758]
 material = SubResource("C2Rain")
@@ -97,3 +200,41 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="Elliot" type="Sprite2D" parent="." unique_id=1293787027]
+modulate = Color(1, 1, 1, 0.57254905)
+position = Vector2(523, 878.5)
+scale = Vector2(1.046875, 2.4921875)
+texture = ExtResource("10_mh8y6")
+
+[node name="WateringCan" type="Node2D" parent="." unique_id=1005326964]
+position = Vector2(607, 988)
+rotation = -0.43237236
+
+[node name="WateringCan" type="Sprite2D" parent="WateringCan" unique_id=1705151683]
+position = Vector2(1, 10)
+scale = Vector2(0.78125, 0.59375)
+texture = ExtResource("11_rs848")
+
+[node name="Label" type="Label" parent="WateringCan" unique_id=1230321365]
+offset_left = 562.0
+offset_top = 1000.0
+offset_right = 682.0
+offset_bottom = 1044.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "浇水壶"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=49886545]
+libraries/ = SubResource("AnimationLibrary_2xtbw")
+
+[node name="WateringTarget" type="Area2D" parent="." unique_id=1983270060]
+position = Vector2(94, 746)
+script = ExtResource("c2_drop")
+accepted_item = "watering_can"
+start_title = ""
+release_before_dialogue = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WateringTarget" unique_id=105556359]
+position = Vector2(867, 149.5)
+shape = SubResource("RectangleShape2D_rs848")

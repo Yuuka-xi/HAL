@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://sku1m53v5qqm" path="res://Scene/Tool/hover_scale/hover_scale.tscn" id="23_7f4d0"]
 [ext_resource type="Texture2D" uid="uid://4dlnud58bdar" path="res://Asset/bedroom/right.png" id="23_lkjsi"]
 [ext_resource type="PackedScene" uid="uid://bg0dhcmtonb5v" path="res://Scene/Tool/hover_scale/return_hover_scale.tscn" id="25_s43n7"]
+[ext_resource type="Texture2D" uid="uid://bsw075b8dw5s3" path="res://Asset/livingroom/SmokeAlarm.png" id="27_pu022"]
 [ext_resource type="Script" uid="uid://dwo4rtkee6e6v" path="res://Scene/Tool/perception_click/perception_click.gd" id="c2_click"]
 [ext_resource type="Resource" uid="uid://bqr4jmfm8rea7" path="res://Dialogue/Chapter2.dialogue" id="c2_dialogue"]
 [ext_resource type="Script" uid="uid://sueen46n1aoo" path="res://Scene/Tool/item_drop_target/item_drop_target.gd" id="c2_drop"]
@@ -36,7 +37,7 @@ size = Vector2(115.5, 97)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4n7dc"]
 size = Vector2(110, 91)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_s43n7"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_57ek7"]
 resource_local_to_scene = true
 shader = ExtResource("10_s43n7")
 
@@ -343,7 +344,7 @@ offset_right = 296.00003
 offset_bottom = 441.0
 
 [node name="Dirty" parent="Mirror/MirrorWipe" index="2" unique_id=1302829799]
-material = SubResource("ShaderMaterial_s43n7")
+material = SubResource("ShaderMaterial_57ek7")
 
 [node name="Observe" type="Area2D" parent="Mirror" unique_id=2080386710]
 position = Vector2(-20.5, 337.75)
@@ -540,5 +541,10 @@ texture_normal = ExtResource("23_lkjsi")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=346020804]
 libraries/ = SubResource("AnimationLibrary_5sesh")
+
+[node name="smokealarm" type="Sprite2D" parent="." unique_id=1379835005]
+position = Vector2(1636.0001, 52)
+scale = Vector2(0.5178572, 0.5178572)
+texture = ExtResource("27_pu022")
 
 [editable path="Mirror/MirrorWipe"]

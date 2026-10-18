@@ -16,12 +16,10 @@
 [ext_resource type="Texture2D" uid="uid://4h314655l78u" path="res://Asset/studyroom/chargingpile.png" id="15_k45oy"]
 [ext_resource type="Texture2D" uid="uid://cki1r7sam6nb1" path="res://Asset/studyroom/sofa.png" id="15_ucsqa"]
 [ext_resource type="Texture2D" uid="uid://bk10s73lct40a" path="res://Asset/studyroom/toybox.png" id="16_1o5ci"]
+[ext_resource type="Texture2D" uid="uid://bsw075b8dw5s3" path="res://Asset/livingroom/SmokeAlarm.png" id="17_cv5de"]
 
 [sub_resource type="RectangleShape2D" id="C2Exit"]
 size = Vector2(674.68756, 1653.2764)
-
-[sub_resource type="RectangleShape2D" id="C2Tulip"]
-size = Vector2(124.83313, 546.2001)
 
 [node name="StudyRoom2" type="Node2D" unique_id=939539833]
 script = ExtResource("1_1njdv")
@@ -81,20 +79,9 @@ scale = Vector2(0.4366668, 0.4366668)
 texture = ExtResource("12_q63yh")
 
 [node name="Tulip" type="Sprite2D" parent="." unique_id=1630688574]
-position = Vector2(1035, 619)
+position = Vector2(1035, 641)
 scale = Vector2(0.4687499, 0.46874997)
 texture = ExtResource("13_nj0vu")
-
-[node name="Take" type="Area2D" parent="Tulip" unique_id=12694393 node_paths=PackedStringArray("dialogue_state")]
-script = ExtResource("4_tptwy")
-dialogue = ExtResource("2_32efi")
-start_title = "take_tulip"
-dialogue_state = NodePath("../..")
-dialogue_state_name = "Study"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Tulip/Take" unique_id=370107498]
-position = Vector2(-3.7165527, 6.366455)
-shape = SubResource("C2Tulip")
 
 [node name="Desk" type="Sprite2D" parent="." unique_id=818718368]
 position = Vector2(872, 817.4095)
@@ -115,3 +102,8 @@ texture = ExtResource("15_k45oy")
 position = Vector2(783.00006, 1011.75)
 scale = Vector2(0.42543888, 0.42543876)
 texture = ExtResource("16_1o5ci")
+
+[node name="smokealarm" type="Sprite2D" parent="." unique_id=1962744045]
+position = Vector2(1374, 59)
+scale = Vector2(0.5178572, 0.5178572)
+texture = ExtResource("17_cv5de")

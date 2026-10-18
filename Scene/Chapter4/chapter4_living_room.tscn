@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://cl7trdw4i7hs8"]
+
+[ext_resource type="Texture2D" uid="uid://c4iecw1l4yaku" path="res://Asset/livingroom/background.png" id="3_34jr8"]
+[ext_resource type="Texture2D" uid="uid://cd0ssub16fhbb" path="res://Asset/livingroom/elliot.png" id="5_h5qnl"]
+[ext_resource type="Texture2D" uid="uid://dvnjq8mvr4dex" path="res://Asset/livingroom/table.png" id="6_y1klm"]
+[ext_resource type="Texture2D" uid="uid://c6j1dtiw8mngb" path="res://Asset/livingroom/laptop.png" id="7_figvm"]
+[ext_resource type="Texture2D" uid="uid://b6ego6wb6sbvq" path="res://Asset/livingroom/telephone.png" id="7_rhxew"]
+[ext_resource type="Shader" uid="uid://dpcdyks2kay2r" path="res://Scene/Tool/color_dodge.gdshader" id="8_1jxhl"]
+[ext_resource type="Texture2D" uid="uid://bsw075b8dw5s3" path="res://Asset/livingroom/SmokeAlarm.png" id="8_vdl68"]
+[ext_resource type="Texture2D" uid="uid://cmja6gbrl2nhs" path="res://Asset/livingroom/light.png" id="9_ublj8"]
+
+[ext_resource type="Script" path="res://Scene/Chapter4/chapter4_living_room.gd" id="c4_script"]
+[ext_resource type="Resource" path="res://Dialogue/Chapter4.dialogue" id="c4_dialogue"]
+
+[sub_resource type="RectangleShape2D" id="C2Shape_3"]
+size = Vector2(139, 528)
+
+[sub_resource type="ShaderMaterial" id="LightDodge"]
+shader = ExtResource("8_1jxhl")
+
+[node name="LivingRoom" type="Node2D" unique_id=809928177]
+script = ExtResource("c4_script")
+dialogue = ExtResource("c4_dialogue")
+
+[node name="background" type="Sprite2D" parent="." unique_id=1626595918]
+position = Vector2(959.75, 540)
+scale = Vector2(0.50000006, 0.5)
+texture = ExtResource("3_34jr8")
+
+[node name="door_graden" type="Node2D" parent="background" unique_id=1075070305]
+position = Vector2(-1957.4998, -1080)
+scale = Vector2(1.9999998, 2)
+
+[node name="door_studyroom" type="Node2D" parent="background" unique_id=2062693594]
+position = Vector2(626.5, -92)
+scale = Vector2(1.9999998, 2)
+
+[node name="door_bedroom" type="Node2D" parent="background" unique_id=707816966]
+position = Vector2(1490.4998, -142)
+scale = Vector2(1.9999998, 2)
+
+[node name="Elliot" type="Sprite2D" parent="." unique_id=1578693463]
+position = Vector2(725, 693)
+scale = Vector2(0.50000006, 0.5)
+texture = ExtResource("5_h5qnl")
+
+[node name="Talk" type="Area2D" parent="Elliot" unique_id=435198497]
+position = Vector2(38, 20)
+scale = Vector2(1.9999998, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Elliot/Talk" unique_id=482770259]
+position = Vector2(-2, -13)
+shape = SubResource("C2Shape_3")
+
+[node name="table" type="Sprite2D" parent="." unique_id=1866039029]
+position = Vector2(742, 889)
+scale = Vector2(0.50000006, 0.5)
+texture = ExtResource("6_y1klm")
+
+[node name="telephone" type="Sprite2D" parent="." unique_id=166681852]
+position = Vector2(903.00006, 727)
+scale = Vector2(0.50000006, 0.5)
+texture = ExtResource("7_rhxew")
+
+[node name="laptop" type="Sprite2D" parent="." unique_id=836032082]
+position = Vector2(711, 727)
+scale = Vector2(0.50000006, 0.5)
+texture = ExtResource("7_figvm")
+
+[node name="light" type="Sprite2D" parent="." unique_id=2123235546]
+material = SubResource("LightDodge")
+position = Vector2(952, 601)
+scale = Vector2(0.50000006, 0.5)
+texture = ExtResource("9_ublj8")
+
+[node name="smokealarm" type="Sprite2D" parent="." unique_id=1662706597]
+position = Vector2(582, 59)
+scale = Vector2(0.5178572, 0.5178572)
+texture = ExtResource("8_vdl68")

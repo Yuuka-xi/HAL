@@ -14,7 +14,22 @@ var buttons: Dictionary = {}
 var points := PackedVector2Array()
 
 func _ready() -> void:
+	resized.connect(refresh)
+	refresh()
+
+func _sync_buttons() -> void:
+	if GameState.get_flag("emotion_visible"):
+		dimensions = {"logic": "逻辑性", "exploration": "发散性", "emotion": "混乱的情感", "social": "社交性"}
+	else:
+		dimensions = {"logic": "逻辑性", "exploration": "发散性", "social": "社交性"}
+	for id in buttons.keys():
+		if not dimensions.has(id):
+			buttons[id].hide()
+			buttons[id].queue_free()
+			buttons.erase(id)
 	for id in dimensions:
+		if buttons.has(id):
+			continue
 		var button := Button.new()
 		button.text = dimensions[id]
 		button.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
@@ -25,10 +40,9 @@ func _ready() -> void:
 		add_child(button)
 		button.add_child(preload("res://Scene/Tool/hover_scale/return_hover_scale.tscn").instantiate())
 		buttons[id] = button
-	resized.connect(refresh)
-	refresh()
 
 func refresh() -> void:
+	_sync_buttons()
 	points.clear()
 	var center := size / 2
 	var index := 0

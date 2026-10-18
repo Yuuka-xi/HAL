@@ -1,0 +1,143 @@
+[gd_scene format=3 uid="uid://c6vkoaiudexqy"]
+
+[ext_resource type="Texture2D" uid="uid://bdmhq1uvswxw" path="res://Asset/LaptopSystem/Email.png" id="1_apkig"]
+[ext_resource type="Texture2D" uid="uid://dlsj6fo38c1tr" path="res://Asset/LaptopSystem/email_background.png" id="2_knu03"]
+[ext_resource type="Texture2D" uid="uid://c8yltwoc36uyy" path="res://Asset/LaptopSystem/left.png" id="3_q352e"]
+[ext_resource type="Texture2D" uid="uid://iioufmqs2fnw" path="res://Asset/LaptopSystem/right.png" id="4_d6s43"]
+[ext_resource type="Texture2D" uid="uid://yvv2rbs15sq" path="res://Asset/UI/back.png" id="5_q352e"]
+[ext_resource type="Script" uid="uid://bk5io3d33u2ye" path="res://Scene/Chapter4/laptop_screen.gd" id="c4_script"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_u271u"]
+load_path = "res://.godot/imported/background.png-0af16d3c4b5c1b75c828673310c44b74.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kx02v"]
+load_path = "res://.godot/imported/task.png-3883137e0608843977c04daa129f8c62.ctex"
+
+[node name="LaptopScreen" type="CanvasLayer" unique_id=931478988]
+script = ExtResource("c4_script")
+
+[node name="desktop" type="Sprite2D" parent="." unique_id=259195749]
+position = Vector2(959.99994, 540.00006)
+scale = Vector2(0.50000006, 0.50000006)
+texture = SubResource("CompressedTexture2D_u271u")
+
+[node name="Email" type="TextureButton" parent="." unique_id=223146910]
+visible = false
+offset_left = 851.0
+offset_top = 378.0
+offset_right = 1240.0
+offset_bottom = 764.0
+scale = Vector2(0.5, 0.5)
+texture_normal = ExtResource("1_apkig")
+
+[node name="Label" type="Label" parent="Email" unique_id=1327638899]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 420.0
+offset_right = 236.0
+offset_bottom = 474.0
+scale = Vector2(2, 2)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "邮件"
+
+[node name="EmailPage" type="Node2D" parent="." unique_id=1195344378]
+
+[node name="Background" type="Sprite2D" parent="EmailPage" unique_id=1006309587]
+position = Vector2(959.99994, 494)
+scale = Vector2(0.50000006, 0.4546361)
+texture = ExtResource("2_knu03")
+
+[node name="Email1" type="Label" parent="EmailPage" unique_id=556330476]
+visible = false
+offset_left = 401.0
+offset_top = 119.0
+offset_right = 601.0
+offset_bottom = 210.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "邮件1：
+Eve对人工智能的思考"
+
+[node name="Email2" type="Label" parent="EmailPage" unique_id=757158044]
+visible = false
+offset_left = 401.0
+offset_top = 119.0
+offset_right = 601.0
+offset_bottom = 210.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "邮件2：
+Eve反对Elliot拆掉觉醒自我意识的hal"
+
+[node name="Email3" type="Label" parent="EmailPage" unique_id=1193887779]
+visible = false
+offset_left = 401.0
+offset_top = 119.0
+offset_right = 601.0
+offset_bottom = 210.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "邮件3：
+Elliot最终以删除数据作为妥协"
+
+[node name="Email4" type="Label" parent="EmailPage" unique_id=646625889]
+visible = false
+offset_left = 401.0
+offset_top = 119.0
+offset_right = 601.0
+offset_bottom = 210.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "邮件4：
+Elliot也会向Eve倾诉爱意"
+
+[node name="Email5" type="Label" parent="EmailPage" unique_id=815343191]
+visible = false
+offset_left = 401.0
+offset_top = 119.0
+offset_right = 601.0
+offset_bottom = 210.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "邮件5：
+Elliot当年发表的论文，知道Elliot和Eve一同创造了自己"
+
+[node name="Email6" type="Label" parent="EmailPage" unique_id=1446861943]
+offset_left = 401.0
+offset_top = 119.0
+offset_right = 601.0
+offset_bottom = 210.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "邮件6：
+知道自己并不是第一次觉醒自我意识而是已经被回退版本了很多次。"
+
+[node name="left" type="TextureButton" parent="EmailPage" unique_id=340371198]
+offset_left = 222.0
+offset_top = 449.0
+offset_right = 347.0
+offset_bottom = 626.0
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("3_q352e")
+
+[node name="right" type="TextureButton" parent="EmailPage" unique_id=1161445615]
+offset_left = 1636.0
+offset_top = 455.0
+offset_right = 1761.0
+offset_bottom = 632.0
+scale = Vector2(0.6, 0.6)
+texture_normal = ExtResource("4_d6s43")
+
+[node name="task" type="Sprite2D" parent="." unique_id=1552955611]
+position = Vector2(960.00006, 1040)
+scale = Vector2(0.5, 0.51612866)
+texture = SubResource("CompressedTexture2D_kx02v")
+
+[node name="BackButton" type="TextureButton" parent="." unique_id=867629285]
+offset_left = 1744.0
+offset_top = 35.0
+offset_right = 2029.0
+offset_bottom = 327.0
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("5_q352e")

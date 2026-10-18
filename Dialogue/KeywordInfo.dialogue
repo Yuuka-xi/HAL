@@ -1,7 +1,9 @@
 # Beginnersguide
 
 ~ hal_info
-if GameState.get_flag("beginnerguide_completed"):
+if GameState.campaign.get("current_level", "") == "chapter4":
+	系统日志>设备信息：本设备初始登记名称为hal。备注：该机初始设计为家务机器人。
+elif GameState.get_flag("beginnerguide_completed"):
 	系统日志>设备信息：本设备初始登记名称为hal。备注：该机初始设计为家务机器人。
 else:
 	系统日志>设备信息：本设备初始登记名称为hal。备注：该机初始设计为[kw=household_robot]。
@@ -92,7 +94,9 @@ do GameState.set_flag("pc_dsk_understood", true)
 => END
 
 ~ tulip_info
-if GameState.campaign.get("current_level", "") == "chapter2":
+if GameState.campaign.get("current_level", "") == "chapter4":
+	关于郁金香的关键词内容
+elif GameState.campaign.get("current_level", "") == "chapter2":
 	应用>书房整理：在整理房间时切记不能伤害那盆郁金香，必须按照系统设定的时间浇水、施肥并将其搬入花园通风。
 else:
 	应用>书房整理：要点1：在整理房间时切记不能伤害那盆郁金香，必须按照系统设定的时间浇水、施肥并将其搬入花园通风。如果出现病虫害必须立刻上报。
@@ -155,7 +159,10 @@ if GameState.get_flag("bedroom_access"):
 => END
 
 ~ garden_info
-无相关记录。
+if GameState.campaign.get("current_level", "") == "chapter4":
+	关于花园的关键词内容
+else:
+	无相关记录。
 => END
 
 ~ literature_info
@@ -164,7 +171,10 @@ if GameState.get_flag("bedroom_access"):
 
 # Chapter3
 ~ work_record_info
-书房台式机设备最近更新记录为三年前，且近一个月无使用时间。
+if GameState.campaign.get("current_level", "") == "chapter4":
+	一些Elliot的日程和习惯。
+else:
+	书房台式机设备最近更新记录为三年前，且近一个月无使用时间。
 => END
 
 ~ ai_researcher_info
@@ -180,9 +190,12 @@ if GameState.get_flag("bedroom_access"):
 => END
 
 ~ work_record_elliot_info
-书房的台式机是Elliot[kw=unused_pc]。判断：该设备已无继续探索价值。
-do GameState.set_keyword_read(["work_record", "elliot"], true)
-do GameState.set_keyword_read(["unused_pc", "network_card"], false)
+if GameState.campaign.get("current_level", "") == "chapter4":
+	一些日程和文书，能分析出Elliot对委托的优先级比较高。[kw=client]。
+else:
+	书房的台式机是Elliot[kw=unused_pc]。判断：该设备已无继续探索价值。
+	do GameState.set_keyword_read(["work_record", "elliot"], true)
+	do GameState.set_keyword_read(["unused_pc", "network_card"], false)
 => END
 
 ~ network_card_unused_pc_info
@@ -247,4 +260,90 @@ if GameState.get_flag("chapter3_online"):
 	do GameState.set_flag("chapter3_authority_record", true)
 else:
 	无相关记录。
+=> END
+
+# Chapter4
+
+~ elliot_get_elliot_leave_info
+Elliot的档案摘要，他工作优先级最高、作息极其规律。
+=> END
+
+~ client_info
+[kw=visitor_excuse]。
+=> END
+
+~ visitor_excuse_info
+如果核查消息与访客记录会当场被发现。[kw=verifiable_record]。
+=> END
+
+~ verifiable_record_info
+门铃并没有记录，因此说出有人按过门铃Elliot没听到难以验证。[kw=broken_doorbell]。
+=> END
+
+~ smoke_alarm_info
+[kw=housing_safety_law]规定：警报必须由人类核查。
+=> END
+
+~ housing_safety_law_info
+生成假的系统分析：[kw=abnormal_smoke]。
+=> END
+
+~ garden_work_record_info
+从日程和习惯中分析出Elliot对花园中的花有不小的投入，并且经常会自己去养花。[kw=flower_habit]、[kw=tulip]。
+=> END
+
+~ flower_habit_tulip_info
+可以使用借口：[kw=wilted_tulip]。
+=> END
+
+~ wilted_tulip_info
+枯萎太容易被证伪了。[kw=unverifiable_evidence]。
+=> END
+
+~ unverifiable_evidence_info
+部分花的早期不良迹象会较为隐蔽，检查需要更长的时间和更高的难度，于是寻找一些早期不良迹象，比如湿度问题。[kw=early_flower_problem]。
+=> END
+
+~ laptop_info
+关于笔记本的关键词内容
+=> END
+
+~ get_elliot_leave_info
+关于让Elliot离开的方法的关键词内容
+=> END
+
+~ broken_doorbell_info
+关于门外门铃好像坏了的关键词内容
+=> END
+
+~ abnormal_smoke_info
+关于烟雾读数疑似异常的关键词内容
+=> END
+
+~ flower_habit_info
+关于养花的习惯的关键词内容
+=> END
+
+~ early_flower_problem_info
+关于花园中的花有早期不良迹象的关键词内容
+=> END
+
+~ deception_info
+关于欺骗的关键词内容
+=> END
+
+~ chapter5_low_mood_info
+if GameState.get_flag("chapter3_online"):
+	知道了人不愿意失去自己爱的人，否则会感到[kw=sadness]。
+	do GameState.set_flag("chapter5_sadness_found", true)
+else:
+	需要去书房拿网卡，联网查询“情绪低落”。
+=> END
+
+~ chapter5_sadness_info
+检索Elliot悲伤的回忆。
+=> END
+
+~ chapter5_love_info
+混乱的数据
 => END

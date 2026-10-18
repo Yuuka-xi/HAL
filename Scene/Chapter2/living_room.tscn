@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dvnjq8mvr4dex" path="res://Asset/livingroom/table.png" id="5_e863e"]
 [ext_resource type="Texture2D" uid="uid://b6ego6wb6sbvq" path="res://Asset/livingroom/telephone.png" id="6_q3x07"]
 [ext_resource type="Texture2D" uid="uid://cmja6gbrl2nhs" path="res://Asset/livingroom/light.png" id="7_e863e"]
+[ext_resource type="Texture2D" uid="uid://bsw075b8dw5s3" path="res://Asset/livingroom/SmokeAlarm.png" id="10_ctw4q"]
 [ext_resource type="Script" uid="uid://dwo4rtkee6e6v" path="res://Scene/Tool/perception_click/perception_click.gd" id="c2_click"]
 [ext_resource type="Resource" uid="uid://bqr4jmfm8rea7" path="res://Dialogue/Chapter2.dialogue" id="c2_dialogue"]
 [ext_resource type="Shader" uid="uid://dpcdyks2kay2r" path="res://Scene/Tool/color_dodge.gdshader" id="light_dodge"]
@@ -107,3 +108,8 @@ material = SubResource("LightDodge")
 position = Vector2(952, 601)
 scale = Vector2(0.50000006, 0.5)
 texture = ExtResource("7_e863e")
+
+[node name="smokealarm" type="Sprite2D" parent="." unique_id=51598561]
+position = Vector2(582, 59)
+scale = Vector2(0.5178572, 0.5178572)
+texture = ExtResource("10_ctw4q")

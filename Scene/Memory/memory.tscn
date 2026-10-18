@@ -121,6 +121,30 @@ tracks/4/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/livingroom_close_door:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/Label:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_ps65c"]
 resource_name = "clean_bedroom"
@@ -162,6 +186,34 @@ tracks/2/keys = {
 "values": [false, true, false]
 }
 
+[sub_resource type="Animation" id="Animation_5g3nx"]
+resource_name = "eve_death"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/livingroom_close_door:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/Label:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 1.7333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
 [sub_resource type="Animation" id="Animation_jpdbn"]
 resource_name = "open_door"
 length = 3.5000000000000004
@@ -194,6 +246,7 @@ tracks/1/keys = {
 _data = {
 &"RESET": SubResource("Animation_54cvm"),
 &"clean_bedroom": SubResource("Animation_ps65c"),
+&"eve_death": SubResource("Animation_5g3nx"),
 &"open_door": SubResource("Animation_jpdbn")
 }
 
@@ -202,7 +255,8 @@ layer = 40
 script = ExtResource("1")
 animation_content = NodePath("Screen/Layout/Columns/Video/Playback/OpenDoor")
 animation_contents = Dictionary[String, NodePath]({
-"clean_bedroom": NodePath("Screen/Layout/Columns/Video/Playback/CleanBedroom")
+"clean_bedroom": NodePath("Screen/Layout/Columns/Video/Playback/CleanBedroom"),
+"eve_death": NodePath("Screen/Layout/Columns/Video/Playback/eve_death")
 })
 finished_dialogue = ExtResource("4_finished")
 finished_titles = Dictionary[String, String]({
@@ -363,6 +417,7 @@ scale = Vector2(0.13567282, 0.13567282)
 texture = ExtResource("93_card")
 
 [node name="CleanBedroom" type="Control" parent="Screen/Layout/Columns/Video/Playback" unique_id=833731901]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -401,6 +456,28 @@ theme_override_constants/outline_size = 3
 theme_override_font_sizes/font_size = 28
 text = "未知声音来源2：hal，我回来啦～咦，你在哪？快来帮我拿一下东西……
 "
+
+[node name="eve_death" type="Control" parent="Screen/Layout/Columns/Video/Playback" unique_id=1068056040]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="livingroom_close_door" type="Sprite2D" parent="Screen/Layout/Columns/Video/Playback/eve_death" unique_id=693064776]
+position = Vector2(686.88495, 398.875)
+scale = Vector2(0.35759017, 0.36030087)
+
+[node name="Label" type="Label" parent="Screen/Layout/Columns/Video/Playback/eve_death" unique_id=2048788809]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_left = 138.0
+offset_top = 282.0
+offset_right = 1219.0
+offset_bottom = 695.0
+theme_override_font_sizes/font_size = 40
+text = "年轻的Elliot正在打电话与殡仪馆沟通，房间里干净空旷得像病房，他的声音伴随着回声在客厅里回响，听起来没有任何悲伤，他好像还是那个如同机器一样的严肃的研究员；这时，记忆里的hal捧着一支郁金香走到那个年轻的Elliot面前，原本面无表情的他愣了一下，随后突然崩溃大哭"
+autowrap_mode = 3
 
 [node name="Decoration" type="TextureRect" parent="Screen" unique_id=1058956784]
 layout_mode = 0

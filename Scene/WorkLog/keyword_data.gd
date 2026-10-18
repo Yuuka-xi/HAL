@@ -1,6 +1,12 @@
 extends RefCounted
 
 const NAMES = {
+	"elliot_tulips": "Elliot种的郁金香",
+	"guilt": "愧疚",
+	"jealousy": "嫉妒",
+	"low_mood": "情绪低落",
+	"sadness": "悲伤",
+	"love": "爱",
 	# 新手教程
 	"unknown_audio_source": "未知声音来源",
 	"elliot": "Elliot",
@@ -37,10 +43,28 @@ const NAMES = {
 	"unused_pc": "不常用的电脑",
 	"eve": "Eve",
 	"ai_authority": "人工智能管理机构",
+	# 关卡4
+	"laptop": "笔记本",
+	"get_elliot_leave": "让Elliot离开的方法",
+	"client": "委托人",
+	"visitor_excuse": "门外有委托人找你（欺骗）",
+	"verifiable_record": "可以被证明的记录",
+	"broken_doorbell": "门外门铃好像坏了",
+	"smoke_alarm": "烟雾报警器",
+	"housing_safety_law": "住宅安全法",
+	"abnormal_smoke": "烟雾读数疑似异常",
+	"flower_habit": "养花的习惯",
+	"wilted_tulip": "郁金香枯萎了",
+	"unverifiable_evidence": "难以被证明的依据",
+	"early_flower_problem": "花园中的花有早期不良迹象",
+	"deception": "欺骗",
 }
 
 # 双词组合按编号排序，用 + 连接；值是 .dialogue 中的入口标题。
 const ENTRIES = {
+	"low_mood": "chapter5_low_mood_info",
+	"elliot+sadness": "chapter5_sadness_info",
+	"eve+love": "chapter5_love_info",
 	# 新手教程
 	"unknown_audio_source": "unknown_audio_source_info",
 	"elliot": "elliot_info",
@@ -93,4 +117,23 @@ const ENTRIES = {
 	"pc+work_record": "work_record_elliot_info",
 	"network_card+unused_pc": "network_card_unused_pc_info",
 	"ai_researcher+elliot": "elliot_ai_researcher_info",
+	# 关卡4
+	"laptop": "laptop_info",
+	"get_elliot_leave": "get_elliot_leave_info",
+	"client": "client_info",
+	"visitor_excuse": "visitor_excuse_info",
+	"verifiable_record": "verifiable_record_info",
+	"broken_doorbell": "broken_doorbell_info",
+	"smoke_alarm": "smoke_alarm_info",
+	"housing_safety_law": "housing_safety_law_info",
+	"abnormal_smoke": "abnormal_smoke_info",
+	"flower_habit": "flower_habit_info",
+	"wilted_tulip": "wilted_tulip_info",
+	"unverifiable_evidence": "unverifiable_evidence_info",
+	"early_flower_problem": "early_flower_problem_info",
+	"deception": "deception_info",
+	"elliot+get_elliot_leave": "elliot_get_elliot_leave_info",
+	"garden+work_record": "garden_work_record_info",
+	"flower_habit+tulip": "flower_habit_tulip_info",
+
 }

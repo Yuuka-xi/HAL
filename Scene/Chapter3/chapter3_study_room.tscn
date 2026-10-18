@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://rjkoxe47o3v3" path="res://Asset/studyroom/tulip.png" id="16_fpq4b"]
 [ext_resource type="Texture2D" uid="uid://c4keu3f2jicb4" path="res://Asset/studyroom/desk.png" id="17_h15sv"]
 [ext_resource type="PackedScene" uid="uid://cuud2qofw5b8i" path="res://Scene/Chapter1/book_shelf.tscn" id="17_r1wda"]
+[ext_resource type="Texture2D" uid="uid://bsw075b8dw5s3" path="res://Asset/livingroom/SmokeAlarm.png" id="18_3d6iq"]
 [ext_resource type="Texture2D" uid="uid://cki1r7sam6nb1" path="res://Asset/studyroom/sofa.png" id="18_6hnbq"]
 [ext_resource type="Texture2D" uid="uid://bk10s73lct40a" path="res://Asset/studyroom/toybox.png" id="19_sigbv"]
 [ext_resource type="Texture2D" uid="uid://4h314655l78u" path="res://Asset/studyroom/chargingpile.png" id="21_u2hs1"]
@@ -208,7 +209,7 @@ shape = SubResource("RectangleShape2D_m4wl0")
 libraries/ = SubResource("AnimationLibrary_buoml")
 
 [node name="Tulip" type="Sprite2D" parent="." unique_id=1630688574]
-position = Vector2(1035, 619)
+position = Vector2(1035, 640)
 scale = Vector2(0.4687499, 0.46874997)
 texture = ExtResource("16_fpq4b")
 
@@ -240,3 +241,8 @@ position = Vector2(1752, 582)
 
 [node name="ComputerCloseup" parent="." unique_id=834677329 instance=ExtResource("c3_pc")]
 visible = false
+
+[node name="smokealarm" type="Sprite2D" parent="." unique_id=1172464340]
+position = Vector2(1374, 59)
+scale = Vector2(0.5178572, 0.5178572)
+texture = ExtResource("18_3d6iq")

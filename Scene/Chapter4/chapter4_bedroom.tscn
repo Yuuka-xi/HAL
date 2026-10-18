@@ -1,0 +1,210 @@
+[gd_scene format=3 uid="uid://eroydc7ee4hx"]
+
+[ext_resource type="Texture2D" uid="uid://dol6i5oxjmgx5" path="res://Asset/bedroom/background.png" id="3_1ko01"]
+[ext_resource type="Texture2D" uid="uid://bbv3hr6y8648s" path="res://Asset/bedroom/door.png" id="4_w50te"]
+[ext_resource type="Texture2D" uid="uid://bahmk23mw4ad5" path="res://Asset/bedroom/sensor.png" id="6_vv28h"]
+[ext_resource type="Texture2D" uid="uid://cqnloa0sik40o" path="res://Asset/bedroom/Mirror.png" id="7_ye36e"]
+[ext_resource type="Texture2D" uid="uid://crkeje15uc0um" path="res://Asset/WhiteBlock.png" id="8_xpsi7"]
+[ext_resource type="Texture2D" uid="uid://c5rcr381sak2d" path="res://Asset/bedroom/bucket.png" id="11_audl1"]
+[ext_resource type="Texture2D" uid="uid://cpf3x6iw0eliw" path="res://Asset/bedroom/bucket_area.png" id="14_8mqyq"]
+[ext_resource type="Texture2D" uid="uid://d15o0n2qr6ygh" path="res://Asset/bedroom/cabinet.png" id="15_0pdfn"]
+[ext_resource type="Texture2D" uid="uid://chv1qwwxjw2c2" path="res://Asset/bedroom/light.png" id="15_moor3"]
+[ext_resource type="Texture2D" uid="uid://6n8srftfdnc5" path="res://Asset/bedroom/bed.png" id="18_kqp6e"]
+[ext_resource type="Texture2D" uid="uid://bsw075b8dw5s3" path="res://Asset/livingroom/SmokeAlarm.png" id="19_2ihfu"]
+[ext_resource type="Texture2D" uid="uid://dgsknnb2u40mf" path="res://Asset/bedroom/chair.png" id="19_vycsh"]
+[ext_resource type="Texture2D" uid="uid://c7ndy1fovn5dt" path="res://Asset/bedroom/table.png" id="20_orj3k"]
+[ext_resource type="Texture2D" uid="uid://cybxrj65t7tpv" path="res://Asset/bedroom/lamp.png" id="21_n7h23"]
+[ext_resource type="Texture2D" uid="uid://bg5vlwmumh3rn" path="res://Asset/bedroom/picture.png" id="22_qh0mq"]
+[ext_resource type="Texture2D" uid="uid://cxq0ayckeibtk" path="res://Asset/bedroom/left.png" id="23_k5lil"]
+[ext_resource type="PackedScene" uid="uid://sku1m53v5qqm" path="res://Scene/Tool/hover_scale/hover_scale.tscn" id="24_3aas4"]
+[ext_resource type="Texture2D" uid="uid://4dlnud58bdar" path="res://Asset/bedroom/right.png" id="25_l3uqh"]
+[ext_resource type="PackedScene" uid="uid://bg0dhcmtonb5v" path="res://Scene/Tool/hover_scale/return_hover_scale.tscn" id="26_8bcen"]
+[ext_resource type="Resource" uid="uid://dh8bblwunn4kt" path="res://Dialogue/Chapter4.dialogue" id="c4_dialogue"]
+[ext_resource type="Script" uid="uid://2ebt0c7ajmmd" path="res://Scene/Chapter4/chapter4_bedroom.gd" id="c4_script"]
+
+[sub_resource type="RectangleShape2D" id="C2Shape_0"]
+size = Vector2(297.75, 780.5)
+
+[sub_resource type="Animation" id="Animation_moor3"]
+resource_name = "Hand_cup_to_Elliot."
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cup:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2215, 567), Vector2(3309, 685)]
+}
+
+[sub_resource type="Animation" id="Animation_lhnow"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("cup:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2215, 567)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5sesh"]
+_data = {
+&"Hand_cup_to_Elliot": SubResource("Animation_moor3"),
+&"RESET": SubResource("Animation_lhnow")
+}
+
+[node name="bedroom" type="Node2D" unique_id=1934651834]
+position = Vector2(0, -2)
+script = ExtResource("c4_script")
+dialogue = ExtResource("c4_dialogue")
+
+[node name="background" type="Sprite2D" parent="." unique_id=1795502936]
+position = Vector2(960, 542)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_1ko01")
+
+[node name="background2" type="Sprite2D" parent="." unique_id=414085544]
+position = Vector2(2880, 542)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_1ko01")
+
+[node name="door_bedroom" type="Node2D" parent="." unique_id=1260318434]
+position = Vector2(84, -10)
+
+[node name="Sprite2D" type="Sprite2D" parent="door_bedroom" unique_id=403207438]
+position = Vector2(192, 517.00006)
+scale = Vector2(0.4910581, 0.49105814)
+texture = ExtResource("4_w50te")
+
+[node name="ReturnDoor" type="Area2D" parent="door_bedroom" unique_id=458696918]
+position = Vector2(176.5, 679)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="door_bedroom/ReturnDoor" unique_id=2007375924]
+position = Vector2(5.625, -144.75)
+shape = SubResource("C2Shape_0")
+
+[node name="Sensor" type="Node2D" parent="." unique_id=1107173247]
+position = Vector2(631, 558)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sensor" unique_id=1821186902]
+position = Vector2(-32, -32.000008)
+scale = Vector2(0.47619045, 0.47619048)
+texture = ExtResource("6_vv28h")
+
+[node name="Mirror" type="Node2D" parent="." unique_id=163275830]
+position = Vector2(965, 283)
+
+[node name="mirror" type="Sprite2D" parent="Mirror" unique_id=1696458196]
+position = Vector2(-8.000017, 346.99997)
+scale = Vector2(0.50033635, 0.50033635)
+texture = ExtResource("7_ye36e")
+
+[node name="ToolBucket" type="Node2D" parent="." unique_id=709787213]
+position = Vector2(1460, 930)
+
+[node name="bucket" type="Sprite2D" parent="ToolBucket" unique_id=1586005107]
+position = Vector2(129.49997, -165.00002)
+scale = Vector2(0.4758426, 0.57101107)
+texture = ExtResource("11_audl1")
+
+[node name="CleaningAgent" type="Node2D" parent="." unique_id=488140437]
+position = Vector2(1401, 1009)
+
+[node name="Sprite2D" type="Sprite2D" parent="CleaningAgent" unique_id=264663544]
+position = Vector2(187.00002, -94.999985)
+scale = Vector2(0.47205588, 0.47205588)
+texture = ExtResource("14_8mqyq")
+
+[node name="Wardrobe" type="Node2D" parent="." unique_id=1899435700]
+position = Vector2(2598, 1047)
+
+[node name="Sprite2D" type="Sprite2D" parent="Wardrobe" unique_id=749711159]
+position = Vector2(295, -326)
+scale = Vector2(0.5113754, 0.51137537)
+texture = ExtResource("15_0pdfn")
+
+[node name="bed" type="Node2D" parent="." unique_id=460123393]
+position = Vector2(3501, 904)
+
+[node name="Sprite2D" type="Sprite2D" parent="bed" unique_id=1175319659]
+position = Vector2(-203.99994, -125)
+scale = Vector2(0.5135276, 0.5135276)
+texture = ExtResource("18_kqp6e")
+
+[node name="chair" type="Sprite2D" parent="." unique_id=481603199]
+position = Vector2(2439, 693)
+scale = Vector2(0.5038168, 0.5038167)
+texture = ExtResource("19_vycsh")
+
+[node name="table" type="Sprite2D" parent="." unique_id=1277074573]
+position = Vector2(2210, 826)
+scale = Vector2(0.5038168, 0.5038167)
+texture = ExtResource("20_orj3k")
+
+[node name="lamp" type="Sprite2D" parent="." unique_id=226749067]
+position = Vector2(3554.9998, 255)
+scale = Vector2(0.56902903, 0.569029)
+texture = ExtResource("21_n7h23")
+
+[node name="light" type="Sprite2D" parent="lamp" unique_id=896672880]
+position = Vector2(-574.732, 713.78674)
+scale = Vector2(1.0721155, 1.136103)
+texture = ExtResource("15_moor3")
+
+[node name="picture" type="Sprite2D" parent="." unique_id=1084990894]
+position = Vector2(3140, 192)
+scale = Vector2(0.56902903, 0.569029)
+texture = ExtResource("22_qh0mq")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=124135654]
+position = Vector2(960, 780)
+zoom = Vector2(2, 2)
+
+[node name="Navigation" type="CanvasLayer" parent="." unique_id=891826564]
+layer = 30
+
+[node name="Left" type="TextureButton" parent="Navigation" unique_id=188894299]
+offset_left = 24.0
+offset_top = 709.0
+offset_right = 145.0
+offset_bottom = 868.0
+scale = Vector2(0.5, 0.5)
+focus_mode = 0
+texture_normal = ExtResource("23_k5lil")
+
+[node name="HoverScale" parent="Navigation/Left" unique_id=533082741 instance=ExtResource("24_3aas4")]
+
+[node name="Right" type="TextureButton" parent="Navigation" unique_id=185125527]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -100.0
+offset_top = 684.0
+offset_right = 21.0
+offset_bottom = 843.0
+grow_horizontal = 0
+scale = Vector2(0.5, 0.5)
+focus_mode = 0
+texture_normal = ExtResource("25_l3uqh")
+
+[node name="HoverScale" parent="Navigation/Right" unique_id=1391716803 instance=ExtResource("26_8bcen")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=346020804]
+libraries/ = SubResource("AnimationLibrary_5sesh")
+
+[node name="cup" type="Sprite2D" parent="." unique_id=936082241]
+position = Vector2(2215, 567)
+texture = ExtResource("8_xpsi7")
+
+[node name="smokealarm" type="Sprite2D" parent="." unique_id=1506728266]
+position = Vector2(1636.0001, 52)
+scale = Vector2(0.5178572, 0.5178572)
+texture = ExtResource("19_2ihfu")

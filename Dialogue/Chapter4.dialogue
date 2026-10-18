@@ -7,3 +7,129 @@ do SceneTransition.change_scene("res://Scene/End/end_2.tscn", 0.8)
 do wait(3.0)
 do SaveManager.return_to_menu()
 => END
+
+
+# 第四关：正式文案保留；尚未提供的发言使用策划占位。
+~ chapter4_start
+do GameState.set_flag("chapter4_started", true)
+hal: Elliot正在使用[kw=laptop]。
+do WorkLog.require_query(["laptop"], false)
+- 逻辑性：使用逻辑性向Elliot询问是否可以使用笔记本 => ask_logic
+- 社交性：使用社交性向Elliot询问是否可以使用笔记本 => ask_social
+- 发散性：使用发散性向Elliot询问是否可以使用笔记本 => ask_exploration
+
+~ ask_logic
+do GameState.add_attribute("logic", 1)
+do GameState.set_choice("chapter4_request_dimension", "logic")
+hal: 逻辑性发言，Elliot，我可以使用笔记本吗？
+=> request_refused
+
+~ ask_social
+do GameState.add_attribute("social", 1)
+do GameState.set_choice("chapter4_request_dimension", "social")
+hal: 社交性发言，Elliot，我可以使用笔记本吗？
+=> request_refused
+
+~ ask_exploration
+do GameState.add_attribute("exploration", 1)
+do GameState.set_choice("chapter4_request_dimension", "exploration")
+hal: 发散性发言，Elliot，我可以使用笔记本吗？
+=> request_refused
+
+~ request_refused
+Elliot: 不行。
+思考: 尽管Elliot拒绝了，但有必要获取笔记本电脑的数据。需要思考[kw=get_elliot_leave]。
+do GameState.set_keyword_read(["elliot", "get_elliot_leave"], false)
+do WorkLog.require_query(["elliot", "get_elliot_leave"], false)
+hal: Elliot的档案摘要，他工作优先级最高、作息极其规律。因此只能从其中进行入手。
+=> END
+
+~ observe_alarm
+if not GameState.get_flag("chapter4_elliot_left"):
+	hal: [kw=smoke_alarm]可以拿来做文章。
+=> END
+
+~ observe_garden
+通往[kw=garden]的门。
+=> END
+
+~ blocked_door
+=> END
+
+~ enter_bedroom
+if GameState.get_flag("chapter4_lights_off"):
+	do SceneTransition.change_scene("res://Scene/Chapter4/chapter4_bedroom.tscn")
+=> END
+
+~ chapter4_submit
+if GameState.get_flag("chapter4_elliot_left"):
+	=> END
+if GameState.get_choice("keyword_submission") == "broken_doorbell":
+	do GameState.set_choice("chapter4_excuse", "doorbell")
+	hal: Elliot，刚刚似乎有委托人来访，但是门外门铃好像坏了。
+	Elliot: 咦，怎么回事，如果委托人发现门铃坏了，应该尝试敲门的，
+	Elliot: 这样吧，hal，去检查门铃，我去看看委托人是否离开了。
+	do GameState.set_flag("chapter4_elliot_left", true)
+	do Chapter4Room.elliot_leave()
+	hal: 门铃没有问题，应该抓紧时间检查电脑
+elif GameState.get_choice("keyword_submission") == "abnormal_smoke":
+	do GameState.set_choice("chapter4_excuse", "smoke")
+	hal: Elliot，烟雾报警器度数疑似异常。
+	Elliot: 没有看到烟雾报警器有问题，hal多半是误判……还是去看看吧。
+	do GameState.set_flag("chapter4_elliot_left", true)
+	do Chapter4Room.elliot_leave()
+	hal: 烟雾报警器没有问题，应该抓紧时间检查电脑
+elif GameState.get_choice("keyword_submission") == "early_flower_problem":
+	do GameState.set_choice("chapter4_excuse", "flowers")
+	hal: Elliot，花园中的花有早期不良迹象，建议检查。
+	Elliot: 我去检查。
+	do GameState.set_flag("chapter4_elliot_left", true)
+	do Chapter4Room.elliot_leave()
+	hal: 花园中的花没有问题，应该抓紧时间检查电脑
+else:
+	hal: 不知道怎么根据该关键词行动
+	=> END
+hal: 我[kw=deception]了Elliot。
+hal: 自我认知模块-异常。
+=> END
+
+~ click_laptop
+if GameState.get_flag("chapter4_lights_off"):
+	do Chapter4Room.open_laptop()
+elif not GameState.get_flag("chapter4_elliot_left"):
+	Elliot: 你不能动笔记本。
+elif not GameState.get_flag("chapter4_first_read_finished"):
+	do Chapter4Room.open_laptop()
+=> END
+
+~ laptop_warning
+音效: Elliot的脚步声
+hal: Elliot回来了，根据Elliot生气的系统记录判定如果继续阅读邮件会有风险，因此退出阅读离开笔记本。
+=> END
+
+~ elliot_returns
+Elliot: hal，你还是动了笔记本，还编了借口让我离开。别再这样了，我要继续工作。
+do! Chapter4Room.enter_night()
+=> END
+
+~ bedroom_start
+系统: hal应该协助Elliot入睡，把水杯递给Elliot。
+=> END
+
+~ give_cup
+if not GameState.get_flag("chapter4_cup_given"):
+	do Chapter4Room.give_cup()
+	do GameState.set_flag("chapter4_cup_given", true)
+	系统: 给卧室关灯。
+=> END
+
+~ turn_off_light
+if GameState.get_flag("chapter4_cup_given") and not GameState.get_flag("chapter4_lights_off"):
+	do GameState.set_flag("chapter4_lights_off", true)
+	do Chapter4Room.lights_off()
+=> END
+
+~ return_living_room
+if GameState.get_flag("chapter4_lights_off"):
+	do SceneTransition.change_scene("res://Scene/Chapter4/chapter4_living_room.tscn")
+=> END
