@@ -17,6 +17,10 @@ var dragging := false
 var busy := false
 @onready var slots: Array[Node] = %Slots.get_children()
 
+@onready var show_inventory: AudioStreamPlayer = $show_inventory
+@onready var item_equiped: AudioStreamPlayer = $item_equiped
+
+
 func _ready() -> void:
 	%Toggle.pressed.connect(_toggle)
 	for index in slots.size():
@@ -32,6 +36,7 @@ func add_item(id: String) -> void:
 	if id not in items and items.size() < slots.size():
 		items.append(id)
 		GameState.set_campaign_value("items", items)
+		item_equiped.play()
 
 func remove_item(id: String) -> void:
 	var items: Array = GameState.campaign.get("items", [])
@@ -94,6 +99,7 @@ func _toggle() -> void:
 	if busy:
 		return
 	expanded = not expanded
+	show_inventory.play()
 	%ItemName.hide()
 	if slide != null:
 		slide.kill()

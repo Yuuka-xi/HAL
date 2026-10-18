@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://2hqs577hq43j" path="res://ui/settings/settings_menu.gd" id="1_jwxja"]
 [ext_resource type="Texture2D" uid="uid://c1qwy5ihl5vsd" path="res://Asset/UI/setting.png" id="2_a66ha"]
 [ext_resource type="PackedScene" uid="uid://sku1m53v5qqm" path="res://Scene/Tool/hover_scale/hover_scale.tscn" id="3_5fsn8"]
+[ext_resource type="AudioStream" uid="uid://cosg5j2ks4koj" path="res://Asset/audio/sfx/click_double_on.wav" id="8_bntry"]
 [ext_resource type="Texture2D" uid="uid://cdf0ahki2ftwe" path="res://Asset/UI/setting/back.png" id="back"]
 [ext_resource type="Texture2D" uid="uid://cx35g47ao8qv6" path="res://Asset/UI/setting/background.png" id="background"]
 [ext_resource type="Texture2D" uid="uid://dnbdut8ovg7jg" path="res://ui/settings/slider_grabber.svg" id="grabber"]
@@ -218,6 +219,10 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="HoverScale" parent="Backdrop/Panel/Layout/Close" unique_id=851327582 instance=ExtResource("return_hover")]
+
+[node name="open_setting_page" type="AudioStreamPlayer" parent="." unique_id=276333938]
+stream = ExtResource("8_bntry")
+bus = &"SFX"
 
 [connection signal="pressed" from="Open" to="." method="_on_open_pressed"]
 [connection signal="value_changed" from="Backdrop/Panel/Layout/Master" to="." method="_on_master_changed"]

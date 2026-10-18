@@ -5,6 +5,8 @@
 [ext_resource type="Resource" uid="uid://cgip8sxcerqjt" path="res://Dialogue/KeywordInfo.dialogue" id="3_keywords"]
 [ext_resource type="Texture2D" uid="uid://byv5xlyhjpdvy" path="res://Asset/UI/worklog.png" id="4_fc2gw"]
 [ext_resource type="PackedScene" uid="uid://bg0dhcmtonb5v" path="res://Scene/Tool/hover_scale/return_hover_scale.tscn" id="12_rplc1"]
+[ext_resource type="AudioStream" uid="uid://cosg5j2ks4koj" path="res://Asset/audio/sfx/click_double_on.wav" id="17_klynt"]
+[ext_resource type="AudioStream" uid="uid://5ptq4ensyox3" path="res://Asset/audio/sfx/click_double_off.wav" id="18_4gw2m"]
 [ext_resource type="PackedScene" uid="uid://sku1m53v5qqm" path="res://Scene/Tool/hover_scale/hover_scale.tscn" id="90_hover"]
 [ext_resource type="Texture2D" uid="uid://cgfyusgcpy836" path="res://Asset/UI/Worklog/back.png" id="art_back"]
 [ext_resource type="Texture2D" uid="uid://vuodk6q3f6lx" path="res://Asset/UI/Worklog/background.png" id="art_background"]
@@ -352,3 +354,11 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="HoverScale" parent="Screen/Right/AnswerPanel/Layout/Margin/Row/ClearAnswer" unique_id=996472497 instance=ExtResource("12_rplc1")]
+
+[node name="open_worklog_page" type="AudioStreamPlayer" parent="." unique_id=2021877657]
+stream = ExtResource("17_klynt")
+bus = &"SFX"
+
+[node name="select_keyword" type="AudioStreamPlayer" parent="." unique_id=689073768]
+stream = ExtResource("18_4gw2m")
+bus = &"SFX"

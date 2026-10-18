@@ -20,6 +20,13 @@
 [ext_resource type="Texture2D" uid="uid://bk10s73lct40a" path="res://Asset/studyroom/toybox.png" id="19_nj0vu"]
 [ext_resource type="Texture2D" uid="uid://bsw075b8dw5s3" path="res://Asset/livingroom/SmokeAlarm.png" id="20_rl1os"]
 [ext_resource type="PackedScene" uid="uid://bdoiafjgq4y46" path="res://Scene/Tool/scene_transition/0_1_transition.tscn" id="20_vision"]
+[ext_resource type="AudioStream" uid="uid://ietkg3xbjwb6" path="res://Asset/audio/sfx/door_close.wav" id="22_buoml"]
+[ext_resource type="AudioStream" uid="uid://caodh2hitb5vi" path="res://Asset/audio/sfx/cardboard_hit.wav" id="22_lb5uw"]
+[ext_resource type="AudioStream" uid="uid://cg0trfn3rqbox" path="res://Asset/audio/sfx/震动沙沙声_耳聆网_[声音ID：10794].wav" id="23_lb5uw"]
+[ext_resource type="AudioStream" uid="uid://feonr3lwtglp" path="res://Asset/audio/sfx/lock_quick.wav" id="24_hkotj"]
+[ext_resource type="AudioStream" uid="uid://dnxcfcy2b51a4" path="res://Asset/audio/sfx/转动门把手_耳聆网_[声音ID：14821].wav" id="25_ihnpm"]
+[ext_resource type="AudioStream" uid="uid://lg21igtt2smq" path="res://Asset/audio/sfx/door_open.wav" id="26_ye2jl"]
+[ext_resource type="AudioStream" uid="uid://w5glewlmh0o6" path="res://Asset/audio/sfx/door_knock.wav" id="27_ac6rm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pimtm"]
 size = Vector2(560.8317, 1953.5415)
@@ -38,10 +45,21 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(250, 540)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../sfx/door_knock:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_xl30e"]
 resource_name = "click_door"
-length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -49,10 +67,22 @@ tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(250, 540), Vector2(250, 540)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../sfx/door_knock:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ghsoh"]
@@ -75,6 +105,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../sfx/handle:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_rl1os"]
 resource_name = "click_door"
@@ -90,6 +132,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [0.0, -0.74368334, 0.66675854, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../sfx/handle:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ucsqa"]
@@ -115,10 +169,22 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../sfx/shake:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_vi2nj"]
 resource_name = "click_bookshelf"
-length = 0.8
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -126,10 +192,22 @@ tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.6, 0.8),
+"times": PackedFloat32Array(0, 0.15, 0.45, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [0.0, -0.02617993877991494, 0.02617993877991494, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../sfx/shake:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yd462"]
@@ -140,6 +218,42 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k45oy"]
 size = Vector2(131.21619, 93.56739)
+
+[sub_resource type="Animation" id="Animation_go853"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../sfx/open_box:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_yd462"]
+resource_name = "openbox"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../sfx/open_box:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_go853"]
+_data = {
+&"RESET": SubResource("Animation_go853"),
+&"openbox": SubResource("Animation_yd462")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m4wl0"]
 size = Vector2(620.6105, 432.82425)
@@ -158,10 +272,22 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../sfx/shake:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_ucsqa"]
 resource_name = "click_pc"
-length = 0.8
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -169,10 +295,22 @@ tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.6, 0.8),
+"times": PackedFloat32Array(0, 0.15, 0.45, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [0.0, -0.034906585, 0.034906585, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../sfx/shake:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_buoml"]
@@ -198,10 +336,22 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../sfx/shake:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_ihnpm"]
 resource_name = "click_tulip"
-length = 0.8
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -209,10 +359,22 @@ tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.6, 0.8),
+"times": PackedFloat32Array(0, 0.15, 0.45, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [0.0, -0.034906585, 0.034906585, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../sfx/shake:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ye2jl"]
@@ -239,10 +401,22 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../sfx/shake:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_ac6rm"]
 resource_name = "click_sofa"
-length = 0.8
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -250,10 +424,22 @@ tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.6, 0.8),
+"times": PackedFloat32Array(0, 0.15, 0.45, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [0.0, -0.034906585, 0.034906585, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../sfx/shake:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5y8j8"]
@@ -279,10 +465,22 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../sfx/shake:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_lb5uw"]
 resource_name = "click_toybox"
-length = 0.8
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -290,10 +488,22 @@ tracks/0/path = NodePath(".:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.6, 0.8),
+"times": PackedFloat32Array(0, 0.15, 0.45, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [0.0, -0.034906585, 0.034906585, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../sfx/shake:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hkotj"]
@@ -328,6 +538,42 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sfx/door_close:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sfx/lock:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sfx/door_open:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_m4wl0"]
 resource_name = "elliot_close_door"
@@ -356,10 +602,34 @@ tracks/1/keys = {
 "update": 1,
 "values": [true, true, false, false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sfx/door_close:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sfx/lock:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2.2333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_pdgv6"]
 resource_name = "hal_open_door"
-length = 0.8
+length = 1.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -383,6 +653,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sfx/door_open:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pdgv6"]
@@ -500,18 +782,23 @@ shape = SubResource("RectangleShape2D_pimtm")
 position = Vector2(1715, 952)
 scale = Vector2(1.5546875, 1.3359375)
 
-[node name="PerceptionClick" type="Area2D" parent="StorageBox" unique_id=1355604274 node_paths=PackedStringArray("dialogue_state")]
+[node name="PerceptionClick" type="Area2D" parent="StorageBox" unique_id=1355604274 node_paths=PackedStringArray("dialogue_state", "click_animation_player")]
 scale = Vector2(0.99999994, 1)
 script = ExtResource("4_tptwy")
 dialogue = ExtResource("2_32efi")
 start_title = "observe_storage_box"
 dialogue_state = NodePath("../..")
 dialogue_state_name = "StudyRoom2"
+click_animation_player = NodePath("../AnimationPlayer")
+click_animation = &"openbox"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StorageBox/PerceptionClick" unique_id=524448135]
 position = Vector2(4.5023193, 19.087585)
 scale = Vector2(1, 1.0000001)
 shape = SubResource("RectangleShape2D_k45oy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StorageBox" unique_id=1417167743]
+libraries/ = SubResource("AnimationLibrary_go853")
 
 [node name="PC" type="Sprite2D" parent="." unique_id=2092021270]
 position = Vector2(848.37836, 656.6719)
@@ -613,6 +900,36 @@ texture = ExtResource("15_k45oy")
 libraries/ = SubResource("AnimationLibrary_pdgv6")
 
 [node name="smokealarm" type="Sprite2D" parent="." unique_id=749300025]
-position = Vector2(1374, 59)
-scale = Vector2(0.5178572, 0.5178572)
+position = Vector2(1351, 25)
+scale = Vector2(0.34226194, 0.3422619)
 texture = ExtResource("20_rl1os")
+
+[node name="sfx" type="Node2D" parent="." unique_id=2025277613]
+
+[node name="door_close" type="AudioStreamPlayer" parent="sfx" unique_id=1939548832]
+stream = ExtResource("22_buoml")
+bus = &"SFX"
+
+[node name="open_box" type="AudioStreamPlayer" parent="sfx" unique_id=513301266]
+stream = ExtResource("22_lb5uw")
+bus = &"SFX"
+
+[node name="shake" type="AudioStreamPlayer" parent="sfx" unique_id=1029145059]
+stream = ExtResource("23_lb5uw")
+bus = &"SFX"
+
+[node name="lock" type="AudioStreamPlayer" parent="sfx" unique_id=973070039]
+stream = ExtResource("24_hkotj")
+bus = &"SFX"
+
+[node name="handle" type="AudioStreamPlayer" parent="sfx" unique_id=2119373679]
+stream = ExtResource("25_ihnpm")
+bus = &"SFX"
+
+[node name="door_open" type="AudioStreamPlayer" parent="sfx" unique_id=1706928390]
+stream = ExtResource("26_ye2jl")
+bus = &"SFX"
+
+[node name="door_knock" type="AudioStreamPlayer" parent="sfx" unique_id=1778435718]
+stream = ExtResource("27_ac6rm")
+bus = &"SFX"

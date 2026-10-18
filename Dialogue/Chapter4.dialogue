@@ -5,6 +5,7 @@ do SceneTransition.change_scene("res://Scene/End/end_2.tscn", 0.8)
 
 ~ end2
 do wait(3.0)
+do AudioManager.stop_music(1.0)
 do SaveManager.return_to_menu()
 => END
 

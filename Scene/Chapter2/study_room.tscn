@@ -103,7 +103,7 @@ position = Vector2(783.00006, 1011.75)
 scale = Vector2(0.42543888, 0.42543876)
 texture = ExtResource("16_1o5ci")
 
-[node name="smokealarm" type="Sprite2D" parent="." unique_id=1962744045]
-position = Vector2(1374, 59)
-scale = Vector2(0.5178572, 0.5178572)
+[node name="smokealarm" type="Sprite2D" parent="." unique_id=1763991435]
+position = Vector2(1351, 25)
+scale = Vector2(0.34226194, 0.3422619)
 texture = ExtResource("17_cv5de")

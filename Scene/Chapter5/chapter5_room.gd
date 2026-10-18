@@ -118,8 +118,8 @@ func show_emotion() -> void:
 	var session_id := SaveManager.session_id
 	Attributes.open()
 	await Attributes.screen.visibility_changed
-	if room != "garden" and SaveManager.session_id == session_id:
-		SceneTransition.change_scene("res://Scene/Chapter5/garden.tscn")
+	if SaveManager.session_id == session_id:
+		SceneTransition.change_scene_with_animation("res://Scene/Chapter6/chapter6_bedroom.tscn", "res://Scene/Tool/scene_transition/5_6_transition.tscn", "5_6_transition", 2.0)
 
 func _exit_tree() -> void:
 	WorkLog.dialogue_states.clear()

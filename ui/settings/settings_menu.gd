@@ -7,6 +7,8 @@ var display_index := 2
 var interaction_locked := false
 var navigation_hidden := false
 
+@onready var open_setting_page: AudioStreamPlayer = $open_setting_page
+
 
 func _ready() -> void:
 	$Backdrop.hide()
@@ -48,6 +50,7 @@ func open() -> void:
 		return
 	$Backdrop/Panel/Layout/ReturnToTitle.visible = SaveManager.track_play_time
 	$Backdrop.show()
+	open_setting_page.play()
 	panel.grab_focus()
 
 func close() -> void:

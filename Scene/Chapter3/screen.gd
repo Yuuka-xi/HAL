@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+@export var click_sound: AudioStream
+
 const REQUIRED_PAGES := ["system", "network", "update", "date", "display", "computer", "order"]
 const OPTIONS := {"Systeminfo/Systeminfo": "system", "Internet/Internet": "network", "Uodate/Update": "update", "Date/Date": "date", "Display2/Display": "display", "Battery": "power"}
 const DESKTOP_PAGES := {"RecycleBin": "recycle", "Computer": "computer", "OrderII": "order"}
@@ -23,6 +25,12 @@ func _ready() -> void:
 	$StartPage/Restart.pressed.connect(get_parent().show_dialogue.bind("restart", true))
 	$BackButton.hide()
 	_hide_content()
+
+func _input(event: InputEvent) -> void:
+	if not visible or SettingsMenu.is_open():
+		return
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		AudioManager.play_sfx(click_sound, 0.5)
 
 func _update_navigation() -> void:
 	SettingsMenu.set_navigation_hidden(visible)

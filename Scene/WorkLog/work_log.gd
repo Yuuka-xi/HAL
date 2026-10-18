@@ -27,6 +27,10 @@ var keyword_effect = preload("res://Dialogue/DialogueBallon/keyword_effect.gd").
 @onready var screen: Control = %Screen
 @onready var default_notice: String = %Notice.text
 
+@onready var open_worklog_page: AudioStreamPlayer = $open_worklog_page
+@onready var select_keyword: AudioStreamPlayer = $select_keyword
+
+
 func _ready() -> void:
 	keyword_effect.highlight_color = Color("53584c")
 	keyword_effect.label = %Result
@@ -51,6 +55,7 @@ func open() -> void:
 		return
 	%AnswerPanel.visible = not submit_title.is_empty()
 	%Close.visible = close_allowed
+	open_worklog_page.play()
 	_show()
 	_update_answer()
 	await closed
@@ -194,6 +199,7 @@ func _set_target(value: String) -> void:
 	%AnswerInput.set_pressed_no_signal(target == "answer")
 
 func _select(id: String) -> void:
+	select_keyword.play()
 	var words: Array[String] = selected if target == "query" else answer
 	if id in words:
 		words.erase(id)

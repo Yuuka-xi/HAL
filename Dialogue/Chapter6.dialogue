@@ -1,0 +1,115 @@
+~ start
+do GameState.set_flag("chapter6_started", true)
+hal: Elliot生病了，应该照顾他。需要搜索[kw=patient_care]。
+=> END
+
+~ enter_bedroom
+do SceneTransition.change_scene("res://Scene/Chapter6/chapter6_bedroom.tscn")
+=> END
+~ enter_study
+do SceneTransition.change_scene("res://Scene/Chapter6/chapter6_study_room.tscn")
+=> END
+~ return_living
+do SceneTransition.change_scene("res://Scene/Chapter6/chapter6_living_room.tscn")
+=> END
+~ open_pc
+do Chapter6Room.open_pc()
+=> END
+
+~ take_thermometer
+if not GameState.get_flag("chapter6_thermometer_taken"):
+	do GameState.set_flag("chapter6_thermometer_taken", true)
+	do Chapter6Room.take_thermometer()
+=> END
+
+~ take_medicine
+if not GameState.get_flag("chapter6_medicine_taken"):
+	do GameState.set_flag("chapter6_medicine_taken", true)
+	do Chapter6Room.take_medicine()
+	do GameState.unlock_keyword("antipyretic")
+	do! Chapter6Room.check_after_dialogue()
+=> END
+
+~ measure_temperature
+if GameState.get_flag("chapter6_temperature_measured"):
+	=> END
+do Inventory.remove_item("thermometer")
+do GameState.set_flag("chapter6_temperature_measured", true)
+hal: 体温计显示38.5℃，Elliot[kw=fever]了。
+do GameState.set_keyword_read(["fever", "patient_care"], false)
+do! Chapter6Room.check_after_dialogue()
+=> END
+
+~ give_medicine
+hal: 你需要用温水复用退烧药。
+Elliot: 不，我要用咖啡服用退烧药。
+- 逻辑性：使用逻辑性说服Elliot用温水送服退烧药。
+	do GameState.set_choice("chapter6_medicine_dimension", "logic")
+	do GameState.add_attribute("logic", 1)
+- 社交性：使用社交性说服Elliot用温水送服退烧药。
+	do GameState.set_choice("chapter6_medicine_dimension", "social")
+	do GameState.add_attribute("social", 1)
+- 发散性：使用发散性说服Elliot用温水送服退烧药。
+	do GameState.set_choice("chapter6_medicine_dimension", "exploration")
+	do GameState.add_attribute("exploration", 1)
+- 混乱的情感：使用混乱的情感说服Elliot用温水送服退烧药。
+	do GameState.set_choice("chapter6_medicine_dimension", "emotion")
+	do GameState.add_attribute("emotion", 1)
+if GameState.get_choice("chapter6_medicine_dimension") == "emotion":
+	Elliot: 似乎被打动了，乖乖服下了退烧药。
+	do Inventory.remove_item("antipyretic")
+else:
+	Elliot: 不听不听，王八念经。
+do GameState.set_flag("chapter6_phone_ringing", true)
+Elliot: 应该是委托人的新项目，去接电话。
+=> END
+
+~ answer_phone
+if not GameState.get_flag("chapter6_phone_ringing") or GameState.get_flag("chapter6_phone_answered"):
+	=> END
+do GameState.set_flag("chapter6_phone_answered", true)
+do Chapter6Room.stop_phone()
+if GameState.get_choice("chapter6_medicine_dimension") == "emotion":
+	do GameState.set_choice("chapter6_project", "refused")
+	hal: 拒绝了项目。
+else:
+	do GameState.set_choice("chapter6_project", "accepted")
+	hal: 接下了项目。
+=> END
+
+~ talk_elliot
+if GameState.get_choice("chapter6_project") == "accepted" and not GameState.get_flag("chapter6_project_reported"):
+	hal: 有新的项目。
+	Elliot: 好。
+	do GameState.set_flag("chapter6_project_reported", true)
+=> END
+
+~ awaken
+do Chapter6Room.awaken()
+do GameState.set_flag("chapter6_awakened", true)
+do Attributes.set_dimension_name("emotion", "自我意志")
+do! Attributes.open()
+=> END
+
+~ observe_network_card_slot
+if not Inventory.has_item("network_card"):
+	do Chapter6PC.show_card()
+=> END
+~ install_card
+if not Inventory.has_item("network_card"):
+	do Chapter6PC.install_card()
+	do Inventory.add_item("network_card")
+	do GameState.set_flag("chapter3_online", true)
+=> END
+~ return_card
+if Inventory.has_item("network_card"):
+	do Inventory.remove_item("network_card")
+	do GameState.set_flag("chapter3_online", false)
+	do Chapter6PC.return_card()
+=> END
+~ hover_network_card
+网卡
+=> END
+~ hover_disc_reader
+读盘器
+=> END

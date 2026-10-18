@@ -1,0 +1,107 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scene/Chapter6/chapter6_room.gd" id="c5_room"]
+[ext_resource type="Resource" path="res://Dialogue/Chapter6.dialogue" id="c5_dialogue"]
+[ext_resource type="Texture2D" uid="uid://8p5nmmhfel37" path="res://Asset/studyroom/background.png" id="3_v3f6a"]
+[ext_resource type="Texture2D" uid="uid://ce85b32v36g7s" path="res://Asset/studyroom/wall.png" id="4_snun3"]
+[ext_resource type="Texture2D" uid="uid://cn30vjdjhexx0" path="res://Asset/studyroom/elliot.png" id="7_fscp5"]
+[ext_resource type="Texture2D" uid="uid://b5f1efusho52d" path="res://Asset/studyroom/curtain.png" id="8_gw682"]
+[ext_resource type="Texture2D" uid="uid://ckfkvb8cptwqu" path="res://Asset/studyroom/PC.png" id="9_m58cp"]
+[ext_resource type="Texture2D" uid="uid://rjkoxe47o3v3" path="res://Asset/studyroom/tulip.png" id="11_vmtxx"]
+[ext_resource type="Texture2D" uid="uid://c4keu3f2jicb4" path="res://Asset/studyroom/desk.png" id="12_rtbgo"]
+[ext_resource type="Texture2D" uid="uid://cki1r7sam6nb1" path="res://Asset/studyroom/sofa.png" id="13_qlgxx"]
+[ext_resource type="Texture2D" uid="uid://bk10s73lct40a" path="res://Asset/studyroom/toybox.png" id="14_kyu48"]
+[ext_resource type="Texture2D" uid="uid://4h314655l78u" path="res://Asset/studyroom/chargingpile.png" id="15_2qsm1"]
+[ext_resource type="PackedScene" uid="uid://cuud2qofw5b8i" path="res://Scene/Chapter1/book_shelf.tscn" id="16_qwhxh"]
+[ext_resource type="PackedScene" path="res://Scene/Chapter6/chapter6_pc.tscn" id="17_u3mqj"]
+[ext_resource type="Texture2D" uid="uid://bsw075b8dw5s3" path="res://Asset/livingroom/SmokeAlarm.png" id="18_rb7w8"]
+
+[sub_resource type="Animation" id="Animation_tptwy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Elliot:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.001),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pdgv6"]
+_data = {
+&"RESET": SubResource("Animation_tptwy")
+}
+
+[node name="StudyRoom" type="Node2D" unique_id=939539833]
+script = ExtResource("c5_room")
+dialogue = ExtResource("c5_dialogue")
+room = "study"
+
+[node name="background1" type="Sprite2D" parent="." unique_id=1344781212]
+position = Vector2(960.00006, 539.99994)
+scale = Vector2(0.3880356, 0.49999994)
+texture = ExtResource("3_v3f6a")
+
+[node name="wall" type="Sprite2D" parent="." unique_id=368570682]
+position = Vector2(1134.7863, 539.75)
+scale = Vector2(0.48010764, 0.50023144)
+texture = ExtResource("4_snun3")
+
+[node name="Elliot" type="Sprite2D" parent="." unique_id=1630145726]
+visible = false
+position = Vector2(341.78616, 671.00006)
+scale = Vector2(0.4862043, 0.48620427)
+texture = ExtResource("7_fscp5")
+
+[node name="curtain" type="Sprite2D" parent="." unique_id=30220602]
+position = Vector2(1011, 522.00006)
+scale = Vector2(0.4334941, 0.49758264)
+texture = ExtResource("8_gw682")
+
+[node name="PC" type="Sprite2D" parent="." unique_id=2092021270]
+position = Vector2(848.37836, 656.6719)
+scale = Vector2(0.4366668, 0.4366668)
+texture = ExtResource("9_m58cp")
+
+[node name="Tulip" type="Sprite2D" parent="." unique_id=1630688574]
+position = Vector2(1035, 639)
+scale = Vector2(0.4687499, 0.46874997)
+texture = ExtResource("11_vmtxx")
+
+[node name="Desk" type="Sprite2D" parent="." unique_id=818718368]
+position = Vector2(872, 817.4095)
+scale = Vector2(0.5346342, 0.4585361)
+texture = ExtResource("12_rtbgo")
+
+[node name="Sofa" type="Sprite2D" parent="." unique_id=868732786]
+position = Vector2(1380.6067, 866.6327)
+scale = Vector2(0.4342074, 0.43420738)
+texture = ExtResource("13_qlgxx")
+
+[node name="Toybox" type="Sprite2D" parent="." unique_id=496859004]
+position = Vector2(783.00006, 1011.75)
+scale = Vector2(0.42543888, 0.42543876)
+texture = ExtResource("14_kyu48")
+
+[node name="chargingpile" type="Sprite2D" parent="." unique_id=659815291]
+position = Vector2(433, 1035.25)
+scale = Vector2(0.54042506, 0.5196632)
+texture = ExtResource("15_2qsm1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1656242460]
+libraries/ = SubResource("AnimationLibrary_pdgv6")
+
+[node name="BookShelf" parent="." unique_id=1077337476 instance=ExtResource("16_qwhxh")]
+position = Vector2(1752, 582)
+
+[node name="ComputerCloseup" parent="." unique_id=834677329 instance=ExtResource("17_u3mqj")]
+visible = false
+
+[node name="smokealarm" type="Sprite2D" parent="." unique_id=1172464340]
+position = Vector2(1374, 59)
+scale = Vector2(0.5178572, 0.5178572)
+texture = ExtResource("18_rb7w8")

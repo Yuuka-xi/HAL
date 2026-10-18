@@ -1,4 +1,8 @@
 ~ start
+do AudioManager.play_sfx(load("res://Asset/audio/sfx/电流声_耳聆网_[声音ID：44380].ogg"))
+do AudioManager.music_fade_duration = 2.0
+do AudioManager.play_music(load("res://Asset/audio/music/WAV_Long_Ago.wav"))
+do wait(1.0)
 听觉传感器信号: 电流声
 [kw=unknown_audio_source]: ……喂，喂？开始测试：你是谁？
 思考: [kw=hal]正在进行深度思考…… [next=2]

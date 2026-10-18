@@ -6,6 +6,10 @@ signal response_selected(response: DialogueResponse)
 var choices: Dictionary = {}
 var choosing := false
 
+@onready var open_attribute_page: AudioStreamPlayer = $open_attribute_page
+@onready var select_attribute: AudioStreamPlayer = $select_attribute
+
+
 func _ready() -> void:
 	screen.hide()
 	$Open.pressed.connect(open)
@@ -20,6 +24,7 @@ func open() -> void:
 		return
 	choices.clear()
 	_clear_thoughts()
+	open_attribute_page.play()
 	%Close.show()
 	_show()
 
@@ -36,6 +41,10 @@ func close() -> void:
 func set_navigation(enabled: bool) -> void:
 	if enabled:
 		GameState.set_flag("attributes_enabled", true)
+
+# 名称可由剧情修改；属性 ID 与数值保持不变。
+func set_dimension_name(id: String, text: String) -> void:
+	GameState.set_choice("dimension_name_" + id, text)
 
 func reset() -> void:
 	choosing = false
@@ -72,6 +81,7 @@ func _clear_thoughts() -> void:
 	%Thought.text = ""
 
 func _select_dimension(id: String) -> void:
+	select_attribute.play()
 	if choices.has(id) and choices[id].is_allowed:
 		response_selected.emit(choices[id])
 

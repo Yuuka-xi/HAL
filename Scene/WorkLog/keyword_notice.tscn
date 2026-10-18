@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bigmd2heeosyn" path="res://Scene/WorkLog/keyword_notice.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://dobg81xruq22b" path="res://Asset/UI/keywordnotice.png" id="2"]
+[ext_resource type="AudioStream" uid="uid://bfx6siralnmmt" path="res://Asset/audio/sfx/pop_3.wav" id="3_qbo58"]
 
 [sub_resource type="AtlasTexture" id="NoticeTexture"]
 atlas = ExtResource("2")
@@ -41,3 +42,7 @@ vertical_alignment = 1
 [node name="Timer" type="Timer" parent="." unique_id=113875391]
 wait_time = 2.5
 one_shot = true
+
+[node name="keyword_show" type="AudioStreamPlayer" parent="." unique_id=703197496]
+stream = ExtResource("3_qbo58")
+bus = &"SFX"

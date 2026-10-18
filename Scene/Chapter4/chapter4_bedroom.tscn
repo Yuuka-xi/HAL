@@ -205,6 +205,6 @@ position = Vector2(2215, 567)
 texture = ExtResource("8_xpsi7")
 
 [node name="smokealarm" type="Sprite2D" parent="." unique_id=1506728266]
-position = Vector2(1636.0001, 52)
+position = Vector2(1636.0001, 38.000004)
 scale = Vector2(0.5178572, 0.5178572)
 texture = ExtResource("19_2ihfu")

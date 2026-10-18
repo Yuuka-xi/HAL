@@ -1,4 +1,5 @@
 ~ start
+do AudioManager.play_music(load("res://Asset/audio/music/WAV_Summer_Night.wav"))
 do GameState.set_keyword_read(["hal","elliot","pc"], true)
 do GameState.set_flag("chapter3_started", true)
 Elliot: hal，我出去一下。你留在家。
@@ -27,7 +28,10 @@ if GameState.get_flag("chapter3_powered"):
 do Chapter3PC.power_off()
 do GameState.set_flag("chapter3_powered", false)
 if not GameState.get_flag("chapter3_information_sorted"):
-	hal: 信息尚未获取完毕，重新打开电脑。
+	if GameState.get_flag("chapter3_card_decided"):
+		hal: 应安装网卡。
+	else:
+		hal: 信息尚未获取完毕，重新打开电脑。
 else:
 	do GameState.set_flag("chapter3_completed", true)
 	do SceneTransition.change_scene("res://Scene/End/end1.tscn", 0.8)

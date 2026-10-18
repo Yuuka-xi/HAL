@@ -14,10 +14,12 @@
 [ext_resource type="Texture2D" uid="uid://b8rp1hckc55tb" path="res://Asset/PCSystem/orderII/background.png" id="10_qovf0"]
 [ext_resource type="Texture2D" uid="uid://1rf2hlc6aaut" path="res://Asset/PCSystem/task.png" id="14_fxlhw"]
 [ext_resource type="Script" uid="uid://b1a8ltngsoxpv" path="res://Scene/Chapter3/screen.gd" id="script"]
+[ext_resource type="AudioStream" path="res://Asset/audio/sfx/鼠标点击_耳聆网_[声音ID：18568].wav" id="click_sound"]
 
 [node name="Screen" type="CanvasLayer" unique_id=91676170]
 layer = 80
 script = ExtResource("script")
+click_sound = ExtResource("click_sound")
 
 [node name="InputBlocker" type="Control" parent="." unique_id=971549743]
 layout_mode = 3

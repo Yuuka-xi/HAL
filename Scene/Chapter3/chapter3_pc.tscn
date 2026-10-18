@@ -12,6 +12,11 @@
 [ext_resource type="Texture2D" uid="uid://c4keu3f2jicb4" path="res://Asset/studyroom/desk.png" id="10_longd"]
 [ext_resource type="Texture2D" uid="uid://ck3m6rcfi5waa" path="res://Asset/PCSystem/start_button.png" id="11_irdf0"]
 [ext_resource type="Texture2D" uid="uid://b74ojeqeorslw" path="res://Asset/PCSystem/PC_start.png" id="13_06qn4"]
+[ext_resource type="AudioStream" uid="uid://cpxs2c381yemy" path="res://Asset/audio/sfx/光盘弹出.wav" id="17_2ge22"]
+[ext_resource type="AudioStream" uid="uid://c1415g3n26mji" path="res://Asset/audio/sfx/item_equip.wav" id="18_a0neg"]
+[ext_resource type="AudioStream" uid="uid://6wg53011bn03" path="res://Asset/audio/sfx/drive_in.wav" id="18_ufv45"]
+[ext_resource type="AudioStream" uid="uid://otub561v3sxe" path="res://Asset/audio/sfx/synth_confirmation.wav" id="20_jmsn0"]
+[ext_resource type="AudioStream" uid="uid://4tx1n0km5tsy" path="res://Asset/audio/sfx/synth_cancel.wav" id="21_fhmrs"]
 [ext_resource type="Texture2D" uid="uid://yvv2rbs15sq" path="res://Asset/UI/back.png" id="c3_back"]
 [ext_resource type="Script" uid="uid://sueen46n1aoo" path="res://Scene/Tool/item_drop_target/item_drop_target.gd" id="c3_drop"]
 [ext_resource type="PackedScene" uid="uid://bg0dhcmtonb5v" path="res://Scene/Tool/hover_scale/return_hover_scale.tscn" id="c3_hover"]
@@ -94,10 +99,58 @@ tracks/4/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("drive_out:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("item_equiped:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("drive_in:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("pc_start:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_irdf0"]
 resource_name = "hal_get_network_card"
-length = 2.0
+length = 1.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -105,7 +158,7 @@ tracks/0/path = NodePath("NetworkCard:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.63),
+"times": PackedFloat32Array(0, 1.5333333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -117,7 +170,7 @@ tracks/1/path = NodePath("NetworkCard:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 2),
+"times": PackedFloat32Array(0, 0.5, 1.8),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(1633, 466), Vector2(1710, 466), Vector2(1860.0001, 58)]
@@ -129,14 +182,27 @@ tracks/2/path = NodePath("NetworkCard:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5, 2),
+"times": PackedFloat32Array(0, 0.5, 1.8),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(0.46852735, 0.46852735), Vector2(0.46852735, 0.46852735), Vector2(0.15825428, 0.15825428)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("item_equiped:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_tgue5"]
 resource_name = "hal_put_network_card_back"
+length = 1.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -173,6 +239,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(0.46852735, 0.46852735), Vector2(0.46852735, 0.46852735)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("drive_in:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_mxfrw"]
 resource_name = "power_on"
@@ -201,6 +279,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("pc_start:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.26666668),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_sg317"]
 resource_name = "show_network_card"
@@ -227,6 +317,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0.46852735, 0.46852735), Vector2(0.46852735, 0.46852735)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("drive_out:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_37jyc"]
@@ -400,14 +502,35 @@ layer = 20
 visible = false
 
 [node name="ReturnButton" type="TextureButton" parent="." unique_id=388335742]
-offset_left = 1677.0001
-offset_top = 15.000002
-offset_right = 1962.0001
-offset_bottom = 307.0
+offset_left = 1581.0
+offset_top = -87.0
+offset_right = 1866.0
+offset_bottom = 205.0
 scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(142.5, 146)
 texture_normal = ExtResource("c3_back")
 
 [node name="HoverScale" parent="ReturnButton" unique_id=1634581090 instance=ExtResource("c3_hover")]
+
+[node name="drive_out" type="AudioStreamPlayer" parent="." unique_id=2064019842]
+stream = ExtResource("17_2ge22")
+bus = &"SFX"
+
+[node name="drive_in" type="AudioStreamPlayer" parent="." unique_id=1286191144]
+stream = ExtResource("18_ufv45")
+bus = &"SFX"
+
+[node name="item_equiped" type="AudioStreamPlayer" parent="." unique_id=99478742]
+stream = ExtResource("18_a0neg")
+bus = &"SFX"
+
+[node name="pc_start" type="AudioStreamPlayer" parent="." unique_id=1089981996]
+stream = ExtResource("20_jmsn0")
+bus = &"SFX"
+
+[node name="pc_turnout" type="AudioStreamPlayer" parent="." unique_id=541200201]
+stream = ExtResource("21_fhmrs")
+bus = &"SFX"
 
 [connection signal="mouse_entered" from="PC/NetworkCardSlot/PerceptionHover" to="PC/NetworkCardSlot/PerceptionHover" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="PC/NetworkCardSlot/PerceptionHover" to="PC/NetworkCardSlot/PerceptionHover" method="_on_mouse_exited"]

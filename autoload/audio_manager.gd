@@ -35,6 +35,22 @@ func play_music(stream: AudioStream) -> void:
 		fade.tween_callback(current.stop)
 	_current_music_player = next_index
 
+func stop_music(duration := 0.8) -> void:
+	var playing: Array[AudioStreamPlayer] = []
+	for player in _music_players:
+		if player.playing:
+			playing.append(player)
+	if playing.is_empty():
+		return
+	if duration > 0.0:
+		var fade := create_tween().set_parallel(true)
+		for player in playing:
+			fade.tween_property(player, "volume_db", -40.0, duration)
+		await fade.finished
+	for player in playing:
+		player.stop()
+
+
 # 音效调用函数
 func play_sfx(stream: AudioStream, volume := 1.0) -> void:
 	if stream == null:

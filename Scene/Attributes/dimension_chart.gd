@@ -22,6 +22,10 @@ func _sync_buttons() -> void:
 		dimensions = {"logic": "逻辑性", "exploration": "发散性", "emotion": "混乱的情感", "social": "社交性"}
 	else:
 		dimensions = {"logic": "逻辑性", "exploration": "发散性", "social": "社交性"}
+	for id in dimensions:
+		var custom_name := GameState.get_choice("dimension_name_" + id)
+		if not custom_name.is_empty():
+			dimensions[id] = custom_name
 	for id in buttons.keys():
 		if not dimensions.has(id):
 			buttons[id].hide()
@@ -29,6 +33,7 @@ func _sync_buttons() -> void:
 			buttons.erase(id)
 	for id in dimensions:
 		if buttons.has(id):
+			buttons[id].text = dimensions[id]
 			continue
 		var button := Button.new()
 		button.text = dimensions[id]
@@ -53,6 +58,7 @@ func refresh() -> void:
 		points.append(center + direction * radius)
 		var button: Button = buttons[id]
 		button.size = Vector2(164, 66)
+		button.size.x = maxf(164.0, button.get_combined_minimum_size().x)
 		button.position = center + direction * (radius + button_distance) - button.size / 2 + Vector2(0, 15)
 		index += 1
 	queue_redraw()

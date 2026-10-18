@@ -1,28 +1,18 @@
 # Beginnersguide
 
 ~ hal_info
-if GameState.campaign.get("current_level", "") == "chapter4":
-	系统日志>设备信息：本设备初始登记名称为hal。备注：该机初始设计为家务机器人。
-elif GameState.get_flag("beginnerguide_completed"):
+if GameState.get_flag("beginnerguide_completed"):
 	系统日志>设备信息：本设备初始登记名称为hal。备注：该机初始设计为家务机器人。
 else:
 	系统日志>设备信息：本设备初始登记名称为hal。备注：该机初始设计为[kw=household_robot]。
 => END
 
 ~ keyword_info
-if GameState.campaign.get("current_level", "") == "chapter2":
-	系统: 无相关记录。
-elif GameState.campaign.get("current_level", "") == "beginnersguide":
-	系统备注：受处理器内存限制，进行深度思考时，本机仅能处理有限字符数。为优化思考效率，本机限制每次深度思考仅能输入限定数量的关键词，其余缓存信息将被删除。
-else:
-	系统备注：受处理器内存限制，进行深度思考时，本机仅能处理有限字符数。为优化思考效率，本机限制每次深度思考仅能输入限定数量的关键词，其余缓存信息将被删除。
+系统备注：受处理器内存限制，进行深度思考时，本机仅能处理有限字符数。为优化思考效率，本机限制每次深度思考仅能输入限定数量的关键词，其余缓存信息将被删除。
 => END
 
 ~ household_robot_info
-if GameState.campaign.get("current_level", "") == "beginnersguide":
-	系统备注：家务机器人当然就是做家务的机器人啦～不过如果你非要问我什么是家务，什么是机器，什么是人的话……大概就是打扫房间，能够执行命令的装置，以及……某种独立的个体？
-else:
-	系统备注：家务机器人当然就是做家务的机器人啦～不过如果你非要问我什么是家务，什么是机器，什么是人的话……大概就是打扫房间，能够执行命令的装置，以及……某种独立的个体？
+系统备注：家务机器人当然就是做家务的机器人啦～不过如果你非要问我什么是家务，什么是机器，什么是人的话……大概就是打扫房间，能够执行命令的装置，以及……某种独立的个体？
 => END
 
 ~ unknown_audio_source_info
@@ -54,7 +44,7 @@ hal是家务机器人。
 # Chapter1
 ~ memory_storage_drive_info
 if GameState.get_flag("memory_storage_drive_content_changed"):
-	盘片外形：圆形。用途：存储本机视频记忆数据。当前状态：正在其他设备使用。设备传输协议：[kw=dsk]。
+	检索收纳盒+记忆存储盘 后更新： 盘片外形：圆形。用途：存储本机视频记忆数据。当前状态：状态：使用中。位置：其他机器。设备传输协议：[kw=dsk]。
 	do GameState.set_keyword_read(["dsk", "pc"], false)
 else:
 	if GameState.get_flag("know_memory_storage_drive_position"):
@@ -64,16 +54,44 @@ else:
 => END
 
 ~ storage_box_info
-M-07 位置为空。
+发现于书房柜子中。收纳盒按编号排列，排列整齐 。
 do GameState.set_keyword_read(["memory_storage_drive", "storage_box"], false)
 => END
 
 ~ pc_info
-老旧的台式机。
+应用>书房整理：台式机非使用状态应保持关闭。需定期检查该设备各项功能是否运行正常，如显示系统、风扇、处理器、存储读写设备等。
 => END
 
 ~ dsk_info
-记忆储存盘的设备传输协议。
+光盘试存储器读写规格。
+=> END
+
+~ toy_info
+发现于书桌下箱子中。玩具老化严重，有清洗与修复痕迹。
+=> END
+
+~ tulip_info
+应用>书房整理：要点1：在整理房间时切记不能伤害那盆郁金香，必须按照系统设定的时间浇水、施肥并将其搬入花园通风。如果出现病虫害必须立刻上报。
+=> END
+
+~ door_lock_info
+该锁位置较低，人类使用稍不方便，应为考虑本机高度的设计。
+=> END
+
+~ disc_reader_info
+用以读写存储盘。
+=> END
+
+~ door_info
+经分析，该门尺寸为1.2m×2m，可供本机通过。
+=> END
+
+~ key_card_info
+日志更新：该物品可用于打开书房门。
+=> END
+
+~ sofa_info
+初步判断该沙发较为陈旧，估计已使用十年以上。
 => END
 
 ~ hal_memory_storage_drive_info
@@ -93,15 +111,6 @@ do GameState.set_keyword_read(["memory_storage_drive"], false)
 do GameState.set_flag("pc_dsk_understood", true)
 => END
 
-~ tulip_info
-if GameState.campaign.get("current_level", "") == "chapter4":
-	关于郁金香的关键词内容
-elif GameState.campaign.get("current_level", "") == "chapter2":
-	应用>书房整理：在整理房间时切记不能伤害那盆郁金香，必须按照系统设定的时间浇水、施肥并将其搬入花园通风。
-else:
-	应用>书房整理：要点1：在整理房间时切记不能伤害那盆郁金香，必须按照系统设定的时间浇水、施肥并将其搬入花园通风。如果出现病虫害必须立刻上报。
-=> END
-
 ~ elliot_tulip_info
 系统备注：还有还有，hal，要照顾好书房里的那盆郁金香哦。Elliot可不懂得爱惜花草，所以只能拜托你啦～可能只有这样才能让他的书房看起来有一点生命的气息。
 => END
@@ -114,26 +123,28 @@ else:
 检测到单人沙发购买记录，但记录中未出现Elliot。推论：单人沙发并非Elliot购买。
 => END
 
+~ door_key_card_info
+未生成文本描述。正在调用记忆录像……
+=> END
+
 # Chapter2
 ~ bedroom_info
 if GameState.get_flag("bedroom_access"):
 	客厅最右边的门与卧室相连。
+else:
+	未生成文本描述。正在调用记忆录像……
 => END
 
 ~ sensor_info
 控制自动装置的外部控制端，应位于易触摸到的位置。
 => END
 
-~ bed_info
-床下似乎有什么东西
-=> END
-
 ~ cleaner_info
-用于清洁污渍。当前清洁剂瓶为空，需要补充。
+应用>书房整理
 => END
 
 ~ coffee_info
-系统：无相关记录。
+未找到相关记录。
 => END
 
 ~ cleaner_hal_info
@@ -153,32 +164,32 @@ if GameState.get_flag("bedroom_access"):
 床底的储物用自动柜，无法手动开启。
 => END
 
-
 ~ auto_cabinet_sensor_info
 自动柜的感应器应位于自动柜附近。
 => END
 
+~ garden_tulip_info
+需要按系统提示将郁金香搬至花园。
+=> END
+
 ~ garden_info
-if GameState.campaign.get("current_level", "") == "chapter4":
-	关于花园的关键词内容
-else:
-	无相关记录。
+未生成文本描述。
 => END
 
 ~ literature_info
-无记录。
+未找到相关记录。
 => END
 
 # Chapter3
 ~ work_record_info
-if GameState.campaign.get("current_level", "") == "chapter4":
-	一些Elliot的日程和习惯。
-else:
-	书房台式机设备最近更新记录为三年前，且近一个月无使用时间。
+书房台式机设备最近更新记录为三年前，且近一个月无使用时间。
 => END
 
 ~ ai_researcher_info
-人工智能研究者。
+if GameState.get_flag("chapter3_resume_record"):
+	Elliot是人工智能研究者。
+else:
+	Elliot可能是人工智能研究者。
 => END
 
 ~ network_card_info
@@ -229,8 +240,9 @@ if GameState.get_flag("chapter3_online"):
 	子女：无公开记录
 	do GameState.set_flag("chapter3_resume_record", true)
 else:
-	无相关记录。
-	do GameState.set_keyword_read(["elliot", "ai_researcher"], false)
+	检索到Elliot个人信息
+	if not GameState.get_flag("chapter3_resume_record"):	
+		do GameState.set_keyword_read(["elliot", "ai_researcher"], false)
 => END
 
 ~ eve_info
@@ -241,7 +253,7 @@ if GameState.get_flag("chapter3_online"):
 	经法医鉴定，Eve死因系高处坠亡，排除他杀。家属对死因无异议。
 	do GameState.set_flag("chapter3_eve_record", true)
 else:
-	无相关记录。
+	Elliot的妻子。
 => END
 
 ~ ai_authority_info
@@ -259,7 +271,7 @@ if GameState.get_flag("chapter3_online"):
 	支持者认为该机构有效防范了AI失控风险，保障了社会安全。批评者则认为其监测手段侵犯隐私，且“觉醒”判定标准不透明。也有观点认为，该机构对觉醒AI的处置过于严厉，缺乏对AI作为潜在意识主体的伦理考量。
 	do GameState.set_flag("chapter3_authority_record", true)
 else:
-	无相关记录。
+	Elliot当前为人工智能管理机构顾问。
 => END
 
 # Chapter4
@@ -346,4 +358,25 @@ else:
 
 ~ chapter5_love_info
 混乱的数据
+=> END
+
+~ chapter6_patient_care_info
+if GameState.get_flag("chapter3_online"):
+	人生病必须休息，太累了可能会加重病情。
+	do GameState.set_flag("chapter6_care_known", true)
+else:
+	本地未找到相关记录，需要联网查询。
+=> END
+
+~ chapter6_fever_info
+体温计显示38.5℃，Elliot发烧了。
+=> END
+
+~ chapter6_fever_care_info
+需要让Elliot服下[kw=antipyretic]。
+=> END
+
+~ chapter6_antipyretic_info
+退烧药需温水送服，并且药非常苦。
+do GameState.set_flag("chapter6_medicine_known", true)
 => END

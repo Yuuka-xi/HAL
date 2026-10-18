@@ -17,7 +17,7 @@ func refresh() -> void:
 	%Status.text = ""
 	for index in slots.size():
 		var metadata := SaveManager.get_save_metadata(index + 1)
-		slots[index].text = "空存档位" if metadata.is_empty() else "存档%d\n游玩时间 %s" % [index + 1, SaveManager.format_seconds(metadata.play_time_seconds)]
+		slots[index].text = "空存档位" if metadata.is_empty() else "存档%d\n%s" % [index + 1, SaveManager.format_seconds(metadata.play_time_seconds)]
 		clear_buttons[index].disabled = not FileAccess.file_exists(SaveManager._path_for_slot(index + 1))
 
 func _clear_slot(slot: int) -> void:

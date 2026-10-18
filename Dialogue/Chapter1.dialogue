@@ -1,4 +1,5 @@
 ~ start
+do AudioManager.play_music(load("res://Asset/audio/music/WAV_Long_Ago.wav"))
 do GameState.set_keyword_read(["hal", "elliot"], true)
 do StudyRoom2.play_phone_ring()
 Elliot: hal，继续完成自检。

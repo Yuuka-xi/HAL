@@ -11,7 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://c4keu3f2jicb4" path="res://Asset/studyroom/desk.png" id="8_7as41"]
 [ext_resource type="Script" uid="uid://84hrx01f6beg" path="res://Scene/Tool/perception_hover/perception_hover.gd" id="9_mkt6m"]
 [ext_resource type="Texture2D" uid="uid://yvv2rbs15sq" path="res://Asset/UI/back.png" id="10_7as41"]
-[ext_resource type="PackedScene" path="res://Scene/Tool/hover_scale/hover_scale.tscn" id="11_rnhah"]
+[ext_resource type="PackedScene" uid="uid://sku1m53v5qqm" path="res://Scene/Tool/hover_scale/hover_scale.tscn" id="11_rnhah"]
+[ext_resource type="AudioStream" uid="uid://cpxs2c381yemy" path="res://Asset/audio/sfx/光盘弹出.wav" id="13_3oq4n"]
+[ext_resource type="AudioStream" uid="uid://c1415g3n26mji" path="res://Asset/audio/sfx/item_equip.wav" id="14_wh5xb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nj0vu"]
 radius = 479.39578
@@ -72,6 +74,30 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("drive_out:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("item_equiped:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_37jyc"]
 resource_name = "hal_get_memory_storage_drive"
@@ -112,6 +138,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("item_equiped:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_wrof7"]
 resource_name = "open_disc_reader"
@@ -138,6 +176,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, -3.1415927]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("drive_out:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_37jyc"]
@@ -260,6 +310,14 @@ scale = Vector2(0.35, 0.35)
 texture_normal = ExtResource("10_7as41")
 
 [node name="HoverScale" parent="Back" unique_id=2028472629 instance=ExtResource("11_rnhah")]
+
+[node name="drive_out" type="AudioStreamPlayer" parent="." unique_id=290645503]
+stream = ExtResource("13_3oq4n")
+bus = &"SFX"
+
+[node name="item_equiped" type="AudioStreamPlayer" parent="." unique_id=982239689]
+stream = ExtResource("14_wh5xb")
+bus = &"SFX"
 
 [connection signal="mouse_entered" from="PC/NetworkCard/PerceptionHover" to="PC/NetworkCard/PerceptionHover" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="PC/NetworkCard/PerceptionHover" to="PC/NetworkCard/PerceptionHover" method="_on_mouse_exited"]

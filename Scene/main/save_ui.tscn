@@ -1,105 +1,204 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3 uid="uid://b2r8nokr3xpse"]
 
-[ext_resource type="Script" path="res://Scene/main/save_ui.gd" id="1"]
-[ext_resource type="Theme" path="res://Scene/main/menu_theme.tres" id="2"]
+[ext_resource type="Texture2D" uid="uid://mt44eow4bre" path="res://Asset/UI/Save/back.png" id="back"]
+[ext_resource type="Texture2D" uid="uid://rrwlc8uqgmoh" path="res://Asset/UI/Save/background.png" id="background"]
+[ext_resource type="Texture2D" uid="uid://m645vgbidu0b" path="res://Asset/UI/Save/clear1.png" id="clear1"]
+[ext_resource type="Texture2D" uid="uid://cm21e62dh1v1t" path="res://Asset/UI/Save/clear2.png" id="clear2"]
+[ext_resource type="Texture2D" uid="uid://b3n8tgfcyp0j0" path="res://Asset/UI/Save/clear3.png" id="clear3"]
+[ext_resource type="Script" uid="uid://b2jqdjnxdlf4s" path="res://Scene/main/save_ui.gd" id="script"]
+[ext_resource type="Texture2D" uid="uid://udxnfw8eluho" path="res://Asset/UI/Save/slot1.png" id="slot1"]
+[ext_resource type="Texture2D" uid="uid://rw0en2xf7s57" path="res://Asset/UI/Save/slot2.png" id="slot2"]
+[ext_resource type="Texture2D" uid="uid://slglks4574fj" path="res://Asset/UI/Save/slot3.png" id="slot3"]
 
-[node name="SaveUI" type="Control"]
+[ext_resource type="PackedScene" path="res://Scene/Tool/hover_scale/return_hover_scale.tscn" id="hover"]
+
+[sub_resource type="StyleBoxEmpty" id="empty"]
+
+[sub_resource type="Theme" id="theme"]
+default_font_size = 44
+Button/colors/font_color = Color(0.9098, 0.8784, 0.7882, 1)
+Button/colors/font_disabled_color = Color(0.9098, 0.8784, 0.7882, 0.4)
+Button/colors/font_focus_color = Color(0.9098, 0.8784, 0.7882, 1)
+Button/colors/font_hover_color = Color(0.9098, 0.8784, 0.7882, 1)
+Button/colors/font_pressed_color = Color(0.9098, 0.8784, 0.7882, 1)
+Button/styles/focus = SubResource("empty")
+Label/colors/font_color = Color(0.9098, 0.8784, 0.7882, 1)
+
+[sub_resource type="StyleBoxTexture" id="slot1"]
+texture = ExtResource("slot1")
+
+[sub_resource type="StyleBoxTexture" id="clear1"]
+texture = ExtResource("clear1")
+
+[sub_resource type="StyleBoxTexture" id="slot2"]
+texture = ExtResource("slot2")
+
+[sub_resource type="StyleBoxTexture" id="clear2"]
+texture = ExtResource("clear2")
+
+[sub_resource type="StyleBoxTexture" id="slot3"]
+texture = ExtResource("slot3")
+
+[sub_resource type="StyleBoxTexture" id="clear3"]
+texture = ExtResource("clear3")
+
+[sub_resource type="StyleBoxTexture" id="back"]
+texture = ExtResource("back")
+
+[node name="SaveUI" type="Control" unique_id=97457112]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2")
-script = ExtResource("1")
+theme = SubResource("theme")
+script = ExtResource("script")
 
-[node name="Center" type="CenterContainer" parent="."]
+[node name="Background" type="TextureRect" parent="." unique_id=562481858]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("background")
+expand_mode = 1
 
-[node name="Layout" type="VBoxContainer" parent="Center"]
-custom_minimum_size = Vector2(680, 0)
-layout_mode = 2
-theme_override_constants/separation = 22
+[node name="Center" type="Control" parent="." unique_id=1222463777]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
-[node name="Title" type="Label" parent="Center/Layout"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 48
-text = "选择存档"
-horizontal_alignment = 1
+[node name="Layout" type="Control" parent="Center" unique_id=247402295]
+layout_mode = 1
+anchor_left = 0.53
+anchor_top = 0.08
+anchor_right = 0.97
+anchor_bottom = 0.95
+mouse_filter = 2
 
-[node name="Hint" type="Label" parent="Center/Layout"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.6, 0.66, 0.73, 1)
-theme_override_font_sizes/font_size = 22
-text = "选择已有存档继续，或选择空位开始新游戏"
-horizontal_alignment = 1
-
-[node name="Slot1" type="Button" parent="Center/Layout"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(680, 132)
-layout_mode = 2
-text = "存档 1"
-
-[node name="Clear1" type="Button" parent="Center/Layout/Slot1"]
+[node name="Slot1" type="Button" parent="Center/Layout" unique_id=587228552]
 unique_name_in_owner = true
 layout_mode = 0
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = 64.0
-offset_right = 260.0
-offset_bottom = 132.0
-theme_override_colors/font_color = Color(1, 0.3, 0.3, 1)
-text = "清除存档"
+offset_right = 515.0
+offset_bottom = 195.0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.8980392, 0.85490197, 0.76862746, 1)
+theme_override_colors/font_focus_color = Color(0.8980392, 0.85490197, 0.76862746, 1)
+theme_override_colors/font_pressed_color = Color(0.8980392, 0.85490197, 0.76862746, 1)
+theme_override_colors/font_hover_color = Color(0.8980392, 0.85490197, 0.76862746, 1)
+theme_override_styles/normal = SubResource("slot1")
+theme_override_styles/pressed = SubResource("slot1")
+theme_override_styles/hover = SubResource("slot1")
+theme_override_styles/disabled = SubResource("slot1")
+text = "存档1"
 
-[node name="Slot2" type="Button" parent="Center/Layout"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(680, 132)
-layout_mode = 2
-text = "存档 2"
-
-[node name="Clear2" type="Button" parent="Center/Layout/Slot2"]
-unique_name_in_owner = true
-layout_mode = 0
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = 64.0
-offset_right = 260.0
-offset_bottom = 132.0
-theme_override_colors/font_color = Color(1, 0.3, 0.3, 1)
-text = "清除存档"
-
-[node name="Slot3" type="Button" parent="Center/Layout"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(680, 132)
-layout_mode = 2
-text = "存档 3"
-
-[node name="Clear3" type="Button" parent="Center/Layout/Slot3"]
+[node name="Clear1" type="Button" parent="Center/Layout" unique_id=457490853]
 unique_name_in_owner = true
 layout_mode = 0
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = 64.0
-offset_right = 260.0
-offset_bottom = 132.0
-theme_override_colors/font_color = Color(1, 0.3, 0.3, 1)
-text = "清除存档"
+offset_left = 600.0
+offset_top = 0.0
+offset_right = 830.0
+offset_bottom = 180.0
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("clear1")
+theme_override_styles/pressed = SubResource("clear1")
+theme_override_styles/hover = SubResource("clear1")
+theme_override_styles/disabled = SubResource("clear1")
+text = "清除"
 
-[node name="Back" type="Button" parent="Center/Layout"]
+[node name="Slot2" type="Button" parent="Center/Layout" unique_id=1494305507]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 64)
-layout_mode = 2
+layout_mode = 0
+offset_top = 240.0
+offset_right = 515.0
+offset_bottom = 400.0
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("slot2")
+theme_override_styles/pressed = SubResource("slot2")
+theme_override_styles/hover = SubResource("slot2")
+theme_override_styles/disabled = SubResource("slot2")
+text = "存档2"
+
+[node name="Clear2" type="Button" parent="Center/Layout" unique_id=1132988499]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 600.0
+offset_top = 240.0
+offset_right = 850.0
+offset_bottom = 398.0
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("clear2")
+theme_override_styles/pressed = SubResource("clear2")
+theme_override_styles/hover = SubResource("clear2")
+theme_override_styles/disabled = SubResource("clear2")
+text = "清除"
+
+[node name="Slot3" type="Button" parent="Center/Layout" unique_id=1240338486]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 470.0
+offset_right = 515.0
+offset_bottom = 630.0
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("slot3")
+theme_override_styles/pressed = SubResource("slot3")
+theme_override_styles/hover = SubResource("slot3")
+theme_override_styles/disabled = SubResource("slot3")
+text = "存档3"
+
+[node name="Clear3" type="Button" parent="Center/Layout" unique_id=989941506]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 600.0
+offset_top = 470.0
+offset_right = 850.0
+offset_bottom = 628.0
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("clear3")
+theme_override_styles/pressed = SubResource("clear3")
+theme_override_styles/hover = SubResource("clear3")
+theme_override_styles/disabled = SubResource("clear3")
+text = "清除"
+
+[node name="Back" type="Button" parent="Center/Layout" unique_id=157342221]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 700.0
+offset_right = 250.0
+offset_bottom = 840.0
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("back")
+theme_override_styles/pressed = SubResource("back")
+theme_override_styles/hover = SubResource("back")
+theme_override_styles/disabled = SubResource("back")
 text = "返回"
 
-[node name="Status" type="Label" parent="Center/Layout"]
+[node name="Status" type="Label" parent="Center/Layout" unique_id=1952009629]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.65, 0.55, 1)
-theme_override_font_sizes/font_size = 20
-horizontal_alignment = 1
+layout_mode = 0
+offset_top = 850.0
+offset_right = 840.0
+offset_bottom = 900.0
+theme_override_font_sizes/font_size = 24
+autowrap_mode = 2
+
+[node name="HoverScale" parent="Center/Layout/Slot1" instance=ExtResource("hover")]
+
+[node name="HoverScale" parent="Center/Layout/Slot2" instance=ExtResource("hover")]
+
+[node name="HoverScale" parent="Center/Layout/Slot3" instance=ExtResource("hover")]
+
+[node name="HoverScale" parent="Center/Layout/Clear1" instance=ExtResource("hover")]
+
+[node name="HoverScale" parent="Center/Layout/Clear2" instance=ExtResource("hover")]
+
+[node name="HoverScale" parent="Center/Layout/Clear3" instance=ExtResource("hover")]
+
+[node name="HoverScale" parent="Center/Layout/Back" instance=ExtResource("hover")]

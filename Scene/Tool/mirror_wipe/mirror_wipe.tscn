@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://osf0vrfc5td6" path="res://Asset/bedroom/dirty_mirror.png" id="5_10v0b"]
 [ext_resource type="Texture2D" uid="uid://bv0inov5dhdeo" path="res://Asset/bedroom/frame.png" id="5_88au2"]
 [ext_resource type="Texture2D" uid="uid://b0g25y5xe7jwi" path="res://Asset/bedroom/right_hand.png" id="6_rerxj"]
+[ext_resource type="AudioStream" uid="uid://didlhewfxyc4j" path="res://Asset/audio/sfx/用抹布擦拭玻璃_耳聆网_[声音ID：11428].wav" id="10_8q6jr"]
 [ext_resource type="Shader" uid="uid://mctydfj6sq2o" path="res://Scene/Tool/mirror_wipe/dirt.gdshader" id="dirt_shader"]
 
 [sub_resource type="ShaderMaterial" id="Dirt"]
@@ -18,60 +19,61 @@ shader = ExtResource("dirt_shader")
 script = ExtResource("1")
 
 [node name="Clean" type="TextureRect" parent="." unique_id=1950299989]
-offset_left = 3.0
-offset_top = 16.0
-offset_right = 369.64084
-offset_bottom = 878.0
+offset_left = -200.0
+offset_top = -417.21066
+offset_right = 166.64084
+offset_bottom = 444.78934
+pivot_offset = Vector2(200, 420)
 mouse_filter = 2
 texture = ExtResource("4_qtldr")
 expand_mode = 1
 
 [node name="hal" type="Node2D" parent="." unique_id=621534289]
-position = Vector2(-3, -20)
+position = Vector2(-10, 160.78934)
 
 [node name="body" type="Sprite2D" parent="hal" unique_id=226359979]
-position = Vector2(194.99998, 691.00006)
+position = Vector2(-5.3074493, 82.206665)
 scale = Vector2(0.48757774, 0.48757777)
 texture = ExtResource("3_1dgqa")
 
 [node name="head" type="Sprite2D" parent="hal" unique_id=1124149056]
-position = Vector2(194, 454.00003)
+position = Vector2(-6.307434, -154.79337)
 scale = Vector2(0.48757774, 0.48757777)
 texture = ExtResource("4_8q6jr")
 
 [node name="lefthand" type="Sprite2D" parent="hal" unique_id=961889572]
-position = Vector2(111.999985, 541.00006)
+position = Vector2(-88.30745, -67.793335)
 scale = Vector2(0.48757774, 0.48757777)
 texture = ExtResource("5_2y61w")
 
 [node name="righthand" type="Sprite2D" parent="hal" unique_id=1634794016]
-position = Vector2(241.99998, 513.00006)
+position = Vector2(41.69255, -95.793335)
 scale = Vector2(0.48757774, 0.48757777)
 texture = ExtResource("6_rerxj")
 
 [node name="Label" type="Label" parent="hal" unique_id=1029717793]
-visible = false
-offset_left = 286.00003
-offset_top = 357.0
-offset_right = 326.00003
-offset_bottom = 411.0
+offset_left = 81.0
+offset_top = -251.0
+offset_right = 121.0
+offset_bottom = -197.0
 rotation = 0.17025343
-theme_override_colors/font_color = Color(0.92253447, 0.9042444, 0.86924887, 1)
+theme_override_colors/font_color = Color(0.22348997, 0.09073072, 0.00759703, 1)
 theme_override_font_sizes/font_size = 50
 text = "?"
 
 [node name="Dirty" type="TextureRect" parent="." unique_id=1302829799]
 material = SubResource("Dirt")
-offset_left = 3.0
-offset_top = 16.0
-offset_right = 364.0
-offset_bottom = 847.0
+offset_left = -200.0
+offset_top = -417.21066
+offset_right = 161.0
+offset_bottom = 413.78934
+pivot_offset = Vector2(200, 420)
 mouse_filter = 2
 texture = ExtResource("5_10v0b")
 expand_mode = 1
 
 [node name="frame" type="Sprite2D" parent="." unique_id=325992064]
-position = Vector2(192.375, 433.9957)
+position = Vector2(-10.625, 18)
 scale = Vector2(0.50504714, 0.50504714)
 texture = ExtResource("5_88au2")
 
@@ -83,3 +85,7 @@ visible = false
 mouse_filter = 2
 expand_mode = 1
 stretch_mode = 5
+
+[node name="wipe" type="AudioStreamPlayer" parent="." unique_id=1468617748]
+stream = ExtResource("10_8q6jr")
+bus = &"SFX"

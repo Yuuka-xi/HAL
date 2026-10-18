@@ -13,6 +13,7 @@ var erased := 0
 var mask: Image
 var mask_texture: ImageTexture
 var previous_mouse_mode: Input.MouseMode
+var sound_remaining := 0.0
 
 func _ready() -> void:
 	$hal/Label.hide()
@@ -37,9 +38,13 @@ func _exit_tree() -> void:
 	if active:
 		Input.mouse_mode = previous_mouse_mode
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if active:
 		_update_cursor()
+	if $wipe.playing:
+		sound_remaining -= delta
+		if not active or not pressed or sound_remaining <= 0.0:
+			$wipe.stop()
 
 func _update_cursor() -> void:
 	var transform := get_global_transform_with_canvas()
@@ -57,7 +62,15 @@ func _input(event: InputEvent) -> void:
 		previous = Vector2(-1, -1)
 		if pressed:
 			wipe_at(get_local_mouse_position())
+		else:
+			$wipe.stop()
 	elif event is InputEventMouseMotion and pressed:
+		if get_mirror_rect().has_point(get_local_mouse_position()) and not event.relative.is_zero_approx():
+			sound_remaining = 0.1
+			if not $wipe.playing:
+				$wipe.play()
+		else:
+			$wipe.stop()
 		wipe_at(get_local_mouse_position())
 	if event is InputEventMouseButton or event is InputEventMouseMotion:
 		get_viewport().set_input_as_handled()
@@ -79,6 +92,7 @@ func wipe_at(point: Vector2) -> void:
 	if float(erased) / (mask.get_width() * mask.get_height()) >= completion_ratio:
 		active = false
 		pressed = false
+		$wipe.stop()
 		$Dirty.hide()
 		$Cursor/Icon.hide()
 		Input.mouse_mode = previous_mouse_mode

@@ -1,0 +1,315 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" uid="uid://b5f1efusho52d" path="res://Asset/studyroom/curtain.png" id="1_087iq"]
+[ext_resource type="Texture2D" uid="uid://cyu43hopbr36f" path="res://Asset/PCSystem/networkcard.png" id="2_4olsi"]
+[ext_resource type="Script" uid="uid://dwo4rtkee6e6v" path="res://Scene/Tool/perception_click/perception_click.gd" id="3_lkvtl"]
+[ext_resource type="Resource" path="res://Dialogue/Chapter6.dialogue" id="4_avuw0"]
+[ext_resource type="Texture2D" uid="uid://ckfkvb8cptwqu" path="res://Asset/studyroom/PC.png" id="5_610j7"]
+[ext_resource type="Texture2D" uid="uid://b8716axf8nqek" path="res://Asset/studyroom/networkcard.png" id="6_ypjv4"]
+[ext_resource type="Script" uid="uid://84hrx01f6beg" path="res://Scene/Tool/perception_hover/perception_hover.gd" id="7_vfmoo"]
+[ext_resource type="Script" uid="uid://sueen46n1aoo" path="res://Scene/Tool/item_drop_target/item_drop_target.gd" id="8_miun3"]
+[ext_resource type="Texture2D" uid="uid://dgxfoc1fu368u" path="res://Asset/studyroom/DiscReader.png" id="9_on555"]
+[ext_resource type="Texture2D" uid="uid://ck3m6rcfi5waa" path="res://Asset/PCSystem/start_button.png" id="10_cvsot"]
+[ext_resource type="Texture2D" uid="uid://c4keu3f2jicb4" path="res://Asset/studyroom/desk.png" id="11_hoeeg"]
+[ext_resource type="Texture2D" uid="uid://yvv2rbs15sq" path="res://Asset/UI/back.png" id="12_tt77a"]
+[ext_resource type="PackedScene" uid="uid://bg0dhcmtonb5v" path="res://Scene/Tool/hover_scale/return_hover_scale.tscn" id="13_nmeyt"]
+[ext_resource type="Script" path="res://Scene/Chapter6/chapter6_pc.gd" id="c5_script"]
+
+[sub_resource type="RectangleShape2D" id="CardShape"]
+size = Vector2(516.0901, 398.79684)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3oq4n"]
+size = Vector2(956.59863, 265.16772)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_37jyc"]
+size = Vector2(88.80853, 24.661335)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_06qn4"]
+size = Vector2(129.74911, 128.01732)
+
+[sub_resource type="Animation" id="Animation_3vqkb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NetworkCard:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1450, 466)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NetworkCard:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("NetworkCard:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.46852735, 0.46852735)]
+}
+
+[sub_resource type="Animation" id="Animation_irdf0"]
+resource_name = "hal_get_network_card"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NetworkCard:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.63),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NetworkCard:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1633, 466), Vector2(1710, 466), Vector2(1860.0001, 58)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("NetworkCard:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.46852735, 0.46852735), Vector2(0.46852735, 0.46852735), Vector2(0.15825428, 0.15825428)]
+}
+
+[sub_resource type="Animation" id="Animation_tgue5"]
+resource_name = "hal_put_network_card_back"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NetworkCard:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NetworkCard:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1710, 466), Vector2(1376, 466)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("NetworkCard:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.46852735, 0.46852735), Vector2(0.46852735, 0.46852735)]
+}
+
+[sub_resource type="Animation" id="Animation_sg317"]
+resource_name = "show_network_card"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NetworkCard:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1375, 466), Vector2(1633, 466)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NetworkCard:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.46852735, 0.46852735), Vector2(0.46852735, 0.46852735)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_37jyc"]
+_data = {
+&"RESET": SubResource("Animation_3vqkb"),
+&"hal_get_network_card": SubResource("Animation_irdf0"),
+&"hal_put_network_card_back": SubResource("Animation_tgue5"),
+&"show_network_card": SubResource("Animation_sg317")
+}
+
+[node name="Chapter6PC" type="Node2D" unique_id=1545881416]
+z_index = 10
+script = ExtResource("c5_script")
+dialogue = ExtResource("4_avuw0")
+
+[node name="curtain" type="Sprite2D" parent="." unique_id=1088045231]
+position = Vector2(2444, 659)
+scale = Vector2(2.8037531, 2.8037531)
+texture = ExtResource("1_087iq")
+
+[node name="NetworkCard" type="Sprite2D" parent="." unique_id=129565350]
+visible = false
+position = Vector2(1450, 466)
+scale = Vector2(0.46852735, 0.46852735)
+texture = ExtResource("2_4olsi")
+
+[node name="Click" type="Area2D" parent="NetworkCard" unique_id=1319246007 node_paths=PackedStringArray("dialogue_state")]
+script = ExtResource("3_lkvtl")
+dialogue = ExtResource("4_avuw0")
+start_title = "install_card"
+dialogue_state = NodePath("../..")
+dialogue_state_name = "Chapter6PC"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NetworkCard/Click" unique_id=909828697]
+position = Vector2(-2.6064453, 1.3033447)
+shape = SubResource("CardShape")
+
+[node name="PC" type="Sprite2D" parent="." unique_id=1009494296]
+position = Vector2(1106.0001, 511.00006)
+scale = Vector2(1.8044444, 1.8044444)
+texture = ExtResource("5_610j7")
+
+[node name="NetworkCardSlot" type="Sprite2D" parent="PC" unique_id=1689452974]
+position = Vector2(141.31767, -35.46801)
+texture = ExtResource("6_ypjv4")
+
+[node name="PerceptionHover" type="Area2D" parent="PC/NetworkCardSlot" unique_id=633753483]
+position = Vector2(-36.302345, -0.99339294)
+scale = Vector2(0.09249546, 0.08497293)
+script = ExtResource("7_vfmoo")
+dialogue = ExtResource("4_avuw0")
+label_title = "hover_network_card"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PC/NetworkCardSlot/PerceptionHover" unique_id=1932304549]
+position = Vector2(386.79932, 31.08374)
+shape = SubResource("RectangleShape2D_3oq4n")
+
+[node name="Label" type="Label" parent="PC/NetworkCardSlot/PerceptionHover" unique_id=1556479865]
+offset_left = 1033.5687
+offset_top = -86.138275
+offset_right = 1833.5687
+offset_bottom = 127.861725
+theme_override_font_sizes/font_size = 200
+text = "弹出文本"
+
+[node name="PerceptionClick" type="Area2D" parent="PC/NetworkCardSlot" unique_id=232473488 node_paths=PackedStringArray("dialogue_state")]
+position = Vector2(2.2888184e-05, -0.5541992)
+scale = Vector2(1.0250198, 1.1157633)
+script = ExtResource("3_lkvtl")
+dialogue = ExtResource("4_avuw0")
+start_title = "observe_network_card_slot"
+dialogue_state = NodePath("../../..")
+dialogue_state_name = "Chapter6PC"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PC/NetworkCardSlot/PerceptionClick" unique_id=1254248160]
+position = Vector2(-0.6187919, 1.579482)
+scale = Vector2(0.99999976, 0.9999999)
+shape = SubResource("RectangleShape2D_37jyc")
+
+[node name="ReturnTarget" type="Area2D" parent="PC/NetworkCardSlot" unique_id=1583559413 node_paths=PackedStringArray("dialogue_state")]
+script = ExtResource("8_miun3")
+accepted_item = "network_card"
+dialogue = ExtResource("4_avuw0")
+start_title = "return_card"
+dialogue_state = NodePath("../../..")
+dialogue_state_name = "Chapter6PC"
+release_before_dialogue = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PC/NetworkCardSlot/ReturnTarget" unique_id=116415513]
+position = Vector2(20.470276, 4.156418)
+scale = Vector2(0.99999964, 0.99999964)
+shape = SubResource("RectangleShape2D_06qn4")
+
+[node name="DiscReader" type="Sprite2D" parent="PC" unique_id=723283770]
+position = Vector2(145.83124, 105.29553)
+scale = Vector2(1.0250199, 1.1157633)
+texture = ExtResource("9_on555")
+
+[node name="PerceptionHover" type="Area2D" parent="PC/DiscReader" unique_id=114626689]
+position = Vector2(-36.302345, -0.99339294)
+scale = Vector2(0.09249546, 0.08497293)
+script = ExtResource("7_vfmoo")
+dialogue = ExtResource("4_avuw0")
+label_title = "hover_disc_reader"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PC/DiscReader/PerceptionHover" unique_id=2032786626]
+position = Vector2(386.79932, 31.08374)
+shape = SubResource("RectangleShape2D_3oq4n")
+
+[node name="Label" type="Label" parent="PC/DiscReader/PerceptionHover" unique_id=880873155]
+offset_left = 1011.23004
+offset_top = -75.9879
+offset_right = 1811.23
+offset_bottom = 138.0121
+theme_override_font_sizes/font_size = 200
+text = "弹出文本"
+
+[node name="StartButton" type="Sprite2D" parent="PC" unique_id=751779689]
+position = Vector2(-137.99268, 170.13542)
+texture = ExtResource("10_cvsot")
+
+[node name="Desk" type="Sprite2D" parent="." unique_id=877590408]
+position = Vector2(954.00006, 1203)
+scale = Vector2(2.0416462, 2.041646)
+texture = ExtResource("11_hoeeg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1082565069]
+libraries/ = SubResource("AnimationLibrary_37jyc")
+
+[node name="ReturnButton" type="TextureButton" parent="." unique_id=388335742]
+offset_left = 1677.0001
+offset_top = 15.000002
+offset_right = 1962.0001
+offset_bottom = 307.0
+scale = Vector2(0.3, 0.3)
+texture_normal = ExtResource("12_tt77a")
+
+[node name="HoverScale" parent="ReturnButton" unique_id=1634581090 instance=ExtResource("13_nmeyt")]
+
+[connection signal="mouse_entered" from="PC/NetworkCardSlot/PerceptionHover" to="PC/NetworkCardSlot/PerceptionHover" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PC/NetworkCardSlot/PerceptionHover" to="PC/NetworkCardSlot/PerceptionHover" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="PC/DiscReader/PerceptionHover" to="PC/DiscReader/PerceptionHover" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PC/DiscReader/PerceptionHover" to="PC/DiscReader/PerceptionHover" method="_on_mouse_exited"]

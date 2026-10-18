@@ -9,6 +9,10 @@ signal watch_completed
 @onready var screen: Control = %Screen
 var required_animation := ""
 
+@onready var select_memory: AudioStreamPlayer = $select_memory
+@onready var open_memory_page: AudioStreamPlayer = $open_memory_page
+
+
 func _ready() -> void:
 	screen.hide()
 	_stop_playback()
@@ -29,6 +33,7 @@ func set_navigation(_enabled: bool) -> void:
 
 func open() -> void:
 	%Close.visible = required_animation.is_empty()
+	open_memory_page.play()
 	screen.show()
 	WorkLog.set_navigation(false)
 	Attributes.set_navigation(false)
@@ -84,6 +89,7 @@ func _play(animation: String) -> void:
 	var content: CanvasItem = get_node(animation_contents[animation]) if animation_contents.has(animation) else animation_content
 	content.show()
 	$AnimationPlayer.play(animation)
+	select_memory.play()
 	$AnimationPlayer.advance(0)
 
 func _stop_playback() -> void:

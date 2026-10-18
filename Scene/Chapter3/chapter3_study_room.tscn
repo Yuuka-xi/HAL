@@ -16,48 +16,13 @@
 [ext_resource type="Texture2D" uid="uid://bsw075b8dw5s3" path="res://Asset/livingroom/SmokeAlarm.png" id="18_3d6iq"]
 [ext_resource type="Texture2D" uid="uid://cki1r7sam6nb1" path="res://Asset/studyroom/sofa.png" id="18_6hnbq"]
 [ext_resource type="Texture2D" uid="uid://bk10s73lct40a" path="res://Asset/studyroom/toybox.png" id="19_sigbv"]
+[ext_resource type="AudioStream" uid="uid://ietkg3xbjwb6" path="res://Asset/audio/sfx/door_close.wav" id="19_tngra"]
+[ext_resource type="AudioStream" uid="uid://lg21igtt2smq" path="res://Asset/audio/sfx/door_open.wav" id="20_72yb8"]
 [ext_resource type="Texture2D" uid="uid://4h314655l78u" path="res://Asset/studyroom/chargingpile.png" id="21_u2hs1"]
 [ext_resource type="PackedScene" uid="uid://2n574cmahd36" path="res://Scene/Chapter3/chapter3_pc.tscn" id="c3_pc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m4wl0"]
 size = Vector2(620.6105, 432.82425)
-
-[sub_resource type="Animation" id="Animation_q63yh"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_ucsqa"]
-resource_name = "click_pc"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.6, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.0, -0.034906585, 0.034906585, 0.0]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_buoml"]
-_data = {
-&"RESET": SubResource("Animation_q63yh"),
-&"click_pc": SubResource("Animation_ucsqa")
-}
 
 [sub_resource type="Animation" id="Animation_tptwy"]
 length = 0.001
@@ -84,6 +49,30 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sfx/door_close:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sfx/door_open:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_m4wl0"]
@@ -113,6 +102,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [true, true, false, false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sfx/door_close:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_pdgv6"]
 resource_name = "hal_open_door"
@@ -140,6 +141,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sfx/door_open:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pdgv6"]
@@ -197,16 +210,12 @@ dialogue = ExtResource("6_tt3y2")
 start_title = "observe_pc"
 dialogue_state = NodePath("../..")
 dialogue_state_name = "Chapter3Room"
-click_animation_player = NodePath("../AnimationPlayer")
-click_animation = &"click_pc"
+click_animation_player = NodePath("")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PC/PerceptionClick" unique_id=1633577734]
 position = Vector2(-79.874146, 1.8964844)
 scale = Vector2(1.0000002, 1)
 shape = SubResource("RectangleShape2D_m4wl0")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PC" unique_id=469233051]
-libraries/ = SubResource("AnimationLibrary_buoml")
 
 [node name="Tulip" type="Sprite2D" parent="." unique_id=1630688574]
 position = Vector2(1035, 640)
@@ -243,6 +252,16 @@ position = Vector2(1752, 582)
 visible = false
 
 [node name="smokealarm" type="Sprite2D" parent="." unique_id=1172464340]
-position = Vector2(1374, 59)
+position = Vector2(1374, 37)
 scale = Vector2(0.5178572, 0.5178572)
 texture = ExtResource("18_3d6iq")
+
+[node name="sfx" type="Node2D" parent="." unique_id=642015116]
+
+[node name="door_close" type="AudioStreamPlayer" parent="sfx" unique_id=402987329]
+stream = ExtResource("19_tngra")
+bus = &"SFX"
+
+[node name="door_open" type="AudioStreamPlayer" parent="sfx" unique_id=1148884324]
+stream = ExtResource("20_72yb8")
+bus = &"SFX"

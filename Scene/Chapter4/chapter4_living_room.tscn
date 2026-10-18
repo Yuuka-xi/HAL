@@ -8,9 +8,8 @@
 [ext_resource type="Shader" uid="uid://dpcdyks2kay2r" path="res://Scene/Tool/color_dodge.gdshader" id="8_1jxhl"]
 [ext_resource type="Texture2D" uid="uid://bsw075b8dw5s3" path="res://Asset/livingroom/SmokeAlarm.png" id="8_vdl68"]
 [ext_resource type="Texture2D" uid="uid://cmja6gbrl2nhs" path="res://Asset/livingroom/light.png" id="9_ublj8"]
-
-[ext_resource type="Script" path="res://Scene/Chapter4/chapter4_living_room.gd" id="c4_script"]
-[ext_resource type="Resource" path="res://Dialogue/Chapter4.dialogue" id="c4_dialogue"]
+[ext_resource type="Resource" uid="uid://dh8bblwunn4kt" path="res://Dialogue/Chapter4.dialogue" id="c4_dialogue"]
+[ext_resource type="Script" uid="uid://1xo2qfu4e7jo" path="res://Scene/Chapter4/chapter4_living_room.gd" id="c4_script"]
 
 [sub_resource type="RectangleShape2D" id="C2Shape_3"]
 size = Vector2(139, 528)
@@ -74,6 +73,6 @@ scale = Vector2(0.50000006, 0.5)
 texture = ExtResource("9_ublj8")
 
 [node name="smokealarm" type="Sprite2D" parent="." unique_id=1662706597]
-position = Vector2(582, 59)
+position = Vector2(582, 37.000008)
 scale = Vector2(0.5178572, 0.5178572)
 texture = ExtResource("8_vdl68")

@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bcf07y3bedfju" path="res://Scene/Chapter2/bedroom.gd" id="4_camera"]
 [ext_resource type="Texture2D" uid="uid://bbv3hr6y8648s" path="res://Asset/bedroom/door.png" id="4_xs528"]
 [ext_resource type="Texture2D" uid="uid://bahmk23mw4ad5" path="res://Asset/bedroom/sensor.png" id="6_xs528"]
+[ext_resource type="AudioStream" uid="uid://cg0trfn3rqbox" path="res://Asset/audio/sfx/震动沙沙声_耳聆网_[声音ID：10794].wav" id="8_57ek7"]
 [ext_resource type="Texture2D" uid="uid://d15o0n2qr6ygh" path="res://Asset/bedroom/cabinet.png" id="9_j1qrm"]
 [ext_resource type="Shader" uid="uid://mctydfj6sq2o" path="res://Scene/Tool/mirror_wipe/dirt.gdshader" id="10_s43n7"]
 [ext_resource type="Texture2D" uid="uid://cpf3x6iw0eliw" path="res://Asset/bedroom/bucket_area.png" id="12_lf43d"]
@@ -23,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://4dlnud58bdar" path="res://Asset/bedroom/right.png" id="23_lkjsi"]
 [ext_resource type="PackedScene" uid="uid://bg0dhcmtonb5v" path="res://Scene/Tool/hover_scale/return_hover_scale.tscn" id="25_s43n7"]
 [ext_resource type="Texture2D" uid="uid://bsw075b8dw5s3" path="res://Asset/livingroom/SmokeAlarm.png" id="27_pu022"]
+[ext_resource type="AudioStream" uid="uid://cm71sg3f8temb" path="res://Asset/audio/sfx/厨房打开橱柜_耳聆网_[声音ID：10486].wav" id="30_6nojw"]
 [ext_resource type="Script" uid="uid://dwo4rtkee6e6v" path="res://Scene/Tool/perception_click/perception_click.gd" id="c2_click"]
 [ext_resource type="Resource" uid="uid://bqr4jmfm8rea7" path="res://Dialogue/Chapter2.dialogue" id="c2_dialogue"]
 [ext_resource type="Script" uid="uid://sueen46n1aoo" path="res://Scene/Tool/item_drop_target/item_drop_target.gd" id="c2_drop"]
@@ -37,7 +39,68 @@ size = Vector2(115.5, 97)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4n7dc"]
 size = Vector2(110, 91)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_57ek7"]
+[sub_resource type="Animation" id="Animation_y8nly"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("click_sensor:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_6nojw"]
+resource_name = "click_sensor"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.44999996, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.06981317007977318, 0.06981317007977318, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("click_sensor:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ful83"]
+_data = {
+&"RESET": SubResource("Animation_y8nly"),
+&"click_sensor": SubResource("Animation_6nojw")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y8nly"]
 resource_local_to_scene = true
 shader = ExtResource("10_s43n7")
 
@@ -47,17 +110,248 @@ size = Vector2(351, 832)
 [sub_resource type="RectangleShape2D" id="C2Shape_2"]
 size = Vector2(349, 832)
 
+[sub_resource type="Animation" id="Animation_ful83"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("knock_glass:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MirrorWipe/Clean:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MirrorWipe/Dirty:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MirrorWipe/frame:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_41iwn"]
+resource_name = "knock_glass"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("knock_glass:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MirrorWipe/Clean:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.44999996, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.02617994, 0.02617994, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MirrorWipe/Dirty:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.44999996, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.02617994, 0.02617994, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MirrorWipe/frame:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.44999996, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.02617994, 0.02617994, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4q6rf"]
+_data = {
+&"RESET": SubResource("Animation_ful83"),
+&"knock_glass": SubResource("Animation_41iwn")
+}
+
 [sub_resource type="RectangleShape2D" id="C2Shape_3"]
 size = Vector2(322, 232)
 
 [sub_resource type="RectangleShape2D" id="WardrobeShape"]
 size = Vector2(541, 452)
 
+[sub_resource type="Animation" id="Animation_4q6rf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_v2ank"]
+resource_name = "click_wardrobe"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.44999996, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.026179938779914945, 0.026179938779914945, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.06666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hq5vs"]
+_data = {
+&"RESET": SubResource("Animation_4q6rf"),
+&"click_wardrobe": SubResource("Animation_v2ank")
+}
+
 [sub_resource type="RectangleShape2D" id="C2Shape_6"]
 size = Vector2(293.68195, 211.2378)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7d5r1"]
 size = Vector2(879, 172)
+
+[sub_resource type="Animation" id="Animation_27pw6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_hq5vs"]
+resource_name = "click_bed"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.44999996, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.017453292, 0.017453292, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.06666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_27pw6"]
+_data = {
+&"RESET": SubResource("Animation_27pw6"),
+&"click_bed": SubResource("Animation_hq5vs")
+}
 
 [sub_resource type="Animation" id="Animation_4n7dc"]
 length = 0.001
@@ -97,6 +391,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("auto_cabinet_open:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_7d5r1"]
 resource_name = "auto_cabinet_open"
@@ -124,6 +430,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(1312, 217), Vector2(1038, 217), Vector2(1038, 89)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("auto_cabinet_open:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.033333335),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_7f4d0"]
@@ -290,15 +608,24 @@ dialogue_state_name = "Bedroom"
 position = Vector2(-2.75, -0.5)
 shape = SubResource("C2Shape_4")
 
-[node name="Observe" type="Area2D" parent="Sensor" unique_id=1011377502]
+[node name="Observe" type="Area2D" parent="Sensor" unique_id=1011377502 node_paths=PackedStringArray("click_animation_player")]
 position = Vector2(-25, -36)
 script = ExtResource("c2_click")
 dialogue = ExtResource("c2_dialogue")
 start_title = "observe_sensor"
+click_animation_player = NodePath("../AnimationPlayer")
+click_animation = &"click_sensor"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sensor/Observe" unique_id=852498632]
 position = Vector2(-7, 2.5)
 shape = SubResource("RectangleShape2D_4n7dc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sensor" unique_id=1055091962]
+libraries/ = SubResource("AnimationLibrary_ful83")
+
+[node name="click_sensor" type="AudioStreamPlayer" parent="Sensor" unique_id=953392982]
+stream = ExtResource("8_57ek7")
+bus = &"SFX"
 
 [node name="Switch" type="Node2D" parent="." unique_id=1276782769]
 visible = false
@@ -319,41 +646,43 @@ theme_override_font_sizes/font_size = 20
 text = "灯控开关"
 
 [node name="Mirror" type="Node2D" parent="." unique_id=163275830]
-position = Vector2(965, 283)
+position = Vector2(1182, 694)
 
 [node name="MirrorWipe" parent="Mirror" unique_id=1268227235 instance=ExtResource("c2_mirror")]
 position = Vector2(-204, -107)
 
 [node name="head" parent="Mirror/MirrorWipe/hal" parent_id_path=PackedInt32Array(1268227235, 621534289) index="1" unique_id=1124149056]
-position = Vector2(193, 548)
+position = Vector2(-6.555908, -56.188232)
 scale = Vector2(0.49687517, 0.48998925)
 offset = Vector2(0, -200)
 
 [node name="lefthand" parent="Mirror/MirrorWipe/hal" parent_id_path=PackedInt32Array(1268227235, 621534289) index="2" unique_id=961889572]
-position = Vector2(116.999985, 603.00006)
+position = Vector2(-82.55592, -1.1881065)
 offset = Vector2(-20, -130)
 
 [node name="righthand" parent="Mirror/MirrorWipe/hal" parent_id_path=PackedInt32Array(1268227235, 621534289) index="3" unique_id=1634794016]
-position = Vector2(263, 569)
+position = Vector2(63.44409, -35.188168)
 offset = Vector2(-40, -110)
 
 [node name="Label" parent="Mirror/MirrorWipe/hal" parent_id_path=PackedInt32Array(1268227235, 621534289) index="4" unique_id=1029717793]
-offset_left = 256.00003
-offset_top = 387.0
-offset_right = 296.00003
-offset_bottom = 441.0
+visible = false
+offset_left = 56.444122
+offset_top = -217.18823
+offset_right = 96.44412
+offset_bottom = -163.18823
 
 [node name="Dirty" parent="Mirror/MirrorWipe" index="2" unique_id=1302829799]
-material = SubResource("ShaderMaterial_57ek7")
+material = SubResource("ShaderMaterial_y8nly")
 
-[node name="Observe" type="Area2D" parent="Mirror" unique_id=2080386710]
-position = Vector2(-20.5, 337.75)
+[node name="Observe" type="Area2D" parent="Mirror" unique_id=2080386710 node_paths=PackedStringArray("click_animation_player")]
+position = Vector2(-225, -69)
 script = ExtResource("c2_click")
 dialogue = ExtResource("c2_dialogue")
 start_title = "observe_mirror"
+click_animation_player = NodePath("../AnimationPlayer")
+click_animation = &"knock_glass"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mirror/Observe" unique_id=1167985613]
-visible = false
 position = Vector2(8, -13.75)
 shape = SubResource("C2Shape_1")
 
@@ -368,9 +697,15 @@ dialogue_state_name = "Bedroom"
 release_before_dialogue = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mirror/WipeTarget" unique_id=1291567857]
-visible = false
-position = Vector2(9, -13.75)
+position = Vector2(-190.5, -433.75)
 shape = SubResource("C2Shape_2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Mirror" unique_id=2088114407]
+libraries/ = SubResource("AnimationLibrary_4q6rf")
+
+[node name="knock_glass" type="AudioStreamPlayer" parent="Mirror" unique_id=512076520]
+stream = ExtResource("8_57ek7")
+bus = &"SFX"
 
 [node name="ToolBucket" type="Node2D" parent="." unique_id=709787213]
 position = Vector2(1460, 930)
@@ -431,22 +766,31 @@ position = Vector2(295, -326)
 scale = Vector2(0.5113754, 0.51137537)
 texture = ExtResource("9_j1qrm")
 
-[node name="Observe" type="Area2D" parent="Wardrobe" unique_id=702965261 node_paths=PackedStringArray("priority_area")]
+[node name="Observe" type="Area2D" parent="Wardrobe" unique_id=702965261 node_paths=PackedStringArray("click_animation_player", "priority_area")]
 position = Vector2(296.5, -331.5)
 script = ExtResource("c2_click")
 dialogue = ExtResource("c2_dialogue")
 start_title = "observe_wardrobe"
+click_animation_player = NodePath("../AnimationPlayer")
+click_animation = &"click_wardrobe"
 priority_area = NodePath("../../CleaningAgent2/Bag/TakeCleaner")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wardrobe/Observe" unique_id=2056017484]
 position = Vector2(-25, -8.5)
 shape = SubResource("WardrobeShape")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Wardrobe" unique_id=1268069544]
+libraries/ = SubResource("AnimationLibrary_hq5vs")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Wardrobe" unique_id=1759469778]
+stream = ExtResource("8_57ek7")
+bus = &"SFX"
+
 [node name="CleaningAgent2" type="Node2D" parent="." unique_id=1394438380]
 position = Vector2(1709, 673)
 
 [node name="Bag" type="Sprite2D" parent="CleaningAgent2" unique_id=1347323593]
-position = Vector2(1038, 151.75916)
+position = Vector2(1038, 89)
 scale = Vector2(0.5602837, 0.56028366)
 texture = ExtResource("16_j1qrm")
 
@@ -476,15 +820,24 @@ position = Vector2(-203.99994, -125)
 scale = Vector2(0.5135276, 0.5135276)
 texture = ExtResource("17_t11hp")
 
-[node name="Observe" type="Area2D" parent="bed" unique_id=660574877]
+[node name="Observe" type="Area2D" parent="bed" unique_id=660574877 node_paths=PackedStringArray("click_animation_player")]
 position = Vector2(-170, 17)
 script = ExtResource("c2_click")
 dialogue = ExtResource("c2_dialogue")
 start_title = "observe_bed"
+click_animation_player = NodePath("../AnimationPlayer")
+click_animation = &"click_bed"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="bed/Observe" unique_id=456022091]
 position = Vector2(-32.5, -29)
 shape = SubResource("RectangleShape2D_7d5r1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="bed" unique_id=544606799]
+libraries/ = SubResource("AnimationLibrary_27pw6")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="bed" unique_id=1696750439]
+stream = ExtResource("8_57ek7")
+bus = &"SFX"
 
 [node name="chair" type="Sprite2D" parent="." unique_id=481603199]
 position = Vector2(2439, 693)
@@ -543,8 +896,12 @@ texture_normal = ExtResource("23_lkjsi")
 libraries/ = SubResource("AnimationLibrary_5sesh")
 
 [node name="smokealarm" type="Sprite2D" parent="." unique_id=1379835005]
-position = Vector2(1636.0001, 52)
-scale = Vector2(0.5178572, 0.5178572)
+position = Vector2(1656, 29)
+scale = Vector2(0.37053573, 0.3705357)
 texture = ExtResource("27_pu022")
+
+[node name="auto_cabinet_open" type="AudioStreamPlayer" parent="." unique_id=1965505456]
+stream = ExtResource("30_6nojw")
+bus = &"SFX"
 
 [editable path="Mirror/MirrorWipe"]

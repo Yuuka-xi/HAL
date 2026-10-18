@@ -5,16 +5,17 @@
 [ext_resource type="Texture2D" uid="uid://dmqrnhwhv8b2" path="res://Asset/Items/keycard.png" id="2_ai68l"]
 [ext_resource type="Texture2D" uid="uid://bslsst3hmi66c" path="res://Asset/UI/invertory2.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://cyu43hopbr36f" path="res://Asset/PCSystem/networkcard.png" id="8_bph8g"]
+[ext_resource type="AudioStream" uid="uid://cosg5j2ks4koj" path="res://Asset/audio/sfx/click_double_on.wav" id="15_psfwv"]
+[ext_resource type="AudioStream" uid="uid://cmm8xqj3nvm0f" path="res://Asset/audio/sfx/whoosh_1.wav" id="16_cwa2c"]
 [ext_resource type="PackedScene" uid="uid://sku1m53v5qqm" path="res://Scene/Tool/hover_scale/hover_scale.tscn" id="90_hover"]
-[ext_resource type="Texture2D" path="res://Asset/Items/bucket.png" id="c2_bucket"]
-[ext_resource type="Texture2D" path="res://Asset/Items/CleaningAgent.png" id="c2_cleaner"]
+[ext_resource type="Texture2D" uid="uid://cdihni72aac32" path="res://Asset/Items/bucket.png" id="c2_bucket"]
+[ext_resource type="Texture2D" uid="uid://nxrgiu1kqehd" path="res://Asset/Items/CleaningAgent.png" id="c2_cleaner"]
 [ext_resource type="Resource" uid="uid://bqr4jmfm8rea7" path="res://Dialogue/Chapter2.dialogue" id="c2_dialogue"]
-[ext_resource type="Texture2D" path="res://Asset/Items/Empty_cleaner_bottle.png" id="c2_empty"]
-[ext_resource type="Texture2D" path="res://Asset/Items/rag.png" id="c2_rag"]
+[ext_resource type="Texture2D" uid="uid://bpafj5y6xv34q" path="res://Asset/Items/Empty_cleaner_bottle.png" id="c2_empty"]
+[ext_resource type="Texture2D" uid="uid://ef3y3enfht6u" path="res://Asset/Items/rag.png" id="c2_rag"]
 [ext_resource type="Texture2D" uid="uid://rjkoxe47o3v3" path="res://Asset/studyroom/tulip.png" id="c2_tulip"]
-
-[ext_resource type="Texture2D" path="res://Asset/Items/full_cleaner_bottle.png" id="full_bottle"]
-[ext_resource type="Texture2D" path="res://Asset/Items/rag_cleaner.png" id="wet_rag"]
+[ext_resource type="Texture2D" uid="uid://vvneqb4lpjye" path="res://Asset/Items/full_cleaner_bottle.png" id="full_bottle"]
+[ext_resource type="Texture2D" uid="uid://bucm6qfj46cjf" path="res://Asset/Items/rag_cleaner.png" id="wet_rag"]
 
 [sub_resource type="StyleBoxEmpty" id="Empty"]
 
@@ -90,7 +91,6 @@ unique_name_in_owner = true
 anchors_preset = 0
 offset_top = -494.0
 offset_right = 120.0
-offset_bottom = 0.0
 mouse_filter = 2
 
 [node name="Background" type="TextureRect" parent="Dock/DrawerClip/Drawer" unique_id=1704128144]
@@ -113,7 +113,6 @@ anchor_bottom = 1.0
 offset_left = 18.0
 offset_top = 8.0
 offset_right = -16.0
-offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("SlotTheme")
@@ -183,3 +182,11 @@ visible = false
 theme_override_colors/font_color = Color(1, 0.94, 0.8, 1)
 theme_override_font_sizes/font_size = 30
 text = "门卡"
+
+[node name="show_inventory" type="AudioStreamPlayer" parent="." unique_id=449700758]
+stream = ExtResource("15_psfwv")
+bus = &"SFX"
+
+[node name="item_equiped" type="AudioStreamPlayer" parent="." unique_id=150444365]
+stream = ExtResource("16_cwa2c")
+bus = &"SFX"

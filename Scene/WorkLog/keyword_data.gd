@@ -1,12 +1,6 @@
 extends RefCounted
 
 const NAMES = {
-	"elliot_tulips": "Elliot种的郁金香",
-	"guilt": "愧疚",
-	"jealousy": "嫉妒",
-	"low_mood": "情绪低落",
-	"sadness": "悲伤",
-	"love": "爱",
 	# 新手教程
 	"unknown_audio_source": "未知声音来源",
 	"elliot": "Elliot",
@@ -58,13 +52,20 @@ const NAMES = {
 	"unverifiable_evidence": "难以被证明的依据",
 	"early_flower_problem": "花园中的花有早期不良迹象",
 	"deception": "欺骗",
+	# 关卡5
+	"patient_care": "照顾病人的方法",
+	"fever": "发烧",
+	"antipyretic": "退烧药",
+	"elliot_tulips": "Elliot种的郁金香",
+	"guilt": "愧疚",
+	"jealousy": "嫉妒",
+	"low_mood": "情绪低落",
+	"sadness": "悲伤",
+	"love": "爱"
 }
 
 # 双词组合按编号排序，用 + 连接；值是 .dialogue 中的入口标题。
 const ENTRIES = {
-	"low_mood": "chapter5_low_mood_info",
-	"elliot+sadness": "chapter5_sadness_info",
-	"eve+love": "chapter5_love_info",
 	# 新手教程
 	"unknown_audio_source": "unknown_audio_source_info",
 	"elliot": "elliot_info",
@@ -93,13 +94,14 @@ const ENTRIES = {
 	"dsk+pc": "dsk_pc_info",
 	"hal+memory_storage_drive": "hal_memory_storage_drive_info",
 	"key_card": "key_card_info",
+	"door+key_card": "door_key_card_info",
 	# 关卡2
 	"bedroom": "bedroom_info",
 	"sensor":"sensor_info",
 	"cleaner": "cleaner_info",
 	"coffee": "coffee_info",
 	"garden": "garden_info",
-	"garden+tulip": "garden_info",
+	"garden+tulip": "garden_tulip_info",
 	"literature": "literature_info",
 	"auto_cabinet+sensor": "auto_cabinet_sensor_info",
 	"cleaner+hal": "cleaner_hal_info",
@@ -135,5 +137,12 @@ const ENTRIES = {
 	"elliot+get_elliot_leave": "elliot_get_elliot_leave_info",
 	"garden+work_record": "garden_work_record_info",
 	"flower_habit+tulip": "flower_habit_tulip_info",
-
+	# 关卡5
+	"patient_care": "chapter6_patient_care_info",
+	"fever": "chapter6_fever_info",
+	"fever+patient_care": "chapter6_fever_care_info",
+	"antipyretic": "chapter6_antipyretic_info",
+	"low_mood": "chapter5_low_mood_info",
+	"elliot+sadness": "chapter5_sadness_info",
+	"eve+love": "chapter5_love_info",
 }
