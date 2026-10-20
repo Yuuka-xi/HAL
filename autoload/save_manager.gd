@@ -11,7 +11,8 @@ const LEVELS := {
 	"chapter2_completed": "res://Scene/Chapter2/living_room.tscn",
 	"chapter3_completed": "res://Scene/Chapter3/chapter3_study_room.tscn",
 	"chapter4_completed": "res://Scene/Chapter4/chapter4_living_room.tscn",
-	"chapter5_completed": "res://Scene/End/end1.tscn",
+	"chapter5_completed": "res://Scene/Chapter5/chapter5_living_room.tscn",
+	"chapter6_completed": "res://Scene/Chapter6/chapter6_bedroom.tscn",
 }
 const SAVE_DIRECTORY := "user://saves/"
 var current_slot := 1
@@ -39,7 +40,7 @@ func next_scene() -> String:
 	for flag in LEVELS:
 		if not GameState.get_flag(flag):
 			return LEVELS[flag]
-	# 第五关入口暂用两个结束页，播放后返回标题。
+	# 第六章完成后暂以 End 承接第七章；读档也从 End 开始。
 	return "res://Scene/End/end1.tscn"
 
 func start_slot(slot: int) -> Error:

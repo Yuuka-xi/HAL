@@ -7,41 +7,9 @@
 [ext_resource type="AudioStream" uid="uid://5ptq4ensyox3" path="res://Asset/audio/sfx/click_double_off.wav" id="11_towa7"]
 [ext_resource type="PackedScene" uid="uid://sku1m53v5qqm" path="res://Scene/Tool/hover_scale/hover_scale.tscn" id="90_hover"]
 [ext_resource type="Texture2D" uid="uid://ckwlkypov7ul2" path="res://Asset/UI/Attribute/back.png" id="art_back"]
-[ext_resource type="Texture2D" uid="uid://cvqx1ss552ul3" path="res://Asset/UI/Attribute/background.png" id="art_background"]
-[ext_resource type="Texture2D" uid="uid://bm2noc7380kcp" path="res://Asset/UI/Attribute/button.png" id="art_button"]
-[ext_resource type="Texture2D" uid="uid://dxmmjs52q7f4v" path="res://Asset/UI/Attribute/round.png" id="art_round"]
 [ext_resource type="PackedScene" uid="uid://bg0dhcmtonb5v" path="res://Scene/Tool/hover_scale/return_hover_scale.tscn" id="return_hover"]
-[ext_resource type="Texture2D" uid="uid://c2gc5n4u1ngy2" path="res://Asset/UI/Attribute/label2.png" id="thought_background"]
 
 [sub_resource type="StyleBoxEmpty" id="NoFocus"]
-
-[sub_resource type="StyleBoxTexture" id="DimensionStyle"]
-content_margin_left = 12.0
-content_margin_right = 12.0
-texture = ExtResource("art_button")
-texture_margin_left = 18.0
-texture_margin_top = 12.0
-texture_margin_right = 18.0
-texture_margin_bottom = 12.0
-
-[sub_resource type="Theme" id="ChartTheme"]
-default_font_size = 36
-Button/colors/font_color = Color(0, 0.4, 0.49, 1)
-Button/colors/font_focus_color = Color(0, 0.4, 0.49, 1)
-Button/colors/font_hover_color = Color(0, 0.4, 0.49, 1)
-Button/colors/font_hover_pressed_color = Color(0, 0.4, 0.49, 1)
-Button/colors/font_pressed_color = Color(0, 0.4, 0.49, 1)
-Button/styles/focus = SubResource("NoFocus")
-Button/styles/hover = SubResource("DimensionStyle")
-Button/styles/normal = SubResource("DimensionStyle")
-Button/styles/pressed = SubResource("DimensionStyle")
-
-[sub_resource type="StyleBoxTexture" id="ThoughtBackground"]
-texture = ExtResource("thought_background")
-texture_margin_left = 48.0
-texture_margin_top = 24.0
-texture_margin_right = 48.0
-texture_margin_bottom = 24.0
 
 [node name="Attributes" type="CanvasLayer" unique_id=955807174]
 layer = 40
@@ -62,18 +30,7 @@ unique_name_in_owner = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color(0.2, 0.22, 0.32, 1)
-
-[node name="Background" type="TextureRect" parent="Screen" unique_id=723527996]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("art_background")
-expand_mode = 1
+color = Color(0.2, 0.21960784, 0.31764707, 1)
 
 [node name="Icon" type="TextureRect" parent="Screen" unique_id=1663625498]
 layout_mode = 0
@@ -92,7 +49,7 @@ offset_left = 188.0
 offset_top = 54.0
 offset_right = 428.0
 offset_bottom = 119.0
-theme_override_colors/font_color = Color(0.7529412, 0.6745098, 0.53333336, 1)
+theme_override_colors/font_color = Color(0.96862745, 0.8509804, 0.6313726, 1)
 theme_override_font_sizes/font_size = 40
 text = "价值评估"
 
@@ -111,15 +68,21 @@ stretch_mode = 5
 
 [node name="Chart" type="Control" parent="Screen" unique_id=1732136683]
 unique_name_in_owner = true
-anchors_preset = 0
-offset_left = 581.0
-offset_top = 111.0
-offset_right = 1341.0
-offset_bottom = 871.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -463.0
+offset_top = -393.0
+offset_right = 541.0625
+offset_bottom = 372.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
-theme = SubResource("ChartTheme")
+
 script = ExtResource("2")
-ring_texture = ExtResource("art_round")
 
 [node name="Thought" type="Label" parent="Screen" unique_id=1519891193]
 unique_name_in_owner = true
@@ -129,24 +92,17 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -727.0
-offset_top = -206.0
-offset_right = 785.0
-offset_bottom = -49.0
+offset_left = -630.0
+offset_top = -110.0
+offset_right = 717.0
+offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_colors/font_color = Color(0, 0.4, 0.49, 1)
-theme_override_font_sizes/font_size = 35
+theme_override_colors/font_color = Color(0.96862745, 0.8509804, 0.6313726, 1)
+theme_override_font_sizes/font_size = 40
 horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
 
-[node name="Background" type="Panel" parent="Screen/Thought" unique_id=1202732225]
-visible = false
-show_behind_parent = true
-layout_mode = 0
-mouse_filter = 2
-theme_override_styles/panel = SubResource("ThoughtBackground")
+autowrap_mode = 3
 
 [node name="open_attribute_page" type="AudioStreamPlayer" parent="." unique_id=1533104219]
 stream = ExtResource("10_towa7")

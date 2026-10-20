@@ -1,9 +1,9 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://7nciq5am4ehq"]
 
 [ext_resource type="Texture2D" uid="uid://b5f1efusho52d" path="res://Asset/studyroom/curtain.png" id="1_087iq"]
 [ext_resource type="Texture2D" uid="uid://cyu43hopbr36f" path="res://Asset/PCSystem/networkcard.png" id="2_4olsi"]
 [ext_resource type="Script" uid="uid://dwo4rtkee6e6v" path="res://Scene/Tool/perception_click/perception_click.gd" id="3_lkvtl"]
-[ext_resource type="Resource" path="res://Dialogue/Chapter6.dialogue" id="4_avuw0"]
+[ext_resource type="Resource" uid="uid://cs5pvvm5oe773" path="res://Dialogue/Chapter6.dialogue" id="4_avuw0"]
 [ext_resource type="Texture2D" uid="uid://ckfkvb8cptwqu" path="res://Asset/studyroom/PC.png" id="5_610j7"]
 [ext_resource type="Texture2D" uid="uid://b8716axf8nqek" path="res://Asset/studyroom/networkcard.png" id="6_ypjv4"]
 [ext_resource type="Script" uid="uid://84hrx01f6beg" path="res://Scene/Tool/perception_hover/perception_hover.gd" id="7_vfmoo"]
@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://c4keu3f2jicb4" path="res://Asset/studyroom/desk.png" id="11_hoeeg"]
 [ext_resource type="Texture2D" uid="uid://yvv2rbs15sq" path="res://Asset/UI/back.png" id="12_tt77a"]
 [ext_resource type="PackedScene" uid="uid://bg0dhcmtonb5v" path="res://Scene/Tool/hover_scale/return_hover_scale.tscn" id="13_nmeyt"]
-[ext_resource type="Script" path="res://Scene/Chapter6/chapter6_pc.gd" id="c5_script"]
+[ext_resource type="Script" uid="uid://b0jvdgfilqce" path="res://Scene/Chapter6/chapter6_pc.gd" id="c5_script"]
 
 [sub_resource type="RectangleShape2D" id="CardShape"]
 size = Vector2(516.0901, 398.79684)
@@ -300,11 +300,12 @@ texture = ExtResource("11_hoeeg")
 libraries/ = SubResource("AnimationLibrary_37jyc")
 
 [node name="ReturnButton" type="TextureButton" parent="." unique_id=388335742]
-offset_left = 1677.0001
-offset_top = 15.000002
-offset_right = 1962.0001
-offset_bottom = 307.0
+offset_left = 1588.0001
+offset_top = -77.0
+offset_right = 1873.0001
+offset_bottom = 215.0
 scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(132.22363, 137.77779)
 texture_normal = ExtResource("12_tt77a")
 
 [node name="HoverScale" parent="ReturnButton" unique_id=1634581090 instance=ExtResource("13_nmeyt")]

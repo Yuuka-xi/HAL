@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cg5tk3yi151p4"
+path="res://.godot/imported/心脏检测 滴滴声_耳聆网_[声音ID：39781].wav-84ef8f402020a420904435d0a985fd57.sample"
+
+[deps]
+
+source_file="res://Asset/audio/sfx/心脏检测 滴滴声_耳聆网_[声音ID：39781].wav"
+dest_files=["res://.godot/imported/心脏检测 滴滴声_耳聆网_[声音ID：39781].wav-84ef8f402020a420904435d0a985fd57.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

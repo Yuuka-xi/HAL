@@ -8,4 +8,5 @@ func _ready() -> void:
 	DialogueManager.show_dialogue_balloon(dialogue, start_title)
 
 func _exit_tree() -> void:
-	SettingsMenu.set_interaction_locked(false)
+	if not SceneTransition.transitioning:
+		SettingsMenu.set_interaction_locked(false)

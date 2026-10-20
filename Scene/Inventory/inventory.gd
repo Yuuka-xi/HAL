@@ -208,6 +208,10 @@ func _drop(position: Vector2) -> void:
 		await target.use_item()
 		if session != SaveManager.session_id:
 			return
+		# 目标已消耗物品或结束本次拖拽时，不再播放飞回动画。
+		if dragged_item.is_empty() or not has_item(dragged_item):
+			_finish_drag()
+			return
 	_return_item()
 
 func _return_item() -> void:

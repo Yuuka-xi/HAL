@@ -58,7 +58,7 @@ const NAMES = {
 	"sadness": "悲伤",
 	"love": "爱",
 	# 关卡6
-	"patient_care": "照顾病人的方法",
+	"patient_care": "照顾流程",
 	"fever": "发烧",
 	"antipyretic": "退烧药",
 }
@@ -150,7 +150,6 @@ const ENTRIES = {
 	"abnormal_emotion+loss": "abnormal_emotion_loss_info",
 	"elliot+sadness": "elliot_sadness_info",
 	"eve+love": "eve_love_info",
-	"abnoabnormal_emotion+loss": "abnoabnormal_emotion_loss_info",
 	# 关卡6
 	"patient_care": "chapter6_patient_care_info",
 	"fever": "chapter6_fever_info",

@@ -12,8 +12,18 @@
 [ext_resource type="Texture2D" uid="uid://b2qc20rwpchlo" path="res://Asset/Memory/CleanBedroom/bedroom.png" id="17_odm8k"]
 [ext_resource type="Texture2D" uid="uid://b1g0ghqb130mo" path="res://Asset/background.jpg" id="19_y5nxy"]
 [ext_resource type="AudioStream" uid="uid://lg21igtt2smq" path="res://Asset/audio/sfx/door_open.wav" id="20_s22bi"]
+[ext_resource type="Texture2D" uid="uid://bwdqd83u6a1xt" path="res://Asset/Memory/EveDeath/background.png" id="21_3aw7f"]
+[ext_resource type="Texture2D" uid="uid://dr8075vpkbhmi" path="res://Asset/Memory/EveDeath/elliot1.png" id="22_4tnbx"]
 [ext_resource type="AudioStream" uid="uid://5ptq4ensyox3" path="res://Asset/audio/sfx/click_double_off.wav" id="22_6c45m"]
 [ext_resource type="AudioStream" uid="uid://cosg5j2ks4koj" path="res://Asset/audio/sfx/click_double_on.wav" id="22_yuu8n"]
+[ext_resource type="Texture2D" uid="uid://dh8icp81vlsef" path="res://Asset/Memory/EveDeath/elliot2.png" id="23_jtthu"]
+[ext_resource type="Texture2D" uid="uid://y2fpnsk3ekmx" path="res://Asset/Memory/EveDeath/table.png" id="24_jc2b6"]
+[ext_resource type="Texture2D" uid="uid://bdpsxt2uamitw" path="res://Asset/Memory/EveDeath/tel1.png" id="25_dbw8r"]
+[ext_resource type="Texture2D" uid="uid://4tjs0hcirbts" path="res://Asset/Memory/EveDeath/tel2.png" id="26_jvhyd"]
+[ext_resource type="Texture2D" uid="uid://c2hd10xrqtsj6" path="res://Asset/Memory/EveDeath/cry1.png" id="27_fscl0"]
+[ext_resource type="Texture2D" uid="uid://cky53sjwky2nb" path="res://Asset/Memory/EveDeath/cry2.png" id="28_gmsgo"]
+[ext_resource type="Texture2D" uid="uid://ccxm284wea0i1" path="res://Asset/Memory/EveDeath/tulip.png" id="29_groqo"]
+[ext_resource type="AudioStream" uid="uid://jvwyecrkhshv" path="res://Asset/audio/sfx/电话挂断_耳聆网_[声音ID：36198].wav" id="33_jtthu"]
 [ext_resource type="PackedScene" uid="uid://sku1m53v5qqm" path="res://Scene/Tool/hover_scale/hover_scale.tscn" id="90_hover"]
 [ext_resource type="Texture2D" uid="uid://djpvo5anf1qtc" path="res://Asset/Memory/OpenDoor/closed.png" id="91_closed"]
 [ext_resource type="Texture2D" uid="uid://c1b6jxbc35c2r" path="res://Asset/Memory/OpenDoor/open.png" id="92_open"]
@@ -129,67 +139,67 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/livingroom_close_door:visible")
+tracks/5/path = NodePath("Screen/Layout/Columns/Video/Playback/CleanBedroom/bedroom:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/Label:visible")
+tracks/6/path = NodePath("Screen/Layout/Columns/Video/Playback/CleanBedroom/bedroom:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Vector2(686.04004, 398.7137)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Screen/Layout/Columns/Video/Playback/CleanBedroom/bedroom:visible")
+tracks/7/path = NodePath("Screen/Layout/Columns/Video/Playback/CleanBedroom/bedroom:scale")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector2(0.35736388, 0.35952434)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Screen/Layout/Columns/Video/Playback/CleanBedroom/bedroom:position")
+tracks/8/path = NodePath("Screen/Layout/Columns/Video/Playback/CleanBedroom/ColorRect:visible")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(686.04004, 398.7137)]
+"update": 1,
+"values": [false]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Screen/Layout/Columns/Video/Playback/CleanBedroom/bedroom:scale")
+tracks/9/path = NodePath("Screen/Layout/Columns/Video/Playback/CleanBedroom/ColorRect:modulate")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.35736388, 0.35952434)]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Screen/Layout/Columns/Video/Playback/CleanBedroom/ColorRect:visible")
+tracks/10/path = NodePath("Screen/Layout/Columns/Video/Playback/OpenDoor/door_open:playing")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
@@ -201,38 +211,290 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Screen/Layout/Columns/Video/Playback/CleanBedroom/ColorRect:modulate")
+tracks/11/path = NodePath("Screen/Layout/Columns/Video/Playback/CleanBedroom/door_open:playing")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
+"update": 1,
+"values": [false]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("Screen/Layout/Columns/Video/Playback/OpenDoor/door_open:playing")
+tracks/12/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/Control/background:visible")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("Screen/Layout/Columns/Video/Playback/CleanBedroom/door_open:playing")
+tracks/13/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/Control/table:visible")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
+"values": [true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/Control/elliot1:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/Control/tel1:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/Label1:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/Label2:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
 "values": [false]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/Label3:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/Label4:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/Label5:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/Label6:visible")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("call_end:playing")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/Control/elliot2:visible")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/Control/tel2:visible")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/Control:position")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/Control:scale")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/tulip:visible")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/tulip:position")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(799.99994, 1034)]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/Label7:visible")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/30/type = "value"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/Control/cry1:visible")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/31/type = "value"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/Control/cry2:visible")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/32/type = "value"
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/Label8:visible")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/33/type = "value"
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/ColorRect:visible")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/34/type = "value"
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/ColorRect:modulate")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_ps65c"]
@@ -349,30 +611,282 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id="Animation_5g3nx"]
 resource_name = "eve_death"
-length = 2.0
+length = 27.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/livingroom_close_door:visible")
+tracks/0/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/Control/background:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 20),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [true, true]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/Label:visible")
+tracks/1/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/Control/table:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4, 1.7333333),
+"times": PackedFloat32Array(0, 20),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/Control/elliot1:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 13.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/Control/tel1:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 13.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/Label1:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.7, 2.6333334),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/Label2:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2.6333334, 4.6666665),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/Label3:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 4.6666665, 6.6666665),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/Label4:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 6.6666665, 8.633333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/Label5:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 8.633333, 10.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/Label6:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 10.8, 12.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("call_end:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(13.533334),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/Control/elliot2:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 13.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/Control/tel2:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 13.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/Control:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 14.263774, 15.795363),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(146, 0)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/Control:scale")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 14.263774, 15.795363),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(2, 2)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/tulip:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 16.153402),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/tulip:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 16.153402, 17.385904),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(799.99994, 1034), Vector2(799.99994, 1034), Vector2(590.99994, 481)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/Label7:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 17.809706, 19.724113),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/Control/cry1:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0, 21.7, 22.161133, 22.636082, 23.081802, 23.520216, 23.985561, 24.423975),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/Control/cry2:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0, 22.161133, 22.636082, 23.081802, 23.520216, 23.985561, 24.423975),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/Label8:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0, 22.243965, 24.777004),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/ColorRect:visible")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0, 25.339561, 27),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, true]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("Screen/Layout/Columns/Video/Playback/eve_death/ColorRect:modulate")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(25.339561, 27),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_jpdbn"]
@@ -594,6 +1108,7 @@ stream = ExtResource("20_s22bi")
 bus = &"SFX"
 
 [node name="CleanBedroom" type="Control" parent="Screen/Layout/Columns/Video/Playback" unique_id=833731901]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -645,26 +1160,168 @@ stream = ExtResource("20_s22bi")
 bus = &"SFX"
 
 [node name="eve_death" type="Control" parent="Screen/Layout/Columns/Video/Playback" unique_id=1068056040]
-visible = false
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="livingroom_close_door" type="Sprite2D" parent="Screen/Layout/Columns/Video/Playback/eve_death" unique_id=693064776]
-position = Vector2(686.88495, 398.875)
-scale = Vector2(0.35759017, 0.36030087)
+[node name="Control" type="Control" parent="Screen/Layout/Columns/Video/Playback/eve_death" unique_id=1073018269]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(532, 478)
 
-[node name="Label" type="Label" parent="Screen/Layout/Columns/Video/Playback/eve_death" unique_id=2048788809]
-custom_minimum_size = Vector2(100, 100)
+[node name="background" type="Sprite2D" parent="Screen/Layout/Columns/Video/Playback/eve_death/Control" unique_id=1464402890]
+position = Vector2(686.015, 399.24997)
+scale = Vector2(0.35737684, 0.3599537)
+texture = ExtResource("21_3aw7f")
+
+[node name="elliot1" type="Sprite2D" parent="Screen/Layout/Columns/Video/Playback/eve_death/Control" unique_id=329508748]
+position = Vector2(525, 515)
+scale = Vector2(0.35737684, 0.3599537)
+texture = ExtResource("22_4tnbx")
+
+[node name="elliot2" type="Sprite2D" parent="Screen/Layout/Columns/Video/Playback/eve_death/Control" unique_id=441692244]
+position = Vector2(524, 515)
+scale = Vector2(0.35737684, 0.3599537)
+texture = ExtResource("23_jtthu")
+
+[node name="table" type="Sprite2D" parent="Screen/Layout/Columns/Video/Playback/eve_death/Control" unique_id=1375027108]
+position = Vector2(527, 656)
+scale = Vector2(0.35737684, 0.3599537)
+texture = ExtResource("24_jc2b6")
+
+[node name="tel1" type="Sprite2D" parent="Screen/Layout/Columns/Video/Playback/eve_death/Control" unique_id=487947466]
+position = Vector2(597, 519)
+scale = Vector2(0.35737684, 0.3599537)
+texture = ExtResource("25_dbw8r")
+
+[node name="tel2" type="Sprite2D" parent="Screen/Layout/Columns/Video/Playback/eve_death/Control" unique_id=1667625685]
+position = Vector2(604, 534)
+scale = Vector2(0.35737684, 0.3599537)
+texture = ExtResource("26_jvhyd")
+
+[node name="cry1" type="Sprite2D" parent="Screen/Layout/Columns/Video/Playback/eve_death/Control" unique_id=112877665]
+position = Vector2(533, 404)
+scale = Vector2(0.25304976, 0.2548744)
+texture = ExtResource("27_fscl0")
+
+[node name="cry2" type="Sprite2D" parent="Screen/Layout/Columns/Video/Playback/eve_death/Control" unique_id=273464196]
+visible = false
+position = Vector2(533, 404)
+scale = Vector2(0.25304976, 0.2548744)
+texture = ExtResource("28_gmsgo")
+
+[node name="tulip" type="Sprite2D" parent="Screen/Layout/Columns/Video/Playback/eve_death" unique_id=808877245]
+position = Vector2(799.99994, 1034)
+scale = Vector2(0.30970246, 0.3119356)
+texture = ExtResource("29_groqo")
+
+[node name="Label1" type="Label" parent="Screen/Layout/Columns/Video/Playback/eve_death" unique_id=2048788809]
 layout_mode = 0
-offset_left = 138.0
-offset_top = 282.0
-offset_right = 1219.0
-offset_bottom = 695.0
-theme_override_font_sizes/font_size = 40
-text = "年轻的Elliot正在打电话与殡仪馆沟通，房间里干净空旷得像病房，他的声音伴随着回声在客厅里回响，听起来没有任何悲伤，他好像还是那个如同机器一样的严肃的研究员；这时，记忆里的hal捧着一支郁金香走到那个年轻的Elliot面前，原本面无表情的他愣了一下，随后突然崩溃大哭"
-autowrap_mode = 3
+offset_left = 387.0
+offset_top = 727.0
+offset_right = 988.0
+offset_bottom = 760.0
+theme_override_font_sizes/font_size = 30
+text = "Elliot：是，我是她的丈夫。材料已经提交了。"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Screen/Layout/Columns/Video/Playback/eve_death" unique_id=2133782099]
+visible = false
+layout_mode = 0
+offset_left = 245.0
+offset_top = 727.0
+offset_right = 1087.0
+offset_bottom = 796.0
+theme_override_font_sizes/font_size = 30
+text = "Elliot：火化，已经确认过了。告别仪式安排在周四上午，对吗？
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Screen/Layout/Columns/Video/Playback/eve_death" unique_id=1432185668]
+layout_mode = 0
+offset_left = 386.0
+offset_top = 727.0
+offset_right = 987.0
+offset_bottom = 760.0
+theme_override_font_sizes/font_size = 30
+text = "Elliot：人数不会很多。按之前选的小厅安排。"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="Screen/Layout/Columns/Video/Playback/eve_death" unique_id=1963666516]
+layout_mode = 0
+offset_left = 355.0
+offset_top = 727.0
+offset_right = 1021.0
+offset_bottom = 760.0
+theme_override_font_sizes/font_size = 30
+text = "Elliot：音乐……你们把可选的曲目发来，我会确认。"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="Screen/Layout/Columns/Video/Playback/eve_death" unique_id=1020003796]
+layout_mode = 0
+offset_left = 355.0
+offset_top = 727.0
+offset_right = 1021.0
+offset_bottom = 760.0
+theme_override_font_sizes/font_size = 30
+text = "Elliot：好。其他需要家属确认的事项，也一起发给我。"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="Screen/Layout/Columns/Video/Playback/eve_death" unique_id=121867550]
+layout_mode = 0
+offset_left = 355.0
+offset_top = 727.0
+offset_right = 1021.0
+offset_bottom = 760.0
+theme_override_font_sizes/font_size = 30
+text = "Elliot：谢谢。"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label7" type="Label" parent="Screen/Layout/Columns/Video/Playback/eve_death" unique_id=713021095]
+layout_mode = 0
+offset_left = 355.0
+offset_top = 727.0
+offset_right = 1021.0
+offset_bottom = 760.0
+theme_override_font_sizes/font_size = 30
+text = "hal：Eve说过，看见喜欢的花，心情会好一些。"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label8" type="Label" parent="Screen/Layout/Columns/Video/Playback/eve_death" unique_id=318223053]
+layout_mode = 0
+offset_left = 355.0
+offset_top = 727.0
+offset_right = 1021.0
+offset_bottom = 760.0
+theme_override_font_sizes/font_size = 30
+text = "Elliot：哦，天哪……不。"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Screen/Layout/Columns/Video/Playback/eve_death" unique_id=1118226468]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="Decoration" type="TextureRect" parent="Screen" unique_id=1058956784]
 layout_mode = 0
@@ -685,4 +1342,8 @@ bus = &"SFX"
 
 [node name="open_memory_page" type="AudioStreamPlayer" parent="." unique_id=1807454493]
 stream = ExtResource("22_yuu8n")
+bus = &"SFX"
+
+[node name="call_end" type="AudioStreamPlayer" parent="." unique_id=565950081]
+stream = ExtResource("33_jtthu")
 bus = &"SFX"

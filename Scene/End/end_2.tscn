@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://d136hsmpmgff3" path="res://Asset/End/background.png" id="1_xgbf3"]
 [ext_resource type="Texture2D" uid="uid://dqer4rtpicndp" path="res://Asset/End/Elliot.png" id="2_f1qmh"]
-[ext_resource type="Resource" path="res://Dialogue/Chapter5.dialogue" id="dialogue"]
+[ext_resource type="Resource" path="res://Dialogue/Chapter7.dialogue" id="dialogue"]
 [ext_resource type="Script" uid="uid://bw8rrq8hsh1tb" path="res://Scene/End/end_screen.gd" id="end_script"]
 
 [node name="End2" type="Node2D" unique_id=142816558]

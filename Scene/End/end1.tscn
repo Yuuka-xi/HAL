@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dxlgmkaub0bgi"]
 
 [ext_resource type="Script" path="res://Scene/End/end_screen.gd" id="end_script"]
-[ext_resource type="Resource" path="res://Dialogue/Chapter5.dialogue" id="dialogue"]
+[ext_resource type="Resource" path="res://Dialogue/Chapter7.dialogue" id="dialogue"]
 [ext_resource type="Texture2D" uid="uid://d136hsmpmgff3" path="res://Asset/End/background.png" id="1_jvpga"]
 [ext_resource type="Texture2D" uid="uid://di1a04tnuwd3k" path="res://Asset/End/hal.png" id="2_w1i8q"]
 

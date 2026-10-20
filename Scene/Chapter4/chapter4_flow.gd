@@ -87,7 +87,7 @@ func finish() -> void:
 	Memory.close(true)
 	SettingsMenu.set_navigation_hidden(false)
 	GameState.set_flag("chapter4_completed", true)
-	SceneTransition.change_scene_with_animation("res://Scene/End/end1.tscn", "res://Scene/Tool/scene_transition/4_5_transition.tscn", &"4_5_transition", 2.0)
+	SceneTransition.change_scene_with_animation("res://Scene/Chapter5/chapter5_living_room.tscn", "res://Scene/Tool/scene_transition/4_5_transition.tscn", &"4_5_transition", 2.0)
 
 static func add_click(parent: Node2D, size: Vector2, dialogue: DialogueResource, title: String, state: Node) -> Area2D:
 	var area := Area2D.new()

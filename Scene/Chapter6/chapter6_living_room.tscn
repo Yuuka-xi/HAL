@@ -1,14 +1,24 @@
 [gd_scene format=3 uid="uid://krm6k3mb5qk4"]
 
-[ext_resource type="Script" path="res://Scene/Chapter6/chapter6_room.gd" id="c6_script"]
-[ext_resource type="Resource" path="res://Dialogue/Chapter6.dialogue" id="c6_dialogue"]
 [ext_resource type="Texture2D" uid="uid://c4iecw1l4yaku" path="res://Asset/livingroom/background.png" id="3_ao3ay"]
+[ext_resource type="Script" uid="uid://dwo4rtkee6e6v" path="res://Scene/Tool/perception_click/perception_click.gd" id="4_1qh7h"]
 [ext_resource type="Texture2D" uid="uid://dvnjq8mvr4dex" path="res://Asset/livingroom/table.png" id="4_bnogl"]
 [ext_resource type="Texture2D" uid="uid://d4hrh27tbsjuf" path="res://Asset/livingroom/telephone2.png" id="5_f32a0"]
 [ext_resource type="Texture2D" uid="uid://cklolrbr8god6" path="res://Asset/livingroom/telephone1.png" id="6_abng7"]
 [ext_resource type="Shader" uid="uid://dpcdyks2kay2r" path="res://Scene/Tool/color_dodge.gdshader" id="7_76xmr"]
 [ext_resource type="Texture2D" uid="uid://cmja6gbrl2nhs" path="res://Asset/livingroom/light.png" id="8_n8cyw"]
 [ext_resource type="Texture2D" uid="uid://bsw075b8dw5s3" path="res://Asset/livingroom/SmokeAlarm.png" id="9_4tg5k"]
+[ext_resource type="Resource" uid="uid://cs5pvvm5oe773" path="res://Dialogue/Chapter6.dialogue" id="c6_dialogue"]
+[ext_resource type="Script" uid="uid://crgbmx245h8lq" path="res://Scene/Chapter6/chapter6_room.gd" id="c6_script"]
+
+[sub_resource type="RectangleShape2D" id="C6PhoneShape"]
+size = Vector2(274, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ao3ay"]
+size = Vector2(297.75, 780.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bnogl"]
+size = Vector2(346.875, 824.25)
 
 [sub_resource type="ShaderMaterial" id="LightDodge"]
 shader = ExtResource("7_76xmr")
@@ -85,13 +95,39 @@ position = Vector2(959.75, 540)
 scale = Vector2(0.50000006, 0.5)
 texture = ExtResource("3_ao3ay")
 
-[node name="door_graden" type="Node2D" parent="background" unique_id=1075070305]
+[node name="door_bedroom" type="Node2D" parent="background" unique_id=1075070305]
 position = Vector2(-1957.4998, -1080)
 scale = Vector2(1.9999998, 2)
+
+[node name="Returnbedroom" type="Area2D" parent="background/door_bedroom" unique_id=730963822 node_paths=PackedStringArray("dialogue_state")]
+position = Vector2(1724, 651)
+script = ExtResource("4_1qh7h")
+dialogue = ExtResource("c6_dialogue")
+start_title = "enter_bedroom"
+dialogue_state = NodePath("../../..")
+dialogue_state_name = "Chapter6Room"
+
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="background/door_bedroom/Returnbedroom" unique_id=347375546]
+position = Vector2(5.625, -144.75)
+shape = SubResource("RectangleShape2D_ao3ay")
 
 [node name="door_studyroom" type="Node2D" parent="background" unique_id=2062693594]
 position = Vector2(626.5, -92)
 scale = Vector2(1.9999998, 2)
+
+[node name="Returnstuyroom" type="Area2D" parent="background/door_studyroom" unique_id=572372895 node_paths=PackedStringArray("dialogue_state")]
+position = Vector2(-48, 113)
+script = ExtResource("4_1qh7h")
+dialogue = ExtResource("c6_dialogue")
+start_title = "enter_study"
+dialogue_state = NodePath("../../..")
+dialogue_state_name = "Chapter6Room"
+
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="background/door_studyroom/Returnstuyroom" unique_id=1977798910]
+position = Vector2(37.5625, -122.125)
+shape = SubResource("RectangleShape2D_bnogl")
 
 [node name="table" type="Sprite2D" parent="." unique_id=1866039029]
 position = Vector2(742, 889)
@@ -121,3 +157,15 @@ texture = ExtResource("9_4tg5k")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1995026101]
 libraries/ = SubResource("AnimationLibrary_ao3ay")
+
+[node name="Click" type="Area2D" parent="telephone1" node_paths=PackedStringArray("dialogue_state")]
+script = ExtResource("4_1qh7h")
+dialogue = ExtResource("c6_dialogue")
+start_title = "answer_phone"
+dialogue_state = NodePath("../..")
+dialogue_state_name = "Chapter6Room"
+required_flag = "chapter6_phone_ringing"
+
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="telephone1/Click"]
+shape = SubResource("C6PhoneShape")

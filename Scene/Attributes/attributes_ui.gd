@@ -76,15 +76,9 @@ func _hover_dimension(id: String) -> void:
 	if choices.has(id):
 		var text: String = choices[id].text
 		%Thought.text = "思考：" + text.substr(%Chart.dimensions[id].length() + 1).strip_edges()
-		var text_size: Vector2 = %Thought.get_theme_font("font").get_multiline_string_size(%Thought.text, HORIZONTAL_ALIGNMENT_CENTER, %Thought.size.x, %Thought.get_theme_font_size("font_size"))
-		var background: Panel = %Thought.get_node("Background")
-		background.size = text_size + Vector2(128, 56)
-		background.position = (%Thought.size - background.size) / 2
-		background.show()
 
 func _clear_thoughts() -> void:
 	%Thought.text = ""
-	%Thought.get_node("Background").hide()
 
 func _select_dimension(id: String) -> void:
 	select_attribute.play()

@@ -395,12 +395,8 @@ else:
 ~ abnormal_emotion_info
 if GameState.get_flag("chapter3_online"):
 	一种概括性描述，通常指情绪的性质、强度、持续时间或表达方式，与个体平常状态或当前情境存在明显差异。仅凭表情、语调或短暂行为，无法确定其原因。分析时需结合情绪出现的情境、相关经历及个体的主观陈述。
-	do GameState.set_flag("chapter5_abnormal_emotion_defined", true)
-	=> chapter5_check_definitions
 else:
 	无匹配记录。
-	if not GameState.get_flag("chapter5_abnormal_emotion_defined"):
-		do GameState.set_keyword_read(["abnormal_emotion"], false)
 => END
 
 ~ loss_info
@@ -422,7 +418,7 @@ else:
 => END
 
 ~ chapter5_check_definitions
-if GameState.get_flag("chapter5_guilt_defined") and GameState.get_flag("chapter5_jealousy_defined") and GameState.get_flag("chapter5_abnormal_emotion_defined") and not GameState.get_flag("chapter5_definitions_ready"):
+if GameState.get_flag("chapter5_guilt_defined") and GameState.get_flag("chapter5_jealousy_defined") and not GameState.get_flag("chapter5_definitions_ready"):
 	do GameState.set_flag("chapter5_definitions_ready", true)
 	do GameState.set_keyword_read(["guilt", "jealousy"], false)
 => END
@@ -432,13 +428,16 @@ if GameState.get_flag("chapter5_definitions_ready"):
 	hal：Elliot的愧疚指向未能给予Eve的陪伴；嫉妒指向hal曾经拥有的陪伴机会。
 	hal：两者共同涉及Eve，以及如今无法补偿或重新获得的事物。
 	hal：提取共同关联：失去。
+	if not GameState.campaign.get("keywords", {}).get("loss", false):
+		do WorkLog.get_node("KeywordNotice").show_keywords(["失去"])
 	do GameState.unlock_keyword("loss")
-	do WorkLog.get_node("KeywordNotice").show_keywords(["失去"])
 	if not GameState.get_flag("chapter5_loss_defined"):
 		do GameState.set_keyword_read(["loss"], false)
 else:
 	无匹配记录。
 	do GameState.set_keyword_read(["guilt", "jealousy"], false)
+	do GameState.set_keyword_read(["guilt"], false)
+	do GameState.set_keyword_read(["jealousy"], false)
 => END
 
 ~ abnormal_emotion_guilt_info
@@ -446,6 +445,9 @@ if GameState.get_flag("chapter3_online"):
 	愧疚所伴随的情绪变化通常与责任归因有关。个体将某种不良结果归因于自身行为或疏忽时，可能出现自责、懊悔及心理不安，并产生道歉、补偿或纠正行为的动机。
 else:
 	无匹配记录。
+	do GameState.set_keyword_read(["abnormal_emotion", "guilt"], false)
+	do GameState.set_keyword_read(["abnormal_emotion"], false)
+	do GameState.set_keyword_read(["guilt"], false)
 if not GameState.get_flag("chapter5_definitions_ready"):
 	do GameState.set_keyword_read(["guilt"], false)
 => END
@@ -455,6 +457,9 @@ if GameState.get_flag("chapter3_online"):
 	嫉妒所伴随的情绪变化通常与社会比较或关系中的威胁感有关。个体认为他人拥有自己缺少的优势，或获得了重要关系中更多的关注与重视时，可能出现不满、自卑、焦虑或怨怼。
 else:
 	无匹配记录。
+	do GameState.set_keyword_read(["abnormal_emotion", "jealousy"], false)
+	do GameState.set_keyword_read(["abnormal_emotion"], false)
+	do GameState.set_keyword_read(["jealousy"], false)
 if not GameState.get_flag("chapter5_definitions_ready"):
 	do GameState.set_keyword_read(["jealousy"], false)
 => END
@@ -466,6 +471,8 @@ if GameState.get_flag("chapter5_loss_defined"):
 else:
 	无匹配记录。
 	do GameState.set_keyword_read(["loss", "abnormal_emotion"], false)
+	do GameState.set_keyword_read(["loss"], false)
+	do GameState.set_keyword_read(["abnormal_emotion"], false)
 => END
 
 ~ elliot_sadness_info
@@ -488,15 +495,13 @@ else:
 
 # Chapter6
 ~ chapter6_patient_care_info
-if GameState.get_flag("chapter3_online"):
-	人生病必须休息，太累了可能会加重病情。
-	do GameState.set_flag("chapter6_care_known", true)
-else:
-	本地未找到相关记录，需要联网查询。
+如果发现Elliot身体异常的话，先对他进行检查！别只听他说没事~体温计在床头柜的抽屉里，你可以先给他量量体温。
+如果体温超过37.5°C，那他肯定真的病了，记得给他准备水，放在伸手就能够到的地方~再问问他有没有胃口，想吃点什么。
+然后让他好好休息。千万不要让他工作了！！！
 => END
 
 ~ chapter6_fever_info
-体温计显示38.5℃，Elliot发烧了。
+体温升高、超出正常范围的状态
 => END
 
 ~ chapter6_fever_care_info
@@ -504,6 +509,5 @@ else:
 => END
 
 ~ chapter6_antipyretic_info
-退烧药需温水送服，并且药非常苦。
-do GameState.set_flag("chapter6_medicine_known", true)
+hal：已发现退烧药药品说明：需温水送服。该药味苦。
 => END

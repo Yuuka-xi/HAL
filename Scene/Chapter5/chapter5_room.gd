@@ -4,6 +4,7 @@ extends Node2D
 @export_enum("living", "study", "garden") var room := "living"
 @export var emotion_scene: PackedScene = preload("res://Scene/Chapter5/attribute_add_emotion.tscn")
 var continuing := false
+var sadness_queried := false
 var finishing := false
 var session := 0
 var can_transform := Transform2D.IDENTITY
@@ -160,8 +161,12 @@ func close_pc() -> void:
 	refresh_room()
 
 func _query_completed(ids: Array) -> void:
-	if ids.size() == 1 and ids[0] in ["guilt", "jealousy", "abnormal_emotion", "loss", "sadness"] and not GameState.get_flag("chapter3_online"):
+	if ids.size() == 1 and ids[0] in ["guilt", "jealousy", "abnormal_emotion", "loss", "sadness", "love"] and not GameState.get_flag("chapter3_online"):
 		GameState.set_keyword_read(ids, false)
+	# 阅读上一条结果期间，也允许直接完成下一组查询。
+	if continuing and not sadness_queried and ids.size() == 2 and ids.has("sadness") and ids.has("elliot") and WorkLog.screen.visible and WorkLog.required_action.is_empty():
+		sadness_queried = true
+		WorkLog.close()
 	if GameState.get_flag("chapter5_sadness_found") and not GameState.get_flag("chapter5_emotion_unlocked") and not continuing:
 		continuing = true
 		GameState.set_keyword_read(["sadness", "elliot"], false)
@@ -193,6 +198,7 @@ func finish_level() -> void:
 	finishing = true
 	await get_tree().process_frame
 	if session == SaveManager.session_id:
+		GameState.set_flag("chapter5_completed", true)
 		SceneTransition.change_scene_with_animation("res://Scene/Chapter6/chapter6_bedroom.tscn", "res://Scene/Tool/scene_transition/5_6_transition.tscn", &"5_6_transition", 2.0)
 
 func _exit_tree() -> void:

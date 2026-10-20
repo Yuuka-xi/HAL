@@ -5,15 +5,18 @@
 [ext_resource type="Texture2D" uid="uid://bahmk23mw4ad5" path="res://Asset/bedroom/sensor.png" id="3_koc86"]
 [ext_resource type="Texture2D" uid="uid://cqnloa0sik40o" path="res://Asset/bedroom/Mirror.png" id="4_db30v"]
 [ext_resource type="Texture2D" uid="uid://c5rcr381sak2d" path="res://Asset/bedroom/bucket.png" id="5_7fn56"]
+[ext_resource type="Script" uid="uid://dwo4rtkee6e6v" path="res://Scene/Tool/perception_click/perception_click.gd" id="5_sxv5x"]
 [ext_resource type="Texture2D" uid="uid://cpf3x6iw0eliw" path="res://Asset/bedroom/bucket_area.png" id="6_thlmm"]
 [ext_resource type="Texture2D" uid="uid://d15o0n2qr6ygh" path="res://Asset/bedroom/cabinet.png" id="7_sxv5x"]
 [ext_resource type="Texture2D" uid="uid://6n8srftfdnc5" path="res://Asset/bedroom/bed.png" id="8_w2c7l"]
 [ext_resource type="Texture2D" uid="uid://dgsknnb2u40mf" path="res://Asset/bedroom/chair.png" id="9_lsa4h"]
 [ext_resource type="Texture2D" uid="uid://c7ndy1fovn5dt" path="res://Asset/bedroom/table.png" id="10_u8do8"]
+[ext_resource type="Texture2D" uid="uid://d2arq0c40auq" path="res://Asset/bedroom/Elliot.png" id="11_7fn56"]
+[ext_resource type="Script" uid="uid://sueen46n1aoo" path="res://Scene/Tool/item_drop_target/item_drop_target.gd" id="11_w2c7l"]
 [ext_resource type="Texture2D" uid="uid://cybxrj65t7tpv" path="res://Asset/bedroom/lamp.png" id="11_w2q34"]
 [ext_resource type="Texture2D" uid="uid://bg5vlwmumh3rn" path="res://Asset/bedroom/picture.png" id="12_fndyi"]
 [ext_resource type="Texture2D" uid="uid://bsw075b8dw5s3" path="res://Asset/livingroom/SmokeAlarm.png" id="13_ubnr0"]
-[ext_resource type="Texture2D" uid="uid://crkeje15uc0um" path="res://Asset/WhiteBlock.png" id="14_54sre"]
+[ext_resource type="Texture2D" uid="uid://cjc5ycvgjd0ak" path="res://Asset/Items/thermometer.png" id="14_7fn56"]
 [ext_resource type="Texture2D" uid="uid://cxq0ayckeibtk" path="res://Asset/bedroom/left.png" id="14_i85y6"]
 [ext_resource type="PackedScene" uid="uid://sku1m53v5qqm" path="res://Scene/Tool/hover_scale/hover_scale.tscn" id="15_gvq57"]
 [ext_resource type="Texture2D" uid="uid://4dlnud58bdar" path="res://Asset/bedroom/right.png" id="16_gjnmm"]
@@ -23,6 +26,21 @@
 
 [sub_resource type="RectangleShape2D" id="C2Shape_0"]
 size = Vector2(297.75, 780.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3i5hx"]
+size = Vector2(539, 464)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_23k4q"]
+size = Vector2(181.75, 178)
+
+[sub_resource type="RectangleShape2D" id="C6MedicineShape"]
+size = Vector2(228, 205)
+
+[sub_resource type="RectangleShape2D" id="C6TalkShape"]
+size = Vector2(151.75, 375)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sxv5x"]
+size = Vector2(159, 38)
 
 [sub_resource type="Animation" id="Animation_54sre"]
 length = 2.0
@@ -102,10 +120,39 @@ tracks/2/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Chapter6Mirror"]
+resource_name = "chapter6_mirror_closeup"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(960, 542), Vector2(960, 807), Vector2(960, 807)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera2D:zoom")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(2, 2), Vector2(2, 2)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5sesh"]
 _data = {
 &"Awake_self": SubResource("Animation_54sre"),
-&"RESET": SubResource("Animation_koc86")
+&"RESET": SubResource("Animation_koc86"),
+&"chapter6_mirror_closeup": SubResource("Chapter6Mirror")
 }
 
 [node name="bedroom" type="Node2D" unique_id=1934651834]
@@ -131,8 +178,13 @@ position = Vector2(192, 517.00006)
 scale = Vector2(0.4910581, 0.49105814)
 texture = ExtResource("2_54sre")
 
-[node name="ReturnDoor" type="Area2D" parent="door_bedroom" unique_id=458696918]
+[node name="ReturnDoor" type="Area2D" parent="door_bedroom" unique_id=458696918 node_paths=PackedStringArray("dialogue_state")]
 position = Vector2(176.5, 679)
+script = ExtResource("5_sxv5x")
+dialogue = ExtResource("c6_dialogue")
+start_title = "return_living"
+dialogue_state = NodePath("../..")
+dialogue_state_name = "Chapter6Room"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="door_bedroom/ReturnDoor" unique_id=2007375924]
 position = Vector2(5.625, -144.75)
@@ -178,6 +230,18 @@ position = Vector2(295, -326)
 scale = Vector2(0.5113754, 0.51137537)
 texture = ExtResource("7_sxv5x")
 
+[node name="Area2D" type="Area2D" parent="Wardrobe" unique_id=294874485 node_paths=PackedStringArray("dialogue_state")]
+position = Vector2(299, -335)
+script = ExtResource("5_sxv5x")
+dialogue = ExtResource("c6_dialogue")
+start_title = "take_medicine"
+dialogue_state = NodePath("../..")
+dialogue_state_name = "Chapter6Room"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wardrobe/Area2D" unique_id=1282180609]
+position = Vector2(-0.5, 3)
+shape = SubResource("RectangleShape2D_3i5hx")
+
 [node name="bed" type="Node2D" parent="." unique_id=460123393]
 position = Vector2(3501, 904)
 
@@ -189,35 +253,47 @@ texture = ExtResource("8_w2c7l")
 [node name="Elliot" type="Node2D" parent="." unique_id=640602870]
 
 [node name="Elliot" type="Sprite2D" parent="Elliot" unique_id=1375317621]
-position = Vector2(3320.5, 775)
-scale = Vector2(4.4921875, 1)
-texture = ExtResource("14_54sre")
+position = Vector2(3292, 648.00006)
+scale = Vector2(0.514, 0.514)
+texture = ExtResource("11_7fn56")
 
-[node name="Label" type="Label" parent="Elliot" unique_id=739766003]
-offset_left = 3295.0
-offset_top = 764.0
-offset_right = 3358.0
-offset_bottom = 797.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Elliot"
+[node name="Area2D" type="Area2D" parent="Elliot" unique_id=706027517 node_paths=PackedStringArray("dialogue_state")]
+position = Vector2(3563, 674)
+script = ExtResource("11_w2c7l")
+accepted_item = "thermometer"
+dialogue = ExtResource("c6_dialogue")
+start_title = "measure_temperature"
+dialogue_state = NodePath("../..")
+dialogue_state_name = "Chapter6Room"
 
-[node name="thermometer" type="Node2D" parent="." unique_id=1500696740]
-position = Vector2(-1248, -207)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Elliot/Area2D" unique_id=612374804]
+position = Vector2(51, -164)
+shape = SubResource("RectangleShape2D_23k4q")
 
-[node name="thermometer" type="Sprite2D" parent="thermometer" unique_id=163850545]
-position = Vector2(3325, 777)
-scale = Vector2(1.1562496, 0.4921875)
-texture = ExtResource("14_54sre")
+[node name="MedicineTarget" type="Area2D" parent="Elliot" unique_id=521551639 node_paths=PackedStringArray("dialogue_state")]
+position = Vector2(3563, 674)
+script = ExtResource("11_w2c7l")
+accepted_item = "antipyretic"
+dialogue = ExtResource("c6_dialogue")
+start_title = "give_medicine"
+dialogue_state = NodePath("../..")
+dialogue_state_name = "Chapter6Room"
 
-[node name="Label" type="Label" parent="thermometer" unique_id=694852657]
-offset_left = 3286.0
-offset_top = 762.0
-offset_right = 3376.0
-offset_bottom = 795.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "体温计"
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Elliot/MedicineTarget" unique_id=231042571]
+position = Vector2(-73, -13.5)
+shape = SubResource("C6MedicineShape")
+
+[node name="Talk" type="Area2D" parent="Elliot" unique_id=953005872 node_paths=PackedStringArray("dialogue_state")]
+position = Vector2(3563, 674)
+script = ExtResource("5_sxv5x")
+dialogue = ExtResource("c6_dialogue")
+start_title = "talk_elliot"
+dialogue_state = NodePath("../..")
+dialogue_state_name = "Chapter6Room"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Elliot/Talk" unique_id=347976005]
+position = Vector2(50, -47)
+shape = SubResource("C6TalkShape")
 
 [node name="chair" type="Sprite2D" parent="." unique_id=481603199]
 position = Vector2(2439, 693)
@@ -228,6 +304,27 @@ texture = ExtResource("9_lsa4h")
 position = Vector2(2210, 826)
 scale = Vector2(0.5038168, 0.5038167)
 texture = ExtResource("10_u8do8")
+
+[node name="thermometer" type="Node2D" parent="." unique_id=1500696740]
+position = Vector2(-1253, -181)
+
+[node name="thermometer" type="Sprite2D" parent="thermometer" unique_id=163850545]
+position = Vector2(3466.9998, 794.9999)
+rotation = 0.7709634
+scale = Vector2(0.115883924, 0.11588391)
+texture = ExtResource("14_7fn56")
+
+[node name="Area2D" type="Area2D" parent="thermometer" unique_id=353976175 node_paths=PackedStringArray("dialogue_state")]
+position = Vector2(3483, 791)
+script = ExtResource("5_sxv5x")
+dialogue = ExtResource("c6_dialogue")
+start_title = "take_thermometer"
+dialogue_state = NodePath("../..")
+dialogue_state_name = "Chapter6Room"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="thermometer/Area2D" unique_id=1576279142]
+position = Vector2(-16.5, 1)
+shape = SubResource("RectangleShape2D_sxv5x")
 
 [node name="lamp" type="Sprite2D" parent="." unique_id=226749067]
 position = Vector2(3554.9998, 255)

@@ -1,37 +1,34 @@
 extends "res://Scene/Chapter6/chapter6_room.gd"
 
+@export var self_will_scene: PackedScene = preload("res://Scene/Chapter6/attribute_self_will.tscn")
+@export var bad_ending_scene: PackedScene = preload("res://Scene/Chapter6/chapter6_bad_ending.tscn")
 var on_right := true
 var moving := false
-var continuing := false
+var session := 0
+@onready var thermometer_target: Area2D = $Elliot/Area2D
+@onready var medicine_target: Area2D = $Elliot/MedicineTarget
 
 func _ready() -> void:
 	super._ready()
-	$Camera2D.position = Vector2(2880, 542)
+	session = SaveManager.session_id
+	# 首次开场在右侧；返回卧室从门和镜子所在的左侧进入。
+	on_right = not GameState.get_flag("chapter6_started")
+	$Camera2D.position = Vector2(2880 if on_right else 960, 542)
 	$Navigation/Left.pressed.connect(switch_side.bind(false))
 	$Navigation/Right.pressed.connect(switch_side.bind(true))
-	$door_bedroom/ReturnDoor.set_script(preload("res://Scene/Tool/perception_click/perception_click.gd"))
-	configure($door_bedroom/ReturnDoor, "return_living")
-	add_click($Wardrobe/Sprite2D, Vector2.ZERO, $Wardrobe/Sprite2D.texture.get_size(), "take_medicine")
-	add_click($thermometer/thermometer, Vector2.ZERO, $thermometer/thermometer.texture.get_size(), "take_thermometer")
-	add_click($Elliot/Elliot, Vector2.ZERO, $Elliot/Elliot.texture.get_size(), "talk_elliot")
-	var target := preload("res://Scene/Tool/item_drop_target/item_drop_target.tscn").instantiate()
-	target.accepted_item = "thermometer"
-	target.release_before_dialogue = true
-	configure(target, "measure_temperature")
-	var shape := RectangleShape2D.new()
-	shape.size = $Elliot/Elliot.texture.get_size()
-	target.get_node("CollisionShape2D").shape = shape
-	$Elliot/Elliot.add_child(target)
 	$thermometer.visible = not GameState.get_flag("chapter6_thermometer_taken")
-	WorkLog.closed.connect(try_medicine)
+	refresh_targets()
 	if SceneTransition.transitioning:
 		await SceneTransition.transition_finished
 	if not GameState.get_flag("chapter6_started"):
 		show_dialogue("start")
 	elif GameState.get_choice("chapter6_project") == "refused" and not GameState.get_flag("chapter6_awakened"):
 		show_dialogue("awaken")
-	else:
-		try_medicine()
+
+func refresh_targets() -> void:
+	var failed := GameState.get_flag("take_care_elliot_failure")
+	thermometer_target.input_pickable = not failed and not GameState.get_flag("chapter6_temperature_measured")
+	medicine_target.input_pickable = not failed and GameState.get_flag("chapter6_medicine_allowed") and not GameState.get_flag("chapter6_medicine_given")
 
 func _process(_delta: float) -> void:
 	var available := not moving and not SettingsMenu.interaction_locked and not SettingsMenu.is_open() and not WorkLog.screen.visible and not Attributes.screen.visible and not Memory.screen.visible and not Inventory.busy and get_tree().get_first_node_in_group("dialogue_balloon") == null
@@ -53,25 +50,54 @@ func take_thermometer() -> void:
 func take_medicine() -> void:
 	await Inventory.collect_item("antipyretic", $Wardrobe/Sprite2D.get_global_transform_with_canvas().origin)
 
-func try_medicine() -> void:
-	if continuing or WorkLog.screen.visible or get_tree().get_first_node_in_group("dialogue_balloon") != null:
+func consume_item(item: String) -> void:
+	# 保留松手处的拖拽图标一秒，然后同时清除图标与背包物品。
+	await get_tree().create_timer(1.0).timeout
+	if session != SaveManager.session_id:
 		return
-	if GameState.get_flag("chapter6_temperature_measured") and GameState.get_flag("chapter6_medicine_known") and Inventory.has_item("antipyretic") and GameState.get_choice("chapter6_medicine_dimension").is_empty():
-		continuing = true
-		call_deferred("show_dialogue", "give_medicine")
+	Inventory.remove_item(item)
+	if Inventory.dragged_item == item:
+		Inventory._finish_drag()
+	if item == "thermometer":
+		$thermometer.hide()
 
-func check_after_dialogue() -> void:
+# 首次拒绝的字幕结束后，让物品完成飞回，再开始一秒等待与价值评估。
+func after_item(title: String, delay: float) -> void:
 	var balloon := get_tree().get_first_node_in_group("dialogue_balloon")
 	if balloon != null:
 		await balloon.tree_exited
-	try_medicine()
+	if session != SaveManager.session_id:
+		return
+	SettingsMenu.set_interaction_locked(true)
+	while Inventory.busy:
+		await get_tree().process_frame
+	await get_tree().create_timer(delay).timeout
+	if session == SaveManager.session_id:
+		SettingsMenu.set_interaction_locked(false)
+		show_dialogue(title)
 
 func awaken() -> void:
 	SettingsMenu.set_interaction_locked(true)
-	$AnimationPlayer.play("Awake_self")
+	$AnimationPlayer.play("chapter6_mirror_closeup")
 	await $AnimationPlayer.animation_finished
-	# 演出结束后恢复镜子一侧的普通视野，继续使用左右导航。
-	$Camera2D.position = Vector2(960, 542)
-	$Camera2D.zoom = Vector2.ONE
-	on_right = false
-	SettingsMenu.set_interaction_locked(false)
+	# 保留动画最终镜头，不恢复视野，后续演出由独立场景覆盖。
+
+func show_self_will() -> void:
+	var effect := self_will_scene.instantiate()
+	add_child(effect)
+	await effect.play()
+	effect.layer = SceneTransition.layer - 1
+
+func bad_ending() -> void:
+	SettingsMenu.set_interaction_locked(true)
+	var effect := bad_ending_scene.instantiate()
+	add_child(effect)
+	await effect.play()
+
+func finish_level() -> void:
+	var balloon := get_tree().get_first_node_in_group("dialogue_balloon")
+	if balloon != null:
+		await balloon.tree_exited
+	if session == SaveManager.session_id:
+		GameState.set_flag("chapter6_completed", true)
+		SceneTransition.change_scene("res://Scene/End/end1.tscn", 0.8)

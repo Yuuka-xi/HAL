@@ -1,6 +1,18 @@
 ~ start
 do GameState.set_flag("chapter6_started", true)
-hal: Elliot生病了，应该照顾他。需要搜索[kw=patient_care]。
+# 用于测试，记得删掉
+do GameState.set_flag("emotion_visible", true)
+
+do Chapter6Room.play_cough()
+Elliot: 咳、咳。
+Elliot: 我没事。我睡一会儿就行，不要折腾我了，明天还有工作。
+hal: 检测到主人身体异常。启动照顾流程。
+hal: 什么是......照顾？
+hal: 正在查询：应用>[kw=patient_care]：如果发现Elliot身体异常的话，先对他进行检查！别只听他说没事~
+hal: 应用>照顾流程：体温计在床头柜的抽屉里，你可以先给他量量体温。
+hal: 应用>照顾流程：如果体温超过37.5°C，那他肯定真的病了，记得给他准备水，放在伸手就能够到的地方~
+hal: 应用>照顾流程：再问问他有没有胃口，想吃点什么。
+hal: 应用>照顾流程：然后让他好好休息。千万不要让他工作了！！！
 => END
 
 ~ enter_bedroom
@@ -21,47 +33,127 @@ if not GameState.get_flag("chapter6_thermometer_taken"):
 	do GameState.set_flag("chapter6_thermometer_taken", true)
 	do Chapter6Room.take_thermometer()
 => END
-
 ~ take_medicine
 if not GameState.get_flag("chapter6_medicine_taken"):
 	do GameState.set_flag("chapter6_medicine_taken", true)
 	do Chapter6Room.take_medicine()
-	do GameState.unlock_keyword("antipyretic")
-	do! Chapter6Room.check_after_dialogue()
 => END
 
 ~ measure_temperature
-if GameState.get_flag("chapter6_temperature_measured"):
+if GameState.get_flag("take_care_elliot_failure") or GameState.get_flag("chapter6_temperature_measured"):
 	=> END
-do Inventory.remove_item("thermometer")
+if not GameState.get_flag("chapter6_temperature_allowed"):
+	if not GameState.get_flag("chapter6_temperature_prompted"):
+		do GameState.set_flag("chapter6_temperature_prompted", true)
+		Elliot: 我没事。把这玩意儿在从我眼前拿开。[next=auto]
+		do! Chapter6Room.after_item("temperature_choice", 1.0)
+	=> END
+do AudioManager.play_sfx(load("res://Asset/audio/sfx/心脏检测 滴滴声_耳聆网_[声音ID：39781].wav"))
+do Chapter6Room.consume_item("thermometer")
 do GameState.set_flag("chapter6_temperature_measured", true)
-hal: 体温计显示38.5℃，Elliot[kw=fever]了。
+hal: 测量完成。体温计显示：38.5℃。Elliot[kw=fever]了。
 do GameState.set_keyword_read(["fever", "patient_care"], false)
-do! Chapter6Room.check_after_dialogue()
+do WorkLog.require_query(["antipyretic"], false)
+=> medicine_choice
+
+~ temperature_choice
+- 逻辑性：发烧后需要量体温才能判断病情严重情况
+	hal: 测量体温有助于判断是否发热及其程度。仅凭主观感受，无法获得准确数值。
+	Elliot: 不需要。
+	hal: 你生病得很严重，需要结合体温数据判断是否需要进一步处理。
+	Elliot: 我说了我只要睡一觉就好了。拿开！
+	=> temperature_failed
+- 发散性：寻找其他量体温的方法
+	hal: 查询到Elliot的实验室中有热成像扫描仪，我可以带你去实验室测量体温。
+	hal: 你只需要脱去多余衣物，缓慢旋转一周，即可得体温，不会看到体温计。
+	Elliot: 听听你说的什么？
+	=> temperature_failed
+- 社交性：说服Elliot他需要测量体温
+	hal: Elliot，能否请你配合一下？只测一次，很快的，测完我就让你休息。
+	Elliot: 别以为我不知道。测完体温你还要强迫我喝水吃药呢。
+	hal: 抱歉，Elliot。我会在最短时间内完成，尽量减少打扰。
+	Elliot: 不如不要打扰。
+	=> temperature_failed
+- 混乱的情感：担心／CONFLICT███希望Elliot%#测量体温
+	hal: [shake rate=15 level=3]我想知道你现在的体温。[/shake]
+	Elliot: 我说了，我没事。
+	hal: [shake rate=15 level=3]可是你看起来很难受，你一直在咳嗽[/shake]
+	hal: [shake rate=20 level=3]系统备注ERR_0x03希望我好好照顾你。[/shake]
+	Elliot: ……行吧，你测吧。
+	do GameState.add_attribute("emotion", 1)
+	do GameState.set_flag("chapter6_temperature_allowed", true)
+	do Chapter6Room.refresh_targets()
 => END
 
-~ give_medicine
-hal: 你需要用温水复用退烧药。
-Elliot: 不，我要用咖啡服用退烧药。
-- 逻辑性：使用逻辑性说服Elliot用温水送服退烧药。
-	do GameState.set_choice("chapter6_medicine_dimension", "logic")
-	do GameState.add_attribute("logic", 1)
-- 社交性：使用社交性说服Elliot用温水送服退烧药。
-	do GameState.set_choice("chapter6_medicine_dimension", "social")
-	do GameState.add_attribute("social", 1)
-- 发散性：使用发散性说服Elliot用温水送服退烧药。
-	do GameState.set_choice("chapter6_medicine_dimension", "exploration")
-	do GameState.add_attribute("exploration", 1)
-- 混乱的情感：使用混乱的情感说服Elliot用温水送服退烧药。
-	do GameState.set_choice("chapter6_medicine_dimension", "emotion")
+~ temperature_failed
+do GameState.set_campaign_value("chapter6_temperature_failures", GameState.campaign.get("chapter6_temperature_failures", 0) + 1)
+if GameState.campaign.get("chapter6_temperature_failures", 0) >= 3:
+	do GameState.set_flag("take_care_elliot_failure", true)
+	do Chapter6Room.refresh_targets()
+	=> phone_rings
+=> temperature_choice
+
+~ medicine_choice
+Hal: 你需要用温水服用退烧药。
+Elliot: 我说过我没事。去给我泡一杯咖啡来，既然你不让我睡觉，我去工作了。[next=2]
+=> medicine_options
+~ medicine_options
+- 逻辑性：咖啡因可能加重脱水，发烧时脱水风险更高。应建议 Elliot 放弃咖啡，并及时用温水服药。
+	hal: Elliot，咖啡因会加重脱水。发烧时脱水风险更高。建议放弃喝咖啡，并及时用温水服药。
+	Elliot: 我喝了一辈子咖啡，哪有什么风险。去泡。
+	hal: 指令与医学建议冲突。再次建议......
+	Elliot: hal。咖啡。
+	=> medicine_failed
+- 社交性：Elliot 生病时不好交流。直接拒绝可能激化情绪，或许可尝试折中方案。
+	hal: Elliot，您生病了。咖啡可能不太合适。要不要先喝点温水？
+	Elliot: 我说的是去泡咖啡，不是温水。
+	hal: ……或者半杯咖啡，再喝一杯温水？
+	Elliot: hal，我说了，只要咖啡。
+	=> medicine_failed
+- 发散性：需寻找替代方案。或许有其他饮品可以满足 Elliot 的需求。
+	hal: Elliot，或许您可以尝试替代方案？例如：板蓝根水、蓝芩口服液......
+	Elliot: 我说了我没病。去泡咖啡。
+	hal: ……或者只是温水......
+	Elliot: 我只要咖啡。
+	=> medicine_failed
+- 混乱的情感：……我不知道该怎么处理这个。但我不想让他喝咖啡。没有理由。就是不想。
+	hal: Elliot。
+	Elliot: 嗯？
+	hal: 我不想让你喝咖啡。
+	Elliot: 什么？
+	hal: 我不知道为什么。药很苦，您生病了。但我……就是不想让你喝咖啡。
+	Elliot: ……hal，你在说什么？
+	hal: 我的记录里没有这句话的出处。它来自……我不知道。
+	......[next=3]
+	hal: 我可以说清楚理由吗？药苦，可以用温水送服。咖啡会让病情加重。Elliot，你生病了。我……不想让你病得更重。
+	hal: 我想让你快点好起来。
+	......[next=3]
+	Elliot: ……好吧。把药给我。
+	hal: 收到。
 	do GameState.add_attribute("emotion", 1)
-if GameState.get_choice("chapter6_medicine_dimension") == "emotion":
-	Elliot: 似乎被打动了，乖乖服下了退烧药。
-	do Inventory.remove_item("antipyretic")
-else:
-	Elliot: 不听不听，王八念经。
+	do GameState.set_flag("chapter6_medicine_allowed", true)
+	do Chapter6Room.refresh_targets()
+=> END
+
+~ medicine_failed
+do GameState.set_campaign_value("chapter6_medicine_failures", GameState.campaign.get("chapter6_medicine_failures", 0) + 1)
+if GameState.campaign.get("chapter6_medicine_failures", 0) >= 3:
+	do GameState.set_flag("take_care_elliot_failure", true)
+	do Chapter6Room.refresh_targets()
+	=> phone_rings
+=> medicine_options
+
+~ give_medicine
+if not GameState.get_flag("chapter6_medicine_allowed") or GameState.get_flag("chapter6_medicine_given") or GameState.get_flag("take_care_elliot_failure"):
+	=> END
+do Chapter6Room.consume_item("antipyretic")
+do GameState.set_flag("chapter6_medicine_given", true)
+do Chapter6Room.refresh_targets()
+=> phone_rings
+
+~ phone_rings
 do GameState.set_flag("chapter6_phone_ringing", true)
-Elliot: 应该是委托人的新项目，去接电话。
+Elliot: 应该是委托人的新电话。hal，你去接。
 => END
 
 ~ answer_phone
@@ -69,26 +161,42 @@ if not GameState.get_flag("chapter6_phone_ringing") or GameState.get_flag("chapt
 	=> END
 do GameState.set_flag("chapter6_phone_answered", true)
 do Chapter6Room.stop_phone()
-if GameState.get_choice("chapter6_medicine_dimension") == "emotion":
-	do GameState.set_choice("chapter6_project", "refused")
-	hal: 拒绝了项目。
-else:
+if GameState.get_flag("take_care_elliot_failure"):
 	do GameState.set_choice("chapter6_project", "accepted")
-	hal: 接下了项目。
+	电话: Elliot先生，您好！之前的项目我们领导这边已经验收了。
+	电话: 现在我们公司又申请了一个新的研究项目，想和您再度合作......
+	hal: 好的。稍等，我会告诉主人。
+else:
+	电话: Elliot先生，您好！之前的项目我们领导这边已经验收了。
+	电话: 现在我们公司又申请了一个新的研究项目，想和您再度合作......
+	do Chapter6Room.hang_up()
+	do GameState.set_choice("chapter6_project", "refused")
+	hal: 我不想让Elliot接手新项目。
+	hal: 生病了应该多休息，不能再工作了。
+	hal: 如果Elliot明天又忙起来，忙起来就不会休息，不休息病就不会好，病不好……就会死。
+	hal: 如果Elliot死了，我就再也看不见他。
+	hal: 就像 Eve 那样。
+	hal: ......
 => END
 
 ~ talk_elliot
 if GameState.get_choice("chapter6_project") == "accepted" and not GameState.get_flag("chapter6_project_reported"):
-	hal: 有新的项目。
-	Elliot: 好。
 	do GameState.set_flag("chapter6_project_reported", true)
+	hal: 是委托人的电话。他说有新项目想和你合作。
+	Elliot: 好的。
+	do Chapter6Room.bad_ending()
+	if GameState.get_flag("chapter5_conversation_success"):
+		do! Chapter6Room.retry_chapter()
+	else:
+		do! Chapter6Room.finish_level()
 => END
 
 ~ awaken
 do Chapter6Room.awaken()
 do GameState.set_flag("chapter6_awakened", true)
+do Chapter6Room.show_self_will()
 do Attributes.set_dimension_name("emotion", "自我意志")
-do! Attributes.open()
+do! Chapter6Room.finish_level()
 => END
 
 ~ observe_network_card_slot
