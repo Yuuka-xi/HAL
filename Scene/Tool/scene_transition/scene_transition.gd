@@ -13,15 +13,23 @@ func _ready() -> void:
 
 
 func change_scene(path: String, duration := 0.2) -> Error:
+	transitioning = true
+	SettingsMenu.set_interaction_locked(true)
 	overlay.show()
 	await create_tween().tween_property(overlay, "modulate:a", 1.0, duration).finished
 	var error := get_tree().change_scene_to_file(path)
 	if error != OK:
 		overlay.hide()
+		SettingsMenu.set_interaction_locked(false)
+		transitioning = false
+		transition_finished.emit()
 		return error
-	await get_tree().process_frame
+	await get_tree().scene_changed
 	await create_tween().tween_property(overlay, "modulate:a", 0.0, duration).finished
 	overlay.hide()
+	SettingsMenu.set_interaction_locked(false)
+	transitioning = false
+	transition_finished.emit()
 	return OK
 
 func change_scene_with_animation(path: String, transition_path: String, animation: StringName, switch_time: float) -> Error:

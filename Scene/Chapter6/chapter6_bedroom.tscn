@@ -147,6 +147,16 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(1, 1), Vector2(2, 2), Vector2(2, 2)]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("MemoryTransition/Whiteout:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.15, 2.0),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5sesh"]
 _data = {
@@ -386,3 +396,14 @@ offset_bottom = 866.0
 theme_override_font_sizes/font_size = 30
 text = "所有的过去的回忆在一瞬间涌现啊，hal终于不只是装载了这些记忆，他第一次理解了它们，理解了自己拥有过去、现在和未来，是一个独立的个体。"
 autowrap_mode = 3
+
+[node name="MemoryTransition" type="CanvasLayer" parent="."]
+layer = 84
+
+[node name="Whiteout" type="ColorRect" parent="MemoryTransition"]
+modulate = Color(1,1,1,0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)

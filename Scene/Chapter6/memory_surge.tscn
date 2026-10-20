@@ -1,0 +1,3257 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scene/Chapter6/chapter6_presentation.gd" id="presentation"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/black/WC3.png" id="m1"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/black/WC2.png" id="m2"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/black/Elliot.png" id="m3"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/black/hal.png" id="m4"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/black/cart.png" id="m5"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/black/book.png" id="m6"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/black/sofa.png" id="m7"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/black/other1.png" id="m8"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/black/other2.png" id="m9"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/black/cry.png" id="m10"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/black/Pizza.png" id="m11"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/black/WC1.png" id="m12"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/black/WC4.png" id="m13"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/color/tulip.png" id="m14"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/color/eve.png" id="m15"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/color/hal.png" id="m16"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/color/elliot.png" id="m17"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/color/tulip2.png" id="m18"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/color/house3.png" id="m19"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/color/chair.png" id="m20"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/color/toy.png" id="m21"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/color/picture.png" id="m22"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/color/sofa.png" id="m23"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/color/door.png" id="m24"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/color/lamp.png" id="m25"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/color/PC.png" id="m26"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/color/eve2.png" id="m27"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/color/hal2.png" id="m28"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/color/cleaner.png" id="m29"]
+
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/color/花园.png" id="fill0"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/color/客厅.png" id="fill1"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/color/书房.png" id="fill2"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/color/bedroom.png" id="fill3"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/color/bedroom2.png" id="fill4"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/color/chair2.png" id="fill5"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/color/elliot2.png" id="fill6"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/color/elliot3.png" id="fill7"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/color/elliot4.png" id="fill8"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/color/eve3.png" id="fill9"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/color/house1.png" id="fill10"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/color/house2.png" id="fill11"]
+[ext_resource type="Texture2D" path="res://Asset/Memory/Memory/color/wall.png" id="fill12"]
+
+[sub_resource type="Animation" id="Surge"]
+resource_name = "memory_surge"
+length = 32.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Screen/Background:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.38, 3.5, 5.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,1), Color(0.035,0.04,0.055,1), Color(0.035,0.04,0.055,1), Color(1,1,1,1)]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Screen/Background:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 30, 31.6, 32),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Screen/Sketches/Fragment01:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.58, 0.9352, 1.14, 5.28, 5.36, 5.7968, 6.04, 6.65, 6.73, 6.9084, 7.03, 7.53, 7.61, 7.7884, 7.91, 8.41, 8.49, 8.6684, 8.79, 9.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.98), Color(1, 1, 1, 0.98), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Screen/Sketches/Fragment01/Image:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 5.28, 6.65, 7.53, 8.41),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("m1"), ExtResource("m1"), ExtResource("m3"), ExtResource("m8"), ExtResource("m4"), ExtResource("m13")]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Screen/Sketches/Fragment02:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.28, 1.36, 1.7152, 1.92, 5.42, 5.5, 5.9368, 6.18, 6.705, 6.785, 6.9634, 7.085, 7.585, 7.665, 7.8434, 7.965, 8.465, 8.545, 8.7234, 8.845, 9.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.98), Color(1, 1, 1, 0.98), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Screen/Sketches/Fragment02/Image:texture")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.28, 5.42, 6.705, 7.585, 8.465),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("m2"), ExtResource("m2"), ExtResource("m4"), ExtResource("m11"), ExtResource("m7"), ExtResource("m3")]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Screen/Sketches/Fragment03:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 2.06, 2.14, 2.4952, 2.7, 5.56, 5.64, 6.0768, 6.32, 6.76, 6.84, 7.0184, 7.14, 7.64, 7.72, 7.8984, 8.02, 8.52, 8.6, 8.7784, 8.9, 9.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.98), Color(1, 1, 1, 0.98), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Screen/Sketches/Fragment03/Image:texture")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 2.06, 5.56, 6.76, 7.64, 8.52),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("m3"), ExtResource("m3"), ExtResource("m5"), ExtResource("m1"), ExtResource("m10"), ExtResource("m6")]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Screen/Sketches/Fragment04:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 2.84, 2.92, 3.2752, 3.48, 5.7, 5.78, 6.2168, 6.46, 6.815, 6.895, 7.0734, 7.195, 7.695, 7.775, 7.9534, 8.075, 8.575, 8.655, 8.8334, 8.955, 9.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.98), Color(1, 1, 1, 0.98), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Screen/Sketches/Fragment04/Image:texture")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 2.84, 5.7, 6.815, 7.695, 8.575),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("m4"), ExtResource("m4"), ExtResource("m6"), ExtResource("m4"), ExtResource("m13"), ExtResource("m9")]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Screen/Sketches/Fragment05:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 3.6, 3.68, 4.1168, 4.36, 5.84, 5.92, 6.3568, 6.6, 6.87, 6.95, 7.1284, 7.25, 7.75, 7.83, 8.0084, 8.13, 8.63, 8.71, 8.8884, 9.01, 9.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.98), Color(1, 1, 1, 0.98), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.98), Color(1, 1, 1, 0.98), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Screen/Sketches/Fragment05/Image:texture")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 3.6, 5.84, 6.87, 7.75, 8.63),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("m5"), ExtResource("m4"), ExtResource("m7"), ExtResource("m7"), ExtResource("m3"), ExtResource("m12")]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Screen/Sketches/Fragment06:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 3.74, 3.82, 4.2568, 4.5, 5.98, 6.06, 6.4968, 6.74, 6.925, 7.005, 7.1834, 7.305, 7.805, 7.885, 8.0634, 8.185, 8.685, 8.765, 8.9434, 9.065, 9.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.98), Color(1, 1, 1, 0.98), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.98), Color(1, 1, 1, 0.98), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Screen/Sketches/Fragment06/Image:texture")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 3.74, 5.98, 6.925, 7.805, 8.685),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("m6"), ExtResource("m5"), ExtResource("m8"), ExtResource("m10"), ExtResource("m6"), ExtResource("m2")]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Screen/Sketches/Fragment07:modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 3.88, 3.96, 4.3968, 4.64, 6.12, 6.2, 6.6368, 6.88, 6.98, 7.06, 7.2384, 7.36, 7.86, 7.94, 8.1184, 8.24, 8.74, 8.82, 8.9984, 9.12, 9.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.98), Color(1, 1, 1, 0.98), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.98), Color(1, 1, 1, 0.98), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("Screen/Sketches/Fragment07/Image:texture")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 3.88, 6.12, 6.98, 7.86, 8.74),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("m7"), ExtResource("m6"), ExtResource("m9"), ExtResource("m13"), ExtResource("m9"), ExtResource("m5")]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Screen/Sketches/Fragment08:modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 4.02, 4.1, 4.5368, 4.78, 6.26, 6.34, 6.7768, 7.02, 7.035, 7.115, 7.2934, 7.415, 7.915, 7.995, 8.1734, 8.295, 8.795, 8.875, 9.0534, 9.175, 9.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.98), Color(1, 1, 1, 0.98), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.98), Color(1, 1, 1, 0.98), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("Screen/Sketches/Fragment08/Image:texture")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 4.02, 6.26, 7.035, 7.915, 8.795),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("m8"), ExtResource("m7"), ExtResource("m10"), ExtResource("m3"), ExtResource("m12"), ExtResource("m8")]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("Screen/Sketches/Fragment09:modulate")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0, 4.16, 4.24, 4.6768, 4.92, 7.09, 7.17, 7.3484, 7.47, 7.97, 8.05, 8.2284, 8.35, 8.85, 8.93, 9.1084, 9.23, 9.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.98), Color(1, 1, 1, 0.98), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("Screen/Sketches/Fragment09/Image:texture")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0, 4.16, 7.09, 7.97, 8.85),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("m9"), ExtResource("m8"), ExtResource("m6"), ExtResource("m2"), ExtResource("m11")]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("Screen/Sketches/Fragment10:modulate")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0, 4.3, 4.38, 4.8168, 5.06, 7.145, 7.225, 7.4034, 7.525, 8.025, 8.105, 8.2834, 8.405, 8.905, 8.985, 9.1634, 9.285, 9.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.98), Color(1, 1, 1, 0.98), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("Screen/Sketches/Fragment10/Image:texture")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0, 4.3, 7.145, 8.025, 8.905),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("m10"), ExtResource("m9"), ExtResource("m9"), ExtResource("m5"), ExtResource("m1")]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("Screen/Sketches/Fragment11:modulate")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0, 4.44, 4.52, 4.9568, 5.2, 7.2, 7.28, 7.4584, 7.58, 8.08, 8.16, 8.3384, 8.46, 8.96, 9.04, 9.2184, 9.34, 9.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.98), Color(1, 1, 1, 0.98), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("Screen/Sketches/Fragment11/Image:texture")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0, 4.44, 7.2, 8.08, 8.96),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("m11"), ExtResource("m10"), ExtResource("m12"), ExtResource("m8"), ExtResource("m4")]
+}
+tracks/24/type = "value"
+tracks/24/path = NodePath("Screen/Sketches/Fragment12:modulate")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0, 4.58, 4.66, 5.0968, 5.34, 7.255, 7.335, 7.5134, 7.635, 8.135, 8.215, 8.3934, 8.515, 9.015, 9.095, 9.2734, 9.395, 9.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.98), Color(1, 1, 1, 0.98), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
+tracks/25/type = "value"
+tracks/25/path = NodePath("Screen/Sketches/Fragment12/Image:texture")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0, 4.58, 7.255, 8.135, 9.015),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("m12"), ExtResource("m11"), ExtResource("m2"), ExtResource("m11"), ExtResource("m7")]
+}
+tracks/26/type = "value"
+tracks/26/path = NodePath("Screen/Sketches/Fragment13:modulate")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0, 4.72, 4.8, 5.2368, 5.48, 7.31, 7.39, 7.5684, 7.69, 8.19, 8.27, 8.4484, 8.57, 9.07, 9.15, 9.3284, 9.45, 9.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.98), Color(1, 1, 1, 0.98), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
+tracks/27/type = "value"
+tracks/27/path = NodePath("Screen/Sketches/Fragment13/Image:texture")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0, 4.72, 7.31, 8.19, 9.07),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("m13"), ExtResource("m12"), ExtResource("m5"), ExtResource("m1"), ExtResource("m10")]
+}
+tracks/28/type = "value"
+tracks/28/path = NodePath("Screen/Sketches/Fragment14:modulate")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0, 4.86, 4.94, 5.3768, 5.62, 7.365, 7.445, 7.6234, 7.745, 8.245, 8.325, 8.5034, 8.625, 9.125, 9.205, 9.3834, 9.505, 9.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.98), Color(1, 1, 1, 0.98), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
+tracks/29/type = "value"
+tracks/29/path = NodePath("Screen/Sketches/Fragment14/Image:texture")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0, 4.86, 7.365, 8.245, 9.125),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("m1"), ExtResource("m13"), ExtResource("m8"), ExtResource("m4"), ExtResource("m13")]
+}
+tracks/30/type = "value"
+tracks/30/path = NodePath("Screen/Sketches/Fragment15:modulate")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
+"times": PackedFloat32Array(0, 5.0, 5.08, 5.5168, 5.76, 7.42, 7.5, 7.6784, 7.8, 8.3, 8.38, 8.5584, 8.68, 9.18, 9.26, 9.4384, 9.56, 9.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.98), Color(1, 1, 1, 0.98), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
+tracks/31/type = "value"
+tracks/31/path = NodePath("Screen/Sketches/Fragment15/Image:texture")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
+"times": PackedFloat32Array(0, 5.0, 7.42, 8.3, 9.18),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("m2"), ExtResource("m1"), ExtResource("m11"), ExtResource("m7"), ExtResource("m3")]
+}
+tracks/32/type = "value"
+tracks/32/path = NodePath("Screen/Sketches/Fragment16:modulate")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/keys = {
+"times": PackedFloat32Array(0, 5.14, 5.22, 5.6568, 5.9, 7.475, 7.555, 7.7334, 7.855, 8.355, 8.435, 8.6134, 8.735, 9.235, 9.315, 9.4934, 9.615, 9.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0.98), Color(1, 1, 1, 0.98), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 1.0), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
+tracks/33/type = "value"
+tracks/33/path = NodePath("Screen/Sketches/Fragment16/Image:texture")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/keys = {
+"times": PackedFloat32Array(0, 5.14, 7.475, 8.355, 9.235),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("m3"), ExtResource("m2"), ExtResource("m1"), ExtResource("m10"), ExtResource("m6")]
+}
+tracks/34/type = "value"
+tracks/34/path = NodePath("Screen/Tulip:modulate")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/keys = {
+"times": PackedFloat32Array(0, 9.85, 10.45, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/35/type = "value"
+tracks/35/path = NodePath("Screen/Tulip:offset_left")
+tracks/35/interp = 2
+tracks/35/loop_wrap = true
+tracks/35/keys = {
+"times": PackedFloat32Array(0, 9.85, 13.65, 21),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-40, -40, -360, -360]
+}
+tracks/36/type = "value"
+tracks/36/path = NodePath("Screen/Tulip:offset_top")
+tracks/36/interp = 2
+tracks/36/loop_wrap = true
+tracks/36/keys = {
+"times": PackedFloat32Array(0, 9.85, 13.65, 21),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-40, -40, -360, -360]
+}
+tracks/37/type = "value"
+tracks/37/path = NodePath("Screen/Tulip:offset_right")
+tracks/37/interp = 2
+tracks/37/loop_wrap = true
+tracks/37/keys = {
+"times": PackedFloat32Array(0, 9.85, 13.65, 21),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [40, 40, 360, 360]
+}
+tracks/38/type = "value"
+tracks/38/path = NodePath("Screen/Tulip:offset_bottom")
+tracks/38/interp = 2
+tracks/38/loop_wrap = true
+tracks/38/keys = {
+"times": PackedFloat32Array(0, 9.85, 13.65, 21),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [40, 40, 360, 360]
+}
+tracks/39/type = "value"
+tracks/39/path = NodePath("Screen/ColorFragments/Fragment01:modulate")
+tracks/39/interp = 1
+tracks/39/loop_wrap = true
+tracks/39/keys = {
+"times": PackedFloat32Array(0, 13.05, 13.55, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/40/type = "value"
+tracks/40/path = NodePath("Screen/ColorFragments/Fragment02:modulate")
+tracks/40/interp = 1
+tracks/40/loop_wrap = true
+tracks/40/keys = {
+"times": PackedFloat32Array(0, 13.33, 13.83, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/41/type = "value"
+tracks/41/path = NodePath("Screen/ColorFragments/Fragment03:modulate")
+tracks/41/interp = 1
+tracks/41/loop_wrap = true
+tracks/41/keys = {
+"times": PackedFloat32Array(0, 13.61, 14.11, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/42/type = "value"
+tracks/42/path = NodePath("Screen/ColorFragments/Fragment04:modulate")
+tracks/42/interp = 1
+tracks/42/loop_wrap = true
+tracks/42/keys = {
+"times": PackedFloat32Array(0, 13.89, 14.39, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/43/type = "value"
+tracks/43/path = NodePath("Screen/ColorFragments/Fragment05:modulate")
+tracks/43/interp = 1
+tracks/43/loop_wrap = true
+tracks/43/keys = {
+"times": PackedFloat32Array(0, 14.17, 14.67, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/44/type = "value"
+tracks/44/path = NodePath("Screen/ColorFragments/Fragment06:modulate")
+tracks/44/interp = 1
+tracks/44/loop_wrap = true
+tracks/44/keys = {
+"times": PackedFloat32Array(0, 14.45, 14.95, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/45/type = "value"
+tracks/45/path = NodePath("Screen/ColorFragments/Fragment07:modulate")
+tracks/45/interp = 1
+tracks/45/loop_wrap = true
+tracks/45/keys = {
+"times": PackedFloat32Array(0, 14.73, 15.23, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/46/type = "value"
+tracks/46/path = NodePath("Screen/ColorFragments/Fragment08:modulate")
+tracks/46/interp = 1
+tracks/46/loop_wrap = true
+tracks/46/keys = {
+"times": PackedFloat32Array(0, 15.01, 15.51, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/47/type = "value"
+tracks/47/path = NodePath("Screen/ColorFragments/Fragment09:modulate")
+tracks/47/interp = 1
+tracks/47/loop_wrap = true
+tracks/47/keys = {
+"times": PackedFloat32Array(0, 15.29, 15.79, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/48/type = "value"
+tracks/48/path = NodePath("Screen/ColorFragments/Fragment10:modulate")
+tracks/48/interp = 1
+tracks/48/loop_wrap = true
+tracks/48/keys = {
+"times": PackedFloat32Array(0, 15.57, 16.07, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/49/type = "value"
+tracks/49/path = NodePath("Screen/ColorFragments/Fragment11:modulate")
+tracks/49/interp = 1
+tracks/49/loop_wrap = true
+tracks/49/keys = {
+"times": PackedFloat32Array(0, 15.85, 16.35, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/50/type = "value"
+tracks/50/path = NodePath("Screen/ColorFragments/Fragment12:modulate")
+tracks/50/interp = 1
+tracks/50/loop_wrap = true
+tracks/50/keys = {
+"times": PackedFloat32Array(0, 16.13, 16.63, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+tracks/51/type = "value"
+tracks/51/path = NodePath("Screen/ColorFragments/Fill01:modulate")
+tracks/51/interp = 1
+tracks/51/loop_wrap = true
+tracks/51/keys = {
+"times": PackedFloat32Array(0, 17.00, 17.55, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,0), Color(1,1,1,0), Color(1,1,1,1), Color(1,1,1,1), Color(1,1,1,0)]
+}
+
+tracks/52/type = "value"
+tracks/52/path = NodePath("Screen/ColorFragments/Fill02:modulate")
+tracks/52/interp = 1
+tracks/52/loop_wrap = true
+tracks/52/keys = {
+"times": PackedFloat32Array(0, 20.23, 20.78, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,0), Color(1,1,1,0), Color(1,1,1,1), Color(1,1,1,1), Color(1,1,1,0)]
+}
+
+tracks/53/type = "value"
+tracks/53/path = NodePath("Screen/ColorFragments/Fill03:modulate")
+tracks/53/interp = 1
+tracks/53/loop_wrap = true
+tracks/53/keys = {
+"times": PackedFloat32Array(0, 23.27, 23.82, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,0), Color(1,1,1,0), Color(1,1,1,1), Color(1,1,1,1), Color(1,1,1,0)]
+}
+
+tracks/54/type = "value"
+tracks/54/path = NodePath("Screen/ColorFragments/Fill04:modulate")
+tracks/54/interp = 1
+tracks/54/loop_wrap = true
+tracks/54/keys = {
+"times": PackedFloat32Array(0, 18.90, 19.45, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,0), Color(1,1,1,0), Color(1,1,1,1), Color(1,1,1,1), Color(1,1,1,0)]
+}
+
+tracks/55/type = "value"
+tracks/55/path = NodePath("Screen/ColorFragments/Fill05:modulate")
+tracks/55/interp = 1
+tracks/55/loop_wrap = true
+tracks/55/keys = {
+"times": PackedFloat32Array(0, 21.94, 22.49, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,0), Color(1,1,1,0), Color(1,1,1,1), Color(1,1,1,1), Color(1,1,1,0)]
+}
+
+tracks/56/type = "value"
+tracks/56/path = NodePath("Screen/ColorFragments/Fill06:modulate")
+tracks/56/interp = 1
+tracks/56/loop_wrap = true
+tracks/56/keys = {
+"times": PackedFloat32Array(0, 17.57, 18.12, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,0), Color(1,1,1,0), Color(1,1,1,1), Color(1,1,1,1), Color(1,1,1,0)]
+}
+
+tracks/57/type = "value"
+tracks/57/path = NodePath("Screen/ColorFragments/Fill07:modulate")
+tracks/57/interp = 1
+tracks/57/loop_wrap = true
+tracks/57/keys = {
+"times": PackedFloat32Array(0, 20.80, 21.35, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,0), Color(1,1,1,0), Color(1,1,1,1), Color(1,1,1,1), Color(1,1,1,0)]
+}
+
+tracks/58/type = "value"
+tracks/58/path = NodePath("Screen/ColorFragments/Fill08:modulate")
+tracks/58/interp = 1
+tracks/58/loop_wrap = true
+tracks/58/keys = {
+"times": PackedFloat32Array(0, 23.84, 24.39, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,0), Color(1,1,1,0), Color(1,1,1,1), Color(1,1,1,1), Color(1,1,1,0)]
+}
+
+tracks/59/type = "value"
+tracks/59/path = NodePath("Screen/ColorFragments/Fill09:modulate")
+tracks/59/interp = 1
+tracks/59/loop_wrap = true
+tracks/59/keys = {
+"times": PackedFloat32Array(0, 19.47, 20.02, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,0), Color(1,1,1,0), Color(1,1,1,1), Color(1,1,1,1), Color(1,1,1,0)]
+}
+
+tracks/60/type = "value"
+tracks/60/path = NodePath("Screen/ColorFragments/Fill10:modulate")
+tracks/60/interp = 1
+tracks/60/loop_wrap = true
+tracks/60/keys = {
+"times": PackedFloat32Array(0, 22.51, 23.06, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,0), Color(1,1,1,0), Color(1,1,1,1), Color(1,1,1,1), Color(1,1,1,0)]
+}
+
+tracks/61/type = "value"
+tracks/61/path = NodePath("Screen/ColorFragments/Fill11:modulate")
+tracks/61/interp = 1
+tracks/61/loop_wrap = true
+tracks/61/keys = {
+"times": PackedFloat32Array(0, 18.14, 18.69, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,0), Color(1,1,1,0), Color(1,1,1,1), Color(1,1,1,1), Color(1,1,1,0)]
+}
+
+tracks/62/type = "value"
+tracks/62/path = NodePath("Screen/ColorFragments/Fill12:modulate")
+tracks/62/interp = 1
+tracks/62/loop_wrap = true
+tracks/62/keys = {
+"times": PackedFloat32Array(0, 21.37, 21.92, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,0), Color(1,1,1,0), Color(1,1,1,1), Color(1,1,1,1), Color(1,1,1,0)]
+}
+
+tracks/63/type = "value"
+tracks/63/path = NodePath("Screen/ColorFragments/Fill13:modulate")
+tracks/63/interp = 1
+tracks/63/loop_wrap = true
+tracks/63/keys = {
+"times": PackedFloat32Array(0, 24.41, 24.96, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,0), Color(1,1,1,0), Color(1,1,1,1), Color(1,1,1,1), Color(1,1,1,0)]
+}
+
+tracks/64/type = "value"
+tracks/64/path = NodePath("Screen/ColorFragments/Fill14:modulate")
+tracks/64/interp = 1
+tracks/64/loop_wrap = true
+tracks/64/keys = {
+"times": PackedFloat32Array(0, 20.04, 20.59, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,0), Color(1,1,1,0), Color(1,1,1,1), Color(1,1,1,1), Color(1,1,1,0)]
+}
+
+tracks/65/type = "value"
+tracks/65/path = NodePath("Screen/ColorFragments/Fill15:modulate")
+tracks/65/interp = 1
+tracks/65/loop_wrap = true
+tracks/65/keys = {
+"times": PackedFloat32Array(0, 23.08, 23.63, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,0), Color(1,1,1,0), Color(1,1,1,1), Color(1,1,1,1), Color(1,1,1,0)]
+}
+
+tracks/66/type = "value"
+tracks/66/path = NodePath("Screen/ColorFragments/Fill16:modulate")
+tracks/66/interp = 1
+tracks/66/loop_wrap = true
+tracks/66/keys = {
+"times": PackedFloat32Array(0, 18.71, 19.26, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,0), Color(1,1,1,0), Color(1,1,1,1), Color(1,1,1,1), Color(1,1,1,0)]
+}
+
+tracks/67/type = "value"
+tracks/67/path = NodePath("Screen/ColorFragments/Fill17:modulate")
+tracks/67/interp = 1
+tracks/67/loop_wrap = true
+tracks/67/keys = {
+"times": PackedFloat32Array(0, 21.75, 22.30, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,0), Color(1,1,1,0), Color(1,1,1,1), Color(1,1,1,1), Color(1,1,1,0)]
+}
+
+tracks/68/type = "value"
+tracks/68/path = NodePath("Screen/ColorFragments/Fill18:modulate")
+tracks/68/interp = 1
+tracks/68/loop_wrap = true
+tracks/68/keys = {
+"times": PackedFloat32Array(0, 17.38, 17.93, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,0), Color(1,1,1,0), Color(1,1,1,1), Color(1,1,1,1), Color(1,1,1,0)]
+}
+
+tracks/69/type = "value"
+tracks/69/path = NodePath("Screen/ColorFragments/Fill19:modulate")
+tracks/69/interp = 1
+tracks/69/loop_wrap = true
+tracks/69/keys = {
+"times": PackedFloat32Array(0, 20.61, 21.16, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,0), Color(1,1,1,0), Color(1,1,1,1), Color(1,1,1,1), Color(1,1,1,0)]
+}
+
+tracks/70/type = "value"
+tracks/70/path = NodePath("Screen/ColorFragments/Fill20:modulate")
+tracks/70/interp = 1
+tracks/70/loop_wrap = true
+tracks/70/keys = {
+"times": PackedFloat32Array(0, 23.65, 24.20, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,0), Color(1,1,1,0), Color(1,1,1,1), Color(1,1,1,1), Color(1,1,1,0)]
+}
+
+tracks/71/type = "value"
+tracks/71/path = NodePath("Screen/ColorFragments/Fill21:modulate")
+tracks/71/interp = 1
+tracks/71/loop_wrap = true
+tracks/71/keys = {
+"times": PackedFloat32Array(0, 19.28, 19.83, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,0), Color(1,1,1,0), Color(1,1,1,1), Color(1,1,1,1), Color(1,1,1,0)]
+}
+
+tracks/72/type = "value"
+tracks/72/path = NodePath("Screen/ColorFragments/Fill22:modulate")
+tracks/72/interp = 1
+tracks/72/loop_wrap = true
+tracks/72/keys = {
+"times": PackedFloat32Array(0, 22.32, 22.87, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,0), Color(1,1,1,0), Color(1,1,1,1), Color(1,1,1,1), Color(1,1,1,0)]
+}
+
+tracks/73/type = "value"
+tracks/73/path = NodePath("Screen/ColorFragments/Fill23:modulate")
+tracks/73/interp = 1
+tracks/73/loop_wrap = true
+tracks/73/keys = {
+"times": PackedFloat32Array(0, 17.95, 18.50, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,0), Color(1,1,1,0), Color(1,1,1,1), Color(1,1,1,1), Color(1,1,1,0)]
+}
+
+tracks/74/type = "value"
+tracks/74/path = NodePath("Screen/ColorFragments/Fill24:modulate")
+tracks/74/interp = 1
+tracks/74/loop_wrap = true
+tracks/74/keys = {
+"times": PackedFloat32Array(0, 21.18, 21.73, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,0), Color(1,1,1,0), Color(1,1,1,1), Color(1,1,1,1), Color(1,1,1,0)]
+}
+
+tracks/75/type = "value"
+tracks/75/path = NodePath("Screen/ColorFragments/Fill25:modulate")
+tracks/75/interp = 1
+tracks/75/loop_wrap = true
+tracks/75/keys = {
+"times": PackedFloat32Array(0, 24.22, 24.77, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,0), Color(1,1,1,0), Color(1,1,1,1), Color(1,1,1,1), Color(1,1,1,0)]
+}
+
+tracks/76/type = "value"
+tracks/76/path = NodePath("Screen/ColorFragments/Fill26:modulate")
+tracks/76/interp = 1
+tracks/76/loop_wrap = true
+tracks/76/keys = {
+"times": PackedFloat32Array(0, 19.85, 20.40, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,0), Color(1,1,1,0), Color(1,1,1,1), Color(1,1,1,1), Color(1,1,1,0)]
+}
+
+tracks/77/type = "value"
+tracks/77/path = NodePath("Screen/ColorFragments/Fill27:modulate")
+tracks/77/interp = 1
+tracks/77/loop_wrap = true
+tracks/77/keys = {
+"times": PackedFloat32Array(0, 22.89, 23.44, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,0), Color(1,1,1,0), Color(1,1,1,1), Color(1,1,1,1), Color(1,1,1,0)]
+}
+
+tracks/78/type = "value"
+tracks/78/path = NodePath("Screen/ColorFragments/Fill28:modulate")
+tracks/78/interp = 1
+tracks/78/loop_wrap = true
+tracks/78/keys = {
+"times": PackedFloat32Array(0, 18.52, 19.07, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,0), Color(1,1,1,0), Color(1,1,1,1), Color(1,1,1,1), Color(1,1,1,0)]
+}
+
+tracks/79/type = "value"
+tracks/79/path = NodePath("Screen/ColorFragments/Fill29:modulate")
+tracks/79/interp = 1
+tracks/79/loop_wrap = true
+tracks/79/keys = {
+"times": PackedFloat32Array(0, 21.56, 22.11, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,0), Color(1,1,1,0), Color(1,1,1,1), Color(1,1,1,1), Color(1,1,1,0)]
+}
+
+tracks/80/type = "value"
+tracks/80/path = NodePath("Screen/ColorFragments/Fill30:modulate")
+tracks/80/interp = 1
+tracks/80/loop_wrap = true
+tracks/80/keys = {
+"times": PackedFloat32Array(0, 17.19, 17.74, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,0), Color(1,1,1,0), Color(1,1,1,1), Color(1,1,1,1), Color(1,1,1,0)]
+}
+
+tracks/81/type = "value"
+tracks/81/path = NodePath("Screen/ColorFragments/Fill31:modulate")
+tracks/81/interp = 1
+tracks/81/loop_wrap = true
+tracks/81/keys = {
+"times": PackedFloat32Array(0, 20.42, 20.97, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,0), Color(1,1,1,0), Color(1,1,1,1), Color(1,1,1,1), Color(1,1,1,0)]
+}
+
+tracks/82/type = "value"
+tracks/82/path = NodePath("Screen/ColorFragments/Fill32:modulate")
+tracks/82/interp = 1
+tracks/82/loop_wrap = true
+tracks/82/keys = {
+"times": PackedFloat32Array(0, 23.46, 24.01, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,0), Color(1,1,1,0), Color(1,1,1,1), Color(1,1,1,1), Color(1,1,1,0)]
+}
+
+tracks/83/type = "value"
+tracks/83/path = NodePath("Screen/ColorFragments/Fill33:modulate")
+tracks/83/interp = 1
+tracks/83/loop_wrap = true
+tracks/83/keys = {
+"times": PackedFloat32Array(0, 19.09, 19.64, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,0), Color(1,1,1,0), Color(1,1,1,1), Color(1,1,1,1), Color(1,1,1,0)]
+}
+
+tracks/84/type = "value"
+tracks/84/path = NodePath("Screen/ColorFragments/Fill34:modulate")
+tracks/84/interp = 1
+tracks/84/loop_wrap = true
+tracks/84/keys = {
+"times": PackedFloat32Array(0, 22.13, 22.68, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,0), Color(1,1,1,0), Color(1,1,1,1), Color(1,1,1,1), Color(1,1,1,0)]
+}
+
+tracks/85/type = "value"
+tracks/85/path = NodePath("Screen/ColorFragments/Fill35:modulate")
+tracks/85/interp = 1
+tracks/85/loop_wrap = true
+tracks/85/keys = {
+"times": PackedFloat32Array(0, 17.76, 18.31, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,0), Color(1,1,1,0), Color(1,1,1,1), Color(1,1,1,1), Color(1,1,1,0)]
+}
+
+tracks/86/type = "value"
+tracks/86/path = NodePath("Screen/ColorFragments/Fill36:modulate")
+tracks/86/interp = 1
+tracks/86/loop_wrap = true
+tracks/86/keys = {
+"times": PackedFloat32Array(0, 20.99, 21.54, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,0), Color(1,1,1,0), Color(1,1,1,1), Color(1,1,1,1), Color(1,1,1,0)]
+}
+
+tracks/87/type = "value"
+tracks/87/path = NodePath("Screen/ColorFragments/Fill37:modulate")
+tracks/87/interp = 1
+tracks/87/loop_wrap = true
+tracks/87/keys = {
+"times": PackedFloat32Array(0, 24.03, 24.58, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,0), Color(1,1,1,0), Color(1,1,1,1), Color(1,1,1,1), Color(1,1,1,0)]
+}
+
+tracks/88/type = "value"
+tracks/88/path = NodePath("Screen/ColorFragments/Fill38:modulate")
+tracks/88/interp = 1
+tracks/88/loop_wrap = true
+tracks/88/keys = {
+"times": PackedFloat32Array(0, 19.66, 20.21, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,0), Color(1,1,1,0), Color(1,1,1,1), Color(1,1,1,1), Color(1,1,1,0)]
+}
+
+tracks/89/type = "value"
+tracks/89/path = NodePath("Screen/ColorFragments/Fill39:modulate")
+tracks/89/interp = 1
+tracks/89/loop_wrap = true
+tracks/89/keys = {
+"times": PackedFloat32Array(0, 22.70, 23.25, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,0), Color(1,1,1,0), Color(1,1,1,1), Color(1,1,1,1), Color(1,1,1,0)]
+}
+
+tracks/90/type = "value"
+tracks/90/path = NodePath("Screen/ColorFragments/Fill40:modulate")
+tracks/90/interp = 1
+tracks/90/loop_wrap = true
+tracks/90/keys = {
+"times": PackedFloat32Array(0, 18.33, 18.88, 28, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1,1,1,0), Color(1,1,1,0), Color(1,1,1,1), Color(1,1,1,1), Color(1,1,1,0)]
+}
+
+[sub_resource type="AnimationLibrary" id="Animations"]
+_data = { &"memory_surge": SubResource("Surge") }
+
+[sub_resource type="StyleBoxFlat" id="MemoryBorder"]
+bg_color = Color(1,1,1,0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.28,0.29,0.3,0.15)
+
+[node name="MemorySurge" type="CanvasLayer"]
+layer = 85
+script = ExtResource("presentation")
+animation = &"memory_surge"
+
+[node name="Screen" type="Control" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Background" type="ColorRect" parent="Screen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Sketches" type="Control" parent="Screen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Fragment01" type="Control" parent="Screen/Sketches"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 176.0
+offset_top = 144.0
+offset_right = 400.0
+offset_bottom = 368.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/Sketches/Fragment01"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/Sketches/Fragment01"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m1")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/Sketches/Fragment01"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fragment02" type="Control" parent="Screen/Sketches"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 1120.0
+offset_top = 104.0
+offset_right = 1328.0
+offset_bottom = 312.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/Sketches/Fragment02"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/Sketches/Fragment02"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m2")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/Sketches/Fragment02"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fragment03" type="Control" parent="Screen/Sketches"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 640.0
+offset_top = 584.0
+offset_right = 896.0
+offset_bottom = 840.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/Sketches/Fragment03"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/Sketches/Fragment03"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m3")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/Sketches/Fragment03"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fragment04" type="Control" parent="Screen/Sketches"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 1416.0
+offset_top = 456.0
+offset_right = 1656.0
+offset_bottom = 696.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/Sketches/Fragment04"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/Sketches/Fragment04"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m4")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/Sketches/Fragment04"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fragment05" type="Control" parent="Screen/Sketches"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 432.0
+offset_top = 80.0
+offset_right = 632.0
+offset_bottom = 280.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/Sketches/Fragment05"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/Sketches/Fragment05"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m5")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/Sketches/Fragment05"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fragment06" type="Control" parent="Screen/Sketches"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 976.0
+offset_top = 640.0
+offset_right = 1200.0
+offset_bottom = 864.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/Sketches/Fragment06"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/Sketches/Fragment06"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m6")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/Sketches/Fragment06"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fragment07" type="Control" parent="Screen/Sketches"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 1440.0
+offset_top = 112.0
+offset_right = 1728.0
+offset_bottom = 400.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/Sketches/Fragment07"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/Sketches/Fragment07"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m7")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/Sketches/Fragment07"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fragment08" type="Control" parent="Screen/Sketches"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 160.0
+offset_top = 600.0
+offset_right = 420.0
+offset_bottom = 860.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/Sketches/Fragment08"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/Sketches/Fragment08"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m8")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/Sketches/Fragment08"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fragment09" type="Control" parent="Screen/Sketches"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 688.0
+offset_top = 224.0
+offset_right = 928.0
+offset_bottom = 464.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/Sketches/Fragment09"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/Sketches/Fragment09"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m9")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/Sketches/Fragment09"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fragment10" type="Control" parent="Screen/Sketches"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 1168.0
+offset_top = 352.0
+offset_right = 1408.0
+offset_bottom = 592.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/Sketches/Fragment10"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/Sketches/Fragment10"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m10")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/Sketches/Fragment10"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fragment11" type="Control" parent="Screen/Sketches"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 432.0
+offset_top = 704.0
+offset_right = 656.0
+offset_bottom = 928.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/Sketches/Fragment11"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/Sketches/Fragment11"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m11")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/Sketches/Fragment11"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fragment12" type="Control" parent="Screen/Sketches"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 1504.0
+offset_top = 752.0
+offset_right = 1704.0
+offset_bottom = 952.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/Sketches/Fragment12"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/Sketches/Fragment12"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m12")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/Sketches/Fragment12"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fragment13" type="Control" parent="Screen/Sketches"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 848.0
+offset_top = 32.0
+offset_right = 1040.0
+offset_bottom = 224.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/Sketches/Fragment13"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/Sketches/Fragment13"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m13")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/Sketches/Fragment13"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fragment14" type="Control" parent="Screen/Sketches"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 352.0
+offset_top = 384.0
+offset_right = 640.0
+offset_bottom = 672.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/Sketches/Fragment14"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/Sketches/Fragment14"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m1")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/Sketches/Fragment14"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fragment15" type="Control" parent="Screen/Sketches"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 1312.0
+offset_top = 656.0
+offset_right = 1568.0
+offset_bottom = 912.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/Sketches/Fragment15"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/Sketches/Fragment15"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m2")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/Sketches/Fragment15"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fragment16" type="Control" parent="Screen/Sketches"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 736.0
+offset_top = 784.0
+offset_right = 944.0
+offset_bottom = 992.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/Sketches/Fragment16"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/Sketches/Fragment16"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m3")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/Sketches/Fragment16"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Tulip" type="Control" parent="Screen"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/Tulip"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/Tulip"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m14")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Border" type="Panel" parent="Screen/Tulip"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="ColorFragments" type="Control" parent="Screen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Fragment01" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 112.0
+offset_top = 128.0
+offset_right = 384.0
+offset_bottom = 400.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fragment01"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fragment01"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m15")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fragment01"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fragment02" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 1504.0
+offset_top = 136.0
+offset_right = 1776.0
+offset_bottom = 408.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fragment02"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fragment02"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m16")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fragment02"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fragment03" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 1320.0
+offset_top = 672.0
+offset_right = 1576.0
+offset_bottom = 928.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fragment03"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fragment03"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m17")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fragment03"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fragment04" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 368.0
+offset_top = 680.0
+offset_right = 600.0
+offset_bottom = 912.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fragment04"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fragment04"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m18")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fragment04"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fragment05" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 368.0
+offset_top = 80.0
+offset_right = 576.0
+offset_bottom = 288.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fragment05"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fragment05"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m19")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fragment05"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fragment06" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 96.0
+offset_top = 664.0
+offset_right = 320.0
+offset_bottom = 888.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fragment06"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fragment06"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m20")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fragment06"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fragment07" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 1520.0
+offset_top = 472.0
+offset_right = 1744.0
+offset_bottom = 696.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fragment07"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fragment07"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m21")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fragment07"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fragment08" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 1328.0
+offset_top = 40.0
+offset_right = 1520.0
+offset_bottom = 232.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fragment08"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fragment08"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m22")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fragment08"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fragment09" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 624.0
+offset_top = 64.0
+offset_right = 832.0
+offset_bottom = 272.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fragment09"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fragment09"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m23")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fragment09"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fragment10" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 1088.0
+offset_top = 776.0
+offset_right = 1312.0
+offset_bottom = 1000.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fragment10"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fragment10"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m24")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fragment10"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fragment11" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 104.0
+offset_top = 408.0
+offset_right = 312.0
+offset_bottom = 616.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fragment11"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fragment11"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m27")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fragment11"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fragment12" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 1392.0
+offset_top = 368.0
+offset_right = 1600.0
+offset_bottom = 576.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fragment12"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fragment12"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m28")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fragment12"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fill01" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 240.0
+offset_bottom = 240.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fill01"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fill01"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m19")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fill01"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fill02" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 240.0
+offset_top = 0.0
+offset_right = 480.0
+offset_bottom = 240.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fill02"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fill02"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m26")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fill02"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fill03" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 480.0
+offset_top = 0.0
+offset_right = 720.0
+offset_bottom = 240.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fill03"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fill03"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("fill9")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fill03"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fill04" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 720.0
+offset_top = 0.0
+offset_right = 960.0
+offset_bottom = 240.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fill04"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fill04"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m24")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fill04"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fill05" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 960.0
+offset_top = 0.0
+offset_right = 1200.0
+offset_bottom = 240.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fill05"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fill05"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m21")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fill05"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fill06" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 1200.0
+offset_top = 0.0
+offset_right = 1440.0
+offset_bottom = 240.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fill06"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fill06"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("fill12")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fill06"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fill07" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 1440.0
+offset_top = 0.0
+offset_right = 1680.0
+offset_bottom = 240.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fill07"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fill07"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m18")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fill07"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fill08" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 1680.0
+offset_top = 0.0
+offset_right = 1920.0
+offset_bottom = 240.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fill08"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fill08"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m29")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fill08"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fill09" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 0.0
+offset_top = 216.0
+offset_right = 240.0
+offset_bottom = 456.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fill09"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fill09"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("fill3")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fill09"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fill10" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 240.0
+offset_top = 216.0
+offset_right = 480.0
+offset_bottom = 456.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fill10"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fill10"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m28")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fill10"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fill11" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 480.0
+offset_top = 216.0
+offset_right = 720.0
+offset_bottom = 456.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fill11"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fill11"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("fill5")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fill11"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fill12" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 720.0
+offset_top = 216.0
+offset_right = 960.0
+offset_bottom = 456.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fill12"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fill12"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m27")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fill12"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fill13" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 960.0
+offset_top = 216.0
+offset_right = 1200.0
+offset_bottom = 456.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fill13"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fill13"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("fill4")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fill13"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fill14" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 1200.0
+offset_top = 216.0
+offset_right = 1440.0
+offset_bottom = 456.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fill14"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fill14"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m15")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fill14"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fill15" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 1440.0
+offset_top = 216.0
+offset_right = 1680.0
+offset_bottom = 456.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fill15"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fill15"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("fill6")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fill15"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fill16" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 1680.0
+offset_top = 216.0
+offset_right = 1920.0
+offset_bottom = 456.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fill16"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fill16"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("fill7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fill16"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fill17" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 0.0
+offset_top = 432.0
+offset_right = 240.0
+offset_bottom = 672.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fill17"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fill17"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("fill2")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fill17"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fill18" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 240.0
+offset_top = 432.0
+offset_right = 480.0
+offset_bottom = 672.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fill18"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fill18"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m22")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fill18"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fill19" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 480.0
+offset_top = 432.0
+offset_right = 720.0
+offset_bottom = 672.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fill19"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fill19"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("fill0")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fill19"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fill20" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 720.0
+offset_top = 432.0
+offset_right = 960.0
+offset_bottom = 672.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fill20"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fill20"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m20")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fill20"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fill21" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 960.0
+offset_top = 432.0
+offset_right = 1200.0
+offset_bottom = 672.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fill21"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fill21"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m25")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fill21"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fill22" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 1200.0
+offset_top = 432.0
+offset_right = 1440.0
+offset_bottom = 672.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fill22"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fill22"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m23")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fill22"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fill23" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 1440.0
+offset_top = 432.0
+offset_right = 1680.0
+offset_bottom = 672.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fill23"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fill23"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("fill8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fill23"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fill24" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 1680.0
+offset_top = 432.0
+offset_right = 1920.0
+offset_bottom = 672.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fill24"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fill24"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m16")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fill24"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fill25" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 0.0
+offset_top = 648.0
+offset_right = 240.0
+offset_bottom = 888.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fill25"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fill25"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("fill10")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fill25"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fill26" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 240.0
+offset_top = 648.0
+offset_right = 480.0
+offset_bottom = 888.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fill26"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fill26"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("fill11")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fill26"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fill27" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 480.0
+offset_top = 648.0
+offset_right = 720.0
+offset_bottom = 888.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fill27"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fill27"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m17")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fill27"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fill28" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 720.0
+offset_top = 648.0
+offset_right = 960.0
+offset_bottom = 888.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fill28"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fill28"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("fill1")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fill28"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fill29" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 960.0
+offset_top = 648.0
+offset_right = 1200.0
+offset_bottom = 888.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fill29"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fill29"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m19")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fill29"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fill30" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 1200.0
+offset_top = 648.0
+offset_right = 1440.0
+offset_bottom = 888.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fill30"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fill30"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m26")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fill30"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fill31" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 1440.0
+offset_top = 648.0
+offset_right = 1680.0
+offset_bottom = 888.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fill31"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fill31"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("fill9")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fill31"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fill32" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 1680.0
+offset_top = 648.0
+offset_right = 1920.0
+offset_bottom = 888.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fill32"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fill32"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m24")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fill32"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fill33" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 0.0
+offset_top = 864.0
+offset_right = 240.0
+offset_bottom = 1104.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fill33"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fill33"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m21")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fill33"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fill34" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 240.0
+offset_top = 864.0
+offset_right = 480.0
+offset_bottom = 1104.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fill34"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fill34"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("fill12")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fill34"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fill35" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 480.0
+offset_top = 864.0
+offset_right = 720.0
+offset_bottom = 1104.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fill35"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fill35"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m18")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fill35"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fill36" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 720.0
+offset_top = 864.0
+offset_right = 960.0
+offset_bottom = 1104.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fill36"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fill36"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m29")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fill36"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fill37" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 960.0
+offset_top = 864.0
+offset_right = 1200.0
+offset_bottom = 1104.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fill37"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fill37"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("fill3")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fill37"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fill38" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 1200.0
+offset_top = 864.0
+offset_right = 1440.0
+offset_bottom = 1104.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fill38"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fill38"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m28")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fill38"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fill39" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 1440.0
+offset_top = 864.0
+offset_right = 1680.0
+offset_bottom = 1104.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fill39"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fill39"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("fill5")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fill39"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="Fill40" type="Control" parent="Screen/ColorFragments"]
+modulate = Color(1,1,1,0)
+clip_contents = true
+offset_left = 1680.0
+offset_top = 864.0
+offset_right = 1920.0
+offset_bottom = 1104.0
+mouse_filter = 2
+
+[node name="Paper" type="ColorRect" parent="Screen/ColorFragments/Fill40"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(1,1,1,1)
+
+[node name="Image" type="TextureRect" parent="Screen/ColorFragments/Fill40"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("m27")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Border" type="Panel" parent="Screen/ColorFragments/Fill40"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("MemoryBorder")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries/ = SubResource("Animations")

@@ -1,8 +1,5 @@
 ~ start
 do GameState.set_flag("chapter6_started", true)
-# 用于测试，记得删掉
-do GameState.set_flag("emotion_visible", true)
-
 do Chapter6Room.play_cough()
 Elliot: 咳、咳。
 Elliot: 我没事。我睡一会儿就行，不要折腾我了，明天还有工作。

@@ -2,6 +2,7 @@ extends "res://Scene/Chapter6/chapter6_room.gd"
 
 @export var self_will_scene: PackedScene = preload("res://Scene/Chapter6/attribute_self_will.tscn")
 @export var bad_ending_scene: PackedScene = preload("res://Scene/Chapter6/chapter6_bad_ending.tscn")
+@export var memory_surge_scene: PackedScene = preload("res://Scene/Chapter6/memory_surge.tscn")
 var on_right := true
 var moving := false
 var session := 0
@@ -78,9 +79,18 @@ func after_item(title: String, delay: float) -> void:
 
 func awaken() -> void:
 	SettingsMenu.set_interaction_locked(true)
+	var balloon := get_tree().get_first_node_in_group("dialogue_balloon")
+	if balloon != null:
+		balloon.hide_subtitle()
+	$MemoryTransition/Whiteout.show()
 	$AnimationPlayer.play("chapter6_mirror_closeup")
 	await $AnimationPlayer.animation_finished
-	# 保留动画最终镜头，不恢复视野，后续演出由独立场景覆盖。
+	# 白屏交给独立回忆场景；其末尾透明，重新露出同一个镜子特写。
+	var effect := memory_surge_scene.instantiate()
+	add_child(effect)
+	$MemoryTransition/Whiteout.hide()
+	await effect.play()
+	effect.queue_free()
 
 func show_self_will() -> void:
 	var effect := self_will_scene.instantiate()

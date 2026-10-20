@@ -4,6 +4,8 @@ extends "res://Scene/Chapter2/chapter2_room.gd"
 
 func _ready() -> void:
 	setup_room()
+	if SceneTransition.transitioning:
+		await SceneTransition.transition_finished
 	if not GameState.get_flag("chapter2_started"):
 		DialogueManager.show_dialogue_balloon(dialogue, start_title, [{"LivingRoom": self}])
 	elif GameState.get_flag("garden_event_completed") and not GameState.get_flag("chapter2_completed"):

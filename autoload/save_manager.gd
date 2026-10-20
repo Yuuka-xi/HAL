@@ -67,6 +67,8 @@ func return_to_menu() -> void:
 	Attributes.reset()
 	Memory.reset()
 	Inventory.reset()
+	SettingsMenu.set_interaction_locked(false)
+	SettingsMenu.set_navigation_hidden(false)
 	get_tree().change_scene_to_file(MENU_SCENE)
 
 func save_game(slot: int = current_slot) -> Error:

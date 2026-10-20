@@ -135,7 +135,6 @@ func start_level(level: String, initial_keywords: Array) -> void:
 	answer.clear()
 	_update_query()
 	_update_answer()
-	GameState.set_choice("keyword_submission", "")
 	GameState.start_keyword_list(level, initial_keywords)
 
 func reset() -> void:
