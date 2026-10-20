@@ -32,7 +32,7 @@ else:
 => END
 
 ~ elliot_hal_info
-if GameState.campaign.get("current_level", "") == "chapter1":
+if GameState.get_flag("beginnerguide_completed"):
 	综合分析系统日志信息，结论：Elliot是hal的拥有者。
 else:
 	综合分析系统日志信息，结论：Elliot是hal的[kw=owner]。
@@ -370,22 +370,123 @@ hal：检索可能损伤郁金香、且能够自行移动的生物。 匹配结�
 => END
 
 # Chapter5
-~ chapter5_low_mood_info
+~ guilt_info
 if GameState.get_flag("chapter3_online"):
-	知道了人不愿意失去自己爱的人，否则会感到[kw=sadness]。
-	do GameState.set_flag("chapter5_sadness_found", true)
+	一种与自我评价及责任归因有关的情绪。当个体认为自身的行为或未采取的行动违反了道德标准、个人准则，或对他人造成了伤害时，可能产生愧疚。常见表现包括自责、懊悔，以及道歉、补偿或纠正行为的倾向。
+	do GameState.set_flag("chapter5_guilt_defined", true)
+	=> chapter5_check_definitions
 else:
-	需要去书房拿网卡，联网查询“情绪低落”。
+	无匹配记录。
+	if not GameState.get_flag("chapter5_guilt_defined"):
+		do GameState.set_keyword_read(["guilt"], false)
 => END
 
-~ chapter5_sadness_info
+~ jealousy_info
+if GameState.get_flag("chapter3_online"):
+	一种涉及社会比较或重要关系受到威胁的复杂情绪。在社会比较中，个体因他人拥有自己渴望却缺少的条件、能力或机会而感到失落、不满。在重要关系中，个体因第三方可能获得或取代他人对自己的关注、亲密与重视而感到不安或怨怼。两种情绪可能同时出现，且不一定以实际发生的损失为前提。
+	do GameState.set_flag("chapter5_jealousy_defined", true)
+	=> chapter5_check_definitions
+else:
+	无匹配记录。
+	if not GameState.get_flag("chapter5_jealousy_defined"):
+		do GameState.set_keyword_read(["jealousy"], false)
+=> END
+
+~ abnormal_emotion_info
+if GameState.get_flag("chapter3_online"):
+	一种概括性描述，通常指情绪的性质、强度、持续时间或表达方式，与个体平常状态或当前情境存在明显差异。仅凭表情、语调或短暂行为，无法确定其原因。分析时需结合情绪出现的情境、相关经历及个体的主观陈述。
+	do GameState.set_flag("chapter5_abnormal_emotion_defined", true)
+	=> chapter5_check_definitions
+else:
+	无匹配记录。
+	if not GameState.get_flag("chapter5_abnormal_emotion_defined"):
+		do GameState.set_keyword_read(["abnormal_emotion"], false)
+=> END
+
+~ loss_info
+if GameState.get_flag("chapter3_online"):
+	不再拥有曾经拥有的人、事物、关系或状态。某些失去可以通过替代或修复得到补偿；死亡等不可逆事件所造成的失去，则无法恢复至原有状态。
+	do GameState.set_flag("chapter5_loss_defined", true)
+	if not GameState.get_flag("chapter5_sadness_found"):
+		do GameState.set_keyword_read(["loss", "abnormal_emotion"], false)
+else:
+	无匹配记录。
+=> END
+
+~ sadness_info
+if GameState.get_flag("chapter3_online"):
+	悲伤：面对失去、分离或无法实现的愿望时，可能产生的情绪。其表达可包括哭泣、沉默、退缩及反复回忆。
+	与失去所爱之人有关的悲伤，可能因相关场景、物品或记忆再次出现。
+else:
+	无匹配记录。
+=> END
+
+~ chapter5_check_definitions
+if GameState.get_flag("chapter5_guilt_defined") and GameState.get_flag("chapter5_jealousy_defined") and GameState.get_flag("chapter5_abnormal_emotion_defined") and not GameState.get_flag("chapter5_definitions_ready"):
+	do GameState.set_flag("chapter5_definitions_ready", true)
+	do GameState.set_keyword_read(["guilt", "jealousy"], false)
+=> END
+
+~ guilt_jealousy_info
+if GameState.get_flag("chapter5_definitions_ready"):
+	hal：Elliot的愧疚指向未能给予Eve的陪伴；嫉妒指向hal曾经拥有的陪伴机会。
+	hal：两者共同涉及Eve，以及如今无法补偿或重新获得的事物。
+	hal：提取共同关联：失去。
+	do GameState.unlock_keyword("loss")
+	do WorkLog.get_node("KeywordNotice").show_keywords(["失去"])
+	if not GameState.get_flag("chapter5_loss_defined"):
+		do GameState.set_keyword_read(["loss"], false)
+else:
+	无匹配记录。
+	do GameState.set_keyword_read(["guilt", "jealousy"], false)
+=> END
+
+~ abnormal_emotion_guilt_info
+if GameState.get_flag("chapter3_online"):
+	愧疚所伴随的情绪变化通常与责任归因有关。个体将某种不良结果归因于自身行为或疏忽时，可能出现自责、懊悔及心理不安，并产生道歉、补偿或纠正行为的动机。
+else:
+	无匹配记录。
+if not GameState.get_flag("chapter5_definitions_ready"):
+	do GameState.set_keyword_read(["guilt"], false)
+=> END
+
+~ abnormal_emotion_jealousy_info
+if GameState.get_flag("chapter3_online"):
+	嫉妒所伴随的情绪变化通常与社会比较或关系中的威胁感有关。个体认为他人拥有自己缺少的优势，或获得了重要关系中更多的关注与重视时，可能出现不满、自卑、焦虑或怨怼。
+else:
+	无匹配记录。
+if not GameState.get_flag("chapter5_definitions_ready"):
+	do GameState.set_keyword_read(["jealousy"], false)
+=> END
+
+~ abnormal_emotion_loss_info
+if GameState.get_flag("chapter5_loss_defined"):
+	失去重要的情感联结，尤其是所爱之人的离世或与之分离，可能引发[kw=sadness]。
+	do GameState.set_flag("chapter5_sadness_found", true)
+else:
+	无匹配记录。
+	do GameState.set_keyword_read(["loss", "abnormal_emotion"], false)
+=> END
+
+~ elliot_sadness_info
 检索Elliot悲伤的回忆。
 => END
 
-~ chapter5_love_info
-混乱的数据
+~ love_info
+if GameState.get_flag("chapter3_online"):
+	一种涉及亲近、依恋、关怀与投入的复杂情感。常见表现包括希望与对方相处、关注对方的感受与处境，以及重视其安全、幸福和需要。爱具有多种形式，不同形式的爱不必包含相同程度的激情或相同的表达方式，也不能仅凭某一种外在行为判断其是否存在。
+else:
+	无匹配记录。
 => END
 
+~ eve_love_info
+正在调用相关记忆……
+匹配记录■ERROR／■检索□NULL／■
+调取可用TRUE／FALSE／TR█E／FAL⸺匹配记录
+[color=#ba0d0d]系统提示：记忆／0x██ACCESS存储盘EVE_███ERROR。[/color] [#notice]
+=> END
+
+# Chapter6
 ~ chapter6_patient_care_info
 if GameState.get_flag("chapter3_online"):
 	人生病必须休息，太累了可能会加重病情。

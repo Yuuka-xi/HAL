@@ -52,6 +52,8 @@ func turn(direction: int) -> void:
 func _refresh() -> void:
 	if second_visit and page == 8:
 		last_email_reached = true
+		if not GameState.get_flag("chapter4_night_read_completed"):
+			GameState.set_flag("chapter4_night_read_completed", true)
 	$BackButton.visible = second_visit and last_email_reached
 	for index in range(1, 9):
 		get_node("EmailPage/Email%d" % index).visible = index == page

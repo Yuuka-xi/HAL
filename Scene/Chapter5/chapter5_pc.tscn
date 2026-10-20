@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://ck3m6rcfi5waa" path="res://Asset/PCSystem/start_button.png" id="10_cvsot"]
 [ext_resource type="Texture2D" uid="uid://c4keu3f2jicb4" path="res://Asset/studyroom/desk.png" id="11_hoeeg"]
 [ext_resource type="Texture2D" uid="uid://yvv2rbs15sq" path="res://Asset/UI/back.png" id="12_tt77a"]
-[ext_resource type="PackedScene" uid="uid://bg0dhcmtonb5v" path="res://Scene/Tool/hover_scale/return_hover_scale.tscn" id="13_nmeyt"]
+[ext_resource type="PackedScene" uid="uid://sku1m53v5qqm" path="res://Scene/Tool/hover_scale/hover_scale.tscn" id="14_4olsi"]
 [ext_resource type="Script" uid="uid://dopiy770wls3t" path="res://Scene/Chapter5/chapter5_pc.gd" id="c5_script"]
 
 [sub_resource type="RectangleShape2D" id="CardShape"]
@@ -300,14 +300,15 @@ texture = ExtResource("11_hoeeg")
 libraries/ = SubResource("AnimationLibrary_37jyc")
 
 [node name="ReturnButton" type="TextureButton" parent="." unique_id=388335742]
-offset_left = 1677.0001
-offset_top = 15.000002
-offset_right = 1962.0001
-offset_bottom = 307.0
+offset_left = 1584.0
+offset_top = -83.99999
+offset_right = 1869.0
+offset_bottom = 208.0
 scale = Vector2(0.3, 0.3)
+pivot_offset = Vector2(142.5, 146)
 texture_normal = ExtResource("12_tt77a")
 
-[node name="HoverScale" parent="ReturnButton" unique_id=1634581090 instance=ExtResource("13_nmeyt")]
+[node name="HoverScale" parent="ReturnButton" unique_id=533082741 instance=ExtResource("14_4olsi")]
 
 [connection signal="mouse_entered" from="PC/NetworkCardSlot/PerceptionHover" to="PC/NetworkCardSlot/PerceptionHover" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="PC/NetworkCardSlot/PerceptionHover" to="PC/NetworkCardSlot/PerceptionHover" method="_on_mouse_exited"]

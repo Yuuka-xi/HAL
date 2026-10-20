@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c4iecw1l4yaku" path="res://Asset/livingroom/background.png" id="1_ellge"]
 [ext_resource type="Texture2D" uid="uid://dvnjq8mvr4dex" path="res://Asset/livingroom/table.png" id="3_sko13"]
+[ext_resource type="Script" uid="uid://dwo4rtkee6e6v" path="res://Scene/Tool/perception_click/perception_click.gd" id="4_2o5xf"]
 [ext_resource type="Texture2D" uid="uid://b6ego6wb6sbvq" path="res://Asset/livingroom/telephone.png" id="4_o3swx"]
 [ext_resource type="Texture2D" uid="uid://cd0ssub16fhbb" path="res://Asset/livingroom/elliot.png" id="4_sko13"]
 [ext_resource type="Texture2D" uid="uid://c6j1dtiw8mngb" path="res://Asset/livingroom/laptop.png" id="5_2o5xf"]
@@ -10,6 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://bsw075b8dw5s3" path="res://Asset/livingroom/SmokeAlarm.png" id="8_fvg3i"]
 [ext_resource type="Resource" uid="uid://bsk7ltudfrslr" path="res://Dialogue/Chapter5.dialogue" id="c5_dialogue"]
 [ext_resource type="Script" uid="uid://c7ihasngpkudy" path="res://Scene/Chapter5/chapter5_room.gd" id="c5_room"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_23k4q"]
+size = Vector2(345, 801.5)
 
 [sub_resource type="ShaderMaterial" id="LightDodge"]
 shader = ExtResource("6_qpkyu")
@@ -27,9 +31,33 @@ texture = ExtResource("1_ellge")
 position = Vector2(-1957.4998, -1080)
 scale = Vector2(1.9999998, 2)
 
+[node name="Area2D" type="Area2D" parent="background/door_graden" unique_id=1514445316 node_paths=PackedStringArray("dialogue_state")]
+position = Vector2(232, 489)
+script = ExtResource("4_2o5xf")
+dialogue = ExtResource("c5_dialogue")
+start_title = "enter_garden"
+dialogue_state = NodePath("../../..")
+dialogue_state_name = "Chapter5Room"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="background/door_graden/Area2D" unique_id=1378681578]
+position = Vector2(-3, -5.75)
+shape = SubResource("RectangleShape2D_23k4q")
+
 [node name="door_studyroom" type="Node2D" parent="background" unique_id=2062693594]
 position = Vector2(626.5, -92)
 scale = Vector2(1.9999998, 2)
+
+[node name="Area2D" type="Area2D" parent="background/door_studyroom" unique_id=800255316 node_paths=PackedStringArray("dialogue_state")]
+position = Vector2(-1, -14)
+script = ExtResource("4_2o5xf")
+dialogue = ExtResource("c5_dialogue")
+start_title = "enter_study"
+dialogue_state = NodePath("../../..")
+dialogue_state_name = "Chapter5Room"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="background/door_studyroom/Area2D" unique_id=761790594]
+position = Vector2(-3, -5.75)
+shape = SubResource("RectangleShape2D_23k4q")
 
 [node name="Elliot" type="Sprite2D" parent="." unique_id=134534866]
 position = Vector2(725, 693)

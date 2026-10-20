@@ -50,15 +50,17 @@ const NAMES = {
 	"moving_threat": "会移动的威胁",
 	"slug": "蛞蝓",
 	# 关卡5
-	"patient_care": "照顾病人的方法",
-	"fever": "发烧",
-	"antipyretic": "退烧药",
 	"elliot_tulips": "Elliot种的郁金香",
 	"guilt": "愧疚",
 	"jealousy": "嫉妒",
-	"low_mood": "情绪低落",
+	"abnormal_emotion": "情绪异常",
+	"loss": "失去",
 	"sadness": "悲伤",
-	"love": "爱"
+	"love": "爱",
+	# 关卡6
+	"patient_care": "照顾病人的方法",
+	"fever": "发烧",
+	"antipyretic": "退烧药",
 }
 
 # 双词组合按编号排序，用 + 连接；值是 .dialogue 中的入口标题。
@@ -136,11 +138,22 @@ const ENTRIES = {
 	"garden+work_record": "garden_work_record_info",
 	"flower_habit+tulip": "flower_habit_tulip_info",
 	# 关卡5
+	"guilt": "guilt_info",
+	"jealousy": "jealousy_info",
+	"abnormal_emotion": "abnormal_emotion_info",
+	"loss": "loss_info",
+	"sadness": "sadness_info",
+	"love": "love_info",
+	"guilt+jealousy": "guilt_jealousy_info",
+	"abnormal_emotion+guilt": "abnormal_emotion_guilt_info",
+	"abnormal_emotion+jealousy": "abnormal_emotion_jealousy_info",
+	"abnormal_emotion+loss": "abnormal_emotion_loss_info",
+	"elliot+sadness": "elliot_sadness_info",
+	"eve+love": "eve_love_info",
+	"abnoabnormal_emotion+loss": "abnoabnormal_emotion_loss_info",
+	# 关卡6
 	"patient_care": "chapter6_patient_care_info",
 	"fever": "chapter6_fever_info",
 	"fever+patient_care": "chapter6_fever_care_info",
 	"antipyretic": "chapter6_antipyretic_info",
-	"low_mood": "chapter5_low_mood_info",
-	"elliot+sadness": "chapter5_sadness_info",
-	"eve+love": "chapter5_love_info",
 }
