@@ -10,7 +10,8 @@ const LEVELS := {
 	"chapter1_completed": "res://Scene/Chapter1/study_room_2.tscn",
 	"chapter2_completed": "res://Scene/Chapter2/living_room.tscn",
 	"chapter3_completed": "res://Scene/Chapter3/chapter3_study_room.tscn",
-	"chapter4_completed": "res://Scene/End/end1.tscn",
+	"chapter4_completed": "res://Scene/Chapter4/chapter4_living_room.tscn",
+	"chapter5_completed": "res://Scene/End/end1.tscn",
 }
 const SAVE_DIRECTORY := "user://saves/"
 var current_slot := 1
@@ -38,7 +39,7 @@ func next_scene() -> String:
 	for flag in LEVELS:
 		if not GameState.get_flag(flag):
 			return LEVELS[flag]
-	# 第四关暂用结束页占位；第三关完成的存档从这里继续。
+	# 第五关入口暂用两个结束页，播放后返回标题。
 	return "res://Scene/End/end1.tscn"
 
 func start_slot(slot: int) -> Error:

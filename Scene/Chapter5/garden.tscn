@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://psikufmy40xy" path="res://Asset/Garden/background.png" id="3_0i1vr"]
 [ext_resource type="Texture2D" uid="uid://ch4j4dpldprgt" path="res://Asset/Garden/flower.png" id="5_wo43w"]
 [ext_resource type="Texture2D" uid="uid://6qbvg2x7oala" path="res://Asset/Garden/chair.png" id="6_pdk0p"]
-[ext_resource type="Texture2D" uid="uid://crkeje15uc0um" path="res://Asset/WhiteBlock.png" id="10_mh8y6"]
-[ext_resource type="Texture2D" uid="uid://ca5idgyqvk611" path="res://Asset/YellowBlock.png" id="11_rs848"]
+[ext_resource type="Texture2D" uid="uid://dxixuax6kmm47" path="res://Asset/Garden/Elliot.png" id="10_rs848"]
+[ext_resource type="Texture2D" uid="uid://bh45jpyidmoyi" path="res://Asset/Garden/wateringcan.png" id="11_rs848"]
 [ext_resource type="Script" uid="uid://dwo4rtkee6e6v" path="res://Scene/Tool/perception_click/perception_click.gd" id="c2_click"]
 [ext_resource type="Resource" uid="uid://bsk7ltudfrslr" path="res://Dialogue/Chapter5.dialogue" id="c2_dialogue"]
 [ext_resource type="Script" uid="uid://sueen46n1aoo" path="res://Scene/Tool/item_drop_target/item_drop_target.gd" id="c2_drop"]
@@ -35,96 +35,166 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("WateringCan:visible")
+tracks/0/path = NodePath("WateringCan/WateringCan:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.0009999999),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [1.2512784]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("WateringCan:position")
+tracks/1/path = NodePath("WateringCan/WateringCan:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.0009999999),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(607, 988)]
+"values": [Vector2(-953.65466, -506.18854)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("WateringCan:scale")
+tracks/2/path = NodePath("WateringCan/WateringCan:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.0009999999),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("WateringCan:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-0.43237236]
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_tugso"]
 resource_name = "watering"
-length = 2.0
+length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("WateringCan:visible")
+tracks/0/path = NodePath("WateringCan/WateringCan:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
+"times": PackedFloat32Array(0, 1.2),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
+"update": 0,
+"values": [0.6617821, 1.2512784]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("WateringCan:position")
+tracks/1/path = NodePath("WateringCan/WateringCan:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.5),
+"times": PackedFloat32Array(0, 1.2037115),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(205, 764), Vector2(1776, 764)]
+"values": [Vector2(-953.65466, -506.18854), Vector2(-657.655, -369.58606)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("WateringCan:rotation")
+tracks/2/path = NodePath("WateringCan/WateringCan:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1.3955531),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_2xtbw"]
+resource_name = "watering_2"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WateringCan/WateringCan:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.6333333),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [-0.43237236]
+"values": [1.2457101, 1.5707963267948966]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WateringCan/WateringCan:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.6333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-633.1397, -358.27237), Vector2(-149.18948, -134.93153)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WateringCan/WateringCan:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.9033688),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_rtw2g"]
+resource_name = "watering_3"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WateringCan/WateringCan:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.2217304763960306, 1.5707963267948966]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("WateringCan/WateringCan:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WateringCan/WateringCan:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5685866),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-117.41034, -120.26563), Vector2(482.76062, 156.71054)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2xtbw"]
 _data = {
 &"RESET": SubResource("Animation_rs848"),
-&"watering": SubResource("Animation_tugso")
+&"watering_1": SubResource("Animation_tugso"),
+&"watering_2": SubResource("Animation_2xtbw"),
+&"watering_3": SubResource("Animation_rtw2g")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rs848"]
@@ -202,33 +272,26 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Elliot" type="Sprite2D" parent="." unique_id=1293787027]
-modulate = Color(1, 1, 1, 0.57254905)
-position = Vector2(523, 878.5)
-scale = Vector2(1.046875, 2.4921875)
-texture = ExtResource("10_mh8y6")
+position = Vector2(621, 815.99994)
+scale = Vector2(0.47192425, 0.47192428)
+texture = ExtResource("10_rs848")
 
 [node name="WateringCan" type="Node2D" parent="." unique_id=1005326964]
-position = Vector2(607, 988)
+position = Vector2(1200, 764)
 rotation = -0.43237236
 
 [node name="WateringCan" type="Sprite2D" parent="WateringCan" unique_id=1705151683]
-position = Vector2(1, 10)
-scale = Vector2(0.78125, 0.59375)
+visible = false
+position = Vector2(-953.65466, -506.18854)
+rotation = 1.2512784
+scale = Vector2(0.381783, 0.38178304)
 texture = ExtResource("11_rs848")
-
-[node name="Label" type="Label" parent="WateringCan" unique_id=1230321365]
-offset_left = 562.0
-offset_top = 1000.0
-offset_right = 682.0
-offset_bottom = 1044.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "浇水壶"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=49886545]
 libraries/ = SubResource("AnimationLibrary_2xtbw")
 
 [node name="WateringTarget" type="Area2D" parent="." unique_id=1983270060]
+visible = false
 position = Vector2(94, 746)
 script = ExtResource("c2_drop")
 accepted_item = "watering_can"

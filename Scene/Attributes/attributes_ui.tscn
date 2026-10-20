@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bm2noc7380kcp" path="res://Asset/UI/Attribute/button.png" id="art_button"]
 [ext_resource type="Texture2D" uid="uid://dxmmjs52q7f4v" path="res://Asset/UI/Attribute/round.png" id="art_round"]
 [ext_resource type="PackedScene" uid="uid://bg0dhcmtonb5v" path="res://Scene/Tool/hover_scale/return_hover_scale.tscn" id="return_hover"]
+[ext_resource type="Texture2D" uid="uid://c2gc5n4u1ngy2" path="res://Asset/UI/Attribute/label2.png" id="thought_background"]
 
 [sub_resource type="StyleBoxEmpty" id="NoFocus"]
 
@@ -34,6 +35,13 @@ Button/styles/focus = SubResource("NoFocus")
 Button/styles/hover = SubResource("DimensionStyle")
 Button/styles/normal = SubResource("DimensionStyle")
 Button/styles/pressed = SubResource("DimensionStyle")
+
+[sub_resource type="StyleBoxTexture" id="ThoughtBackground"]
+texture = ExtResource("thought_background")
+texture_margin_left = 48.0
+texture_margin_top = 24.0
+texture_margin_right = 48.0
+texture_margin_bottom = 24.0
 
 [node name="Attributes" type="CanvasLayer" unique_id=955807174]
 layer = 40
@@ -127,11 +135,18 @@ offset_right = 785.0
 offset_bottom = -49.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_colors/font_color = Color(0.7529412, 0.6745098, 0.5333334, 1)
+theme_override_colors/font_color = Color(0, 0.4, 0.49, 1)
 theme_override_font_sizes/font_size = 35
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+
+[node name="Background" type="Panel" parent="Screen/Thought" unique_id=1202732225]
+visible = false
+show_behind_parent = true
+layout_mode = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("ThoughtBackground")
 
 [node name="open_attribute_page" type="AudioStreamPlayer" parent="." unique_id=1533104219]
 stream = ExtResource("10_towa7")

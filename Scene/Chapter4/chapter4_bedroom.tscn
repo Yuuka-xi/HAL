@@ -4,26 +4,36 @@
 [ext_resource type="Texture2D" uid="uid://bbv3hr6y8648s" path="res://Asset/bedroom/door.png" id="4_w50te"]
 [ext_resource type="Texture2D" uid="uid://bahmk23mw4ad5" path="res://Asset/bedroom/sensor.png" id="6_vv28h"]
 [ext_resource type="Texture2D" uid="uid://cqnloa0sik40o" path="res://Asset/bedroom/Mirror.png" id="7_ye36e"]
-[ext_resource type="Texture2D" uid="uid://crkeje15uc0um" path="res://Asset/WhiteBlock.png" id="8_xpsi7"]
 [ext_resource type="Texture2D" uid="uid://c5rcr381sak2d" path="res://Asset/bedroom/bucket.png" id="11_audl1"]
 [ext_resource type="Texture2D" uid="uid://cpf3x6iw0eliw" path="res://Asset/bedroom/bucket_area.png" id="14_8mqyq"]
 [ext_resource type="Texture2D" uid="uid://d15o0n2qr6ygh" path="res://Asset/bedroom/cabinet.png" id="15_0pdfn"]
 [ext_resource type="Texture2D" uid="uid://chv1qwwxjw2c2" path="res://Asset/bedroom/light.png" id="15_moor3"]
+[ext_resource type="Texture2D" uid="uid://d2arq0c40auq" path="res://Asset/bedroom/Elliot.png" id="16_lhnow"]
+[ext_resource type="Script" uid="uid://dwo4rtkee6e6v" path="res://Scene/Tool/perception_click/perception_click.gd" id="17_yqmka"]
 [ext_resource type="Texture2D" uid="uid://6n8srftfdnc5" path="res://Asset/bedroom/bed.png" id="18_kqp6e"]
 [ext_resource type="Texture2D" uid="uid://bsw075b8dw5s3" path="res://Asset/livingroom/SmokeAlarm.png" id="19_2ihfu"]
 [ext_resource type="Texture2D" uid="uid://dgsknnb2u40mf" path="res://Asset/bedroom/chair.png" id="19_vycsh"]
 [ext_resource type="Texture2D" uid="uid://c7ndy1fovn5dt" path="res://Asset/bedroom/table.png" id="20_orj3k"]
 [ext_resource type="Texture2D" uid="uid://cybxrj65t7tpv" path="res://Asset/bedroom/lamp.png" id="21_n7h23"]
+[ext_resource type="Texture2D" uid="uid://bxcb5awrm2ptw" path="res://Asset/bedroom/cup.png" id="21_yqmka"]
 [ext_resource type="Texture2D" uid="uid://bg5vlwmumh3rn" path="res://Asset/bedroom/picture.png" id="22_qh0mq"]
 [ext_resource type="Texture2D" uid="uid://cxq0ayckeibtk" path="res://Asset/bedroom/left.png" id="23_k5lil"]
 [ext_resource type="PackedScene" uid="uid://sku1m53v5qqm" path="res://Scene/Tool/hover_scale/hover_scale.tscn" id="24_3aas4"]
+[ext_resource type="AudioStream" uid="uid://bfexbbtfne21t" path="res://Asset/audio/sfx/toggle_off.wav" id="25_2oy8r"]
 [ext_resource type="Texture2D" uid="uid://4dlnud58bdar" path="res://Asset/bedroom/right.png" id="25_l3uqh"]
 [ext_resource type="PackedScene" uid="uid://bg0dhcmtonb5v" path="res://Scene/Tool/hover_scale/return_hover_scale.tscn" id="26_8bcen"]
 [ext_resource type="Resource" uid="uid://dh8bblwunn4kt" path="res://Dialogue/Chapter4.dialogue" id="c4_dialogue"]
 [ext_resource type="Script" uid="uid://2ebt0c7ajmmd" path="res://Scene/Chapter4/chapter4_bedroom.gd" id="c4_script"]
+[ext_resource type="PackedScene" path="res://Scene/Chapter4/night_shade.tscn" id="c4_shade"]
 
 [sub_resource type="RectangleShape2D" id="C2Shape_0"]
 size = Vector2(297.75, 780.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_23k4q"]
+size = Vector2(94.57141, 108.142944)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_23k4q"]
+radius = 107.2146
 
 [sub_resource type="Animation" id="Animation_moor3"]
 resource_name = "Hand_cup_to_Elliot."
@@ -37,7 +47,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(2215, 567), Vector2(3309, 685)]
+"values": [Vector2(2213, 605.00006), Vector2(3464, 649)]
 }
 
 [sub_resource type="Animation" id="Animation_lhnow"]
@@ -52,7 +62,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(2215, 567)]
+"values": [Vector2(2213, 605.00006)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5sesh"]
@@ -62,17 +72,16 @@ _data = {
 }
 
 [node name="bedroom" type="Node2D" unique_id=1934651834]
-position = Vector2(0, -2)
 script = ExtResource("c4_script")
 dialogue = ExtResource("c4_dialogue")
 
 [node name="background" type="Sprite2D" parent="." unique_id=1795502936]
-position = Vector2(960, 542)
+position = Vector2(960, 540)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_1ko01")
 
 [node name="background2" type="Sprite2D" parent="." unique_id=414085544]
-position = Vector2(2880, 542)
+position = Vector2(2880, 540)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_1ko01")
 
@@ -84,8 +93,14 @@ position = Vector2(192, 517.00006)
 scale = Vector2(0.4910581, 0.49105814)
 texture = ExtResource("4_w50te")
 
-[node name="ReturnDoor" type="Area2D" parent="door_bedroom" unique_id=458696918]
+[node name="ReturnDoor" type="Area2D" parent="door_bedroom" unique_id=458696918 node_paths=PackedStringArray("dialogue_state")]
 position = Vector2(176.5, 679)
+script = ExtResource("17_yqmka")
+dialogue = ExtResource("c4_dialogue")
+start_title = "return_living_room"
+required_flag = "chapter4_lights_off"
+dialogue_state = NodePath("../..")
+dialogue_state_name = "Chapter4Room"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="door_bedroom/ReturnDoor" unique_id=2007375924]
 position = Vector2(5.625, -144.75)
@@ -149,20 +164,63 @@ position = Vector2(2210, 826)
 scale = Vector2(0.5038168, 0.5038167)
 texture = ExtResource("20_orj3k")
 
-[node name="lamp" type="Sprite2D" parent="." unique_id=226749067]
-position = Vector2(3554.9998, 255)
-scale = Vector2(0.56902903, 0.569029)
-texture = ExtResource("21_n7h23")
+[node name="cup" type="Sprite2D" parent="." unique_id=936082241]
+position = Vector2(2213, 605.00006)
+scale = Vector2(0.55263156, 0.55263156)
+texture = ExtResource("21_yqmka")
 
-[node name="light" type="Sprite2D" parent="lamp" unique_id=896672880]
-position = Vector2(-574.732, 713.78674)
-scale = Vector2(1.0721155, 1.136103)
-texture = ExtResource("15_moor3")
+[node name="Area2D" type="Area2D" parent="cup" unique_id=168169465 node_paths=PackedStringArray("dialogue_state")]
+scale = Vector2(1, 0.99999994)
+script = ExtResource("17_yqmka")
+dialogue = ExtResource("c4_dialogue")
+start_title = "give_cup"
+one_shot = true
+dialogue_state = NodePath("../..")
+dialogue_state_name = "Chapter4Room"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cup/Area2D" unique_id=879773419]
+position = Vector2(-18.333496, -3.4049072)
+shape = SubResource("RectangleShape2D_23k4q")
 
 [node name="picture" type="Sprite2D" parent="." unique_id=1084990894]
 position = Vector2(3140, 192)
 scale = Vector2(0.56902903, 0.569029)
 texture = ExtResource("22_qh0mq")
+
+[node name="Elliot" type="Sprite2D" parent="." unique_id=1095151140]
+position = Vector2(3296.495, 652.336)
+scale = Vector2(0.5206014, 0.5206012)
+texture = ExtResource("16_lhnow")
+
+[node name="lamp" type="Sprite2D" parent="." unique_id=226749067]
+position = Vector2(3617.9998, 182)
+scale = Vector2(0.56902903, 0.569029)
+texture = ExtResource("21_n7h23")
+
+[node name="Area2D" type="Area2D" parent="lamp" unique_id=1695867435 node_paths=PackedStringArray("dialogue_state")]
+scale = Vector2(1, 0.99999994)
+script = ExtResource("17_yqmka")
+dialogue = ExtResource("c4_dialogue")
+start_title = "turn_off_light"
+one_shot = true
+required_flag = "chapter4_cup_given"
+dialogue_state = NodePath("../..")
+dialogue_state_name = "Chapter4Room"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lamp/Area2D" unique_id=1048122391]
+position = Vector2(-212.6425, 112.47232)
+shape = SubResource("CircleShape2D_23k4q")
+
+[node name="NightShade" parent="lamp" unique_id=1512029284 instance=ExtResource("c4_shade")]
+
+[node name="LightLayer" type="CanvasLayer" parent="lamp" unique_id=748913514]
+layer = 2
+follow_viewport_enabled = true
+
+[node name="light" type="Sprite2D" parent="lamp/LightLayer" unique_id=896672880]
+position = Vector2(-254.81982, 650.23047)
+scale = Vector2(1.0721155, 1.136103)
+texture = ExtResource("15_moor3")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=124135654]
 position = Vector2(960, 780)
@@ -200,11 +258,11 @@ texture_normal = ExtResource("25_l3uqh")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=346020804]
 libraries/ = SubResource("AnimationLibrary_5sesh")
 
-[node name="cup" type="Sprite2D" parent="." unique_id=936082241]
-position = Vector2(2215, 567)
-texture = ExtResource("8_xpsi7")
-
 [node name="smokealarm" type="Sprite2D" parent="." unique_id=1506728266]
 position = Vector2(1636.0001, 38.000004)
 scale = Vector2(0.5178572, 0.5178572)
 texture = ExtResource("19_2ihfu")
+
+[node name="lights_off" type="AudioStreamPlayer" parent="." unique_id=2127776717]
+stream = ExtResource("25_2oy8r")
+bus = &"SFX"

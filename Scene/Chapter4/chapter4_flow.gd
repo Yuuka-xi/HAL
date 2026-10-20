@@ -71,7 +71,7 @@ func blink(action: Callable) -> void:
 
 func enter_bedroom(room: Node2D) -> void:
 	SettingsMenu.set_interaction_locked(true)
-	await create_tween().tween_property(room, "modulate", Color(0.45, 0.45, 0.5), 1.5).finished
+	await create_tween().tween_property(room.get_node("NightShade/Dark"), "modulate:a", 1.0, 1.5).finished
 	GameState.set_flag("chapter4_night", true)
 	await blink(func(): get_tree().change_scene_to_file(BEDROOM))
 	get_tree().current_scene.begin_night()
@@ -86,9 +86,10 @@ func finish() -> void:
 	Attributes.close()
 	Memory.close(true)
 	SettingsMenu.set_navigation_hidden(false)
-	SceneTransition.change_scene_with_animation("res://Scene/Chapter5/chapter5_living_room.tscn", "res://Scene/Tool/scene_transition/4_5_transition.tscn", &"4_5_transition", 2.0)
+	GameState.set_flag("chapter4_completed", true)
+	SceneTransition.change_scene_with_animation("res://Scene/End/end1.tscn", "res://Scene/Tool/scene_transition/4_5_transition.tscn", &"4_5_transition", 2.0)
 
-static func add_click(parent: Node2D, size: Vector2, dialogue: DialogueResource, title: String, state: Node) -> void:
+static func add_click(parent: Node2D, size: Vector2, dialogue: DialogueResource, title: String, state: Node) -> Area2D:
 	var area := Area2D.new()
 	area.set_script(load("res://Scene/Tool/perception_click/perception_click.gd"))
 	area.dialogue = dialogue
@@ -101,3 +102,4 @@ static func add_click(parent: Node2D, size: Vector2, dialogue: DialogueResource,
 	collision.shape = shape
 	area.add_child(collision)
 	parent.add_child(area)
+	return area

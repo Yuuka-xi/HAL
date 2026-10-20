@@ -8,14 +8,78 @@
 [ext_resource type="Shader" uid="uid://dpcdyks2kay2r" path="res://Scene/Tool/color_dodge.gdshader" id="8_1jxhl"]
 [ext_resource type="Texture2D" uid="uid://bsw075b8dw5s3" path="res://Asset/livingroom/SmokeAlarm.png" id="8_vdl68"]
 [ext_resource type="Texture2D" uid="uid://cmja6gbrl2nhs" path="res://Asset/livingroom/light.png" id="9_ublj8"]
+[ext_resource type="AudioStream" uid="uid://cg0trfn3rqbox" path="res://Asset/audio/sfx/震动沙沙声_耳聆网_[声音ID：10794].wav" id="12_as7dn"]
 [ext_resource type="Resource" uid="uid://dh8bblwunn4kt" path="res://Dialogue/Chapter4.dialogue" id="c4_dialogue"]
+[ext_resource type="AudioStream" uid="uid://dcr8ua8mngg0o" path="res://Asset/audio/sfx/keyboard_typing.ogg" id="c4_keyboard"]
 [ext_resource type="Script" uid="uid://1xo2qfu4e7jo" path="res://Scene/Chapter4/chapter4_living_room.gd" id="c4_script"]
+[ext_resource type="PackedScene" path="res://Scene/Chapter4/night_shade.tscn" id="c4_shade"]
 
 [sub_resource type="RectangleShape2D" id="C2Shape_3"]
 size = Vector2(139, 528)
 
 [sub_resource type="ShaderMaterial" id="LightDodge"]
 shader = ExtResource("8_1jxhl")
+
+[sub_resource type="Animation" id="Animation_b7j72"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("smokealarm:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_f1r0t"]
+resource_name = "click_smokealarm"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("smokealarm:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.44999996, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.05235988, 0.05235988, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_06rqb"]
+_data = {
+&"RESET": SubResource("Animation_b7j72"),
+&"click_smokealarm": SubResource("Animation_f1r0t")
+}
 
 [node name="LivingRoom" type="Node2D" unique_id=809928177]
 script = ExtResource("c4_script")
@@ -76,3 +140,16 @@ texture = ExtResource("9_ublj8")
 position = Vector2(582, 37.000008)
 scale = Vector2(0.5178572, 0.5178572)
 texture = ExtResource("8_vdl68")
+
+[node name="NightShade" parent="." unique_id=1584506991 instance=ExtResource("c4_shade")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=858490629]
+libraries/ = SubResource("AnimationLibrary_06rqb")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1288588011]
+stream = ExtResource("12_as7dn")
+bus = &"SFX"
+
+[node name="KeyboardTyping" type="AudioStreamPlayer" parent="." unique_id=1566071368]
+stream = ExtResource("c4_keyboard")
+bus = &"SFX"

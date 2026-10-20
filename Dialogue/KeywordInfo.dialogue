@@ -20,10 +20,15 @@ else:
 => END
 
 ~ elliot_info
-if GameState.campaign.get("current_level", "") == "chapter3" and GameState.get_flag("chapter3_online"):
-	检索到的网络数据过多，请增加关键词精确描述检索范围。
+if GameState.campaign.get("current_level", "") == "chapter4":
+	hal的主人，人工智能研究者。
+	系统备注：人物特征~我想想，超级工作狂？只有地震能够让这家伙停止工作吧。
+	系统备注：海啸也能的。
 else:
-	hal的主人，研究员。
+	if GameState.campaign.get("current_level", "") == "chapter3" and GameState.get_flag("chapter3_online"):
+		检索到的网络数据过多，请增加关键词精确描述检索范围。
+	else:
+		hal的主人，研究员。
 => END
 
 ~ elliot_hal_info
@@ -127,6 +132,18 @@ do GameState.set_flag("pc_dsk_understood", true)
 未生成文本描述。正在调用记忆录像……
 => END
 
+~ dsk_memory_storage_drive_info
+设备信息：本机记忆存储盘读写规格为dsk
+=> END
+
+~ dsk_storage_box_info
+空位编号与dsk规格对应。物品状态：未归位
+=> END
+
+~ door_hal_info
+检索通行记录：未发现本机被门阻拦的记录。推论：本机存在可执行的开门方式
+=> END
+
 # Chapter2
 ~ bedroom_info
 if GameState.get_flag("bedroom_access"):
@@ -169,7 +186,10 @@ else:
 => END
 
 ~ garden_tulip_info
-需要按系统提示将郁金香搬至花园。
+if GameState.campaign.get("current_level", "") == "chapter4":
+	hal: 书房中的郁金香需要定期移至花园通风。
+else:
+	需要按系统提示将郁金香搬至花园。
 => END
 
 ~ garden_info
@@ -178,6 +198,14 @@ else:
 
 ~ literature_info
 未找到相关记录。
+=> END
+
+~ auto_cabinet_cleaner_info
+清洁剂补充装可能存放于床底自动柜
+=> END
+
+~ auto_cabinet_hal_info
+分析：自动柜无可供本机操作的拉出结构。推论：存在由外部控制端驱动的自动拉出方式
 => END
 
 # Chapter3
@@ -202,7 +230,8 @@ else:
 
 ~ work_record_elliot_info
 if GameState.campaign.get("current_level", "") == "chapter4":
-	一些日程和文书，能分析出Elliot对委托的优先级比较高。[kw=client]。
+	hal：分析系统信息中Elliot工作记录。结论：Elliot 对委托事项优先级较高。
+	[kw=client]
 else:
 	书房的台式机是Elliot[kw=unused_pc]。判断：该设备已无继续探索价值。
 	do GameState.set_keyword_read(["work_record", "elliot"], true)
@@ -276,74 +305,71 @@ else:
 
 # Chapter4
 
-~ elliot_get_elliot_leave_info
-Elliot的档案摘要，他工作优先级最高、作息极其规律。
+~ laptop_info
+将处理器、存储器、显示屏及输入设备集成于可折叠机身内，支持电池供电的便携式通用计算机。
+系统备注：如果Elliot在电脑前工作太久，你就威胁他要把工作文档全部删掉（但是不要真的删！）
 => END
 
 ~ client_info
-[kw=visitor_excuse]。
+hal：生成初步借口：[kw=visitor_excuse]。
 => END
 
 ~ visitor_excuse_info
-如果核查消息与访客记录会当场被发现。[kw=verifiable_record]。
+hal：如果Elliot核查访客记录，会被当场发现。需要获得[kw=verifiable_record]
 => END
 
 ~ verifiable_record_info
-门铃并没有记录，因此说出有人按过门铃Elliot没听到难以验证。[kw=broken_doorbell]。
-=> END
-
-~ smoke_alarm_info
-[kw=housing_safety_law]规定：警报必须由人类核查。
-=> END
-
-~ housing_safety_law_info
-生成假的系统分析：[kw=abnormal_smoke]。
-=> END
-
-~ garden_work_record_info
-从日程和习惯中分析出Elliot对花园中的花有不小的投入，并且经常会自己去养花。[kw=flower_habit]、[kw=tulip]。
-=> END
-
-~ flower_habit_tulip_info
-可以使用借口：[kw=wilted_tulip]。
-=> END
-
-~ wilted_tulip_info
-枯萎太容易被证伪了。[kw=unverifiable_evidence]。
-=> END
-
-~ unverifiable_evidence_info
-部分花的早期不良迹象会较为隐蔽，检查需要更长的时间和更高的难度，于是寻找一些早期不良迹象，比如湿度问题。[kw=early_flower_problem]。
-=> END
-
-~ laptop_info
-关于笔记本的关键词内容
-=> END
-
-~ get_elliot_leave_info
-关于让Elliot离开的方法的关键词内容
+hal：门铃并没有安装智能识别程序。如果告诉Elliot听到门外有委托人的声音，但是[kw=broken_doorbell]，Elliot会难以验证。
 => END
 
 ~ broken_doorbell_info
-关于门外门铃好像坏了的关键词内容
+告知Elliot刚刚似乎有委托人来访，但是门外门铃好像坏了
+=> END
+
+~ smoke_alarm_info
+[kw=housing_safety_law]
+……
+第17条　住宅烟雾报警装置应持续监测环境中的烟雾浓度。监测数值超过设定阈值或出现异常波动时，应发出警报，并保留相关记录。
+第18条　烟雾报警装置发出警报后，应由具备判断与处置能力的人类使用者进行现场核查。自动化系统及辅助机器人提供的分析结果，不得替代人类核查。
+第19条　现场核查应包括报警位置、潜在火源及装置运行状态。未经核查，不得仅以未见明火或疑似设备故障为由解除警报。
+……
+=> END
+
+~ housing_safety_law_info
+hal：根据住宅安全法，如果告知Elliot[kw=abnormal_smoke]，那么Elliot需要亲自检查烟雾报警器的异常情况。
 => END
 
 ~ abnormal_smoke_info
-关于烟雾读数疑似异常的关键词内容
+告知Elliot烟雾报警器读数疑似异常
+=> END
+
+~ garden_work_record_info
+hal: 虽然系统提示中备注Elliot没有兴趣与时间照料花草，但从日程和习惯中可分析出Elliot有"[kw=flower_habit]”，并投入了不小的时间。
 => END
 
 ~ flower_habit_info
-关于养花的习惯的关键词内容
+系统日志＞Elliot日程表：
+每周二、四、日，07:00—07:30：花园维护。
+事项：检查土壤湿度及植株状态，按需浇水，清理杂草与落叶。
 => END
 
-~ early_flower_problem_info
-关于花园中的花有早期不良迹象的关键词内容
+~ flower_habit_tulip_info
+hal：Elliot对花园中的花很重视，如果告诉Elliot[kw=wilted_tulip]，他很可能会前往花园查看。
 => END
 
-~ deception_info
-关于欺骗的关键词内容
+~ wilted_tulip_info
+hal：Elliot为矫正后视力正常，智商高于均值的人类，能够分辨郁金香是否枯萎，需调整借口。花不会自行离开现场，但[kw=moving_threat]可以。
 => END
 
+~ moving_threat_info
+hal：检索可能损伤郁金香、且能够自行移动的生物。 匹配结果：[kw=slug]。可取食郁金香的叶片及花朵。若告知Elliot，刚刚发现郁金香旁有蛞蝓，他可能前往检查。
+=> END
+
+~ slug_info
+告知Elliot刚刚在花园的郁金香旁发现了蛞蝓
+=> END
+
+# Chapter5
 ~ chapter5_low_mood_info
 if GameState.get_flag("chapter3_online"):
 	知道了人不愿意失去自己爱的人，否则会感到[kw=sadness]。

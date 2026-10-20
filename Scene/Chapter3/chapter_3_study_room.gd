@@ -3,6 +3,7 @@ extends Node2D
 @export var dialogue: DialogueResource
 
 func _ready() -> void:
+	AudioManager.play_music(preload("res://Asset/audio/music/WAV_Summer_Night.wav"))
 	$ComputerCloseup.closed.connect(close_pc)
 	if GameState.get_flag("chapter3_started"):
 		$Door.show()

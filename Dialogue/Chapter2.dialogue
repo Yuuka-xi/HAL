@@ -5,7 +5,6 @@ do GameState.set_flag("chapter2_started", true)
 do GameState.set_flag("inventory_enabled", true)
 do GameState.set_flag("memory_installed", true)
 do wait(2)
-do AudioManager.play_music(load("res://Asset/audio/music/WAV_Summer_Night.wav"))
 Elliot: hal，去打扫[kw=bedroom]。
 do Inventory.add_item("key_card")
 hal: 收到。

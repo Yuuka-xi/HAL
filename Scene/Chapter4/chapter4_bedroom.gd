@@ -12,25 +12,16 @@ func _ready() -> void:
 	flow = Flow.obtain(get_tree())
 	$Camera2D.position = Vector2(960, 542)
 	$Camera2D.zoom = Vector2.ONE
-	var darkness := CanvasModulate.new()
-	darkness.color = Color(0.4, 0.4, 0.48)
-	add_child(darkness)
+	# 独立画布在夜色上方绘制灯光，保留原先灯具的世界变换并跟随镜头。
+	$lamp/LightLayer.transform = $lamp.global_transform
 	var material := ShaderMaterial.new()
 	material.shader = preload("res://Scene/Tool/color_dodge.gdshader")
-	$lamp/light.material = material
-	$lamp/light.visible = not GameState.get_flag("chapter4_lights_off")
+	$lamp/LightLayer/light.material = material
+	$lamp/LightLayer/light.visible = not GameState.get_flag("chapter4_lights_off")
 	if GameState.get_flag("chapter4_cup_given"):
 		$AnimationPlayer.play("Hand_cup_to_Elliot")
 		$AnimationPlayer.seek($AnimationPlayer.get_animation("Hand_cup_to_Elliot").length, true)
 		$AnimationPlayer.stop(true)
-	Flow.add_click($cup, $cup.texture.get_size(), dialogue, "give_cup", self)
-	Flow.add_click($lamp, $lamp.texture.get_size(), dialogue, "turn_off_light", self)
-	var door := $door_bedroom/ReturnDoor
-	door.set_script(preload("res://Scene/Tool/perception_click/perception_click.gd"))
-	door.dialogue = dialogue
-	door.start_title = "return_living_room"
-	door.dialogue_state = self
-	door.dialogue_state_name = "Chapter4Room"
 	$Navigation/Left.pressed.connect(switch_side.bind(false))
 	$Navigation/Right.pressed.connect(switch_side.bind(true))
 
@@ -53,5 +44,6 @@ func give_cup() -> void:
 	await $AnimationPlayer.animation_finished
 
 func lights_off() -> void:
-	$lamp/light.hide()
+	$lamp/LightLayer/light.hide()
+	$lights_off.play()
 	flow.start_countdown()

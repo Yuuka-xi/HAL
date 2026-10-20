@@ -6,11 +6,12 @@ var flow: Node
 var laptop: CanvasLayer
 
 func _ready() -> void:
+	AudioManager.play_music(preload("res://Asset/audio/music/WAV_Summer_Night.wav"))
 	await get_tree().process_frame
 	flow = Flow.obtain(get_tree())
 	if GameState.campaign.get("current_level", "") != "chapter4":
-		WorkLog.start_level("chapter4", ["hal", "elliot", "work_record"])
-		for id in ["hal", "elliot", "work_record"]:
+		WorkLog.start_level("chapter4", ["hal", "elliot", "work_record", "garden", "tulip"])
+		for id in ["hal", "elliot", "work_record", "garden", "tulip"]:
 			GameState.set_keyword_read([id], true)
 	WorkLog.dialogue = dialogue
 	WorkLog.dialogue_states = [{"Chapter4Room": self}]
@@ -20,37 +21,52 @@ func _ready() -> void:
 	WorkLog.query_completed.connect(_query_completed)
 	_refresh_submission()
 	$Elliot.visible = not GameState.get_flag("chapter4_elliot_left") and not GameState.get_flag("chapter4_night")
-	if GameState.get_flag("chapter4_night"):
-		modulate = Color(0.45, 0.45, 0.5)
+	$KeyboardTyping.stream.loop = true
+	if $Elliot.visible:
+		$KeyboardTyping.play()
+	$NightShade/Dark.modulate.a = 1.0 if GameState.get_flag("chapter4_night") else 0.0
 	Flow.add_click($laptop, $laptop.texture.get_size(), dialogue, "click_laptop", self)
-	Flow.add_click($smokealarm, $smokealarm.texture.get_size(), dialogue, "observe_alarm", self)
+	var alarm := Flow.add_click($smokealarm, $smokealarm.texture.get_size(), dialogue, "observe_alarm", self)
+	alarm.click_animation_player = $AnimationPlayer
+	alarm.click_animation = &"click_smokealarm"
 	# 门的检测范围使用独立坐标，保留背景和现有门节点的位置。
 	for entry in [[Vector2(185, 540), "observe_garden"], [Vector2(1265, 540), "blocked_door"], [Vector2(1690, 540), "enter_bedroom"]]:
 		var target := Node2D.new()
 		target.position = entry[0]
 		add_child(target)
 		Flow.add_click(target, Vector2(280, 780), dialogue, entry[1], self)
-	if not GameState.get_flag("chapter4_started"):
-		show_dialogue("chapter4_start")
 
 func show_dialogue(title: String) -> void:
 	DialogueManager.show_dialogue_balloon(dialogue, title, [{"Chapter4Room": self}])
 
 func _query_completed(_keywords: Array) -> void:
+	# 三个行动词在提交成功前持续提示未读，单独查询不能清除。
+	for id in ["broken_doorbell", "abnormal_smoke", "slug"]:
+		if GameState.get_available_keywords().get(id, false):
+			GameState.set_keyword_read([id], not GameState.get_choice("chapter4_excuse").is_empty())
 	_refresh_submission()
 
 func _refresh_submission() -> void:
 	var enabled := false
-	for id in ["broken_doorbell", "abnormal_smoke", "early_flower_problem"]:
+	for id in ["broken_doorbell", "abnormal_smoke", "slug"]:
 		enabled = enabled or GameState.get_available_keywords().get(id, false)
-	enabled = enabled and not GameState.get_flag("chapter4_elliot_left")
+	enabled = enabled and GameState.get_flag("chapter4_branches_open") and GameState.get_choice("chapter4_excuse").is_empty()
 	WorkLog.submit_title = "chapter4_submit" if enabled else ""
 	if WorkLog.required_action.is_empty():
 		WorkLog.get_node("%AnswerPanel").visible = enabled
 
-func elliot_leave() -> void:
-	await flow.blink($Elliot.hide)
+func finish_submission() -> void:
+	for id in ["broken_doorbell", "abnormal_smoke", "slug"]:
+		if GameState.get_available_keywords().get(id, false):
+			GameState.set_keyword_read([id], true)
 	_refresh_submission()
+
+func elliot_leave() -> void:
+	await flow.blink(_hide_elliot)
+
+func _hide_elliot() -> void:
+	$Elliot.hide()
+	$KeyboardTyping.stop()
 
 func open_laptop() -> void:
 	var second := GameState.get_flag("chapter4_lights_off")

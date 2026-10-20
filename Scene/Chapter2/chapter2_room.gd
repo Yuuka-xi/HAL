@@ -3,6 +3,7 @@ extends Node2D
 @export var dialogue: DialogueResource
 
 func setup_room() -> void:
+	AudioManager.play_music(preload("res://Asset/audio/music/WAV_Long_Ago.wav"))
 	if GameState.campaign.get("current_level", "") != "chapter2":
 		WorkLog.start_level("chapter2", ["hal"])
 	WorkLog.dialogue = dialogue

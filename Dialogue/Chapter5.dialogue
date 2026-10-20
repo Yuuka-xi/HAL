@@ -1,3 +1,14 @@
+~ end1
+do wait(3.0)
+do SceneTransition.change_scene("res://Scene/End/end_2.tscn", 0.8)
+=> END
+
+~ end2
+do wait(3.0)
+do AudioManager.stop_music(1.0)
+do SaveManager.return_to_menu()
+=> END
+
 ~ start
 do GameState.set_flag("chapter5_started", true)
 Hal: 系统提示：hal，今天又该把书房里那盆郁金香搬去花园啦～真是的，Elliot总是没时间，而且他也对花花草草丝毫不感兴趣，肯定没法指望他能想起来照顾那盆花，所以，只好拜托你啦～
