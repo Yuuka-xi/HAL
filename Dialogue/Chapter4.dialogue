@@ -71,12 +71,12 @@ if not GameState.get_flag("chapter4_branches_open") or GameState.get_flag("chapt
 if GameState.get_choice("keyword_submission") == "broken_doorbell":
 	do GameState.set_choice("chapter4_excuse", "doorbell")
 	do Chapter4Room.finish_submission()
-	hal: Elliot，刚刚似乎有委托人来访，但是门外门铃好像坏了。
+	hal: Elliot，刚刚有委托人来访。
 	Elliot: 你确定？我没有听到声音。
-	hal: 你工作得太投入了。
-	Elliot: 如果委托人发现门铃坏了，应该尝试敲门的。
+	hal: 但门铃坏了。
+	Ellio: 如果委托人发现门铃坏了，应该尝试敲门的。
 	hal: 检索到委托人是社交恐惧症患者。
-	Elliot: 你听听你说的什么……算了。这样吧，hal，去检查门铃，我去看看委托人是否离开了。
+	Ellio: 你听听你说的什么……算了。hal，去检查门铃，我去看看委托人是否离开了。
 	do GameState.set_flag("chapter4_elliot_left", true)
 	do Chapter4Room.elliot_leave()
 	hal: 门铃没有问题，应该抓紧时间检查电脑

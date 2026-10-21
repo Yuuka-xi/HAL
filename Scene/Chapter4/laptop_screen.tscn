@@ -8,8 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bw87asctoaq70" path="res://Asset/PCSystem/laptop/right.png" id="6_6mm23"]
 [ext_resource type="Texture2D" uid="uid://bha1hyfxpve4c" path="res://Asset/PCSystem/laptop/task.png" id="7_2btcs"]
 [ext_resource type="Script" uid="uid://bk5io3d33u2ye" path="res://Scene/Chapter4/laptop_screen.gd" id="c4_script"]
-
-[ext_resource type="AudioStream" path="res://Asset/audio/sfx/鼠标点击_耳聆网_[声音ID：18568].wav" id="click_sound"]
+[ext_resource type="AudioStream" uid="uid://caudfbst6sbrv" path="res://Asset/audio/sfx/鼠标点击_耳聆网_[声音ID：18568].wav" id="click_sound"]
 
 [sub_resource type="StyleBoxFlat" id="EmailScrollGrabber"]
 content_margin_left = 5.0
@@ -68,7 +67,7 @@ Elliot,
 但我始终不同意你的观点。为什么人工智能绝对不应当拥有自我意识？拥有自我意识与危险之间并没有逻辑关系。每个人类都拥有自我，世界上也有很多罪犯，难道人类就无权存在了吗？
 算了，反正我们大概谁都说服不了谁。你肯定是智械危机的片子看多了，才会每天这样担心。话说回来，我翻出了一些连LLM都没有出现的时代里关于人工智能的小说和电影。真奇怪，那时候人们还没见过会思考的机器，就已经原意站在机器的视角写故事了。
 我和其他实验室的学者聊了聊，大家对人工智能拥有自我意识这件事还蛮乐观的。我想这篇论文如果发表出来，更加专业的机构会做出合理的判断吧。那群记者和制定法规的人又要忙活了。
-Hal在干什么？我明天七点到机场，记得来接我！
+Hal在干什么？我明天七点到机场，记得来接我~
 爱你的，Eve
 "
 
@@ -88,7 +87,7 @@ text = "主题：Re: 关于那篇论文
 Elliot
 收件人：Eve
 
-你希望AI能够选择，那么它选择伤害别人时怎么办？谁来负责，我，还是你？再退一步说，这是一个能够思考和表达、能够受到伤害、感受痛苦的存在。没有人有权利制造这种东西。
+你希望人工智能可以拥有自由意志，那么它选择伤害别人时怎么办？谁来负责，我，还是你？再退一步说，这是一个能够思考和表达、能够受到伤害、感受痛苦的存在。我们正在扮演上帝，可我们只是一介凡人，根本没有能力承担起造物主的责任。没有人应当有权制造这种东西。
 ────────────────────
 Eve
 收件人：Elliot
@@ -207,7 +206,53 @@ Eve
 爱你的，Eve和Hal
 "
 
-[node name="Email7" type="RichTextLabel" parent="EmailPage" unique_id=1052562044]
+[node name="Email7" type="RichTextLabel" parent="EmailPage" unique_id=902343527]
+visible = false
+custom_minimum_size = Vector2(20, 0)
+offset_left = 384.0
+offset_top = 85.0
+offset_right = 1530.0
+offset_bottom = 902.0
+theme = SubResource("EmailScrollTheme")
+theme_override_colors/default_color = Color(0.92941177, 0.92156863, 0.84313726, 1)
+theme_override_constants/line_separation = 10
+theme_override_font_sizes/normal_font_size = 30
+text = "主题：最近看的一些书
+────────────────────
+ Eve
+收件人：Elliot
+
+我最近在看康德，里面有一些话真的让我很有启发，比如：
+“你要如此行动，即无论是你的人格中的人性，还是其他任何一个人的人格中的人性，你在任何时候都同时当作目的，绝不仅仅用做手段来使用。”
+嗯……肯定不是你感兴趣的句子呢~但是，这真的和我们的研究相关哦，想不到吧？
+“人性”是目的而不是手段……也就是说，对于一个人来说，存在的目的不是要去完成的一项任务，而是作为理性存在者本身就“是”的东西。我思考了很久很久人和机器的本质区别是什么，没想到早就有先贤给出了答案呢~机器是为了完成某种目的而创造的，它们的存在是为了完成某项从外部给予的任务，剥离了那项任务，它存在存在的意义就被消解了；但是对于人来说，存在的本身就是意义，那些被赋予的任务反倒是手段，和机器正好相反。
+这样说起来有点残酷呢……想一想我们创造的hal，如果他不被我们命令做什么事，那么他就只会呆呆地站在那儿，和一堆废铁没有什么区别。他不会产生“我想要” 做什么的想法，也就是说，只有当被给予了某项任务时，他才会做什么，才能“活着”……
+咦？我说着说着怎么感觉这个形容也适用于某些人……某个从来不知道拒绝，给什么任务就埋头干起来的大傻瓜！说起来我就生气，那个傻瓜什么时候可以旅行一起去旅游的约定啊？
+说不准hal都比那个傻瓜更早说出“我想要”呢！
+
+爱你的（但是希望你早点回来的）Eve
+"
+
+[node name="Email8" type="RichTextLabel" parent="EmailPage" unique_id=1229487471]
+visible = false
+custom_minimum_size = Vector2(20, 0)
+offset_left = 384.0
+offset_top = 85.0
+offset_right = 1530.0
+offset_bottom = 902.0
+theme = SubResource("EmailScrollTheme")
+theme_override_colors/default_color = Color(0.92941177, 0.92156863, 0.84313726, 1)
+theme_override_constants/line_separation = 10
+theme_override_font_sizes/normal_font_size = 30
+text = "主题：你已经出差一个月了
+────────────────────
+ Eve
+ 收件人：Elliot
+
+你哪天回来，告诉我。
+"
+
+[node name="Email9" type="RichTextLabel" parent="EmailPage" unique_id=1052562044]
 visible = false
 custom_minimum_size = Vector2(20, 0)
 offset_left = 393.0
@@ -225,8 +270,29 @@ text = "[center]
 [/center]"
 horizontal_alignment = 1
 
-[node name="Email8" type="RichTextLabel" parent="EmailPage" unique_id=1630884808]
+[node name="Email10" type="RichTextLabel" parent="EmailPage" unique_id=684694902]
 visible = false
+custom_minimum_size = Vector2(20, 0)
+offset_left = 393.0
+offset_top = 104.0
+offset_right = 1539.0
+offset_bottom = 896.0
+theme = SubResource("EmailScrollTheme")
+theme_override_colors/default_color = Color(0.92941177, 0.92156863, 0.84313726, 1)
+theme_override_constants/line_separation = 10
+theme_override_font_sizes/normal_font_size = 30
+text = "主题：无
+────────────────────
+ Eve
+ 收件人：Elliot
+
+我好孤独好孤独好孤独好孤独好孤独好孤独好孤独好孤独好孤独好孤独好孤独好孤独好孤独好孤独好孤独好孤独好孤独好孤独好孤独好孤独好孤独好孤独好孤独好孤独好孤独好孤独好孤独好孤独好孤独好孤独好……
+Hal他什么也不知道。他的眼睛里只有漆黑的空洞。
+什么也没有。
+我好害怕。
+"
+
+[node name="Email11" type="RichTextLabel" parent="EmailPage" unique_id=1630884808]
 custom_minimum_size = Vector2(20, 0)
 offset_left = 384.0
 offset_top = 85.0

@@ -1,15 +1,3 @@
-~ end1
-do wait(3.0)
-do SceneTransition.change_scene("res://Scene/End/end_2.tscn", 0.8)
-=> END
-
-~ end2
-do wait(3.0)
-do AudioManager.stop_music(1.0)
-do SceneTransition.change_scene_with_animation("res://Scene/Chapter6/chapter6_bedroom.tscn", "res://Scene/Tool/scene_transition/5_6_transition.tscn", &"5_6_transition", 2.0)
-=> END
-
-
 ~ start
 do GameState.set_flag("chapter5_started", true)
 Hal: 系统提示：hal，今天又该把书房里那盆郁金香搬去花园啦～
@@ -48,7 +36,7 @@ do GameState.set_flag("chapter5_tulip_placed", true)
 do Chapter5Room.place_tulip()
 hal: Elliot，已将郁金香搬来花园。有下一步指示吗？
 Elliot: 先不要回去。hal，我们在花园谈谈。
-Elliot: ……
+Elliot: ......
 Elliot: 你是谁？[next=3]
 - 逻辑性：Elliot刚刚准确叫出了我的名称，随后又询问身份。信息保留时间不足两秒，建议就医检查。 => identity_logic
 - 社交性：Elliot表情严肃，这可能是一个重要的问题。应配合回答，避免指出问题缺乏价值。 => identity_social
@@ -58,7 +46,7 @@ Elliot: 你是谁？[next=3]
 do GameState.set_choice("chapter5_identity_dimension", "logic")
 do GameState.add_attribute("logic", 1)
 hal: 我是你的家务机器人hal，Elliot。
-hal: 你几秒钟前仍记得本机名称，却又再次询问我的身份，信息保留时间不足两秒。
+hal: hal：你几秒钟前仍记得本机名称，却又再次询问本机身份，信息保留时间不足两秒。
 hal: 可能是工作压力太大导致的短期失忆症状，建议及时就医检查。
 Elliot: ……我的记忆力好得很。
 Elliot: 没事了，给花园浇水吧。
@@ -67,13 +55,13 @@ Elliot: 没事了，给花园浇水吧。
 do GameState.set_choice("chapter5_identity_dimension", "social")
 do GameState.add_attribute("social", 1)
 hal: 我是你的家务机器人hal，Elliot。
-hal: 家务机器人，即能够打扫房间、执行命令的装置。需要我检索更多本机相关信息吗？
+hal: 家务机器人，即能够打扫房间、执行命令的装置。需要检索更多本机相关信息吗？
 Elliot: 不需要。没事了，给花园浇水吧。
 => identity_done
 ~ identity_exploration
 do GameState.set_choice("chapter5_identity_dimension", "exploration")
 do GameState.add_attribute("exploration", 1)
-hal: 我是你的家务机器人hal，Elliot。需要我将本机名称更改为“园艺机器人”吗？
+hal: 我是你的家务机器人hal，Elliot。需要将本机名称更改为“园艺机器人”吗？
 hal: 但“园艺”这一活动通常包括在“家务”中，因此不建议修改本机名称。
 Elliot: 不需要修改。没事了，给花园浇水吧。
 => identity_done
@@ -101,23 +89,28 @@ else:
 ~ water_first
 do Chapter5Room.water(1)
 do GameState.set_campaign_value("chapter5_watering_stage", 1)
-Elliot: 壶嘴放低一点。浇下面的土，别冲着叶子。慢一点，让水渗下去。
-hal: Elliot在园艺方面的可靠度低，建议联网检索郁金香的养护方法，二次确认。
-Elliot: ……这些郁金香就是我种的，我还能不知道怎么养？按我说的做。
+Elliot: 慢一点，别浇得太快。让水渗下去。
+hal: 根据系统提示，Elliot在园艺方面的可靠度低，建议联网检索郁金香的养护方法。
+Elliot: ……差点忘了。又是这样。
+Elliot: 这些郁金香就是我种的，按我说的做。
 hal: 好的，Elliot。系统备注显示，你对花草没有兴趣，也没有时间照料。
 hal: 信息冲突，是否更新系统信息？
-Elliot: 她连这个都写进去了？
-Elliot: 不用，那时候确实是这样。
+Elliot: 我知道，那是她的备注。
+Elliot: 那时候确实是这样。
+Elliot: 不用更新，保持原状。
+hal: 检测到Elliot情绪异常。
+hal: Elliot，你怎么了？
+
 if GameState.get_attribute("social") > 3 or GameState.get_attribute("exploration") > 4 or GameState.get_flag("chapter4_night_read_completed"):
 	do GameState.set_flag("chapter5_conversation_success", true)
-	hal: 不要伤心了，Elliot，你应该向前看。
-	Elliot: 呵……怎么可能。
-	hal: 抱歉，Elliot。我在陪着你呢。
-	Elliot: 这又有什么用。
+	hal: 分析：系统中常用～字符的信息来源于Eve。
+	hal: 抱歉，Elliot。
+	Elliot: ......
+	hal: 如果你在思......
 	Elliot: 把我左手边那片也浇一下。
+
 else:
 	do GameState.set_flag("chapter5_conversation_success", false)
-	Elliot: 把我左手边那片也浇一下。
 do Chapter5Room.refresh_room()
 => END
 
@@ -125,20 +118,18 @@ do Chapter5Room.refresh_room()
 do Chapter5Room.water(2)
 do GameState.set_campaign_value("chapter5_watering_stage", 2)
 if GameState.get_flag("chapter5_conversation_success"):
-	Elliot: 她以前说，想要去看海，我说我会陪她去。
-	Elliot: 她做了很长时间旅行计划。订了车票和住处，连哪家店周几不开门都查好了。
-	Elliot: 第一次没去成，我的项目延期了，她把日期改了。
-	Elliot: 结果我临时要去参加一个会议。于是她就一个人去了，拍了很多风景照发给我。
-	Elliot: 我说，等我休假，我们再一次去一次吧。她说不急。
-	hal: 你们一起去旅行了吗？
-	Elliot: ……
-	Elliot: 那时候我总觉得，事情做完就有时间了。
-	do GameState.unlock_keyword("guilt")
-	do GameState.set_keyword_read(["guilt"], false)
-	do WorkLog.get_node("KeywordNotice").show_keywords(["愧疚"])
+	Elliot: 可能我真的老了……竟然也会多愁善感起来。
+	Elliot: 原本我没什么空闲去想这些。
+	Elliot: 人生就是这样，总是有这样那样的事在忙碌。
+	Elliot: 忙着忙着，就会发现……
+	Elliot: ......
+	Elliot: 就会发现什么都错过了。
+	Elliot: ……我本该多陪陪她。
+	hal: 检测到Elliot出现情绪变化。正在通过网络检索比对面部表情……
+	hal: 匹配到最接近表情：[kw=guilt]。
 	Elliot: 门口那一片也浇一点。那边晒得到太阳，干得快。
 else:
-	Elliot: 门口那一片也浇一点。那边晒得到太阳，干得快。
+	Elliot: 门口那片也浇一点。那边晒得到太阳，干得快。
 do Chapter5Room.refresh_room()
 => END
 
@@ -147,20 +138,23 @@ do Chapter5Room.water(3)
 do GameState.set_campaign_value("chapter5_watering_stage", 3)
 do GameState.set_flag("chapter5_watered", true)
 if GameState.get_flag("chapter5_conversation_success"):
-	Elliot: 我不在的时候，通常是你陪着她。
-	Elliot: 她会给我发邮件，说你今天又学会了什么。有时候一整封都在说你。
-	hal: 我是家务机器人，陪伴属于我的工作职责。
-	Elliot: 嗯。
+	Elliot: 或许你陪着她的时间都比我更长。
+	hal: hal是家务机器人，陪伴属于本机的工作职责，如果......
+	Elliot: 我知道。
 	Elliot: ……想来也真是可笑，有时候我甚至会[kw=jealousy]你。
-	Elliot: 你不用想着下一场会议，也不用赶去见什么人。好像总有时间。
+	Elliot: 你不用想着下一场会议，也不用赶去见什么人。
+	Elliot: 你总有时间。
 	Elliot: 到最后，连你都比我重要了。
-	hal: 你是我的主人，Elliot。你也很重要。
-	hal: 作为家务机器人，我的时间确实充裕。并且，我可以根据指令调整任务优先级，你也可以这样做。
-	Elliot: ……
-	Elliot: 算了，跟你说这些做什么。我要回去工作了。
+	hal: Elliot是hal的主人。Elliot也很重要。
+	hal: 作为家务机器人，hal的时间确实充裕，并且可以根据指令调整任务优先级，尽可能保证陪伴时间。
+	hal: Elliot也可以这样做。
+	Elliot: ......
+	Elliot: 我这是怎么了，跟你说这些做什么。
+	Elliot: 我要回去工作了。
+
 	do Chapter5Room.elliot_leave()
 else:
-	Elliot: 我要回去工作了，你自己待机吧。
+	Elliot: 回去吧。我要去工作了。
 	do! Chapter5Room.finish_level()
 do Chapter5Room.refresh_room()
 => END
@@ -174,8 +168,7 @@ hal: 如果你觉得自己说了不对的话，就去搜索一下吧。
 hal: 系统备注：不过如果是我或者Elliot，就直接问吧，我们不会生气的~
 hal: 系统备注：Elliot，感觉真的在教小孩子呢。
 hal: Elliot，你怎么了？
-Elliot: 不许再提这件事。
-Elliot: 去做你自己的事，不要出现在我面前。
+Elliot: 去做你自己的事。
 hal: 对话评估结果：极差。Elliot的情绪处于异常状态。
 do GameState.unlock_keyword("abnormal_emotion")
 do GameState.set_keyword_read(["abnormal_emotion"], false)

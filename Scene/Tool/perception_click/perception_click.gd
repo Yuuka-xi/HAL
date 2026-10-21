@@ -10,10 +10,14 @@ extends Area2D
 @export var click_animation: StringName = &""
 @export var priority_area: Area2D
 
+# 对话框延迟加入场景前，也要阻止其他物体再次触发对白。
+static var pending_balloon: WeakRef
 var busy := false
 var used := false
 
 func _input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
+	if pending_balloon != null and pending_balloon.get_ref() != null:
+		return
 	if SettingsMenu.is_open() or SettingsMenu.interaction_locked:
 		return
 	if one_shot and used:
@@ -41,6 +45,7 @@ func _input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 		if dialogue_state != null:
 			states.append({dialogue_state_name: dialogue_state})
 		var balloon = DialogueManager.show_dialogue_balloon(dialogue, start_title, states)
+		pending_balloon = weakref(balloon)
 		balloon.add_to_group("object_dialogue")
 		await balloon.tree_exited
 		used = true

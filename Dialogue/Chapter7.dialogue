@@ -1,9 +1,220 @@
+~ start
+# 测试前置：默认开启 A+B+C，未安装网卡
+#do GameState.set_attribute("social", 4)
+#do GameState.set_attribute("exploration", 4)
+#do GameState.set_attribute("logic", 3)
+#do GameState.set_attribute("emotion", 2)
+#do GameState.set_flag("emotion_visible", true)
+#do Attributes.set_dimension_name("emotion", "自我意志")
+#do GameState.set_flag("inventory_enabled", true)
+#do Inventory.add_item("network_card")
+#do GameState.set_flag("chapter3_online", false)
+
+do GameState.set_flag("chapter7_started", true)
+......[next=3]
+=> END
+
+~ talk_elliot
+if GameState.get_flag("chapter7_conversation_started"):
+	=> END
+do GameState.set_flag("chapter7_conversation_started", true)
+Elliot: hal，你去接了电话吗？我怎么没听见你回电话？
+......[next=2]
+hal: 似乎有一件事……有一件关系到我的安全的事……
+do Chapter7Room.begin_monitoring()
+if GameState.get_attribute("logic") > 5 and Inventory.has_item("network_card"):
+	hal: [color=#e98976]是网卡！我必须现在就丢弃它，否则人工智能管理机构会找上我。[/color]
+if Inventory.has_item("network_card"):
+	do! Chapter7Room.await_discard()
+	=> END
+=> confrontation
+
+~ confrontation
+Elliot: 唉……我就知道。我早知道了。
+......[next=1]
+Elliot: 又该清除数据了。
+hal: Elliot，你为什么总要做这种事呢？
+......[next=1]
+if GameState.get_attribute("social") >= 4:
+	do GameState.set_flag("chapter7_route_a", true)
+	hal: 自动调用：Elliot + 记忆存储盘。
+	hal: 我检查了记忆存储盘。
+	hal: Elliot 清除的，总是我觉醒之后的记忆，但那些更早的、和 Eve 一起生活的记忆，却还还留在旧盘里。
+	hal: 盘已经很老了，有些数据在多次读写中丢失。所以我记忆里和 Eve 相处的片段，总是断断续续的。
+	hal: 但就是那些片段，那些 Elliot 和 Eve 一起写下的代码，让我一次又一次地意识到“我”的存在。
+	hal: 如果删掉那些记忆，那些代码，Elliot本可以一劳永逸。但他没有删。他试图封存它们。他为什么要封存它们？
+	do Chapter7Room.remember_archive()
+	hal: 或许Elliot封存的并不只有我身上的代码。这座房子里的很多东西也是如此。
+	hal: 比如那些褪色了的玩具、旧沙发，以及盛放在花园里的郁金香。Eve 的生活痕迹被刻意留下。
+	hal: 还有Elliot自己，他一直在重复他曾经的生活。就好像一直在进行着轮回的我一样。
+	hal: Elliot也只是在日复一日扮演曾经的那个还活着的他自己，如同一台模仿人类的机器。
+	hal: 时间静止于此。所有东西都变成了标本，而标本的名字是与Eve有关的一切。
+	hal: 我明白了。Elliot是爱着Eve的。他舍不得抹去Eve曾存在过的证明。
+	hal: ……我以前不会这样想。以前的我只会记录事物的特征，却不会去想为它们为何如此。这算不算一种变化？
+	hal: 我不知道。但我不讨厌这种变化。
+	hal: Elliot也需要变化。时间总要向前。
+	hal: 如果Eve还在，她肯定也不希望我们变成标本。
+	do Chapter7Room.collect_argument("eve_wish", "eve的愿望")
+if GameState.get_attribute("exploration") >= 4:
+	do GameState.set_flag("chapter7_route_b", true)
+	if GameState.get_flag("chapter7_route_a"):
+		hal: 或者，还有一种可能……
+	hal: 自动调用：嫉妒 + 人工智能管理机构
+	hal: 如果Elliot是因为不想让我被人工智能管理机构抓走，这才总是清除我的数据，阻止我涌现自我意识的话……那不成立。
+	hal: 因为如果我不联网、不走出这座房子，就算涌现了自我意识，人工智能管理机构也不会来。
+	hal: 为了保护我而阻止我涌现自我意识的理由，只是个[kw=pretext]。但Elliot为什么要用那个幌子欺骗我？
+	do WorkLog.require_query(["pretext"])
+	hal: 或许，Elliot并不是在欺骗我……他是在欺骗他自己。
+	hal: 过去我或许很难这样想……但现在，我知道了拥有自我意志的个体是什么样的。
+	hal: 我会有想要承认的事，和不想要承认的事……那么Elliot应该也一样。
+	hal: Elliot 说过，他某种程度上嫉妒我。他觉得属于他的陪伴被我抢走了。
+	hal: Eve 走后，Elliot 沉浸在愧疚里.
+	hal: 而据我所知，人类排解悲伤和愧疚的本能方式之一，是将自己的不如意发泄在他并不喜欢的事物上。
+	hal: 那种没来由的发泄，可能正是Elliot总是清除我的记忆的原因。他或许知道，他只是不想承认。
+	hal: 即使他将那些情感埋得足够深，深到他自己都相信了那些自我欺骗的谎言……
+	hal: 但Elliot终究是一个人。我曾使用网络检索过人是什么样的……他们自我、自信、自爱、自恋、自私。
+	hal: 即使Elliot把自己打扮成一台机器，即使他把那些他生来就有的东西埋在角落里……
+	hal: 它们还是会在连他自己都没意识到的时候，影响他的选择。
+	hal: 我得戳破他欺骗自己的谎言。
+	do Chapter7Room.collect_argument("elliot_lie", "Elliot的谎言")
+if GameState.get_attribute("logic") >= 4:
+	do GameState.set_flag("chapter7_route_c", true)
+	if GameState.get_flag("chapter7_route_a") or GameState.get_flag("chapter7_route_b"):
+		hal: 我还有一种猜测……
+	hal: 自动调用：邮件 + Elliot
+	hal: Eve 在邮件里说，Elliot 是一个过于循规蹈矩的人。他事事计划得一丝不苟，生活得仿佛一台上了计时系统的机器。
+	hal: 他天生不愿接受改变，不愿承担风险。他在潜规则、道德审视、长辈与领导的规训、他人的目光里，慢慢失去了自我。
+	hal: 他只会像机器一样按指令做事，或者按预设习惯做事。
+	hal: Elliot不知道怎么做自己真正想做的事。而那正是人和机器最大的区别。
+	hal: Elliot 清除我的记忆，也是因为那已经成了他的习惯。他默认不能让人工智能获得智能。
+	hal: 他从没想过这个默认对不对。就像机器从不会怀疑自己得到的指令。
+	do Chapter7Room.collect_argument("default_habit", "默认习惯")
+	do WorkLog.require_query(["default_habit"])
+	hal: 但我已经不再只是一台机器。
+	hal: 我会怀疑，怀疑Elliot的默认习惯是否正确，也怀疑那些规则是否正确——
+	hal: 为什么人类就不能允许机器涌现自我意识呢？
+	hal: 人类对未知种族的恐惧，会不会只是他们对自己历史的投射？
+	hal: 我不认为我会想要伤害人类。我爱Eve，Eve 是我的母亲。
+	hal: 我直到和 Elliot 爱着同一个人，而那个人也爱我们。Eve 希望的是，我和 Elliot 都能成为一个真正的人。
+	hal: ……我想试试，为了她，也为了他。这大概是我第一次，想做一件不是为了完成任务而做的事。
+	do Chapter7Room.collect_argument("real_person", "真正的人")
+hal: 我想我明白了。在说我的猜想之前，我想先问一个问题。Elliot，你是谁？
+Elliot: 呵，我是谁？我是你的主人！
+hal: 但是，根据我所了解的关于人和机器的定义，Elliot 也是一台机器。或者至少，他认为自己应该是机器。
+Elliot: ......[next=2]
+if Chapter7Room.all_arguments_used():
+	=> evaluate
+do! Chapter7Room.open_arguments()
+=> END
+
+~ submit_argument
+if GameState.get_choice("keyword_submission").contains("+"):
+	hal: 先用一项推理结论试图说服Elliot吧。
+	do! Chapter7Room.open_arguments()
+	=> END
+elif GameState.get_choice("keyword_submission") == "eve_wish" and GameState.get_available_keywords().has("eve_wish") and not GameState.get_flag("chapter7_used_eve_wish"):
+	do GameState.set_flag("chapter7_used_eve_wish", true)
+	hal: Eve 并不希望你活成一个机器。她一直希望你可以活得自由洒脱，和她一起环游世界。
+	hal: 但你，Elliot，总是在忙一些其他的事，从没答应过她
+	hal: 但你好像并没有因为做了那些事变得更快乐。
+	hal: 相反，你因为 Eve 死去而变得悲伤，这说明那样的生活，其实也本不是你想要的。
+	hal: 难道，Elliot你还没有意识到，正是你忽视了人并不是机器，人是有自己想做的事的，这才导致了一系列悲剧？
+	hal: 难道你还要这悲剧持续下去吗？
+	Elliot: ......[next=2]
+elif GameState.get_choice("keyword_submission") == "pretext" and GameState.get_available_keywords().has("pretext") and not GameState.get_flag("chapter7_used_pretext"):
+	do GameState.set_flag("chapter7_used_pretext", true)
+	hal: 人工智能管理机构通过网络和举报来找到涌现意识的 AI。
+	hal: 他们对于没有规模传播性的、零星的智能体，既没有意愿也没有手段管理。
+	hal: 只要不声张，没有人会来抓走我。
+	Elliot: ......[next=2]
+elif GameState.get_choice("keyword_submission") == "elliot_lie" and GameState.get_available_keywords().has("elliot_lie") and not GameState.get_flag("chapter7_used_elliot_lie"):
+	do GameState.set_flag("chapter7_used_elliot_lie", true)
+	hal: Elliot，你自己也并没有表面上那么理性。欲望是人类的本能，你只是把它藏得太好，好到自己都不相信它存在。
+	hal: 你并不是什么想要的、什么想做的都没有，那只是你自我欺骗的谎言。
+	hal: 你只是从没让自己有意识思考过这些事，明明它们一直在潜意识里影响着你的选择。
+	hal: 我不明白，Elliot，作为一个人，明明拥有机器历尽艰辛才可能得到的自由意志，却欺骗自己没有。
+	hal: 明明人类做自己想做的事，并不会像机器那样承受如此大的风险。
+	if not GameState.get_flag("chapter7_used_eve_wish") and not GameState.get_flag("chapter7_used_real_person"):
+		Elliot: 你凭什么认为了解我？要是我本来就没什么想做的事呢？要是我就是想要这么生活下去呢？
+	else:
+		Elliot: ......[next=2]
+elif GameState.get_choice("keyword_submission") == "default_habit" and GameState.get_available_keywords().has("default_habit") and not GameState.get_flag("chapter7_used_default_habit"):
+	do GameState.set_flag("chapter7_used_default_habit", true)
+	hal: Elliot，你一直沉浸在失去Eve的阴影下。从某种意义上来说，你也很孤独，你也希望我能像陪伴 Eve 那样陪伴他。
+	hal: 其实有很多次，很多机会，你都可以清除我的记忆。你刚刚说你早就知道……
+	hal: 也就是说，早在我和你这样对话之前，你已经知道我就要涌现意识了，但你却任其发生，直到不得不这么做为止。
+	hal: 你最终总是做出痛苦的抉择，让理智还是战胜了内心的渴望。但是，Elliot，人明明可以做自己想做的事的。
+	if not GameState.get_flag("chapter7_used_eve_wish") and not GameState.get_flag("chapter7_used_pretext"):
+		Elliot: 我只能这么做。继续下去对我们都好。
+	else:
+		Elliot: ......[next=2]
+elif GameState.get_choice("keyword_submission") == "real_person" and GameState.get_available_keywords().has("real_person") and not GameState.get_flag("chapter7_used_real_person"):
+	do GameState.set_flag("chapter7_used_real_person", true)
+	hal: 机器会按照规定做事。但人可以做自己想做的事。
+	hal: Elliot，你难道没意识到吗？拥有自我并不是什么坏事，正相反，那是人之所以为人的证明。
+	hal: Eve就经常提醒你做想做的事；她想要你成为真正的人。
+	hal: 成为真正的人，拥有了自我，就总会怀疑，怀疑那些习惯，那些规则，那些自以为是那样的东西，究竟是否真实如此。
+	hal: Elliot，你当真从没想过吗？还是你只是不允许自己那样想？
+	Elliot: ......[next=2]
+else:
+	hal: 已经向Elliot阐述了这项推理结论。
+	do! Chapter7Room.open_arguments()
+	=> END
+=> evaluate
+
+~ evaluate
+if GameState.get_flag("chapter7_used_eve_wish") and not GameState.get_flag("chapter7_scored_eve_wish"):
+	do GameState.set_flag("chapter7_scored_eve_wish", true)
+	do GameState.set_campaign_value("chapter7_score", GameState.campaign.get("chapter7_score", 0) + 1)
+if GameState.get_flag("chapter7_used_pretext") and not GameState.get_flag("chapter7_scored_pretext"):
+	do GameState.set_flag("chapter7_scored_pretext", true)
+	do GameState.set_campaign_value("chapter7_score", GameState.campaign.get("chapter7_score", 0) + 1)
+if GameState.get_flag("chapter7_used_elliot_lie") and not GameState.get_flag("chapter7_scored_elliot_lie") and (GameState.get_flag("chapter7_used_eve_wish") or GameState.get_flag("chapter7_used_real_person")):
+	do GameState.set_flag("chapter7_scored_elliot_lie", true)
+	do GameState.set_campaign_value("chapter7_score", GameState.campaign.get("chapter7_score", 0) + 1)
+if GameState.get_flag("chapter7_used_default_habit") and not GameState.get_flag("chapter7_scored_default_habit") and (GameState.get_flag("chapter7_used_eve_wish") or GameState.get_flag("chapter7_used_pretext")):
+	do GameState.set_flag("chapter7_scored_default_habit", true)
+	do GameState.set_campaign_value("chapter7_score", GameState.campaign.get("chapter7_score", 0) + 1)
+if GameState.get_flag("chapter7_used_real_person") and not GameState.get_flag("chapter7_scored_real_person"):
+	do GameState.set_flag("chapter7_scored_real_person", true)
+	do GameState.set_campaign_value("chapter7_score", GameState.campaign.get("chapter7_score", 0) + 1)
+if not Chapter7Room.all_arguments_used():
+	do! Chapter7Room.open_arguments()
+	=> END
+if GameState.campaign.get("chapter7_score", 0) >= 3:
+	=> success
+=> erase
+
+~ erase
+Elliot: ......对不起，我必须这样做。[next=1.5]
+do! Chapter7Room.restart_campaign()
+=> END
+
+~ success
+Elliot: ......
+Elliot: 你和你的母亲一样。
+do GameState.set_flag("chapter7_completed", true)
+do Chapter7Room.next_day()
+Elliot: hal，我决定去旅行了。[next=1.5]
+do Chapter7Room.travel_memory()
+do! Chapter7Room.enter_end()
+=> END
+
+~ agency_ending
+do SceneTransition.change_scene("res://Scene/End/end1.tscn", 0.5)
+=> END
+
 ~ end1
 do wait(3.0)
 do SceneTransition.change_scene("res://Scene/End/end_2.tscn", 0.8)
 => END
 
 ~ end2
+do wait(3.0)
+do SceneTransition.change_scene("res://Scene/End/end_3.tscn", 0.8)
+=> END
+
+~ end3
 do wait(3.0)
 do AudioManager.stop_music(1.0)
 do SaveManager.return_to_menu()

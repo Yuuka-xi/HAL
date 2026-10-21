@@ -109,5 +109,11 @@ func finish_level() -> void:
 	if balloon != null:
 		await balloon.tree_exited
 	if session == SaveManager.session_id:
-		GameState.set_flag("chapter6_completed", true)
-		SceneTransition.change_scene("res://Scene/End/end1.tscn", 0.8)
+		if GameState.get_flag("chapter6_awakened"):
+			GameState.set_flag("chapter6_completed", true)
+			SceneTransition.change_scene("res://Scene/Chapter7/chapter7_bedroom.tscn", 0.5)
+		else:
+			# 已解锁情感的失败尝试保留第五章末存档，读档重玩第六章。
+			if not GameState.get_flag("emotion_visible"):
+				GameState.set_flag("chapter6_completed", true)
+			SceneTransition.change_scene("res://Scene/End/end1.tscn", 0.8)

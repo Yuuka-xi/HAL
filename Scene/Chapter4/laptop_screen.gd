@@ -41,7 +41,7 @@ func open_email() -> void:
 func turn(direction: int) -> void:
 	if SettingsMenu.is_open() or interrupted_reading:
 		return
-	page = clampi(page + direction, 1, 8)
+	page = clampi(page + direction, 1, 11)
 	_refresh()
 	if page == 4 and not second_visit:
 		interrupted_reading = true
@@ -50,15 +50,15 @@ func turn(direction: int) -> void:
 		interrupted.emit()
 
 func _refresh() -> void:
-	if second_visit and page == 8:
+	if second_visit and page == 11:
 		last_email_reached = true
 		if not GameState.get_flag("chapter4_night_read_completed"):
 			GameState.set_flag("chapter4_night_read_completed", true)
 	$BackButton.visible = second_visit and last_email_reached
-	for index in range(1, 9):
+	for index in range(1, 12):
 		get_node("EmailPage/Email%d" % index).visible = index == page
 	$EmailPage/left.visible = page > 1
-	$EmailPage/right.visible = page < 8
+	$EmailPage/right.visible = page < 11
 
 func back() -> void:
 	if SettingsMenu.is_open() or not second_visit or not last_email_reached:

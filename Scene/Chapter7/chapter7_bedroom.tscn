@@ -1,0 +1,189 @@
+[gd_scene format=3 uid="uid://dl3wlikbljcr0"]
+
+[ext_resource type="Texture2D" uid="uid://dol6i5oxjmgx5" path="res://Asset/bedroom/background.png" id="1_4j5c0"]
+[ext_resource type="Texture2D" uid="uid://bbv3hr6y8648s" path="res://Asset/bedroom/door.png" id="2_54sre"]
+[ext_resource type="Texture2D" uid="uid://bahmk23mw4ad5" path="res://Asset/bedroom/sensor.png" id="3_koc86"]
+[ext_resource type="Texture2D" uid="uid://cqnloa0sik40o" path="res://Asset/bedroom/Mirror.png" id="4_db30v"]
+[ext_resource type="Texture2D" uid="uid://c5rcr381sak2d" path="res://Asset/bedroom/bucket.png" id="5_7fn56"]
+[ext_resource type="Script" uid="uid://dwo4rtkee6e6v" path="res://Scene/Tool/perception_click/perception_click.gd" id="5_sxv5x"]
+[ext_resource type="Texture2D" uid="uid://cpf3x6iw0eliw" path="res://Asset/bedroom/bucket_area.png" id="6_thlmm"]
+[ext_resource type="Texture2D" uid="uid://d15o0n2qr6ygh" path="res://Asset/bedroom/cabinet.png" id="7_sxv5x"]
+[ext_resource type="Texture2D" uid="uid://6n8srftfdnc5" path="res://Asset/bedroom/bed.png" id="8_w2c7l"]
+[ext_resource type="Texture2D" uid="uid://dgsknnb2u40mf" path="res://Asset/bedroom/chair.png" id="9_lsa4h"]
+[ext_resource type="Texture2D" uid="uid://c7ndy1fovn5dt" path="res://Asset/bedroom/table.png" id="10_u8do8"]
+[ext_resource type="Texture2D" uid="uid://d2arq0c40auq" path="res://Asset/bedroom/Elliot.png" id="11_7fn56"]
+[ext_resource type="Texture2D" uid="uid://cybxrj65t7tpv" path="res://Asset/bedroom/lamp.png" id="11_w2q34"]
+[ext_resource type="Texture2D" uid="uid://bg5vlwmumh3rn" path="res://Asset/bedroom/picture.png" id="12_fndyi"]
+[ext_resource type="Texture2D" uid="uid://bsw075b8dw5s3" path="res://Asset/livingroom/SmokeAlarm.png" id="13_ubnr0"]
+[ext_resource type="Texture2D" uid="uid://cxq0ayckeibtk" path="res://Asset/bedroom/left.png" id="14_i85y6"]
+[ext_resource type="PackedScene" uid="uid://sku1m53v5qqm" path="res://Scene/Tool/hover_scale/hover_scale.tscn" id="15_gvq57"]
+[ext_resource type="Texture2D" uid="uid://4dlnud58bdar" path="res://Asset/bedroom/right.png" id="16_gjnmm"]
+[ext_resource type="PackedScene" uid="uid://bg0dhcmtonb5v" path="res://Scene/Tool/hover_scale/return_hover_scale.tscn" id="17_wu7g1"]
+[ext_resource type="Resource" uid="uid://bj87yp7wkir6t" path="res://Dialogue/Chapter7.dialogue" id="c6_dialogue"]
+[ext_resource type="Script" uid="uid://cx1hu55ca5mtw" path="res://Scene/Chapter7/chapter7_bedroom.gd" id="c6_script"]
+[ext_resource type="Script" uid="uid://bojjsftomyuwp" path="res://Scene/Chapter7/discard_card_target.gd" id="discard"]
+
+[sub_resource type="RectangleShape2D" id="C6TalkShape"]
+size = Vector2(151.75, 375)
+
+[sub_resource type="RectangleShape2D" id="DiscardRoomShape"]
+size = Vector2(3840, 1080)
+
+[node name="bedroom" type="Node2D" unique_id=1934651834]
+position = Vector2(0, -2)
+script = ExtResource("c6_script")
+dialogue = ExtResource("c6_dialogue")
+
+[node name="background" type="Sprite2D" parent="." unique_id=1795502936]
+position = Vector2(960, 542)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_4j5c0")
+
+[node name="background2" type="Sprite2D" parent="." unique_id=414085544]
+position = Vector2(2880, 542)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_4j5c0")
+
+[node name="door_bedroom" type="Node2D" parent="." unique_id=1260318434]
+position = Vector2(84, -10)
+
+[node name="Sprite2D" type="Sprite2D" parent="door_bedroom" unique_id=403207438]
+position = Vector2(192, 517.00006)
+scale = Vector2(0.4910581, 0.49105814)
+texture = ExtResource("2_54sre")
+
+[node name="Sensor" type="Node2D" parent="." unique_id=1107173247]
+position = Vector2(631, 558)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sensor" unique_id=1821186902]
+position = Vector2(-32, -32.000008)
+scale = Vector2(0.47619045, 0.47619048)
+texture = ExtResource("3_koc86")
+
+[node name="Mirror" type="Node2D" parent="." unique_id=163275830]
+position = Vector2(965, 283)
+
+[node name="mirror" type="Sprite2D" parent="Mirror" unique_id=1696458196]
+position = Vector2(-8.000017, 346.99997)
+scale = Vector2(0.50033635, 0.50033635)
+texture = ExtResource("4_db30v")
+
+[node name="ToolBucket" type="Node2D" parent="." unique_id=709787213]
+position = Vector2(1460, 930)
+
+[node name="bucket" type="Sprite2D" parent="ToolBucket" unique_id=1586005107]
+position = Vector2(129.49997, -165.00002)
+scale = Vector2(0.4758426, 0.57101107)
+texture = ExtResource("5_7fn56")
+
+[node name="CleaningAgent" type="Node2D" parent="." unique_id=488140437]
+position = Vector2(1401, 1009)
+
+[node name="Sprite2D" type="Sprite2D" parent="CleaningAgent" unique_id=264663544]
+position = Vector2(187.00002, -94.999985)
+scale = Vector2(0.47205588, 0.47205588)
+texture = ExtResource("6_thlmm")
+
+[node name="Wardrobe" type="Node2D" parent="." unique_id=1899435700]
+position = Vector2(2598, 1047)
+
+[node name="Sprite2D" type="Sprite2D" parent="Wardrobe" unique_id=749711159]
+position = Vector2(295, -326)
+scale = Vector2(0.5113754, 0.51137537)
+texture = ExtResource("7_sxv5x")
+
+[node name="bed" type="Node2D" parent="." unique_id=460123393]
+position = Vector2(3501, 904)
+
+[node name="Sprite2D" type="Sprite2D" parent="bed" unique_id=1175319659]
+position = Vector2(-203.99994, -125)
+scale = Vector2(0.5135276, 0.5135276)
+texture = ExtResource("8_w2c7l")
+
+[node name="Elliot" type="Node2D" parent="." unique_id=640602870]
+
+[node name="Elliot" type="Sprite2D" parent="Elliot" unique_id=1375317621]
+position = Vector2(3292, 648.00006)
+scale = Vector2(0.514, 0.514)
+texture = ExtResource("11_7fn56")
+
+[node name="Talk" type="Area2D" parent="Elliot" unique_id=953005872 node_paths=PackedStringArray("dialogue_state")]
+position = Vector2(3563, 674)
+script = ExtResource("5_sxv5x")
+dialogue = ExtResource("c6_dialogue")
+start_title = "talk_elliot"
+dialogue_state = NodePath("../..")
+dialogue_state_name = "Chapter7Room"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Elliot/Talk" unique_id=347976005]
+position = Vector2(50, -47)
+shape = SubResource("C6TalkShape")
+
+[node name="chair" type="Sprite2D" parent="." unique_id=481603199]
+position = Vector2(2439, 693)
+scale = Vector2(0.5038168, 0.5038167)
+texture = ExtResource("9_lsa4h")
+
+[node name="table" type="Sprite2D" parent="." unique_id=1277074573]
+position = Vector2(2210, 826)
+scale = Vector2(0.5038168, 0.5038167)
+texture = ExtResource("10_u8do8")
+
+[node name="lamp" type="Sprite2D" parent="." unique_id=226749067]
+position = Vector2(3554.9998, 255)
+scale = Vector2(0.56902903, 0.569029)
+texture = ExtResource("11_w2q34")
+
+[node name="picture" type="Sprite2D" parent="." unique_id=1084990894]
+position = Vector2(3140, 192)
+scale = Vector2(0.56902903, 0.569029)
+texture = ExtResource("12_fndyi")
+
+[node name="smokealarm" type="Sprite2D" parent="." unique_id=1506728266]
+position = Vector2(1624.1786, 32.75)
+scale = Vector2(0.44345242, 0.44345242)
+texture = ExtResource("13_ubnr0")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=124135654]
+position = Vector2(960, 542)
+
+[node name="Navigation" type="CanvasLayer" parent="." unique_id=891826564]
+layer = 30
+
+[node name="Left" type="TextureButton" parent="Navigation" unique_id=188894299]
+offset_left = 24.0
+offset_top = 709.0
+offset_right = 145.0
+offset_bottom = 868.0
+scale = Vector2(0.5, 0.5)
+focus_mode = 0
+texture_normal = ExtResource("14_i85y6")
+
+[node name="HoverScale" parent="Navigation/Left" unique_id=533082741 instance=ExtResource("15_gvq57")]
+
+[node name="Right" type="TextureButton" parent="Navigation" unique_id=185125527]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -100.0
+offset_top = 684.0
+offset_right = 21.0
+offset_bottom = 843.0
+grow_horizontal = 0
+scale = Vector2(0.5, 0.5)
+focus_mode = 0
+texture_normal = ExtResource("16_gjnmm")
+
+[node name="HoverScale" parent="Navigation/Right" unique_id=1391716803 instance=ExtResource("17_wu7g1")]
+
+[node name="DiscardCard" type="Area2D" parent="." unique_id=1874935965 node_paths=PackedStringArray("dialogue_state")]
+position = Vector2(1920, 542)
+script = ExtResource("discard")
+accepted_item = "network_card"
+dialogue = ExtResource("c6_dialogue")
+start_title = ""
+dialogue_state = NodePath("..")
+dialogue_state_name = "Chapter7Room"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DiscardCard" unique_id=501767634]
+shape = SubResource("DiscardRoomShape")

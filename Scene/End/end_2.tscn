@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://d136hsmpmgff3" path="res://Asset/End/background.png" id="1_xgbf3"]
 [ext_resource type="Texture2D" uid="uid://dqer4rtpicndp" path="res://Asset/End/Elliot.png" id="2_f1qmh"]
-[ext_resource type="Resource" path="res://Dialogue/Chapter7.dialogue" id="dialogue"]
+[ext_resource type="Resource" uid="uid://bj87yp7wkir6t" path="res://Dialogue/Chapter7.dialogue" id="dialogue"]
 [ext_resource type="Script" uid="uid://bw8rrq8hsh1tb" path="res://Scene/End/end_screen.gd" id="end_script"]
 
 [node name="End2" type="Node2D" unique_id=142816558]
@@ -21,15 +21,12 @@ scale = Vector2(0.5364432, 0.5364432)
 texture = ExtResource("2_f1qmh")
 
 [node name="Label" type="Label" parent="." unique_id=838863340]
-offset_left = 500.0
-offset_top = 392.0
-offset_right = 756.0
-offset_bottom = 766.0
+offset_left = 476.0
+offset_top = 446.0
+offset_right = 732.0
+offset_bottom = 580.0
 theme_override_colors/font_color = Color(0.32616863, 0.12995422, 0.08044507, 1)
 theme_override_constants/line_spacing = 26
 theme_override_font_sizes/font_size = 50
 text = "美术：阿兮
-文案：琨残
-程序：元夕
-策划：织雨
-"
+文案：琨残"

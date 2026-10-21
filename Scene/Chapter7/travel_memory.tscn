@@ -1,0 +1,263 @@
+[gd_scene format=3 uid="uid://dwablrd2b2gjm"]
+
+[ext_resource type="Texture2D" uid="uid://cvm3oksf5cruu" path="res://Asset/Memory/end.png" id="2_2hsaw"]
+[ext_resource type="Script" uid="uid://33v2yu6gd68l" path="res://Scene/Chapter7/travel_memory.gd" id="script"]
+
+[sub_resource type="Animation" id="Animation_1adid"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation"]
+resource_name = "travel_memory"
+length = 44.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Screen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 42, 44),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Screen/Subtitle01:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Screen/Subtitle02:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 9, 13),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Screen/Subtitle03:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 13, 19),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Screen/Subtitle04:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 19, 23),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Screen/Subtitle05:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 23, 26),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Screen/Subtitle06:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 26, 36),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Screen/Subtitle07:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 36, 41),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Screen/EndCover:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 42, 44),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="Library"]
+_data = {
+&"RESET": SubResource("Animation_1adid"),
+&"travel_memory": SubResource("Animation")
+}
+
+[node name="travel_memory" type="CanvasLayer" unique_id=425422290]
+layer = 85
+script = ExtResource("script")
+animation = &"travel_memory"
+
+[node name="Screen" type="Control" parent="." unique_id=1215563973]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="Screen" unique_id=789368439]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="background" type="TextureRect" parent="Screen" unique_id=225734664]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_2hsaw")
+expand_mode = 1
+
+[node name="Subtitle01" type="Label" parent="Screen" unique_id=550132397]
+visible = false
+layout_mode = 0
+offset_left = 305.0
+offset_top = 984.0
+offset_right = 1603.0
+offset_bottom = 1028.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Eve：Elliot，我们去旅行吧。我想去看冰川上的极光，南沙的海......Elliot？"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Subtitle02" type="Label" parent="Screen" unique_id=1734267072]
+visible = false
+layout_mode = 0
+offset_left = 212.0
+offset_top = 934.0
+offset_right = 1692.0
+offset_bottom = 1084.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Eve：Elliot，你不想吗？"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Subtitle03" type="Label" parent="Screen" unique_id=1701326647]
+visible = false
+layout_mode = 0
+offset_left = 220.0
+offset_top = 934.0
+offset_right = 1700.0
+offset_bottom = 1084.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Elliot：我想。但是.....我还有实验室的事，还有......"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Subtitle04" type="Label" parent="Screen" unique_id=1954247869]
+visible = false
+layout_mode = 0
+offset_left = 220.0
+offset_top = 934.0
+offset_right = 1700.0
+offset_bottom = 1084.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Eve：你真的想吗，还是只在敷衍我？"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Subtitle05" type="Label" parent="Screen" unique_id=248786915]
+visible = false
+layout_mode = 0
+offset_left = 242.0
+offset_top = 934.0
+offset_right = 1722.0
+offset_bottom = 1084.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Elliot：真的！"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Subtitle06" type="Label" parent="Screen" unique_id=352524021]
+visible = false
+layout_mode = 0
+offset_left = -12.0
+offset_top = 934.0
+offset_right = 1934.0
+offset_bottom = 1084.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Eve：那就好，我可以等。总有一天，我们都能从生活的枷锁里解放，去做真正想做的事......我们约定好了哟~"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Subtitle07" type="Label" parent="Screen" unique_id=274109868]
+visible = false
+layout_mode = 0
+offset_left = 220.0
+offset_top = 934.0
+offset_right = 1700.0
+offset_bottom = 1084.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Elliot：嗯，我们约定好。"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="EndCover" type="ColorRect" parent="Screen" unique_id=1000296455]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1639404876]
+libraries/ = SubResource("Library")

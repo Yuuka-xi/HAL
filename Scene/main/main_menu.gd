@@ -3,7 +3,9 @@ extends Control
 var loading := false
 
 func _ready() -> void:
+	AudioManager.stop_music(0.0)
 	SaveManager.track_play_time = false
+	SettingsMenu.set_navigation_hidden(true)
 	WorkLog.screen.hide()
 	WorkLog.selected.clear()
 	WorkLog.answer.clear()
@@ -20,6 +22,9 @@ func _ready() -> void:
 	$SaveUI.back_requested.connect(_show_title)
 	$SaveUI.slot_selected.connect(_start_slot)
 	_show_title()
+
+func _exit_tree() -> void:
+	SettingsMenu.set_navigation_hidden(false)
 
 func _show_title() -> void:
 	$TitleUI.show()

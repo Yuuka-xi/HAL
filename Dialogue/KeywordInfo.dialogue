@@ -511,3 +511,23 @@ else:
 ~ chapter6_antipyretic_info
 hal：已发现退烧药药品说明：需温水送服。该药味苦。
 => END
+
+~ chapter7_eve_wish
+Eve并不希望Elliot活成一台机器。
+=> END
+
+~ chapter7_pretext
+人工智能管理机构对零星的、无法通过网络传播的人工智能没有管理意愿。
+=> END
+
+~ chapter7_elliot_lie
+Elliot 自己也并没有表面上那么理性。
+=> END
+
+~ chapter7_default_habit
+Elliot只是习惯而非愿意组织hal涌现意识。他本希望得到陪伴。
+=> END
+
+~ chapter7_real_person
+机器会按照规定做事，但人可以做自己想做的事。
+=> END

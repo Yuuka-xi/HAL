@@ -1,0 +1,44 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" uid="uid://c4iecw1l4yaku" path="res://Asset/livingroom/background.png" id="1_ellge"]
+[ext_resource type="Texture2D" uid="uid://dvnjq8mvr4dex" path="res://Asset/livingroom/table.png" id="3_sko13"]
+[ext_resource type="Texture2D" uid="uid://b6ego6wb6sbvq" path="res://Asset/livingroom/telephone.png" id="4_o3swx"]
+[ext_resource type="Texture2D" uid="uid://cd0ssub16fhbb" path="res://Asset/livingroom/elliot.png" id="4_sko13"]
+[ext_resource type="Shader" uid="uid://dpcdyks2kay2r" path="res://Scene/Tool/color_dodge.gdshader" id="6_qpkyu"]
+[ext_resource type="Texture2D" uid="uid://cmja6gbrl2nhs" path="res://Asset/livingroom/light.png" id="7_cngv7"]
+[ext_resource type="Texture2D" uid="uid://bsw075b8dw5s3" path="res://Asset/livingroom/SmokeAlarm.png" id="8_fvg3i"]
+
+[sub_resource type="ShaderMaterial" id="LightDodge"]
+shader = ExtResource("6_qpkyu")
+[node name="NextDayLivingRoom" type="Node2D"]
+
+[node name="background" type="Sprite2D" parent="." unique_id=1626595918]
+position = Vector2(959.75, 540)
+scale = Vector2(0.50000006, 0.5)
+texture = ExtResource("1_ellge")
+
+[node name="Elliot" type="Sprite2D" parent="." unique_id=134534866]
+position = Vector2(725, 693)
+scale = Vector2(0.50000006, 0.5)
+texture = ExtResource("4_sko13")
+
+[node name="table" type="Sprite2D" parent="." unique_id=1866039029]
+position = Vector2(742, 889)
+scale = Vector2(0.50000006, 0.5)
+texture = ExtResource("3_sko13")
+
+[node name="telephone" type="Sprite2D" parent="." unique_id=166681852]
+position = Vector2(903.00006, 727)
+scale = Vector2(0.50000006, 0.5)
+texture = ExtResource("4_o3swx")
+
+[node name="light" type="Sprite2D" parent="." unique_id=2123235546]
+material = SubResource("LightDodge")
+position = Vector2(952, 601)
+scale = Vector2(0.50000006, 0.5)
+texture = ExtResource("7_cngv7")
+
+[node name="smokealarm" type="Sprite2D" parent="." unique_id=1662706597]
+position = Vector2(582, 36)
+scale = Vector2(0.5178572, 0.5178572)
+texture = ExtResource("8_fvg3i")

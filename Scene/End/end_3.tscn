@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://sqmnit4kbhv7"]
+
+[ext_resource type="Script" uid="uid://bw8rrq8hsh1tb" path="res://Scene/End/end_screen.gd" id="1_5e0r1"]
+[ext_resource type="Resource" uid="uid://bj87yp7wkir6t" path="res://Dialogue/Chapter7.dialogue" id="2_5e5xm"]
+[ext_resource type="Texture2D" uid="uid://d136hsmpmgff3" path="res://Asset/End/background.png" id="3_qdp7i"]
+[ext_resource type="Texture2D" uid="uid://ci4cg75xemrws" path="res://Asset/End/Eve.png" id="4_nqd0n"]
+
+[node name="End3" type="Node2D" unique_id=142816558]
+script = ExtResource("1_5e0r1")
+dialogue = ExtResource("2_5e5xm")
+start_title = "end3"
+
+[node name="background" type="Sprite2D" parent="." unique_id=402992835]
+position = Vector2(959.9999, 540.00006)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_qdp7i")
+
+[node name="Eve" type="Sprite2D" parent="." unique_id=481592006]
+position = Vector2(509.00006, 541.00006)
+scale = Vector2(0.5364432, 0.5364432)
+texture = ExtResource("4_nqd0n")
+
+[node name="Label" type="Label" parent="." unique_id=838863340]
+offset_left = 1281.0
+offset_top = 458.0
+offset_right = 1537.0
+offset_bottom = 672.0
+theme_override_colors/font_color = Color(0.32616863, 0.12995422, 0.08044507, 1)
+theme_override_constants/line_spacing = 26
+theme_override_font_sizes/font_size = 50
+text = "程序：元夕
+策划：织雨
+"

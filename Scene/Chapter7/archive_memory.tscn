@@ -1,0 +1,145 @@
+[gd_scene format=3 uid="uid://ltvtgcwra7v1"]
+
+[ext_resource type="Texture2D" uid="uid://c1duarekvlq2e" path="res://Asset/Memory/Memory/color/花园.png" id="garden"]
+[ext_resource type="Script" uid="uid://c1pjrg46aylk4" path="res://Scene/Chapter6/chapter6_presentation.gd" id="script"]
+[ext_resource type="Texture2D" uid="uid://bndx76fyp6nbm" path="res://Asset/Memory/Memory/color/书房.png" id="study"]
+
+[sub_resource type="Animation" id="Animation"]
+resource_name = "archive_memory"
+length = 3.5000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Screen:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 2.6333334, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Screen/Fragment01:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6, 2.6333334, 3.2333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Screen/Fragment02:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.8666667, 1.3, 2.6333334, 3.2333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Screen/Fragment03:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.5, 1.9333333, 2.6333334, 3.2333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Screen/Fragment04:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.9, 2.2333333, 2.6333334, 3.2333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="Library"]
+_data = {
+&"archive_memory": SubResource("Animation")
+}
+
+[node name="archive_memory" type="CanvasLayer" unique_id=1484164332]
+layer = 85
+script = ExtResource("script")
+animation = &"archive_memory"
+
+[node name="Screen" type="Control" parent="." unique_id=1467850306]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Background" type="ColorRect" parent="Screen" unique_id=679483072]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Fragment01" type="TextureRect" parent="Screen" unique_id=86104085]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 180.0
+offset_top = 160.0
+offset_right = 740.0
+offset_bottom = 720.0
+mouse_filter = 2
+texture = ExtResource("study")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Fragment02" type="TextureRect" parent="Screen" unique_id=1897274694]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 1140.0
+offset_top = 320.0
+offset_right = 1740.0
+offset_bottom = 920.0
+mouse_filter = 2
+texture = ExtResource("garden")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Fragment03" type="TextureRect" parent="Screen" unique_id=673740467]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 720.0
+offset_top = 80.0
+offset_right = 1020.0
+offset_bottom = 380.0
+mouse_filter = 2
+texture = ExtResource("study")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Fragment04" type="TextureRect" parent="Screen" unique_id=1956308918]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 520.0
+offset_top = 640.0
+offset_right = 840.0
+offset_bottom = 960.0
+mouse_filter = 2
+texture = ExtResource("garden")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2112786195]
+libraries/ = SubResource("Library")

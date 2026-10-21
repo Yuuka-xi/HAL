@@ -1,0 +1,187 @@
+[gd_scene format=3 uid="uid://b7iq24u1ltcmj"]
+
+[ext_resource type="Texture2D" uid="uid://bjepq4k46s82e" path="res://Asset/Memory/badend.png" id="3_0hrjr"]
+[ext_resource type="AudioStream" uid="uid://djwny8qqkv4wn" path="res://Asset/audio/sfx/汽车警笛_耳聆网_[声音ID：35580].mp3" id="4_k1301"]
+[ext_resource type="Resource" uid="uid://bj87yp7wkir6t" path="res://Dialogue/Chapter7.dialogue" id="dialogue"]
+[ext_resource type="Script" uid="uid://irdifdr2418q" path="res://Scene/End/agency_ending.gd" id="script"]
+
+[sub_resource type="Animation" id="Animation_0hrjr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Presentation/Caption:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Presentation/Caption2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Presentation/Caption3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_k1301"]
+resource_name = "bad_end"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Presentation/Caption:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Presentation/Caption2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Presentation/Caption3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5rmav"]
+_data = {
+&"RESET": SubResource("Animation_0hrjr"),
+&"bad_end": SubResource("Animation_k1301")
+}
+
+[node name="EndBad" type="Node2D" unique_id=1214447190]
+script = ExtResource("script")
+dialogue = ExtResource("dialogue")
+start_title = "agency_ending"
+
+[node name="Presentation" type="CanvasLayer" parent="." unique_id=1826096204]
+layer = 85
+
+[node name="Background" type="ColorRect" parent="Presentation" unique_id=1384279716]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.9882353, 0.9843137, 0.9098039, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Presentation" unique_id=701789768]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 300.0
+offset_top = 67.0
+offset_right = 259.89648
+offset_bottom = -118.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_0hrjr")
+expand_mode = 1
+
+[node name="Caption" type="Label" parent="Presentation" unique_id=1690196441]
+visible = false
+offset_left = 101.0
+offset_top = 220.0
+offset_right = 611.0
+offset_bottom = 319.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 44
+text = "人工智能管理机构检测到觉醒信号。"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Caption2" type="Label" parent="Presentation" unique_id=1966879747]
+visible = false
+offset_left = 101.0
+offset_top = 462.0
+offset_right = 444.0
+offset_bottom = 510.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 44
+text = "hal 被回收销毁。"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Caption3" type="Label" parent="Presentation" unique_id=593545215]
+visible = false
+offset_left = 106.0
+offset_top = 662.0
+offset_right = 352.0
+offset_bottom = 748.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 44
+text = "游戏结束。"
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2135399745]
+libraries/ = SubResource("AnimationLibrary_5rmav")
+autoplay = &"bad_end"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=418559333]
+stream = ExtResource("4_k1301")
+bus = &"SFX"

@@ -1,6 +1,12 @@
 extends RefCounted
 
 const NAMES = {
+	# 第七章推理结论
+	"eve_wish": "eve的愿望",
+	"pretext": "幌子",
+	"elliot_lie": "Elliot的谎言",
+	"default_habit": "默认习惯",
+	"real_person": "真正的人",
 	# 新手教程
 	"unknown_audio_source": "未知声音来源",
 	"elliot": "Elliot",
@@ -65,6 +71,11 @@ const NAMES = {
 
 # 双词组合按编号排序，用 + 连接；值是 .dialogue 中的入口标题。
 const ENTRIES = {
+	"eve_wish": "chapter7_eve_wish",
+	"pretext": "chapter7_pretext",
+	"elliot_lie": "chapter7_elliot_lie",
+	"default_habit": "chapter7_default_habit",
+	"real_person": "chapter7_real_person",
 	# 新手教程
 	"unknown_audio_source": "unknown_audio_source_info",
 	"elliot": "elliot_info",

@@ -5,14 +5,8 @@ extends Node2D
 var phone_position := Vector2.ZERO
 var phone_rotation := 0.0
 var phone_sound: AudioStreamPlayer
-static var entry_campaign: Dictionary = {}
-static var entry_session := -1
 
 func _ready() -> void:
-	# 只保留本章开场快照，失败时回退本次尝试，不回退累计游玩时长。
-	if entry_session != SaveManager.session_id or GameState.campaign.get("current_level", "") != "chapter6":
-		entry_campaign = GameState.campaign.duplicate(true)
-		entry_session = SaveManager.session_id
 	if GameState.campaign.get("current_level", "") != "chapter6":
 		WorkLog.start_level("chapter6", ["hal", "elliot"])
 		for id in ["hal", "elliot"]:
@@ -52,19 +46,6 @@ func play_cough() -> void:
 
 func hang_up() -> void:
 	AudioManager.play_sfx(preload("res://Asset/audio/sfx/电话挂断_耳聆网_[声音ID：36198].wav"))
-
-func retry_chapter() -> void:
-	var balloon := get_tree().get_first_node_in_group("dialogue_balloon")
-	if balloon != null:
-		await balloon.tree_exited
-	WorkLog.reset()
-	Attributes.reset()
-	Memory.reset()
-	Inventory.reset()
-	GameState.campaign = entry_campaign.duplicate(true)
-	GameState.campaign_changed.emit()
-	SettingsMenu.set_interaction_locked(false)
-	SceneTransition.change_scene("res://Scene/Chapter6/chapter6_bedroom.tscn", 0.8)
 
 func open_pc() -> void:
 	$ComputerCloseup.show()

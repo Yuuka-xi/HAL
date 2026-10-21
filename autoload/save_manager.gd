@@ -13,6 +13,7 @@ const LEVELS := {
 	"chapter4_completed": "res://Scene/Chapter4/chapter4_living_room.tscn",
 	"chapter5_completed": "res://Scene/Chapter5/chapter5_living_room.tscn",
 	"chapter6_completed": "res://Scene/Chapter6/chapter6_bedroom.tscn",
+	"chapter7_completed": "res://Scene/Chapter7/chapter7_bedroom.tscn",
 }
 const SAVE_DIRECTORY := "user://saves/"
 var current_slot := 1
@@ -38,10 +39,29 @@ func _on_campaign_changed() -> void:
 
 func next_scene() -> String:
 	for flag in LEVELS:
+		# 未觉醒的第六章终局不会进入第七章。
+		if flag == "chapter7_completed" and not GameState.get_flag("chapter6_awakened"):
+			return "res://Scene/End/end1.tscn"
 		if not GameState.get_flag(flag):
 			return LEVELS[flag]
-	# 第六章完成后暂以 End 承接第七章；读档也从 End 开始。
-	return "res://Scene/End/end1.tscn"
+	return "res://Scene/Chapter7/travel_memory.tscn"
+
+func restart_from_tutorial() -> Error:
+	var active_slot := track_play_time
+	track_play_time = false
+	session_id += 1
+	WorkLog.reset()
+	Attributes.reset()
+	Memory.reset()
+	Inventory.reset()
+	GameState.reset()
+	if active_slot:
+		var error := save_game()
+		if error != OK:
+			return error
+	track_play_time = active_slot
+	SettingsMenu.set_interaction_locked(false)
+	return await SceneTransition.change_scene(LEVELS["beginnerguide_completed"], 0.5)
 
 func start_slot(slot: int) -> Error:
 	track_play_time = false
