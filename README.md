@@ -1,4 +1,8 @@
 # HAL
+A journey in search of the self—
+between past and present, self and other, machine and human.
+Who am I? Where do I belong?
+The answers lie in your hands.
 
 A 2D narrative puzzle game built with Godot 4.
 
@@ -21,9 +25,11 @@ Play as **hal**, an artificial intelligence learning to understand the world, hu
 | --- | --- |
 | **Axi** | Artist — environment art, character design, props, and UI artwork. |
 | **Kuncan** | Narrative Designer and Writer — story outline and dialogue. |
-| **XiYuan** | Producer and Programmer — game programming, interaction systems, scene assembly, narrative integration, and animation implementation. |
+| **Yuanxi** | Producer and Programmer — game programming, interaction systems, scene assembly, narrative integration, and animation implementation. |
+| **Zhiyu** | Game Designer — gameplay systems, level design, BGM selection, and playtesting. |
 
-The project uses [Dialogue Manager 3](https://github.com/nathanhoad/godot_dialogue_manager) for dialogue resources and narrative commands. **Codex assisted with programming and testing. No AI was used to create the artwork or narrative text.**
+The project uses [Dialogue Manager 3](https://github.com/nathanhoad/godot_dialogue_manager) for dialogue resources and narrative commands. 
+Codex assisted with programming and testing. No AI was used to create the artwork or narrative text.
 
 ## Technical Implementation
 
