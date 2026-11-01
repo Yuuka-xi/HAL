@@ -206,16 +206,20 @@ do SceneTransition.change_scene("res://Scene/End/end1.tscn", 0.5)
 
 ~ end1
 do wait(3.0)
-do SceneTransition.change_scene("res://Scene/End/end_2.tscn", 0.8)
+if SaveManager.session_id == EndingSession:
+	do SceneTransition.change_scene("res://Scene/End/end_2.tscn", 0.8)
 => END
 
 ~ end2
 do wait(3.0)
-do SceneTransition.change_scene("res://Scene/End/end_3.tscn", 0.8)
+if SaveManager.session_id == EndingSession:
+	do SceneTransition.change_scene("res://Scene/End/end_3.tscn", 0.8)
 => END
 
 ~ end3
 do wait(3.0)
-do AudioManager.stop_music(1.0)
-do SaveManager.return_to_menu()
+if SaveManager.session_id == EndingSession:
+	do AudioManager.stop_music(1.0)
+	if SaveManager.session_id == EndingSession:
+		do SaveManager.return_to_menu()
 => END
