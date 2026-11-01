@@ -64,6 +64,12 @@ One debugging case involved overlapping subtitles after rapid clicks. Dialogue M
 | [`Scene/Tool/item_drop_target/`](Scene/Tool/item_drop_target/) | Reusable item drop target component. |
 | [`Scene/WorkLog/`](Scene/WorkLog/) | Keyword investigation and argument submission. |
 | [`Scene/Attributes/`](Scene/Attributes/) | Attribute visualization and value assessment. |
+| [`Scene/BeginnersGuide/`](Scene/BeginnersGuide/) | Tutorial introducing the core mechanics. |
+| [`Scene/Chapter1/`](Scene/Chapter1/) | Chapter 1 scenes and interactions. |
+| [`Scene/Chapter2/`](Scene/Chapter2/) | Chapter 2 scenes and interactions. |
+| [`Scene/Chapter3/`](Scene/Chapter3/) | Chapter 3 scenes and interactions. |
+| [`Scene/Chapter4/`](Scene/Chapter4/) | Chapter 4 scenes and interactions. |
+| [`Scene/Chapter5/`](Scene/Chapter5/) | Chapter 5 scenes and interactions. |
 | [`Scene/Chapter6/`](Scene/Chapter6/) | Chapter 6 interactions and animated sequences. |
 | [`Scene/Chapter7/`](Scene/Chapter7/) | Final chapter and ending flows. |
 
