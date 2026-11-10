@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/cleaner.png-4843cddc5393f400ba43ba2b4d5cf9b3.
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

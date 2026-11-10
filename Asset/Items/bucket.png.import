@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/bucket.png-818ab238d5544f495f2dd717706e961d.c
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

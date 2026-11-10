@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/rag.png-67a5b6e96d5d85db31bf55c0bb5b0b02.ctex
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

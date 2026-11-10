@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/brokenhal.png-276bf896b068e43d21d8e2d77ac84b1
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

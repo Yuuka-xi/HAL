@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/wall.png-d384d27f94646e60821b86834031e0b1.cte
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/eve.png-c67c0d2f9cdb1544a95848fd6fee2d73.ctex
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

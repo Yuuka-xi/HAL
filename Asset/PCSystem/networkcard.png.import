@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/networkcard.png-f240c158ebfea188146660306835e
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

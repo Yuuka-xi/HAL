@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/chair.png-9c8f47a9a72afeeb4fd8c6077756caa8.ct
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

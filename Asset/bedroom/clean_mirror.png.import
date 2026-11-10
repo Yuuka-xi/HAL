@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/clean_mirror.png-a434f80ee231626292dcd6c2adb4
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/elliot.png-152c30b5bad6972d7bbe6dd24ba705ec.c
 
 [params]
 
-compress/mode=0
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
