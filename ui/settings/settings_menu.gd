@@ -2,6 +2,9 @@ extends CanvasLayer
 
 @onready var panel: Control = $Backdrop/Panel
 const DISPLAY_MODES := ["1280 × 720", "1920 × 1080", "全屏"]
+# 网页版只能在"窗口/全屏"间切换，且全屏需要玩家点击触发，不能在启动时自动进入。
+const WEB_DISPLAY_MODES := ["窗口", "全屏"]
+var is_web := OS.has_feature("web")
 @onready var display_size: Label = $Backdrop/Panel/Layout/DisplayMode/DisplaySize
 var display_index := 2
 var interaction_locked := false
@@ -12,7 +15,10 @@ var navigation_hidden := false
 
 func _ready() -> void:
 	$Backdrop.hide()
-	_on_display_size_selected(2)
+	if is_web:
+		_setup_web_display_mode()
+	else:
+		_on_display_size_selected(2)
 	$Backdrop/Panel/Layout/DisplayMode/DisplayPrevious.pressed.connect(_cycle_display_size.bind(-1))
 	$Backdrop/Panel/Layout/DisplayMode/DisplayNext.pressed.connect(_cycle_display_size.bind(1))
 	$Backdrop/Panel/Layout/Master.value = AudioManager.get_bus_volume(&"Master")
@@ -49,6 +55,10 @@ func open() -> void:
 	if interaction_locked:
 		return
 	$Backdrop/Panel/Layout/ReturnToTitle.visible = SaveManager.track_play_time
+	if is_web:
+		# 玩家可能用浏览器手势退出了全屏，打开设置时同步显示。
+		display_index = 1 if get_window().mode == Window.MODE_FULLSCREEN else 0
+		display_size.text = WEB_DISPLAY_MODES[display_index]
 	$Backdrop.show()
 	open_setting_page.play()
 	panel.grab_focus()
@@ -83,7 +93,21 @@ func _on_music_changed(value: float) -> void:
 func _on_sfx_changed(value: float) -> void:
 	AudioManager.set_bus_volume(&"SFX", value)
 
+func _setup_web_display_mode() -> void:
+	display_index = 0
+	display_size.text = WEB_DISPLAY_MODES[0]
+	# 平台用 iframe 嵌入且不允许全屏、或 iPhone Safari 等不支持时，隐藏这一行。
+	var supported = JavaScriptBridge.eval("!!(document.fullscreenEnabled || document.webkitFullscreenEnabled)", true)
+	if not supported:
+		$Backdrop/Panel/Layout/DisplayLabel.hide()
+		$Backdrop/Panel/Layout/DisplayMode.hide()
+
 func _on_display_size_selected(index: int) -> void:
+	if is_web:
+		display_index = index
+		display_size.text = WEB_DISPLAY_MODES[index]
+		get_window().mode = Window.MODE_FULLSCREEN if index == 1 else Window.MODE_WINDOWED
+		return
 	display_index = index
 	display_size.text = DISPLAY_MODES[index]
 	var window := get_window()
@@ -95,7 +119,8 @@ func _on_display_size_selected(index: int) -> void:
 		window.move_to_center()
 
 func _cycle_display_size(direction: int) -> void:
-	_on_display_size_selected(posmod(display_index + direction, DISPLAY_MODES.size()))
+	var count := WEB_DISPLAY_MODES.size() if is_web else DISPLAY_MODES.size()
+	_on_display_size_selected(posmod(display_index + direction, count))
 
 
 func _on_open_pressed() -> void:

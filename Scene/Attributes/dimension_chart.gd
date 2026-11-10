@@ -46,11 +46,27 @@ func _sync_buttons() -> void:
 		for state in ["normal", "hover", "pressed", "focus"]:
 			button.add_theme_stylebox_override(state, StyleBoxEmpty.new())
 		button.mouse_entered.connect(func(): dimension_hovered.emit(id))
-		button.mouse_exited.connect(func(): dimension_hovered.emit(""))
-		button.pressed.connect(func(): dimension_selected.emit(id))
+		button.mouse_exited.connect(func():
+			# 触屏上模拟鼠标可能在松手时触发 exited，忽略它，思考内容保留到下一次点击。
+			if MobileSupport.is_touch:
+				return
+			_touch_preview_id = ""
+			dimension_hovered.emit(""))
+		button.pressed.connect(_on_dimension_pressed.bind(id))
 		add_child(button)
 		button.add_child(preload("res://Scene/Tool/hover_scale/return_hover_scale.tscn").instantiate())
 		buttons[id] = button
+
+# 触屏没有悬停：第一次点击先显示思考内容，再点同一个维度才确认选择。
+var _touch_preview_id := ""
+
+func _on_dimension_pressed(id: String) -> void:
+	if MobileSupport.is_touch and _touch_preview_id != id:
+		_touch_preview_id = id
+		dimension_hovered.emit(id)
+		return
+	_touch_preview_id = ""
+	dimension_selected.emit(id)
 
 func refresh() -> void:
 	if Engine.is_editor_hint():

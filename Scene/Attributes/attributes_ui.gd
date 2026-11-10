@@ -76,6 +76,8 @@ func _hover_dimension(id: String) -> void:
 	if choices.has(id):
 		var text: String = choices[id].text
 		%Thought.text = "思考：" + text.substr(%Chart.dimensions[id].length() + 1).strip_edges()
+		if MobileSupport.is_touch:
+			%Thought.text += "\n（再次点击确认）"
 
 func _clear_thoughts() -> void:
 	%Thought.text = ""

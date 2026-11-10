@@ -17,6 +17,10 @@ func _ready() -> void:
 	add_to_group("dialogue_balloon")
 	keyword_effect.label = subtitle
 	subtitle.install_effect(keyword_effect)
+	if MobileSupport.is_touch_device:
+		# 手机屏幕上字幕原字号（33）过小：放大并允许向上换行增高。
+		subtitle.add_theme_font_size_override("normal_font_size", 44)
+		subtitle.fit_content = true
 
 func hide_subtitle() -> void:
 	subtitle.hide()

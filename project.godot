@@ -29,6 +29,7 @@ Attributes="*res://Scene/Attributes/attributes_ui.tscn"
 Memory="*res://Scene/Memory/memory.tscn"
 Inventory="*res://Scene/Inventory/inventory.tscn"
 ClickEffect="*res://autoload/click_effect.tscn"
+MobileSupport="*res://autoload/mobile_support.gd"
 
 [dialogue_manager]
 
